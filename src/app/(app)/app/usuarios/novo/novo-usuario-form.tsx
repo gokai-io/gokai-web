@@ -5,9 +5,8 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod/v4"
 import { toast } from "sonner"
-import { useState } from "react"
+import { useTransition } from "react"
 
-import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -19,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { ROLE_LABELS } from "../usuarios-client"
+import { criarUsuarioComInvite } from "./actions"
 import type { UserRole } from "@/types/database"
 
 // ─── Schema ───────────────────────────────────────────────────────────────────
@@ -51,7 +51,7 @@ const ROLES: UserRole[] = [
 
 export function NovoUsuarioForm() {
   const router = useRouter()
-  const [saving, setSaving] = useState(false)
+  const [isPending, startTransition] = useTransition()
 
   const form = useForm<NovoUsuarioFormValues>({
     resolver: zodResolver(novoUsuarioSchema),
@@ -64,69 +64,19 @@ export function NovoUsuarioForm() {
 
   const roleValue = form.watch("role")
 
-  async function onSubmit(values: NovoUsuarioFormValues) {
-    setSaving(true)
-    const supabase = createClient()
+  function onSubmit(values: NovoUsuarioFormValues) {
+    startTransition(async () => {
+      const result = await criarUsuarioComInvite(values)
 
-    try {
-      // 1. Check if pessoa with this email already exists
-      const { data: existingPessoa } = await supabase
-        .from("pessoa")
-        .select("id")
-        .eq("email", values.email)
-        .maybeSingle()
-
-      let pessoaId: string
-
-      if (existingPessoa) {
-        pessoaId = existingPessoa.id
-      } else {
-        // 2. Create new pessoa record
-        const { data: newPessoa, error: pessoaError } = await supabase
-          .from("pessoa")
-          .insert({ nome_completo: values.nome_completo, email: values.email })
-          .select("id")
-          .single()
-
-        if (pessoaError) throw pessoaError
-        pessoaId = newPessoa.id
-      }
-
-      // 3. Check if usuario_interno already exists for this pessoa
-      const { data: existingUser } = await supabase
-        .from("usuario_interno")
-        .select("id")
-        .eq("pessoa_id", pessoaId)
-        .maybeSingle()
-
-      if (existingUser) {
-        toast.error("Já existe um usuário interno vinculado a este e-mail.")
+      if (!result.success) {
+        toast.error(result.error ?? "Erro ao criar usuário")
         return
       }
 
-      // 4. Create usuario_interno record
-      const { error: userError } = await supabase
-        .from("usuario_interno")
-        .insert({
-          pessoa_id: pessoaId,
-          role: values.role,
-          ativo: true,
-          auth_user_id: null,
-        })
-
-      if (userError) throw userError
-
-      toast.success(
-        "Usuário criado com sucesso. Acesse o painel do Supabase para enviar o convite de acesso."
-      )
+      toast.success("Convite enviado por e-mail com sucesso!")
       router.push("/app/usuarios")
       router.refresh()
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Erro desconhecido"
-      toast.error(`Erro ao criar usuário: ${message}`)
-    } finally {
-      setSaving(false)
-    }
+    })
   }
 
   return (
@@ -161,7 +111,7 @@ export function NovoUsuarioForm() {
           </p>
         )}
         <p className="text-xs text-muted-foreground">
-          Se já existir uma pessoa com este e-mail, ela será vinculada automaticamente.
+          Um convite será enviado automaticamente para este e-mail.
         </p>
       </div>
 
@@ -191,8 +141,8 @@ export function NovoUsuarioForm() {
       </div>
 
       <div className="flex gap-3 pt-2">
-        <Button type="submit" disabled={saving}>
-          {saving ? "Salvando..." : "Criar Usuário"}
+        <Button type="submit" disabled={isPending}>
+          {isPending ? "Enviando convite..." : "Criar Usuário e Enviar Convite"}
         </Button>
         <Button
           type="button"
