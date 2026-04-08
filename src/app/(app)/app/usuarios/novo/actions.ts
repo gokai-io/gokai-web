@@ -1,13 +1,22 @@
 "use server"
 
+import { z } from "zod/v4"
 import { createAdminClient } from "@/lib/supabase/admin"
-import type { UserRole } from "@/types/database"
+import { getServerUser } from "@/lib/auth/server"
+import { isAdmin } from "@/lib/auth/permissions"
 
-interface CriarUsuarioInput {
-  nome_completo: string
-  email: string
-  role: UserRole
-}
+const criarUsuarioSchema = z.object({
+  nome_completo: z.string().min(3, "Nome é obrigatório"),
+  email: z.email("E-mail inválido"),
+  role: z.enum([
+    "presidente",
+    "vice_presidente",
+    "diretor_administrativo",
+    "diretor_financeiro",
+    "diretor_tecnico_esportivo",
+    "professor",
+  ]),
+})
 
 interface ActionResult {
   success: boolean
@@ -15,9 +24,24 @@ interface ActionResult {
 }
 
 export async function criarUsuarioComInvite(
-  input: CriarUsuarioInput
+  input: z.input<typeof criarUsuarioSchema>
 ): Promise<ActionResult> {
-  const { nome_completo, email, role } = input
+  // C1: Auth + RBAC check
+  const user = await getServerUser()
+  if (!user) {
+    return { success: false, error: "Usuário não autenticado." }
+  }
+  if (!isAdmin(user.role)) {
+    return { success: false, error: "Permissão insuficiente." }
+  }
+
+  // C2: Server-side Zod validation
+  const parsed = criarUsuarioSchema.safeParse(input)
+  if (!parsed.success) {
+    return { success: false, error: "Dados inválidos." }
+  }
+
+  const { nome_completo, email, role } = parsed.data
   const admin = createAdminClient()
 
   try {
@@ -37,7 +61,8 @@ export async function criarUsuarioComInvite(
       await admin.auth.admin.inviteUserByEmail(email)
 
     if (authError) {
-      return { success: false, error: `Erro ao enviar convite: ${authError.message}` }
+      console.error("criarUsuarioComInvite: auth invite failed", authError)
+      return { success: false, error: "Erro ao enviar convite." }
     }
 
     // 3. Create or reuse pessoa
@@ -59,9 +84,9 @@ export async function criarUsuarioComInvite(
         .single()
 
       if (pessoaError) {
-        // Rollback auth user
+        console.error("criarUsuarioComInvite: pessoa insert failed", pessoaError)
         await admin.auth.admin.deleteUser(authData.user.id)
-        return { success: false, error: `Erro ao criar pessoa: ${pessoaError.message}` }
+        return { success: false, error: "Erro ao criar registro de pessoa." }
       }
       pessoaId = newPessoa.id
     }
@@ -75,13 +100,14 @@ export async function criarUsuarioComInvite(
     })
 
     if (userError) {
-      // Rollback
+      console.error("criarUsuarioComInvite: usuario_interno insert failed", userError)
       await admin.auth.admin.deleteUser(authData.user.id)
-      return { success: false, error: `Erro ao criar usuário interno: ${userError.message}` }
+      return { success: false, error: "Erro ao criar usuário interno." }
     }
 
     return { success: true }
-  } catch {
-    return { success: false, error: "Erro interno ao criar usuário" }
+  } catch (err) {
+    console.error("criarUsuarioComInvite: unexpected error", err)
+    return { success: false, error: "Erro interno ao criar usuário." }
   }
 }

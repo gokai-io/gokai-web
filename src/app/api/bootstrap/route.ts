@@ -4,7 +4,7 @@ import { createAdminClient } from "@/lib/supabase/admin"
 
 const bootstrapSchema = z.object({
   email: z.email("E-mail inválido"),
-  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+  password: z.string().min(8, "A senha deve ter pelo menos 8 caracteres"),
   nome_completo: z.string().min(3, "Nome é obrigatório"),
 })
 
@@ -51,8 +51,9 @@ export async function POST(request: Request) {
       })
 
     if (authError) {
+      console.error("bootstrap: auth user creation failed", authError)
       return NextResponse.json(
-        { error: `Erro ao criar usuário auth: ${authError.message}` },
+        { error: "Erro ao criar conta de acesso." },
         { status: 500 }
       )
     }
@@ -65,10 +66,10 @@ export async function POST(request: Request) {
       .single()
 
     if (pessoaError) {
-      // Rollback: delete auth user
+      console.error("bootstrap: pessoa insert failed", pessoaError)
       await admin.auth.admin.deleteUser(authData.user.id)
       return NextResponse.json(
-        { error: `Erro ao criar pessoa: ${pessoaError.message}` },
+        { error: "Erro ao criar registro de pessoa." },
         { status: 500 }
       )
     }
@@ -82,11 +83,11 @@ export async function POST(request: Request) {
     })
 
     if (userError) {
-      // Rollback
+      console.error("bootstrap: usuario_interno insert failed", userError)
       await admin.from("pessoa").delete().eq("id", pessoa.id)
       await admin.auth.admin.deleteUser(authData.user.id)
       return NextResponse.json(
-        { error: `Erro ao criar usuário interno: ${userError.message}` },
+        { error: "Erro ao criar usuário interno." },
         { status: 500 }
       )
     }

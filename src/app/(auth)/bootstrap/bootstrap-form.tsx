@@ -21,7 +21,7 @@ import {
 const bootstrapSchema = z.object({
   nome_completo: z.string().min(3, "Nome é obrigatório"),
   email: z.email("E-mail inválido"),
-  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+  password: z.string().min(8, "A senha deve ter pelo menos 8 caracteres"),
 })
 
 type BootstrapInput = z.infer<typeof bootstrapSchema>
