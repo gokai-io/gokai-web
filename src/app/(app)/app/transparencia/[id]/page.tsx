@@ -8,7 +8,14 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeftIcon, PencilIcon, DownloadIcon } from "lucide-react"
-import type { Transparencia, TransparenciaVersao } from "@/types/database"
+import type { Transparencia } from "@/types/database"
+
+type TransparenciaVersao = {
+  id: string
+  versao: number
+  created_at: string
+  editado_por: string | null
+}
 
 interface TransparenciaDetailPageProps {
   params: Promise<{ id: string }>
