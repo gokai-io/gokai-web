@@ -204,7 +204,7 @@ export default async function HomePage() {
                   <GokaiButton
                     href="/sobre"
                     tone="outline"
-                    className="h-11 px-7 text-sm border-white/35 text-white hover:bg-white/10 hover:text-white hover:border-white/50"
+                    className="h-11 px-7 text-sm border-white/50 text-white hover:bg-white/10 hover:text-white hover:border-white/50"
                   >
                     Conhecer a GŌKAI
                   </GokaiButton>
@@ -364,7 +364,7 @@ export default async function HomePage() {
                   <div className={`absolute inset-x-0 top-0 h-1 ${panel.accentClass}`} />
 
                   <span
-                    className="block text-muted-foreground"
+                    className="block text-foreground/70"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                       fontSize: "0.62rem",
@@ -634,7 +634,7 @@ export default async function HomePage() {
                 <GokaiButton
                   href="/contato"
                   tone="outline"
-                  className="h-12 px-8 text-sm border-white/35 text-white hover:bg-white/10 hover:border-white/50"
+                  className="h-12 px-8 text-sm border-white/50 text-white hover:bg-white/10 hover:border-white/50"
                 >
                   Entrar em contato
                 </GokaiButton>

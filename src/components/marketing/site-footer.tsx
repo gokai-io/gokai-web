@@ -50,7 +50,7 @@ export function SiteFooter() {
 
           {/* ── Coluna 2: Navegação ── */}
           <div className="flex flex-col gap-5">
-            <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--text-on-dark-muted)]">
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--text-on-dark-muted)]">
               Navegação
             </h3>
             <nav className="flex flex-col gap-3" aria-label="Links do rodapé — navegação">
@@ -68,7 +68,7 @@ export function SiteFooter() {
 
           {/* ── Coluna 3: Institucional ── */}
           <div className="flex flex-col gap-5">
-            <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--text-on-dark-muted)]">
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--text-on-dark-muted)]">
               Institucional
             </h3>
             <nav className="flex flex-col gap-3" aria-label="Links do rodapé — institucional">
@@ -86,7 +86,7 @@ export function SiteFooter() {
 
           {/* ── Coluna 4: Contato ── */}
           <div className="flex flex-col gap-5">
-            <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-[var(--text-on-dark-muted)]">
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--text-on-dark-muted)]">
               Contato
             </h3>
             {CONTACT_ADDRESS_DISPLAY && (
@@ -97,7 +97,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <Separator className="my-10 bg-white/12" />
+        <Separator className="my-10 bg-white/20" />
 
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-[var(--text-on-dark-muted)] sm:flex-row">
           <p>© 2026 GŌKAI – Associação Esportiva e Ambiental. Todos os direitos reservados.</p>

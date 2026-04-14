@@ -87,8 +87,8 @@ export function SiteHeader() {
                         ? "text-foreground after:bg-foreground after:scale-x-100"
                         : "text-white after:bg-white after:scale-x-100"
                       : scrolled
-                        ? "text-foreground/55 hover:text-foreground after:bg-foreground hover:after:scale-x-100"
-                        : "text-white/55 hover:text-white after:bg-white hover:after:scale-x-100"
+                        ? "text-foreground/80 hover:text-foreground after:bg-foreground hover:after:scale-x-100"
+                        : "text-white/80 hover:text-white after:bg-white hover:after:scale-x-100"
                   )}
                 >
                   {label}
@@ -115,7 +115,7 @@ export function SiteHeader() {
               tone="outline"
               className={cn(
                 "h-9 px-4 text-[13px]",
-                !scrolled && "border-white/25 text-white/80 hover:bg-white/8 hover:text-white hover:border-white/40"
+                !scrolled && "border-white/40 text-white hover:bg-white/10 hover:text-white hover:border-white/60"
               )}
             >
               Área Restrita
@@ -164,7 +164,7 @@ export function SiteHeader() {
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "py-3 text-lg font-medium border-b border-white/10 transition-colors",
-                    isActive ? "text-white" : "text-white/60 hover:text-white"
+                    isActive ? "text-white" : "text-white/85 hover:text-white"
                   )}
                 >
                   {label}
@@ -176,7 +176,7 @@ export function SiteHeader() {
             <GokaiButton href="/inscricao" tone="secondary" className="w-full justify-center">
               Associe-se
             </GokaiButton>
-            <GokaiButton href="/login" tone="outline" className="w-full justify-center border-white/25 text-white/80">
+            <GokaiButton href="/login" tone="outline" className="w-full justify-center border-white/40 text-white">
               Área Restrita
             </GokaiButton>
           </div>
