@@ -26,6 +26,18 @@
   --color-surface-forest: var(--surface-forest);
   --color-accent-red: var(--accent-red);
   --color-accent-bronze: var(--accent-bronze);
+
+  /* ── Text Variables ── */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-text-on-dark-secondary: var(--text-on-dark-secondary);
+  --color-text-on-dark-muted: var(--text-on-dark-muted);
+
+  /* ── Legacy Mappings ── */
+  --color-surface-dark: var(--surface-ink);
+  --color-surface-warm: var(--surface-paper);
+  --color-surface-light: var(--surface-paper);
 }
 
 :root {
@@ -63,7 +75,7 @@
   --surface-paper:      #121213;
   --text-primary:       #F7F6F2;
   --text-secondary:     rgba(247, 246, 242, 0.78);
-  --background: #0C0C0C;
+  --background: var(--surface-paper);
   --foreground: #F0F0F0;
 }
 
@@ -118,9 +130,7 @@
     overflow: hidden;
     padding-top: 8rem;
     padding-bottom: 5rem;
-    background:
-      radial-gradient(circle at 80% 18%, rgba(207, 46, 36, 0.14), transparent 22%),
-      linear-gradient(180deg, #111111 0%, #0C0C0C 60%, #080808 100%);
+    background: var(--surface-forest);
   }
 
   /* Subtle diagonal light shard — suggests discipline / blade edge */
@@ -168,7 +178,7 @@
     font-family: var(--font-outfit, var(--font-montserrat, system-ui));
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
   }
 
