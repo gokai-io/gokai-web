@@ -7,7 +7,6 @@ interface SectionHeaderProps {
   className?: string
   align?: "left" | "center"
   eyebrow?: string
-  /** Hides the brand mark beside the eyebrow when space is tight */
   hideMark?: boolean
 }
 
@@ -24,12 +23,12 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "flex flex-col gap-5",
+        "flex flex-col gap-6",
         isCenter ? "items-center text-center" : "items-start text-left",
         className
       )}
     >
-      {/* Eyebrow row: mark + kicker + divider */}
+      {/* Eyebrow row: mark + kicker + gradient rule */}
       <div
         className={cn(
           "flex items-center gap-3",
@@ -37,30 +36,32 @@ export function SectionHeader({
         )}
       >
         {!hideMark && (
-          <GokaiMarkSvg className="h-9 w-9 flex-none rounded-xl" />
+          <GokaiMarkSvg className="h-10 w-10 flex-none rounded-xl" />
         )}
 
-        <div className="flex flex-col gap-1.5">
-          <span className="gokai-kicker text-primary/70">{eyebrow}</span>
-          {/* Gradient rule: red → lime — echoes the logo's energy */}
+        <div className="flex flex-col gap-2">
+          <span className="gokai-kicker text-primary/68">{eyebrow}</span>
+          {/* Gradient rule — red → lime, echoes the logo's energy */}
           <span
-            className="block h-[1.5px] w-14 rounded-full"
-            style={{ background: "linear-gradient(90deg, #CF2E24, #7AC943)" }}
+            className="block h-[2px] w-16 rounded-full"
+            style={{
+              background: "linear-gradient(90deg, #CF2E24 0%, #7AC943 100%)",
+            }}
             aria-hidden
           />
         </div>
       </div>
 
-      {/* Title + optional subtitle */}
+      {/* Title + subtitle */}
       <div
         className={cn(
-          "flex flex-col gap-3",
+          "flex flex-col gap-4",
           isCenter ? "items-center" : "items-start"
         )}
       >
         <h2
           className={cn(
-            "max-w-3xl font-heading text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl",
+            "max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]",
             isCenter && "text-balance"
           )}
         >

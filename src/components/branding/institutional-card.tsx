@@ -4,7 +4,7 @@ interface InstitutionalCardProps extends React.ComponentProps<"div"> {
   accent?: "green" | "red" | "neutral" | "none"
 }
 
-// Accent bar CSS class per variant
+// Top accent bar color per variant
 const ACCENT_BAR: Record<NonNullable<InstitutionalCardProps["accent"]>, string> = {
   green:   "before:bg-primary",
   red:     "before:bg-secondary",
@@ -12,23 +12,22 @@ const ACCENT_BAR: Record<NonNullable<InstitutionalCardProps["accent"]>, string> 
   none:    "",
 }
 
-// Hover border tint per variant — visible when the card is hovered
+// Border glow on hover per variant
 const ACCENT_HOVER: Record<NonNullable<InstitutionalCardProps["accent"]>, string> = {
-  green:   "hover:border-primary/30",
-  red:     "hover:border-secondary/30",
-  neutral: "hover:border-accent/40",
-  none:    "",
+  green:   "hover:border-primary/40 hover:shadow-[0_2px_8px_rgba(11,90,43,0.08),0_20px_48px_rgba(11,90,43,0.10)]",
+  red:     "hover:border-secondary/35 hover:shadow-[0_2px_8px_rgba(207,46,36,0.08),0_20px_48px_rgba(207,46,36,0.09)]",
+  neutral: "hover:border-accent/40 hover:shadow-[0_2px_8px_rgba(122,201,67,0.08),0_20px_48px_rgba(11,90,43,0.08)]",
+  none:    "hover:shadow-[0_2px_8px_rgba(18,48,32,0.08),0_20px_48px_rgba(18,48,32,0.09)]",
 }
 
 /**
  * InstitutionalCard — primary surface for the GŌKAI marketing site.
  *
- * A white/card surface with:
- * - A 3px coloured accent bar clipped at the top-left edge
- * - Subtle shadow and border
- * - Hover: shadow lift + matching border-color tint
+ * Pure white card that clearly separates from the off-white page background.
+ * Multi-layer shadow system creates real depth. Colored top accent bar and
+ * per-variant hover border glow reinforce brand identity.
  *
- * Accent: green (institutional) | red (energy/CTA) | neutral (lime) | none
+ * Accents: green | red | neutral | none
  */
 export function InstitutionalCard({
   className,
@@ -39,21 +38,21 @@ export function InstitutionalCard({
   return (
     <div
       className={cn(
-        // Shape & layout
-        "relative overflow-hidden rounded-[26px] p-6",
-        // Surface
-        "border border-border/70 bg-card/96",
-        // Depth
-        "shadow-[0_16px_44px_rgba(18,48,32,0.07)]",
-        // Transitions — shadow lift + border colour on hover
-        "transition-[box-shadow,border-color] duration-300",
-        "hover:shadow-[0_24px_60px_rgba(18,48,32,0.13)]",
-        // Per-accent hover border
-        accent !== "none" && ACCENT_HOVER[accent],
-        // Accent bar pseudo — 3px wide, top-left, rounded-bottom
+        // Shape
+        "relative overflow-hidden rounded-2xl p-6",
+        // Surface — pure white so it reads cleanly on the off-white bg
+        "bg-white border border-border",
+        // Depth — layered shadows: fine near-shadow + ambient far-shadow
+        "shadow-[0_1px_4px_rgba(18,48,32,0.06),0_8px_28px_rgba(18,48,32,0.07)]",
+        // Transitions
+        "transition-all duration-300",
+        // Lift + per-accent glow on hover
+        "hover:-translate-y-0.5",
+        accent !== "none" ? ACCENT_HOVER[accent] : ACCENT_HOVER.none,
+        // Accent bar — 4px wide, runs from left-6, clips at top-0
         accent !== "none" && [
           "before:absolute before:left-6 before:top-0",
-          "before:h-[3px] before:w-16 before:rounded-b-full",
+          "before:h-[4px] before:w-20 before:rounded-b-full",
           ACCENT_BAR[accent],
         ],
         className

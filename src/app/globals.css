@@ -73,23 +73,23 @@
 
 :root {
   --font-sans: var(--font-manrope);
-  --background: #F7F6F2;
-  --foreground: #123020;
-  --card: #FFFCF7;
-  --card-foreground: #123020;
-  --popover: #FFFCF7;
-  --popover-foreground: #123020;
+  --background: #F5F4F0;
+  --foreground: #112A1A;
+  --card: #FFFFFF;
+  --card-foreground: #112A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #112A1A;
   --primary: #0B5A2B;
-  --primary-foreground: #F7F6F2;
+  --primary-foreground: #F5F4F0;
   --secondary: #CF2E24;
-  --secondary-foreground: #F7F6F2;
-  --muted: #E9E3D8;
-  --muted-foreground: #536654;
+  --secondary-foreground: #F5F4F0;
+  --muted: #E8E2D6;
+  --muted-foreground: #4E6152;
   --accent: #7AC943;
-  --accent-foreground: #123020;
+  --accent-foreground: #112A1A;
   --destructive: #991f17;
-  --border: #D5CEBF;
-  --input: #D5CEBF;
+  --border: #C8CEC3;
+  --input: #D2D8CD;
   --ring: #0B5A2B;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -153,8 +153,8 @@
   body {
     @apply bg-background text-foreground;
     background:
-      radial-gradient(circle at top right, rgba(207, 46, 36, 0.08), transparent 22%),
-      linear-gradient(180deg, rgba(18, 48, 32, 0.04), transparent 20%),
+      radial-gradient(ellipse 55% 38% at 95% 0%,  rgba(207, 46, 36, 0.13), transparent),
+      radial-gradient(ellipse 45% 30% at 2%  4%,  rgba(11, 90, 43,  0.09), transparent),
       var(--background);
   }
   h1, h2, h3, h4, h5, h6 {
@@ -187,8 +187,8 @@
 @layer components {
   .gokai-page-shell {
     background:
-      linear-gradient(180deg, rgba(18, 48, 32, 0.04), transparent 15%),
-      radial-gradient(circle at top left, rgba(122, 201, 67, 0.08), transparent 26%),
+      radial-gradient(ellipse 55% 38% at 95% 0%,  rgba(207, 46, 36, 0.11), transparent),
+      radial-gradient(ellipse 40% 28% at 0%  0%,  rgba(11, 90, 43,  0.08), transparent),
       var(--background);
   }
 
@@ -246,16 +246,19 @@
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    font-size: 0.7rem;
+    font-family: var(--font-outfit, var(--font-montserrat, system-ui));
+    font-size: 0.68rem;
     font-weight: 700;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
   }
 
   .gokai-divider {
-    height: 1px;
-    width: 4rem;
+    height: 2px;
+    width: 5rem;
+    border-radius: 999px;
     background: linear-gradient(90deg, var(--secondary), var(--accent));
+    opacity: 0.7;
   }
 
   .gokai-shell-card {

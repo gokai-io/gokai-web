@@ -164,7 +164,7 @@ export default async function HomePage() {
                 </div>
 
                 <h1
-                  className="gokai-hero-enter mt-6 text-balance font-heading text-5xl font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl"
+                  className="gokai-hero-enter mt-5 text-balance font-heading text-5xl font-bold leading-[0.92] text-white sm:text-6xl lg:text-7xl"
                   style={{ animationDelay: "200ms" }}
                 >
                   Artes marciais com honra, tradição e rigor institucional.
@@ -201,30 +201,40 @@ export default async function HomePage() {
                   ].map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-[24px] border border-white/12 bg-white/8 p-4 backdrop-blur"
+                      className="rounded-2xl border border-white/16 bg-white/10 p-4 backdrop-blur-sm"
                     >
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/55">{item.label}</p>
+                      <p className="gokai-kicker text-white/50">{item.label}</p>
                       <p className="mt-2 text-sm font-semibold text-white">{item.value}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Right column — brand mark with scale-in entrance */}
+              {/* Right column — brand mark */}
               <div
                 className="gokai-hero-enter-scale flex justify-center lg:justify-end"
                 style={{ animationDelay: "300ms" }}
               >
-                <div className="relative rounded-[34px] border border-white/12 bg-white/10 p-5 shadow-[0_40px_90px_rgba(7,25,15,0.34)] backdrop-blur">
-                  <BrandLogo
-                    variant="full"
-                    className="h-[18rem] w-[18rem] rounded-[28px] sm:h-[22rem] sm:w-[22rem]"
-                    priority
-                    sizes="(min-width: 1024px) 352px, 288px"
-                  />
-                  <div className="absolute -bottom-6 -left-6 rounded-[24px] border border-white/12 bg-[#F7F6F2] px-5 py-4 text-[#123020] shadow-[0_24px_60px_rgba(7,25,15,0.24)]">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/58">Essência da Marca</p>
-                    <p className="mt-2 text-sm font-semibold">Força controlada. Tradição. Clareza institucional.</p>
+                {/* Clean container — no clutter, let the mark breathe */}
+                <div className="relative">
+                  {/* Outer decorative ring — suggests the rising sun */}
+                  <div className="absolute -inset-6 rounded-full border border-white/8 opacity-60" />
+                  <div className="absolute -inset-12 rounded-full border border-white/4 opacity-40" />
+
+                  {/* Mark container */}
+                  <div className="relative rounded-3xl border border-white/14 bg-white/8 p-4 shadow-[0_32px_80px_rgba(4,16,8,0.45)] backdrop-blur-sm">
+                    <BrandLogo
+                      variant="full"
+                      className="h-[16rem] w-[16rem] rounded-2xl sm:h-[20rem] sm:w-[20rem]"
+                      priority
+                      sizes="(min-width: 1024px) 320px, 256px"
+                    />
+                  </div>
+
+                  {/* Small floating tag — bottom right, not overlapping */}
+                  <div className="absolute -bottom-4 -right-4 rounded-2xl border border-white/14 bg-[#0B5A2B] px-4 py-3 shadow-[0_12px_32px_rgba(4,16,8,0.5)]">
+                    <p className="gokai-kicker text-white/55">Juiz de Fora · MG</p>
+                    <p className="mt-1 text-xs font-semibold text-white">Fundada em 2024</p>
                   </div>
                 </div>
               </div>
