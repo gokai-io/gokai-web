@@ -1,29 +1,28 @@
 /**
  * GŌKAI Brand SVG Components
  *
- * Redesigned to faithfully match the official GŌKAI brand guide.
+ * Redesigned to faithfully replicate the official GŌKAI brand guide.
  *
- * Logo composition (from brand guide):
- *  - Kneeling samurai silhouette with raised katana (blade goes upper-left)
- *  - Red rising sun circle with radiating rays behind the samurai
- *  - Green leaf cluster to the upper-right
- *  - Dark green background for the badge/mark icon variant
+ * Logo composition (from gokai-branding.png):
+ *  - Samurai in left-facing 3/4 profile, right arm raised with katana going upper-left
+ *  - Flowing kimono body with wide seiza (kneeling) base
+ *  - Large red rising sun disc with radiating rays, centered behind the figure
+ *  - Green leaf cluster upper-right, overlapping the sun
+ *  - Dark green background for the badge/icon variant
  *
- * Font: Outfit (brand guide spec) — loaded via next/font in layout.tsx
+ * Fonts: Outfit (brand spec) + Montserrat fallback
  */
 
 import { useId } from "react"
 import { cn } from "@/lib/utils"
 
-// ─── GŌKAI Mark ────────────────────────────────────────────────────────────────
-// Circular badge version of the mark for header, favicon and icon contexts.
-// Composition: dark green bg → red sun with rays → samurai silhouette → green leaves.
+// ─── GŌKAI Mark — circular badge icon ─────────────────────────────────────────
+// Used in header, favicons, and anywhere a compact square/circular mark is needed.
 
 export function GokaiMarkSvg({ className }: { className?: string }) {
   const uid = useId()
-  const clipId = `${uid}-clip`
-  const bgId   = `${uid}-bg`
-  const sunId  = `${uid}-sun`
+  const bgId  = `${uid}-bg`
+  const sunId = `${uid}-sun`
 
   return (
     <svg
@@ -35,205 +34,196 @@ export function GokaiMarkSvg({ className }: { className?: string }) {
       role="img"
     >
       <defs>
-        {/* Clip everything to inner circle */}
-        <clipPath id={clipId}>
-          <circle cx="100" cy="100" r="96" />
-        </clipPath>
-
-        {/* Background gradient — richer green at center-top */}
-        <radialGradient id={bgId} cx="44%" cy="32%" r="72%">
-          <stop offset="0%"   stopColor="#1A6E38" />
-          <stop offset="60%"  stopColor="#0E5628" />
+        {/* Background — rich dark green, lighter at top-center */}
+        <radialGradient id={bgId} cx="46%" cy="28%" r="72%">
+          <stop offset="0%"   stopColor="#1C6E38" />
+          <stop offset="55%"  stopColor="#0D5228" />
           <stop offset="100%" stopColor="#083A18" />
         </radialGradient>
 
-        {/* Sun — warm red with bright core */}
-        <radialGradient id={sunId} cx="36%" cy="30%" r="60%">
-          <stop offset="0%"   stopColor="#E83838" />
-          <stop offset="100%" stopColor="#B82020" />
+        {/* Sun — bright warm red with highlight */}
+        <radialGradient id={sunId} cx="32%" cy="26%" r="62%">
+          <stop offset="0%"   stopColor="#E83030" />
+          <stop offset="100%" stopColor="#B81E18" />
         </radialGradient>
+
+        {/* Clip to inner circle */}
+        <clipPath id={`${uid}-clip`}>
+          <circle cx="100" cy="100" r="96" />
+        </clipPath>
       </defs>
 
-      {/* ── Outer border ── */}
-      <circle cx="100" cy="100" r="100" fill="#0A4820" />
+      {/* ── Outer border ring ── */}
+      <circle cx="100" cy="100" r="100" fill="#094020" />
 
       {/* ── Background fill ── */}
-      <circle cx="100" cy="100" r="96" fill={`url(#${bgId})`} />
+      <circle cx="100" cy="100" r="97" fill={`url(#${bgId})`} />
 
-      {/* ── Subtle ring ── */}
-      <circle cx="100" cy="100" r="93" fill="none" stroke="rgba(247,246,242,0.12)" strokeWidth="1" />
+      {/* ── Subtle inner ring ── */}
+      <circle cx="100" cy="100" r="93" fill="none" stroke="rgba(247,246,242,0.10)" strokeWidth="1" />
 
-      {/* ── All content clipped to circle ── */}
-      <g clipPath={`url(#${clipId})`}>
+      {/* ── Clipped content ── */}
+      <g clipPath={`url(#${uid}-clip)`}>
 
-        {/* ──────── SUN RAYS ──────── */}
-        {/* 12 rays from sun centre (94, 100) — behind everything */}
-        <g transform="translate(94,100)" opacity="0.55">
-          {([0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330] as const).map((deg) => (
+        {/* ──── SUN RAYS (12, behind everything) ──── */}
+        {/* Centered at (90, 102) — slightly left+down so samurai overlaps naturally */}
+        <g transform="translate(90,102)" opacity="0.55">
+          {([0,30,60,90,120,150,180,210,240,270,300,330] as const).map((deg) => (
             <line
               key={deg}
-              x1="0" y1="-50"
-              x2="0" y2="-84"
+              x1="0" y1="-50" x2="0" y2="-84"
               stroke="#CF2E24"
-              strokeWidth={deg % 90 === 0 ? 2 : 1.2}
+              strokeWidth={deg % 90 === 0 ? 2.2 : 1.4}
               strokeLinecap="round"
               transform={`rotate(${deg})`}
             />
           ))}
         </g>
 
-        {/* ──────── SUN DISC ──────── */}
-        <circle cx="94" cy="100" r="44" fill={`url(#${sunId})`} />
-        {/* Sun specular highlight */}
-        <ellipse cx="82" cy="88" rx="12" ry="10" fill="rgba(255,255,255,0.14)" />
+        {/* ──── SUN DISC ──── */}
+        <circle cx="90" cy="102" r="46" fill={`url(#${sunId})`} />
+        {/* Specular highlight — top-left of disc */}
+        <ellipse cx="76" cy="88" rx="13" ry="11" fill="rgba(255,255,255,0.14)" />
 
-        {/* ──────── GREEN LEAF CLUSTER (upper right) ──────── */}
+        {/* ──── GREEN LEAVES (upper right, overlapping sun) ──── */}
         {/*
-          Three pointed leaves on a branch, positioned upper-right.
-          They partially overlap the sun circle for a natural feel.
+          Three smooth pointed leaves on a curved stem — faithful to brand guide.
+          Positioned upper-right of the composition.
         */}
         <g opacity="0.95">
-          {/* Branch stem */}
+          {/* Stem — curves from lower to upper */}
           <path
-            d="M 156,88 C 158,74 160,58 155,38"
+            d="M 152,82 C 154,68 156,52 150,34"
             stroke="#5DAE22"
             strokeWidth="2.5"
             fill="none"
             strokeLinecap="round"
           />
-          {/* Leaf 3 — lower */}
+          {/* Leaf bottom */}
           <ellipse
-            cx="153" cy="82"
-            rx="18" ry="6"
+            cx="150" cy="76" rx="20" ry="6.5"
             fill="#7AC943"
-            transform="rotate(-22 153 82)"
+            transform="rotate(-20 150 76)"
           />
-          {/* Leaf 2 — middle */}
+          {/* Leaf middle */}
           <ellipse
-            cx="160" cy="62"
-            rx="18" ry="6"
-            fill="#8ED94E"
-            transform="rotate(-44 160 62)"
+            cx="158" cy="57" rx="20" ry="6.5"
+            fill="#8BD944"
+            transform="rotate(-42 158 57)"
           />
-          {/* Leaf 1 — upper */}
+          {/* Leaf top */}
           <ellipse
-            cx="157" cy="42"
-            rx="16" ry="5.5"
+            cx="153" cy="38" rx="17" ry="5.5"
             fill="#7AC943"
-            transform="rotate(-62 157 42)"
+            transform="rotate(-62 153 38)"
           />
         </g>
 
-        {/* ──────── SAMURAI SILHOUETTE ──────── */}
+        {/* ──── SAMURAI SILHOUETTE ──── */}
         {/*
-          Kneeling samurai in cream/off-white, in front of the sun.
-          The figure faces slightly left; right arm is raised holding the katana
-          so the blade extends toward the upper-left of the composition.
+          Left-facing profile (3/4 view), right arm raised with katana.
+          Katana blade extends upper-left. Wide seiza base.
+          Cream/off-white (#F5F3EE) to pop off the red sun and green background.
         */}
 
         {/* Head */}
-        <circle cx="90" cy="52" r="13" fill="#F7F6F2" />
+        <circle cx="88" cy="50" r="13" fill="#F5F3EE" />
 
         {/* Topknot / chonmage */}
-        <ellipse cx="90" cy="37" rx="4" ry="8" fill="#F7F6F2" />
-
-        {/* ── Right arm raised with katana (goes upper-left) ── */}
-        {/* Arm/sleeve from shoulder */}
         <path
-          d="M 80,66 C 74,60 68,54 60,46"
-          stroke="#F7F6F2"
-          strokeWidth="11"
+          d="M 84,38 C 83,30 87,24 88,24 C 89,24 93,30 92,38 Z"
+          fill="#F5F3EE"
+        />
+
+        {/* ── Raised right arm — thick smooth stroke from shoulder to grip ── */}
+        {/* The arm goes from the upper-left of the torso to the katana handle */}
+        <path
+          d="M 78,67 C 72,60 66,53 58,45"
+          stroke="#F5F3EE"
+          strokeWidth="13"
+          strokeLinecap="round"
           fill="none"
-          strokeLinecap="round"
         />
 
-        {/* Katana grip / tsuka */}
+        {/* ── Katana handle / tsuka ── */}
         <line
-          x1="60" y1="46"
-          x2="52" y2="38"
-          stroke="#F7F6F2"
-          strokeWidth="4"
+          x1="58" y1="45" x2="50" y2="36"
+          stroke="#F5F3EE"
+          strokeWidth="4.5"
           strokeLinecap="round"
         />
 
-        {/* Katana guard / tsuba — perpendicular to blade */}
+        {/* ── Katana guard / tsuba — perpendicular cross at handle ── */}
+        {/* Blade direction is roughly (-1,-1) so perpendicular is (1,-1) */}
         <line
-          x1="56" y1="50"
-          x2="64" y2="42"
-          stroke="#F7F6F2"
-          strokeWidth="6"
+          x1="54" y1="49" x2="62" y2="41"
+          stroke="#F5F3EE"
+          strokeWidth="7"
           strokeLinecap="round"
         />
 
-        {/* Katana blade — long diagonal going upper-left */}
+        {/* ── Katana blade — long diagonal to upper-left ── */}
         <path
-          d="M 52,38 C 44,30 34,20 22,8"
-          stroke="#F7F6F2"
+          d="M 50,36 C 42,28 32,18 20,6"
+          stroke="#F5F3EE"
           strokeWidth="2.5"
           fill="none"
           strokeLinecap="round"
         />
-        {/* Blade tip — slightly narrower */}
+        {/* Fine tip */}
         <line
-          x1="22" y1="8"
-          x2="18" y2="4"
-          stroke="rgba(247,246,242,0.6)"
+          x1="20" y1="6" x2="16" y2="2"
+          stroke="rgba(245,243,238,0.55)"
           strokeWidth="1.5"
           strokeLinecap="round"
         />
 
-        {/* ── Kimono / body (wide flowing shape) ── */}
+        {/* ── Main body — flowing kimono + hakama silhouette ── */}
         {/*
-          Wide at the shoulders, flowing down to the kneeling hakama base.
-          Deliberately asymmetric — left side (raised arm) is higher than right.
+          Wide shoulders tapering slightly at waist, then flaring into the
+          hakama (traditional trousers). The left side of the torso is where
+          the raised arm connects — it's slightly indented there.
+          The seiza base creates a wide rounded rectangle at the bottom.
         */}
         <path
           d="
-            M 80,64
-            C 94,62 104,64 108,68
-            C 112,72 112,82 110,96
-            L 114,128
-            L 122,156
-            L 55,156
-            L 62,128
-            L 66,96
-            C 64,82 64,72 68,68
-            C 70,65 76,65 80,64
+            M 88,62
+            C 102,62 114,66 117,76
+            L 120,110
+            L 125,138
+            L 130,165
+            C 130,174 58,174 56,165
+            L 60,138
+            L 65,110
+            L 68,76
+            C 70,66 76,62 88,62
             Z
           "
-          fill="#F7F6F2"
+          fill="#F5F3EE"
         />
 
-        {/* Left arm — alongside body */}
+        {/* ── Left arm — beside body, at rest ── */}
         <path
-          d="M 68,72 L 58,90"
-          stroke="#F7F6F2"
-          strokeWidth="8"
+          d="M 68,76 L 58,94"
+          stroke="#F5F3EE"
+          strokeWidth="9"
           strokeLinecap="round"
           fill="none"
         />
 
-        {/* Obi / belt — thin red accent at waist */}
+        {/* ── Obi — red belt accent at waist ── */}
         <line
-          x1="68" y1="110"
-          x2="110" y2="110"
+          x1="68" y1="114" x2="120" y2="114"
           stroke="#CF2E24"
-          strokeWidth="3"
+          strokeWidth="3.5"
           strokeLinecap="round"
         />
 
-        {/* ── Kneeling legs / seiza base ── */}
-        <path
-          d="M 50,158 L 128,158 L 132,176 C 130,182 46,182 44,176 Z"
-          fill="#F7F6F2"
-          opacity="0.92"
-        />
-
-        {/* Subtle ground shadow */}
+        {/* ── Ground shadow ── */}
         <ellipse
-          cx="88" cy="182"
-          rx="36" ry="6"
-          fill="rgba(4,16,8,0.35)"
+          cx="93" cy="174"
+          rx="34" ry="6"
+          fill="rgba(4,18,8,0.32)"
         />
 
       </g>
@@ -242,14 +232,13 @@ export function GokaiMarkSvg({ className }: { className?: string }) {
 }
 
 // ─── GŌKAI Wordmark ────────────────────────────────────────────────────────────
-// "GŌKAI" in Outfit SemiBold — the official brand typeface.
-// Uses currentColor so it adapts to any text-* parent class.
-// Size with h-XX className — width auto-scales from the viewBox aspect ratio.
+// "GŌKAI" in Outfit 700 — official brand typeface (brand guide spec).
+// Uses currentColor — set text color via parent class (text-white, text-foreground, etc.).
 
 export function GokaiWordmarkSvg({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 320 58"
+      viewBox="0 0 310 58"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={cn("block w-auto", className)}
@@ -264,8 +253,8 @@ export function GokaiWordmarkSvg({ className }: { className?: string }) {
           fontFamily:
             'var(--font-outfit, var(--font-montserrat, "Outfit", "Montserrat", system-ui, sans-serif))',
           fontWeight: 700,
-          fontSize: "52px",
-          letterSpacing: "2px",
+          fontSize: "50px",
+          letterSpacing: "3px",
         }}
         fill="currentColor"
       >
