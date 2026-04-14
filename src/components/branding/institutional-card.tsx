@@ -9,7 +9,7 @@ interface InstitutionalCardProps extends React.ComponentProps<"div"> {
 const ACCENT_BAR: Record<NonNullable<InstitutionalCardProps["accent"]>, string> = {
   green:   "before:bg-primary",
   red:     "before:bg-secondary",
-  neutral: "before:bg-accent",
+  neutral: "before:bg-muted-foreground",
   none:    "",
 }
 
@@ -17,7 +17,7 @@ const ACCENT_BAR: Record<NonNullable<InstitutionalCardProps["accent"]>, string> 
 const ACCENT_HOVER: Record<NonNullable<InstitutionalCardProps["accent"]>, string> = {
   green:   "hover:border-primary/40 hover:shadow-[0_2px_8px_rgba(11,90,43,0.06),0_16px_40px_rgba(0,0,0,0.10)]",
   red:     "hover:border-secondary/35 hover:shadow-[0_2px_8px_rgba(207,46,36,0.06),0_16px_40px_rgba(0,0,0,0.10)]",
-  neutral: "hover:border-accent/40 hover:shadow-[0_2px_8px_rgba(0,0,0,0.04),0_16px_40px_rgba(0,0,0,0.08)]",
+  neutral: "hover:border-border hover:shadow-[0_2px_8px_rgba(0,0,0,0.04),0_16px_40px_rgba(0,0,0,0.08)]",
   none:    "hover:shadow-[0_2px_8px_rgba(0,0,0,0.04),0_16px_40px_rgba(0,0,0,0.08)]",
 }
 

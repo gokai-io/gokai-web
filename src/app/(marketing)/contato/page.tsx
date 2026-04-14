@@ -115,11 +115,11 @@ export default function ContatoPage() {
                 const Icon = item.icon
                 return (
                   <InstitutionalCard key={item.label} accent="neutral" className="flex items-start gap-4 p-5">
-                    <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/8">
-                      <Icon className="h-5 w-5 text-primary" />
+                    <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-muted">
+                      <Icon className="h-5 w-5 text-foreground" />
                     </div>
                     <div>
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary/58">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                         {item.label}
                       </p>
                       {item.href ? (
@@ -127,11 +127,11 @@ export default function ContatoPage() {
                           href={item.href}
                           target={item.href.startsWith("http") ? "_blank" : undefined}
                           rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="inline-flex items-start gap-1 whitespace-pre-line text-sm text-foreground hover:text-primary"
+                          className="inline-flex items-start gap-1 whitespace-pre-line text-sm text-foreground hover:text-secondary"
                         >
                           {item.value}
                           {item.href.startsWith("http") && (
-                            <ExternalLink className="mt-0.5 h-3 w-3 shrink-0 text-primary/50" />
+                            <ExternalLink className="mt-0.5 h-3 w-3 shrink-0 text-muted-foreground/50" />
                           )}
                         </a>
                       ) : (
@@ -143,7 +143,7 @@ export default function ContatoPage() {
               })
             ) : (
               <InstitutionalCard accent="neutral" className="p-5">
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary/58">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                   Retorno
                 </p>
                 <p className="text-sm leading-relaxed text-muted-foreground">
@@ -165,10 +165,10 @@ export default function ContatoPage() {
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary"
+                          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-secondary"
                         >
                           {display}
-                          <ExternalLink className="h-3 w-3 shrink-0 text-primary/50" />
+                          <ExternalLink className="h-3 w-3 shrink-0 text-muted-foreground/50" />
                         </a>
                       </li>
                     )

@@ -47,9 +47,9 @@ const tipoLabels: Record<EventoTipo, string> = {
 // Badges use brand palette: red = campeonato (energy), green = treino/social, lime = seminario
 const tipoBadgeClass: Record<EventoTipo, string> = {
   campeonato:      "bg-secondary/15 text-secondary border-secondary/28",
-  treino_especial: "bg-primary/12 text-primary border-primary/22",
-  seminario:       "bg-accent/20 text-primary border-accent/30",
-  social:          "bg-primary/8 text-primary/75 border-primary/18",
+  treino_especial: "bg-muted text-muted-foreground border-border",
+  seminario:       "bg-secondary/15 text-secondary border-secondary/28",
+  social:          "bg-muted text-muted-foreground border-border",
   outro:           "bg-muted text-muted-foreground border-border",
 }
 
@@ -88,8 +88,8 @@ function EventCard({ evento, isPast = false }: { evento: Evento; isPast?: boolea
             />
           </div>
         ) : (
-          <div className="flex h-44 items-center justify-center bg-primary/6">
-            <CalendarDays className="h-10 w-10 text-primary/22" />
+          <div className="flex h-44 items-center justify-center bg-muted">
+            <CalendarDays className="h-10 w-10 text-muted-foreground/40" />
           </div>
         )}
 
@@ -115,7 +115,7 @@ function EventCard({ evento, isPast = false }: { evento: Evento; isPast?: boolea
             )}
           </div>
 
-          <h3 className="font-heading text-base font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
+          <h3 className="font-heading text-base font-semibold leading-snug text-foreground transition-colors group-hover:text-secondary">
             {evento.titulo}
           </h3>
 
@@ -126,7 +126,7 @@ function EventCard({ evento, isPast = false }: { evento: Evento; isPast?: boolea
             </div>
             {evento.local && (
               <div className="flex items-center gap-1.5">
-                <MapPin className="h-3.5 w-3.5 shrink-0 text-primary/55" />
+                <MapPin className="h-3.5 w-3.5 shrink-0 text-muted-foreground/60" />
                 <span>{evento.local}</span>
               </div>
             )}
@@ -138,7 +138,7 @@ function EventCard({ evento, isPast = false }: { evento: Evento; isPast?: boolea
             </p>
           )}
 
-          <span className="mt-auto pt-1 text-xs font-semibold text-primary/55 transition-colors group-hover:text-primary">
+          <span className="mt-auto pt-1 text-xs font-semibold text-muted-foreground transition-colors group-hover:text-secondary">
             Ver detalhes →
           </span>
         </div>

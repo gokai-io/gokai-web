@@ -124,8 +124,8 @@ export default function SobrePage() {
             const Icon = value.icon
             return (
               <InstitutionalCard key={value.title} accent="green">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/8">
-                  <Icon className="w-6 h-6 text-primary" />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-muted">
+                  <Icon className="w-6 h-6 text-foreground" />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold text-foreground">{value.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{value.description}</p>

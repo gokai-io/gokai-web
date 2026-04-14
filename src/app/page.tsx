@@ -81,14 +81,14 @@ function ConteudosTeaser() {
   if (articles.length === 0) return null
   return (
     <Section
-      className="bg-surface-warm"
+      className="bg-surface-light"
       title="Conteúdos e Formação"
       subtitle="A GŌKAI também se expressa fora do tatame: visão institucional, formação humana e cultura marcial."
     >
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {articles.map((article) => (
           <InstitutionalCard key={article.slug} accent="neutral" className="flex h-full flex-col gap-5">
-            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-primary/75">
+            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
               <span>{categoriaLabels[article.categoria as ArticleCategoria]}</span>
               <span>{article.leitura_min} min</span>
             </div>
@@ -96,7 +96,7 @@ function ConteudosTeaser() {
             <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{article.resumo}</p>
             <Link
               href={`/conteudos/${article.slug}`}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-secondary"
             >
               Ler conteúdo <ArrowRightIcon className="size-4" />
             </Link>
@@ -153,9 +153,9 @@ export default async function HomePage() {
                     className="text-[var(--text-on-dark-secondary)]"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                      fontSize: "0.68rem",
+                      fontSize: "0.75rem",
                       fontWeight: 700,
-                      letterSpacing: "0.38em",
+                      letterSpacing: "0.18em",
                       textTransform: "uppercase",
                     }}
                   >
@@ -226,9 +226,9 @@ export default async function HomePage() {
                         className="mt-1 text-[var(--text-on-dark-muted)]"
                         style={{
                           fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                          fontSize: "0.62rem",
+                          fontSize: "0.75rem",
                           fontWeight: 700,
-                          letterSpacing: "0.32em",
+                          letterSpacing: "0.18em",
                           textTransform: "uppercase",
                         }}
                       >
@@ -307,9 +307,9 @@ export default async function HomePage() {
                   className="text-muted-foreground"
                   style={{
                     fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                    fontSize: "0.65rem",
+                    fontSize: "0.75rem",
                     fontWeight: 700,
-                    letterSpacing: "0.38em",
+                    letterSpacing: "0.18em",
                     textTransform: "uppercase",
                   }}
                 >
@@ -330,30 +330,30 @@ export default async function HomePage() {
               {[
                 {
                   num:    "01",
-                  accentClass: "bg-primary",
+                  accentClass: "bg-secondary",
                   title:  "Identidade Institucional",
                   text:   "Estatuto, regimento, atas e memorandos organizados como parte visível e pública da associação.",
                   href:   "/transparencia",
                   cta:    "Ver documentos",
-                  ctaClass: "text-primary",
+                  ctaClass: "text-secondary",
                 },
                 {
                   num:    "02",
-                  accentClass: "bg-secondary",
+                  accentClass: "bg-primary",
                   title:  "Formação Humana",
                   text:   "O treino está conectado a valores permanentes: respeito, honra, disciplina e evolução contínua.",
                   href:   "/sobre",
                   cta:    "Sobre a GŌKAI",
-                  ctaClass: "text-secondary",
+                  ctaClass: "text-primary",
                 },
                 {
                   num:    "03",
-                  accentClass: "bg-accent",
+                  accentClass: "bg-foreground",
                   title:  "Estrutura Organizada",
                   text:   "Diretoria, conselho fiscal e equipe técnica com processos e linguagem pública coerente.",
                   href:   "/governanca",
                   cta:    "Ver governança",
-                  ctaClass: "text-accent",
+                  ctaClass: "text-foreground",
                 },
               ].map((panel) => (
                 <div
@@ -410,9 +410,9 @@ export default async function HomePage() {
                   className="text-[var(--text-on-dark-muted)]"
                   style={{
                     fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                    fontSize: "0.65rem",
+                    fontSize: "0.75rem",
                     fontWeight: 700,
-                    letterSpacing: "0.38em",
+                    letterSpacing: "0.18em",
                     textTransform: "uppercase",
                   }}
                 >
@@ -447,7 +447,7 @@ export default async function HomePage() {
                     )}
                     <Link
                       href={`/modalidades/${modalidade.slug}`}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-secondary"
                     >
                       Conhecer modalidade
                       <ArrowRightIcon className="size-4" />
@@ -471,7 +471,7 @@ export default async function HomePage() {
             )}
 
             <div className="mt-10 flex justify-center">
-              <GokaiButton href="/modalidades" tone="accent" className="h-11 px-7 text-sm">
+              <GokaiButton href="/modalidades" tone="secondary" className="h-11 px-7 text-sm">
                 Ver todas as modalidades
               </GokaiButton>
             </div>
@@ -524,7 +524,7 @@ export default async function HomePage() {
         ═══════════════════════════════════════════════════════ */}
         {eventos.length > 0 && (
           <Section
-            className="bg-surface-white"
+            className="bg-surface-light"
             title="Próximos eventos"
             subtitle="Campeonatos, seminários e atividades na agenda da GŌKAI."
           >
@@ -560,7 +560,7 @@ export default async function HomePage() {
           >
             <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
               {sortedPatrocinadores.map((patrocinador) => (
-                <InstitutionalCard key={patrocinador.id} accent="green" className="items-center p-5 text-center">
+                <InstitutionalCard key={patrocinador.id} accent="none" className="items-center p-5 text-center">
                   {patrocinador.logo_url ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -592,7 +592,7 @@ export default async function HomePage() {
           {/* Gradient divider at top — brand signature */}
           <div
             className="absolute inset-x-0 top-0 h-[2px]"
-            style={{ background: "linear-gradient(90deg, var(--secondary), var(--accent))" }}
+            style={{ background: "linear-gradient(90deg, var(--secondary), transparent)" }}
             aria-hidden
           />
 
@@ -605,9 +605,9 @@ export default async function HomePage() {
                     className="text-[var(--text-on-dark-muted)]"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                      fontSize: "0.65rem",
+                      fontSize: "0.75rem",
                       fontWeight: 700,
-                      letterSpacing: "0.38em",
+                      letterSpacing: "0.18em",
                       textTransform: "uppercase",
                     }}
                   >

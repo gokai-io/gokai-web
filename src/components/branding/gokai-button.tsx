@@ -14,14 +14,14 @@ const VARIANT_CLASS: Record<GokaiButtonVariant, string> = {
     "bg-secondary text-secondary-foreground hover:brightness-110 active:scale-[0.98]",
 
   outline:
-    "border-2 border-primary/35 bg-transparent text-primary hover:border-primary hover:bg-primary/6 active:scale-[0.98]",
+    "border-2 border-foreground/25 bg-transparent text-foreground hover:border-foreground hover:bg-foreground/6 active:scale-[0.98]",
 
   ghost:
     "bg-transparent text-foreground hover:bg-primary/8 hover:text-primary",
 
-  // Lime — for CTAs on dark sections
+  // Red — for CTAs on dark sections
   accent:
-    "bg-accent text-surface-dark font-bold hover:brightness-110 active:scale-[0.98]",
+    "bg-secondary text-white font-bold hover:brightness-110 active:scale-[0.98]",
 }
 
 interface GokaiButtonProps extends Omit<ComponentProps<typeof Button>, "variant"> {

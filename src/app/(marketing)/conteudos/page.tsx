@@ -53,13 +53,13 @@ function FeaturedArticleCard({ article }: { article: Article }) {
       <div className="grid min-h-[300px] overflow-hidden rounded-[26px] border border-border/70 bg-card shadow-[0_20px_60px_rgba(18,48,32,0.09)] transition-shadow duration-300 hover:shadow-[0_28px_80px_rgba(18,48,32,0.14)] lg:grid-cols-5">
 
         {/* Decorative left panel */}
-        <div className="relative flex items-center justify-center overflow-hidden bg-primary/8 p-10 lg:col-span-2">
+        <div className="relative flex items-center justify-center overflow-hidden bg-muted p-10 lg:col-span-2">
           {/* Concentric rings — brand sun / circle motif */}
           <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
             {[80, 56, 32].map((size) => (
               <div
                 key={size}
-                className="absolute rounded-full border border-primary"
+                className="absolute rounded-full border border-foreground"
                 style={{
                   width: `${size}%`,
                   height: `${size}%`,
@@ -73,11 +73,11 @@ function FeaturedArticleCard({ article }: { article: Article }) {
 
           {/* Sun accent */}
           <div className="relative text-center">
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-primary/55">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
               Destaque
             </p>
             <div className="mx-auto mb-3 h-px w-10 bg-secondary" />
-            <BookOpen className="mx-auto h-7 w-7 text-primary/35" />
+            <BookOpen className="mx-auto h-7 w-7 text-muted-foreground/50" />
           </div>
         </div>
 
@@ -96,7 +96,7 @@ function FeaturedArticleCard({ article }: { article: Article }) {
               </span>
             </div>
 
-            <h2 className="mb-4 font-heading text-2xl font-semibold leading-snug text-foreground transition-colors group-hover:text-primary sm:text-3xl">
+            <h2 className="mb-4 font-heading text-2xl font-semibold leading-snug text-foreground transition-colors group-hover:text-secondary sm:text-3xl">
               {article.titulo}
             </h2>
 
@@ -126,15 +126,15 @@ function FeaturedArticleCard({ article }: { article: Article }) {
 
 // Category accent bar colors — brand-consistent (red = eventos, green = modalidades, etc.)
 const categoriaAccentBar: Record<string, string> = {
-  modalidades: "bg-primary/60",
-  iniciantes:  "bg-accent/70",
+  modalidades: "bg-foreground/20",
+  iniciantes:  "bg-secondary/40",
   filosofia:   "bg-secondary/40",
   eventos:     "bg-secondary",
-  outros:      "bg-primary/30",
+  outros:      "bg-foreground/15",
 }
 
 function ArticleCard({ article }: { article: Article }) {
-  const accentBar = categoriaAccentBar[article.categoria] ?? "bg-primary/40"
+  const accentBar = categoriaAccentBar[article.categoria] ?? "bg-foreground/20"
 
   return (
     <Link href={`/conteudos/${article.slug}`} className="group block h-full">
@@ -156,7 +156,7 @@ function ArticleCard({ article }: { article: Article }) {
         </div>
 
         {/* Title */}
-        <h3 className="font-heading text-base font-semibold leading-snug text-foreground transition-colors group-hover:text-primary">
+        <h3 className="font-heading text-base font-semibold leading-snug text-foreground transition-colors group-hover:text-secondary">
           {article.titulo}
         </h3>
 

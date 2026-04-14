@@ -27,7 +27,7 @@ export function SiteFooter() {
       {/* Gradient divider — brand signature */}
       <div
         className="h-[2px] w-full"
-        style={{ background: "linear-gradient(90deg, var(--secondary), var(--accent))" }}
+        style={{ background: "linear-gradient(90deg, var(--secondary), transparent)" }}
         aria-hidden
       />
 

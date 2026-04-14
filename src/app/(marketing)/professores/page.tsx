@@ -85,9 +85,9 @@ export default async function ProfessoresPage() {
                     className="flex h-full flex-col gap-0 !p-0"
                   >
                     {/* Avatar area */}
-                    <div className="flex justify-center bg-primary/6 py-8">
+                    <div className="flex justify-center bg-surface-warm py-8">
                       {prof.pessoa?.foto_url ? (
-                        <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/20">
+                        <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-border">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={prof.pessoa.foto_url}
@@ -96,8 +96,8 @@ export default async function ProfessoresPage() {
                           />
                         </div>
                       ) : (
-                        <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-primary/20 bg-primary/10">
-                          <span className="font-heading text-3xl font-bold text-primary">
+                        <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-border bg-muted">
+                          <span className="font-heading text-3xl font-bold text-foreground">
                             {getInitials(nome)}
                           </span>
                         </div>
@@ -107,7 +107,7 @@ export default async function ProfessoresPage() {
                     {/* Info */}
                     <div className="flex flex-1 flex-col gap-3 p-6">
                       <div>
-                        <h3 className="font-heading text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                        <h3 className="font-heading text-lg font-semibold text-foreground transition-colors group-hover:text-secondary">
                           {nome}
                         </h3>
                         {prof.graduacao && (
@@ -123,7 +123,7 @@ export default async function ProfessoresPage() {
                             <Badge
                               key={esp}
                               variant="outline"
-                              className="border-primary/20 text-primary/70 text-xs"
+                              className="border-border text-muted-foreground text-xs"
                             >
                               {esp}
                             </Badge>
@@ -137,7 +137,7 @@ export default async function ProfessoresPage() {
                         </p>
                       )}
 
-                      <span className="mt-auto pt-2 text-xs font-semibold text-primary/60 transition-colors group-hover:text-primary">
+                      <span className="mt-auto pt-2 text-xs font-semibold text-muted-foreground transition-colors group-hover:text-secondary">
                         Ver perfil →
                       </span>
                     </div>

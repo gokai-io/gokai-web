@@ -157,15 +157,15 @@ export default async function GovernancaPage() {
                   className="flex flex-col items-center gap-4 text-center"
                 >
                   {/* Avatar initials */}
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-primary/20 bg-primary/10">
-                    <span className="text-2xl font-bold text-primary">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-border bg-muted">
+                    <span className="text-2xl font-bold text-foreground">
                       {getInitials(nome)}
                     </span>
                   </div>
 
                   <div>
                     <h3 className="text-lg font-semibold text-foreground">{nome}</h3>
-                    <p className="mt-1 text-sm font-medium text-primary/80">
+                    <p className="mt-1 text-sm font-medium text-muted-foreground">
                       {cargoLabels[cargo] ?? cargo}
                     </p>
                     <p className="mt-2 text-xs text-muted-foreground">Mandato: {mandato}</p>

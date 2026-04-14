@@ -112,10 +112,10 @@ export default async function TransparenciaPage() {
                       <InstitutionalCard
                         key={doc.id}
                         accent={accent}
-                        className="flex items-start gap-4 hover:border-primary/20 transition-colors"
+                        className="flex items-start gap-4 hover:border-border transition-colors"
                       >
                         {/* File icon */}
-                        <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-primary/8 text-primary">
+                        <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-muted text-foreground">
                           <FileText className="h-5 w-5" />
                         </div>
 

@@ -94,8 +94,8 @@ export default async function ModalidadesPage() {
                         />
                       </div>
                     ) : (
-                      <div className="flex h-48 items-center justify-center bg-primary/8">
-                        <span className="font-heading text-5xl font-black tracking-widest text-primary/25">
+                      <div className="flex h-48 items-center justify-center bg-muted">
+                        <span className="font-heading text-5xl font-black tracking-widest text-foreground/20">
                           {modalidade.nome.slice(0, 2).toUpperCase()}
                         </span>
                       </div>
@@ -106,7 +106,7 @@ export default async function ModalidadesPage() {
                   <div className="flex flex-1 flex-col gap-3 px-6 pb-6">
                     <div className="flex items-start justify-between gap-3">
                       <Link href={detailHref}>
-                        <h3 className="font-heading text-xl font-semibold text-foreground transition-colors group-hover:text-primary">
+                        <h3 className="font-heading text-xl font-semibold text-foreground transition-colors group-hover:text-secondary">
                           {modalidade.nome}
                         </h3>
                       </Link>
@@ -174,7 +174,7 @@ export default async function ModalidadesPage() {
       <Section className="bg-surface-warm">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-12">
           <div className="min-w-0 flex-1">
-            <div className="gokai-kicker text-primary/62">Biblioteca GŌKAI</div>
+            <div className="gokai-kicker text-muted-foreground">Biblioteca GŌKAI</div>
             <h3 className="mt-3 font-heading text-xl font-semibold text-foreground">
               Ainda em dúvida sobre qual modalidade escolher?
             </h3>
@@ -187,12 +187,12 @@ export default async function ModalidadesPage() {
           <div className="flex shrink-0 flex-col gap-3">
             {[
               { href: "/conteudos/como-escolher-a-modalidade-ideal", label: "Como escolher a modalidade ideal", accent: "bg-secondary" },
-              { href: "/conteudos/o-que-esperar-da-primeira-aula", label: "O que esperar da primeira aula", accent: "bg-primary/40" },
+              { href: "/conteudos/o-que-esperar-da-primeira-aula", label: "O que esperar da primeira aula", accent: "bg-foreground/25" },
             ].map(({ href, label, accent }) => (
               <Link
                 key={href}
                 href={href}
-                className="group inline-flex items-center gap-3 rounded-2xl border border-border/80 bg-card px-5 py-3.5 text-sm font-medium text-foreground transition-all hover:border-primary/25 hover:bg-primary/4"
+                className="group inline-flex items-center gap-3 rounded-2xl border border-border/80 bg-card px-5 py-3.5 text-sm font-medium text-foreground transition-all hover:border-border hover:bg-muted"
               >
                 <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${accent}`} />
                 {label}
@@ -201,7 +201,7 @@ export default async function ModalidadesPage() {
             ))}
             <Link
               href="/conteudos"
-              className="pt-1 text-right text-xs text-muted-foreground transition-colors hover:text-primary"
+              className="pt-1 text-right text-xs text-muted-foreground transition-colors hover:text-secondary"
             >
               Ver toda a biblioteca →
             </Link>

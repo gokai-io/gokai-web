@@ -69,9 +69,9 @@ export function InscricaoForm({ modalidades }: InscricaoFormProps) {
 
   if (success) {
     return (
-      <div className="rounded-[28px] border border-primary/16 bg-primary/6 p-8 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-          <svg className="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div className="rounded-[28px] border border-border bg-muted p-8 text-center">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-secondary/15">
+          <svg className="h-7 w-7 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -257,7 +257,7 @@ export function InscricaoForm({ modalidades }: InscricaoFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-full bg-primary py-3 text-sm font-semibold text-primary-foreground transition-colors hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-full bg-secondary py-3 text-sm font-semibold text-white transition-colors hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isSubmitting ? "Enviando..." : "Enviar inscrição"}
       </button>

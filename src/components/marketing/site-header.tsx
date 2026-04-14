@@ -84,7 +84,7 @@ export function SiteHeader() {
                     "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
                     isActive
                       ? scrolled
-                        ? "text-primary after:bg-primary after:scale-x-100"
+                        ? "text-foreground after:bg-foreground after:scale-x-100"
                         : "text-white after:bg-white after:scale-x-100"
                       : scrolled
                         ? "text-foreground/55 hover:text-foreground after:bg-foreground hover:after:scale-x-100"
@@ -146,7 +146,7 @@ export function SiteHeader() {
       {/* ── Mobile menu — full-width dropdown ── */}
       <div
         className={cn(
-          "fixed inset-x-0 top-0 z-40 bg-primary pt-20 pb-8 transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-0 z-40 bg-surface-dark pt-20 pb-8 transition-all duration-300 lg:hidden",
           mobileOpen
             ? "translate-y-0 opacity-100"
             : "-translate-y-4 opacity-0 pointer-events-none"
@@ -173,7 +173,7 @@ export function SiteHeader() {
             })}
           </nav>
           <div className="mt-8 flex flex-col gap-3">
-            <GokaiButton href="/inscricao" tone="primary" className="w-full justify-center bg-surface-light text-primary hover:bg-white border-0">
+            <GokaiButton href="/inscricao" tone="secondary" className="w-full justify-center">
               Associe-se
             </GokaiButton>
             <GokaiButton href="/login" tone="outline" className="w-full justify-center border-white/25 text-white/80">
