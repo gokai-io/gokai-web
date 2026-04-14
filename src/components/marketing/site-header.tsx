@@ -45,7 +45,7 @@ export function SiteHeader() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-400",
           scrolled
-            ? "border-b-2 border-[var(--surface-ink)] bg-[var(--surface-paper)] py-3"
+            ? "bg-[rgba(8,16,13,0.72)] backdrop-blur-xl border-b border-[var(--accent-gold)]/12 py-3"
             : "bg-transparent py-5"
         )}
       >
@@ -59,7 +59,7 @@ export function SiteHeader() {
           >
             <BrandLogo
               className="h-[52px] w-auto transition-all duration-300"
-              dark={!scrolled}
+              dark
               priority
             />
           </Link>
@@ -83,12 +83,8 @@ export function SiteHeader() {
                     "after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full",
                     "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
                     isActive
-                      ? scrolled
-                        ? "text-[var(--text-primary)] after:bg-[var(--accent-red)] after:scale-x-100"
-                        : "text-[var(--text-on-dark)] after:bg-[var(--accent-red)] after:scale-x-100"
-                      : scrolled
-                        ? "text-[var(--text-primary)]/80 hover:text-[var(--text-primary)] after:bg-[var(--accent-red)]"
-                        : "text-[var(--text-on-dark)]/80 hover:text-[var(--text-on-dark)] after:bg-[var(--accent-red)]"
+                      ? "text-[var(--text-ivory)] after:bg-[var(--accent-gold)] after:scale-x-100"
+                      : "text-[var(--text-ivory)]/70 hover:text-[var(--accent-gold)] after:bg-[var(--accent-gold)]"
                   )}
                 >
                   {label}
@@ -108,10 +104,7 @@ export function SiteHeader() {
             <GokaiButton
               href="/login"
               tone="outline"
-              className={cn(
-                "h-9 px-4 text-[13px]",
-                !scrolled && "border-white/40 text-white hover:bg-white/10 hover:text-white hover:border-white/60"
-              )}
+              className="h-9 px-4 text-[13px]"
             >
               Área Restrita
             </GokaiButton>
@@ -119,12 +112,7 @@ export function SiteHeader() {
 
           {/* ── Mobile toggle ── */}
           <button
-            className={cn(
-              "inline-flex h-9 w-9 flex-none items-center justify-center rounded-lg transition-colors lg:hidden",
-              scrolled
-                ? "text-foreground hover:bg-muted"
-                : "text-white hover:bg-white/10"
-            )}
+            className="inline-flex h-9 w-9 flex-none items-center justify-center rounded-lg text-[var(--text-ivory)] transition-colors hover:bg-[var(--accent-gold)]/10 lg:hidden"
             onClick={() => setMobileOpen((o) => !o)}
             aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mobileOpen}
@@ -141,7 +129,7 @@ export function SiteHeader() {
       {/* ── Mobile menu — full-width dropdown ── */}
       <div
         className={cn(
-          "fixed inset-x-0 top-0 z-40 bg-[var(--surface-forest)] pt-20 pb-8 transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-0 z-40 bg-[var(--surface-midnight)] pt-20 pb-8 transition-all duration-300 lg:hidden",
           mobileOpen
             ? "translate-y-0 opacity-100"
             : "-translate-y-4 opacity-0 pointer-events-none"
@@ -158,8 +146,8 @@ export function SiteHeader() {
                   href={href}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "py-3 text-lg font-medium border-b border-white/10 transition-colors",
-                    isActive ? "text-white" : "text-white/85 hover:text-white"
+                    "py-3 text-lg font-medium border-b border-[var(--accent-gold)]/12 transition-colors",
+                    isActive ? "text-[var(--text-ivory)]" : "text-[var(--text-ivory)]/70 hover:text-[var(--accent-gold)]"
                   )}
                 >
                   {label}
@@ -171,7 +159,7 @@ export function SiteHeader() {
             <GokaiButton href="/inscricao" tone="primary" className="w-full justify-center">
               Associe-se
             </GokaiButton>
-            <GokaiButton href="/login" tone="outline" className="w-full justify-center border-white/40 text-white">
+            <GokaiButton href="/login" tone="outline" className="w-full justify-center">
               Área Restrita
             </GokaiButton>
           </div>
