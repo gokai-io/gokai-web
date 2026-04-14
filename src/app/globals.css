@@ -82,44 +82,43 @@
   --font-sans: var(--font-manrope);
 
   /* ── Superfícies semânticas ── */
-  --surface-dark:       #0A1E14;
-  --surface-dark-alt:   #123020;
-  --surface-dark-muted: rgba(247, 246, 242, 0.06);
-  --surface-light:      #F5F4F0;
-  --surface-warm:       #EDE6D8;
+  --surface-dark:       #0C0C0C;    /* PRETO real — autoridade, respeito */
+  --surface-dark-alt:   #1A1A1A;    /* preto elevado — cards em seção escura */
+  --surface-dark-muted: rgba(255, 255, 255, 0.05);
+  --surface-light:      #F8F7F4;    /* off-white quente — neutro, não verde */
+  --surface-warm:       #F0EBE1;    /* creme quente — tradição */
   --surface-white:      #FFFFFF;
 
-  /* ── Texto sobre fundo escuro ── */
-  --text-on-dark:            #F7F6F2;
-  --text-on-dark-secondary:  rgba(247, 246, 242, 0.78);
-  --text-on-dark-muted:      rgba(247, 246, 242, 0.58);
+  /* ── Texto sobre fundo escuro — BRANCO REAL, alto contraste ── */
+  --text-on-dark:            #FFFFFF;
+  --text-on-dark-secondary:  rgba(255, 255, 255, 0.82);
+  --text-on-dark-muted:      rgba(255, 255, 255, 0.55);
 
-  /* ── Texto sobre fundo claro (complementa foreground/muted-foreground) ── */
-  --text-on-light-muted:     #5A7266;
+  /* ── Texto sobre fundo claro ── */
+  --text-on-light-muted:     #6B7280;
 
   /* ── Cores base ── */
-  --background: #F5F4F0;    /* off-white institucional */
-  --foreground: #0E2219;    /* verde floresta quase preto — leitura máxima */
+  --background: #F8F7F4;    /* off-white quente — neutro limpo */
+  --foreground: #111111;    /* PRETO real — leitura máxima */
   --card: #FFFFFF;
-  --card-foreground: #0E2219;
+  --card-foreground: #111111;
   --popover: #FFFFFF;
-  --popover-foreground: #0E2219;
+  --popover-foreground: #111111;
 
-  /* ── Paleta brand ── */
+  /* ── Paleta brand — verde é ACENTO, não dominante ── */
   --primary: #0B5A2B;
-  --primary-foreground: #F5F4F0;
+  --primary-foreground: #FFFFFF;
   --secondary: #CF2E24;
-  --secondary-foreground: #F5F4F0;
+  --secondary-foreground: #FFFFFF;
   --accent: #7AC943;
-  --accent-foreground: #0E2219;
+  --accent-foreground: #111111;
   --destructive: #991f17;
 
-  /* ── Neutros ── */
-  /* muted-foreground mais escuro = contraste WCAG AA em todos os fundos */
-  --muted: #EAE5DC;
-  --muted-foreground: #324A3C;   /* era #4E6152 — 11.7:1 no branco, 10:1 no off-white */
-  --border: #C4CAC0;
-  --input: #D0D6CB;
+  /* ── Neutros — CINZA real, não verde-acinzentado ── */
+  --muted: #F0EFEC;
+  --muted-foreground: #555555;
+  --border: #D4D4D4;
+  --input: #E0E0E0;
   --ring: #0B5A2B;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -128,50 +127,47 @@
   --chart-5: oklch(0.269 0 0);
   /* Smaller radius = more institutional, less SaaS/iOS */
   --radius: 0.625rem;
-  --sidebar: #123020;
-  --sidebar-foreground: #F7F6F2;
+  --sidebar: #111111;
+  --sidebar-foreground: #F5F5F5;
   --sidebar-primary: #7AC943;
-  --sidebar-primary-foreground: #123020;
-  --sidebar-accent: rgba(247, 246, 242, 0.08);
-  --sidebar-accent-foreground: #F7F6F2;
-  --sidebar-border: rgba(247, 246, 242, 0.12);
+  --sidebar-primary-foreground: #111111;
+  --sidebar-accent: rgba(255, 255, 255, 0.06);
+  --sidebar-accent-foreground: #F5F5F5;
+  --sidebar-border: rgba(255, 255, 255, 0.10);
   --sidebar-ring: #7AC943;
 }
 
 .dark {
   /* ── Superfícies semânticas (dark mode) ── */
-  --surface-dark:       #0A1E14;
-  --surface-dark-alt:   #123020;
-  --surface-dark-muted: rgba(247, 246, 242, 0.06);
-  --surface-light:      #0E2A1C;
-  --surface-warm:       #142E20;
-  --surface-white:      #123020;
+  --surface-dark:       #0C0C0C;
+  --surface-dark-alt:   #1A1A1A;
+  --surface-dark-muted: rgba(255, 255, 255, 0.05);
+  --surface-light:      #141414;
+  --surface-warm:       #1C1A16;
+  --surface-white:      #1A1A1A;
 
-  /* ── Texto sobre fundo escuro (mantém) ── */
-  --text-on-dark:            #F7F6F2;
-  --text-on-dark-secondary:  rgba(247, 246, 242, 0.78);
-  --text-on-dark-muted:      rgba(247, 246, 242, 0.58);
+  --text-on-dark:            #FFFFFF;
+  --text-on-dark-secondary:  rgba(255, 255, 255, 0.82);
+  --text-on-dark-muted:      rgba(255, 255, 255, 0.55);
+  --text-on-light-muted:     rgba(255, 255, 255, 0.50);
 
-  /* ── Texto sobre fundo claro (inverted in dark mode) ── */
-  --text-on-light-muted:     rgba(247, 246, 242, 0.50);
-
-  --background: #0C2418;
-  --foreground: #F7F6F2;
-  --card: #123020;
-  --card-foreground: #F7F6F2;
-  --popover: #123020;
-  --popover-foreground: #F7F6F2;
+  --background: #0C0C0C;
+  --foreground: #F5F5F5;
+  --card: #1A1A1A;
+  --card-foreground: #F5F5F5;
+  --popover: #1A1A1A;
+  --popover-foreground: #F5F5F5;
   --primary: #7AC943;
-  --primary-foreground: #123020;
+  --primary-foreground: #0C0C0C;
   --secondary: #CF2E24;
-  --secondary-foreground: #F7F6F2;
-  --muted: rgba(247, 246, 242, 0.08);
-  --muted-foreground: rgba(247, 246, 242, 0.72);
+  --secondary-foreground: #FFFFFF;
+  --muted: rgba(255, 255, 255, 0.08);
+  --muted-foreground: rgba(255, 255, 255, 0.65);
   --accent: rgba(122, 201, 67, 0.15);
-  --accent-foreground: #F7F6F2;
+  --accent-foreground: #F5F5F5;
   --destructive: #CF2E24;
-  --border: rgba(247, 246, 242, 0.14);
-  --input: rgba(247, 246, 242, 0.16);
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.14);
   --ring: #7AC943;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -205,7 +201,7 @@
     @apply font-heading;
   }
   ::selection {
-    background-color: rgba(11, 90, 43, 0.2);
+    background-color: rgba(11, 90, 43, 0.18);
     color: var(--foreground);
   }
   a {
@@ -220,11 +216,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(11, 90, 43, 0.28);
+    background: rgba(0, 0, 0, 0.22);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(11, 90, 43, 0.46);
+    background: rgba(0, 0, 0, 0.38);
   }
 }
 
@@ -240,10 +236,9 @@
     padding-top: 8rem;
     padding-bottom: 5rem;
     background:
-      radial-gradient(circle at 80% 18%, rgba(207, 46, 36, 0.22), transparent 22%),
-      radial-gradient(circle at 18% 8%,  rgba(122, 201, 67, 0.10), transparent 16%),
-      radial-gradient(circle at 50% 95%, rgba(11, 90, 43, 0.18),   transparent 28%),
-      linear-gradient(180deg, #123020 0%, #0C2418 60%, #0A1C13 100%);
+      radial-gradient(circle at 80% 18%, rgba(207, 46, 36, 0.14), transparent 22%),
+      radial-gradient(circle at 18% 8%,  rgba(122, 201, 67, 0.06), transparent 16%),
+      linear-gradient(180deg, #111111 0%, #0C0C0C 60%, #080808 100%);
   }
 
   /* Subtle diagonal light shard — suggests discipline / blade edge */
@@ -272,8 +267,8 @@
     aspect-ratio: 1;
     background: radial-gradient(
       circle,
-      rgba(207, 46, 36, 0.14) 0%,
-      rgba(207, 46, 36, 0.06) 42%,
+      rgba(207, 46, 36, 0.10) 0%,
+      rgba(207, 46, 36, 0.04) 42%,
       transparent 68%
     );
     pointer-events: none;
@@ -306,7 +301,7 @@
   .gokai-shell-card {
     border: 1px solid color-mix(in srgb, var(--border) 80%, white);
     background: color-mix(in srgb, var(--card) 94%, white);
-    box-shadow: 0 18px 40px rgba(18, 48, 32, 0.08);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
   }
 
   .gokai-pill {
@@ -333,7 +328,7 @@
       linear-gradient(180deg, rgba(247, 246, 242, 0.98), rgba(247, 246, 242, 0.94)),
       var(--card);
     box-shadow:
-      0 30px 70px rgba(18, 48, 32, 0.08),
+      0 30px 70px rgba(0, 0, 0, 0.07),
       inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 

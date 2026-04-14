@@ -244,12 +244,12 @@ export default async function HomePage() {
                 className="gokai-hero-enter-scale relative hidden h-[440px] items-center justify-center lg:flex"
                 style={{ animationDelay: "160ms" }}
               >
-                {/* Outer ring — stronger red */}
+                {/* Outer ring — red on black */}
                 <div
                   className="absolute rounded-full"
                   style={{
                     width: "390px", height: "390px",
-                    border: "1px solid rgba(207,46,36,0.35)",
+                    border: "1px solid rgba(207,46,36,0.30)",
                   }}
                 />
 
@@ -258,8 +258,8 @@ export default async function HomePage() {
                   className="absolute rounded-full"
                   style={{
                     width: "300px", height: "300px",
-                    border: "1px solid rgba(207,46,36,0.12)",
-                    background: "rgba(207,46,36,0.05)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    background: "rgba(207,46,36,0.04)",
                   }}
                 />
 
@@ -304,7 +304,7 @@ export default async function HomePage() {
               <div className="mb-5 flex items-center gap-4">
                 <span className="h-px w-8 bg-secondary" aria-hidden />
                 <span
-                  className="text-primary/70"
+                  className="text-muted-foreground"
                   style={{
                     fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                     fontSize: "0.65rem",

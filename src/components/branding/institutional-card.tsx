@@ -15,10 +15,10 @@ const ACCENT_BAR: Record<NonNullable<InstitutionalCardProps["accent"]>, string> 
 
 // Border glow on hover per variant
 const ACCENT_HOVER: Record<NonNullable<InstitutionalCardProps["accent"]>, string> = {
-  green:   "hover:border-primary/40 hover:shadow-[0_2px_8px_rgba(11,90,43,0.08),0_20px_48px_rgba(11,90,43,0.10)]",
-  red:     "hover:border-secondary/35 hover:shadow-[0_2px_8px_rgba(207,46,36,0.08),0_20px_48px_rgba(207,46,36,0.09)]",
-  neutral: "hover:border-accent/40 hover:shadow-[0_2px_8px_rgba(122,201,67,0.08),0_20px_48px_rgba(11,90,43,0.08)]",
-  none:    "hover:shadow-[0_2px_8px_rgba(18,48,32,0.08),0_20px_48px_rgba(18,48,32,0.09)]",
+  green:   "hover:border-primary/40 hover:shadow-[0_2px_8px_rgba(11,90,43,0.06),0_16px_40px_rgba(0,0,0,0.10)]",
+  red:     "hover:border-secondary/35 hover:shadow-[0_2px_8px_rgba(207,46,36,0.06),0_16px_40px_rgba(0,0,0,0.10)]",
+  neutral: "hover:border-accent/40 hover:shadow-[0_2px_8px_rgba(0,0,0,0.04),0_16px_40px_rgba(0,0,0,0.08)]",
+  none:    "hover:shadow-[0_2px_8px_rgba(0,0,0,0.04),0_16px_40px_rgba(0,0,0,0.08)]",
 }
 
 /**
@@ -44,7 +44,7 @@ export function InstitutionalCard({
         // Surface — white for light sections, dark-alt for dark sections
         dark
           ? "bg-surface-dark-alt border border-white/8 shadow-[0_1px_4px_rgba(0,0,0,0.12),0_8px_28px_rgba(0,0,0,0.16)]"
-          : "bg-white border border-border shadow-[0_1px_4px_rgba(18,48,32,0.06),0_8px_28px_rgba(18,48,32,0.07)]",
+          : "bg-white border border-border shadow-[0_1px_4px_rgba(0,0,0,0.04),0_8px_28px_rgba(0,0,0,0.06)]",
         "transition-all duration-300",
         "hover:-translate-y-0.5",
         accent !== "none" ? ACCENT_HOVER[accent] : ACCENT_HOVER.none,
