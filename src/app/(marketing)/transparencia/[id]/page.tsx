@@ -4,9 +4,8 @@ import { Download } from "lucide-react"
 import Link from "next/link"
 
 import { BrandContainer } from "@/components/branding/brand-container"
-import { createClient } from "@/lib/supabase/server"
+import { getDocumento as getDocumentoStatic } from "@/lib/transparencia"
 import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
-import type { Transparencia } from "@/types/database"
 
 type DocumentPageProps = {
   params: Promise<{ id: string }>
@@ -60,20 +59,13 @@ function parseDocumentContent(content: string): ContentBlock[] {
   return blocks
 }
 
-async function getDocumento(id: string) {
-  const supabase = await createClient()
-  const { data } = await supabase
-    .from("transparencia")
-    .select("*")
-    .eq("id", id)
-    .eq("publicado", true)
-    .maybeSingle()
-  return data as Transparencia | null
+function getDocumento(id: string) {
+  return getDocumentoStatic(id) ?? null
 }
 
 export async function generateMetadata({ params }: DocumentPageProps): Promise<Metadata> {
   const { id } = await params
-  const documento = await getDocumento(id)
+  const documento = getDocumento(id)
   if (!documento) return { title: "Documento não encontrado | GŌKAI" }
   return {
     title: `${documento.titulo} | Transparência | GŌKAI`,
@@ -94,7 +86,7 @@ export async function generateMetadata({ params }: DocumentPageProps): Promise<M
 
 export default async function DocumentoTransparenciaPage({ params }: DocumentPageProps) {
   const { id } = await params
-  const documento = await getDocumento(id)
+  const documento = getDocumento(id)
 
   if (!documento) notFound()
   if (!documento.conteudo && documento.arquivo_url) redirect(documento.arquivo_url)

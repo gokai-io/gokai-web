@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
-import { createClient } from "@/lib/supabase/server"
 import { BrandContainer } from "@/components/branding/brand-container"
 import { InstitutionalCard } from "@/components/branding/institutional-card"
 import { GokaiButton } from "@/components/branding/gokai-button"
 import { Section } from "@/components/marketing/section"
 import { FileText, Download } from "lucide-react"
-import type { Transparencia, TransparenciaTipo } from "@/types/database"
+import { getAllDocumentos, type DocumentoTransparencia } from "@/lib/transparencia"
+import type { TransparenciaTipo } from "@/types/database"
 
 export const metadata: Metadata = {
   title: "Transparência | GŌKAI",
@@ -53,18 +53,10 @@ function formatDate(dateStr: string): string {
 }
 
 export default async function TransparenciaPage() {
-  const supabase = await createClient()
-
-  const { data: documentos } = await supabase
-    .from("transparencia")
-    .select("*")
-    .eq("publicado", true)
-    .order("data_referencia", { ascending: false })
-
-  const list = (documentos ?? []) as Transparencia[]
+  const list = getAllDocumentos()
 
   // Group by tipo
-  const grouped: Partial<Record<TransparenciaTipo, Transparencia[]>> = {}
+  const grouped: Partial<Record<TransparenciaTipo, DocumentoTransparencia[]>> = {}
   for (const doc of list) {
     const tipo = doc.tipo as TransparenciaTipo
     if (!grouped[tipo]) grouped[tipo] = []
