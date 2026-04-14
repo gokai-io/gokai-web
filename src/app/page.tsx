@@ -81,7 +81,7 @@ function ConteudosTeaser() {
   if (articles.length === 0) return null
   return (
     <Section
-      className="bg-surface-light"
+      className="bg-[var(--surface-paper)]"
       title="Conteúdos e Formação"
       subtitle="A GŌKAI também se expressa fora do tatame: visão institucional, formação humana e cultura marcial."
     >
@@ -127,17 +127,17 @@ export default async function HomePage() {
             HERO — Editorial / Institutional / Martial
             Deep dark green. Strength from type + composition.
         ═══════════════════════════════════════════════════════ */}
-        <section
-          className="relative min-h-[100svh] bg-surface-dark"
-          style={{
-            backgroundImage: "radial-gradient(ellipse at 15% 85%, rgba(207,46,36,0.08), transparent 60%)",
-          }}
-        >
+        <section className="relative min-h-[100svh] bg-[var(--surface-forest)]">
+          {/* Subtle red gradient */}
+          <div
+            className="absolute inset-0 opacity-10"
+            style={{ background: "radial-gradient(circle at 15% 85%, var(--accent-red), transparent 50%)" }}
+          />
 
           {/* Subtle vertical rule — disciplined structure */}
           <div className="pointer-events-none absolute right-[38%] top-0 bottom-0 w-px bg-white/[0.06] hidden lg:block" />
 
-          <BrandContainer className="flex min-h-[100svh] flex-col justify-center py-28 lg:py-32">
+          <BrandContainer className="relative flex min-h-[100svh] flex-col justify-center py-28 lg:py-32">
             <div className="grid items-center gap-16 lg:grid-cols-[1fr_400px]">
 
               {/* ── Left column: editorial content ── */}
@@ -165,18 +165,16 @@ export default async function HomePage() {
 
                 {/* H1 — extrabold, larger, "GŌKAI" in red for impact */}
                 <h1
-                  className="gokai-hero-enter font-heading text-[var(--text-on-dark)]"
+                  className="gokai-hero-enter font-black tracking-tight text-[var(--text-on-dark)]"
                   style={{
                     animationDelay: "120ms",
-                    fontSize: "clamp(3.2rem, 7vw, 6rem)",
-                    fontWeight: 900,
-                    lineHeight: 0.88,
-                    letterSpacing: "-0.02em",
+                    fontSize: "clamp(3.5rem, 8vw, 6.5rem)",
+                    lineHeight: "0.9",
                   }}
                 >
                   Disciplina.<br />
                   Honra.<br />
-                  <span className="text-secondary">GŌKAI.</span>
+                  <span className="text-[var(--accent-red)]">GŌKAI.</span>
                 </h1>
 
                 {/* Subtitle */}
@@ -197,14 +195,14 @@ export default async function HomePage() {
                   <GokaiButton
                     href="/inscricao"
                     tone="primary"
-                    className="h-11 px-7 text-sm bg-surface-light text-primary hover:bg-white border-0 shadow-none"
+                    className="h-12 px-8 text-sm"
                   >
                     Quero me associar
                   </GokaiButton>
                   <GokaiButton
                     href="/sobre"
                     tone="outline"
-                    className="h-11 px-7 text-sm border-white/50 text-white hover:bg-white/10 hover:text-white hover:border-white/50"
+                    className="h-12 px-8 text-sm border-white/50 text-white hover:bg-white/10 hover:border-white/50"
                   >
                     Conhecer a GŌKAI
                   </GokaiButton>
@@ -296,7 +294,7 @@ export default async function HomePage() {
         {/* ═══════════════════════════════════════════════════════
             INSTITUTIONAL PANELS — light section
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-surface-light py-24">
+        <section className="bg-[var(--surface-paper)] py-24">
           <BrandContainer>
 
             {/* Section intro */}
@@ -401,7 +399,7 @@ export default async function HomePage() {
         {/* ═══════════════════════════════════════════════════════
             MODALIDADES — DARK section for dramatic rhythm
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-surface-dark py-20">
+        <section className="bg-[var(--surface-ink)] py-20">
           <BrandContainer>
             <div className="mb-14 max-w-2xl">
               <div className="mb-5 flex items-center gap-4">
@@ -482,7 +480,7 @@ export default async function HomePage() {
             GOVERNANÇA E TRANSPARÊNCIA — warm section
         ═══════════════════════════════════════════════════════ */}
         <Section
-          className="bg-surface-warm"
+          className="bg-[var(--surface-paper)]"
           title="Governança e Transparência"
           subtitle="Documentos, atas e estrutura organizacional disponíveis para consulta pública."
         >
@@ -524,7 +522,7 @@ export default async function HomePage() {
         ═══════════════════════════════════════════════════════ */}
         {eventos.length > 0 && (
           <Section
-            className="bg-surface-light"
+            className="bg-[var(--surface-paper)]"
             title="Próximos eventos"
             subtitle="Campeonatos, seminários e atividades na agenda da GŌKAI."
           >
@@ -554,7 +552,7 @@ export default async function HomePage() {
         ═══════════════════════════════════════════════════════ */}
         {sortedPatrocinadores.length > 0 && (
           <Section
-            className="bg-surface-light"
+            className="bg-[var(--surface-paper)]"
             title="Parceiros e apoiadores"
             subtitle="Quem caminha com a GŌKAI fortalece o projeto esportivo e a presença institucional da associação."
           >
@@ -588,7 +586,7 @@ export default async function HomePage() {
         {/* ═══════════════════════════════════════════════════════
             FINAL CTA — dark with gradient divider
         ═══════════════════════════════════════════════════════ */}
-        <section className="relative bg-surface-dark py-24">
+        <section className="relative bg-[var(--surface-forest)] py-24">
           {/* Gradient divider at top — brand signature */}
           <div
             className="absolute inset-x-0 top-0 h-[2px]"
@@ -627,7 +625,7 @@ export default async function HomePage() {
                 <GokaiButton
                   href="/inscricao"
                   tone="primary"
-                  className="h-12 px-8 text-sm bg-surface-light text-primary hover:bg-white border-0 shadow-none"
+                  className="h-12 px-8 text-sm"
                 >
                   Fazer inscrição
                 </GokaiButton>
