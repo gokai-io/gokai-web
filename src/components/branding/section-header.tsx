@@ -43,7 +43,7 @@ export function SectionHeader({
 
         <div className="flex flex-col gap-2">
           <span className={cn("gokai-kicker", dark ? "text-[var(--text-on-dark-muted)]" : "text-muted-foreground")}>{eyebrow}</span>
-          {/* Gradient rule — red → lime, echoes the logo's energy */}
+          {/* Gradient rule — thematic red-to-gold feel */}
           <span
             className="block h-[2px] w-16 rounded-full"
             style={{
