@@ -84,7 +84,7 @@ export function SiteHeader() {
                     "after:origin-left after:scale-x-0 after:transition-transform after:duration-400",
                     isActive
                       ? "text-[var(--text-ivory)] after:bg-[var(--accent-gold)] after:scale-x-100"
-                      : "text-[var(--text-ivory)]/70 hover:text-[var(--accent-gold)] hover:after:scale-x-100 after:bg-[var(--accent-gold)]"
+                      : "text-[var(--text-ivory)]/80 hover:text-[var(--accent-gold)] hover:after:scale-x-100 after:bg-[var(--accent-gold)]"
                   )}
                 >
                   {label}
@@ -147,7 +147,7 @@ export function SiteHeader() {
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "py-3 text-lg font-medium border-b border-[var(--accent-gold)]/12 transition-colors duration-400",
-                    isActive ? "text-[var(--text-ivory)]" : "text-[var(--text-ivory)]/70 hover:text-[var(--accent-gold)]"
+                    isActive ? "text-[var(--text-ivory)]" : "text-[var(--text-ivory)]/80 hover:text-[var(--accent-gold)]"
                   )}
                 >
                   {label}

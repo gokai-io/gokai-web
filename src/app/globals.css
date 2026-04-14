@@ -27,6 +27,13 @@
   --color-accent-gold: var(--accent-gold);
   --color-accent-carmine: var(--accent-carmine);
   --color-text-ivory: var(--text-ivory);
+
+  /* ── Legacy mappings (used by inner marketing pages) ── */
+  --color-surface-dark: var(--surface-midnight);
+  --color-surface-dark-alt: var(--surface-obsidian);
+  --color-surface-light: var(--surface-midnight);
+  --color-surface-warm: var(--surface-obsidian);
+  --color-surface-white: var(--surface-obsidian);
 }
 
 :root {
@@ -43,8 +50,13 @@
 
   /* ── Texto — Máxima Legibilidade ── */
   --text-ivory:         #F8F7F3;   /* Ivory Silk */
-  --text-ivory-dim:     rgba(248, 247, 243, 0.78);
-  --text-ivory-muted:   rgba(248, 247, 243, 0.58);
+  --text-ivory-dim:     rgba(248, 247, 243, 0.88);
+  --text-ivory-muted:   rgba(248, 247, 243, 0.65);
+
+  /* ── Legacy text vars (used by inner marketing pages) ── */
+  --text-on-dark:            var(--text-ivory);
+  --text-on-dark-secondary:  var(--text-ivory-dim);
+  --text-on-dark-muted:      var(--text-ivory-muted);
 
   /* ── Shadcn / Base Overrides ── */
   --background: var(--surface-midnight);
@@ -120,7 +132,7 @@
     overflow: hidden;
     padding-top: 8rem;
     padding-bottom: 5rem;
-    background: var(--surface-forest);
+    background: var(--surface-midnight);
   }
 
   /* Subtle diagonal light shard — suggests discipline / blade edge */
@@ -166,9 +178,9 @@
     align-items: center;
     gap: 0.6rem;
     font-family: var(--font-outfit, var(--font-montserrat, system-ui));
-    font-size: 11px;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent-gold);
   }
@@ -248,16 +260,16 @@
     display: block;
   }
 
-  /* ── Dark section bg — institutional dark green ── */
+  /* ── Dark section bg ── */
   .gokai-section-dark {
-    background: var(--surface-dark);
-    color: var(--text-on-dark);
+    background: var(--surface-midnight);
+    color: var(--text-ivory);
   }
 
-  /* ── Warm section bg — parchment tones ── */
+  /* ── Warm section bg ── */
   .gokai-section-warm {
-    background: var(--surface-warm);
-    color: var(--foreground);
+    background: var(--surface-obsidian);
+    color: var(--text-ivory);
   }
 
   /* ── Card with prominent accent top border ── */

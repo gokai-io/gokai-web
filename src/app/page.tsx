@@ -260,9 +260,9 @@ export default async function HomePage() {
                     className="block text-[var(--text-ivory-muted)]"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                      fontSize: "0.62rem",
+                      fontSize: "0.75rem",
                       fontWeight: 700,
-                      letterSpacing: "0.42em",
+                      letterSpacing: "0.18em",
                       textTransform: "uppercase",
                     }}
                   >
@@ -527,7 +527,7 @@ export default async function HomePage() {
                 <GokaiButton
                   href="/contato"
                   tone="outline"
-                  className="h-12 px-8 text-sm border-white/30 text-white hover:bg-white/10 hover:border-white/50"
+                  className="h-12 px-8 text-sm"
                 >
                   Entrar em contato
                 </GokaiButton>
