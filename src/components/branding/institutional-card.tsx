@@ -38,8 +38,8 @@ export function InstitutionalCard({
   return (
     <div
       className={cn(
-        // Shape
-        "relative overflow-hidden rounded-2xl p-6",
+        // Shape — rounded-xl (14px): mais institucional que rounded-2xl (18px)
+        "relative overflow-hidden rounded-xl p-6",
         // Surface — pure white so it reads cleanly on the off-white bg
         "bg-white border border-border",
         // Depth — layered shadows: fine near-shadow + ambient far-shadow

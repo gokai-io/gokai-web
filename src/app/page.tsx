@@ -273,17 +273,17 @@ export default async function HomePage() {
                 />
 
                 {/* Círculo branco — "selo" institucional com a logo real */}
-                {/* Espelha o fundo branco do primary logo do brand guide */}
+                {/* Primary logo on white — exatamente como no brand guide */}
                 <div
                   className="relative z-10 flex items-center justify-center rounded-full bg-white"
                   style={{
-                    width: "240px",
-                    height: "240px",
-                    boxShadow: "0 0 0 1px rgba(207,46,36,0.15), 0 24px 60px rgba(4,16,8,0.30)",
+                    width: "264px",
+                    height: "264px",
+                    boxShadow: "0 0 0 1px rgba(207,46,36,0.15), 0 32px 72px rgba(4,16,8,0.35)",
                   }}
                 >
                   <BrandLogo
-                    className="h-[196px] w-auto"
+                    className="h-[168px] w-auto"
                     priority
                   />
                 </div>
@@ -397,46 +397,86 @@ export default async function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            MODALIDADES
+            MODALIDADES — fundo claro, texto legível
+            (seção verde escura causava texto invisível — bug corrigido)
         ═══════════════════════════════════════════════════════ */}
-        <Section
-          className="bg-[#0B5A2B]"
-          title="Modalidades"
-          subtitle="A formação técnica da GŌKAI combina seriedade, progressão e acompanhamento consistente."
-        >
-          {modalidades.length > 0 ? (
-            <div className="grid grid-cols-1 gap-px bg-white/10 border border-white/10 md:grid-cols-2 xl:grid-cols-3">
-              {modalidades.map((modalidade) => (
-                <div
-                  key={modalidade.id}
-                  className="group flex flex-col gap-4 bg-[#0B5A2B] p-8 transition-colors hover:bg-[#0d6430]"
+        <section className="bg-[#EDE5D5] py-20">
+          <BrandContainer>
+            {/* Section intro manual — controla a cor do texto */}
+            <div className="mb-14 max-w-2xl">
+              <div className="mb-5 flex items-center gap-4">
+                <span className="h-px w-8 bg-[#CF2E24]" aria-hidden />
+                <span
+                  className="text-[#0B5A2B]/60"
+                  style={{
+                    fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.38em",
+                    textTransform: "uppercase",
+                  }}
                 >
-                  <h3 className="font-heading text-xl font-bold text-white">
-                    {modalidade.nome}
-                  </h3>
-                  {modalidade.descricao && (
-                    <p className="flex-1 text-sm leading-relaxed text-white/55">
-                      {modalidade.descricao}
-                    </p>
-                  )}
-                  <Link
-                    href={`/modalidades/${modalidade.slug}`}
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-[#7AC943] transition-colors hover:text-white"
-                  >
-                    Conhecer modalidade
-                    <ArrowRightIcon className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="border border-white/12 p-8">
-              <p className="text-sm text-white/55">
-                As modalidades serão publicadas em breve, com programação e detalhes técnicos.
+                  O que praticamos
+                </span>
+              </div>
+              <h2 className="font-heading text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
+                Modalidades
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+                Artes marciais com seriedade técnica, progressão clara e acompanhamento constante
+                para crianças, jovens e adultos.
               </p>
             </div>
-          )}
-        </Section>
+
+            {modalidades.length > 0 ? (
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                {modalidades.map((modalidade) => (
+                  <InstitutionalCard
+                    key={modalidade.id}
+                    accent="green"
+                    className="flex flex-col gap-4"
+                  >
+                    <h3 className="font-heading text-xl font-bold text-foreground">
+                      {modalidade.nome}
+                    </h3>
+                    {modalidade.descricao && (
+                      <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
+                        {modalidade.descricao}
+                      </p>
+                    )}
+                    <Link
+                      href={`/modalidades/${modalidade.slug}`}
+                      className="gokai-link-arrow text-sm"
+                    >
+                      Conhecer modalidade
+                      <ArrowRightIcon className="size-4" />
+                    </Link>
+                  </InstitutionalCard>
+                ))}
+              </div>
+            ) : (
+              /* Estado vazio elegante */
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                {[
+                  { title: "Artes Marciais", desc: "Modalidades com técnica progressiva e acompanhamento qualificado." },
+                  { title: "Todas as idades", desc: "Turmas para crianças, jovens e adultos em todos os níveis." },
+                  { title: "Formação completa", desc: "Técnica marcial aliada a valores éticos e crescimento pessoal." },
+                ].map((item) => (
+                  <InstitutionalCard key={item.title} accent="green" className="flex flex-col gap-3">
+                    <h3 className="font-heading text-lg font-bold text-foreground">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                  </InstitutionalCard>
+                ))}
+              </div>
+            )}
+
+            <div className="mt-10 flex justify-center">
+              <GokaiButton href="/modalidades" tone="primary" className="h-11 px-7 text-sm">
+                Ver todas as modalidades
+              </GokaiButton>
+            </div>
+          </BrandContainer>
+        </section>
 
         {/* ═══════════════════════════════════════════════════════
             GOVERNANÇA E TRANSPARÊNCIA
@@ -546,9 +586,9 @@ export default async function HomePage() {
         <ConteudosTeaser />
 
         {/* ═══════════════════════════════════════════════════════
-            FINAL CTA — dark green, institutional
+            FINAL CTA — verde mais escuro que o hero, tom de encerramento
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[#0B5A2B] py-24">
+        <section className="bg-[#112A1A] py-24">
           <BrandContainer>
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="max-w-2xl">
