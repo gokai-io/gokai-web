@@ -39,7 +39,7 @@ export function InstitutionalCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-md p-6",
+        "relative overflow-hidden rounded-lg p-6",
         // Surface — white for light sections, surface-ink for dark sections
         dark
           ? "bg-[var(--surface-ink)] border border-white/8"
