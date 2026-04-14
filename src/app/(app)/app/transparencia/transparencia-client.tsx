@@ -82,6 +82,16 @@ export function TransparenciaClient({ registros }: TransparenciaClientProps) {
       cell: (item) => <TipoBadge tipo={item.tipo} />,
     },
     {
+      key: "origem",
+      header: "Disponível",
+      cell: (item) => (
+        <div className="flex flex-wrap gap-1">
+          {item.conteudo && <Badge variant="outline">Texto</Badge>}
+          {item.arquivo_url && <Badge variant="secondary">Arquivo</Badge>}
+        </div>
+      ),
+    },
+    {
       key: "data_referencia",
       header: "Data de Referência",
       cell: (item) => {

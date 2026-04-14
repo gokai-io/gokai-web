@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
-import { Montserrat, Inter } from "next/font/google"
+import { Manrope, Montserrat } from "next/font/google"
 import { ThemeProvider } from "next-themes"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
+import { SITE_URL, siteConfig, organizationJsonLd, DEFAULT_OG_IMAGE, twitterCard } from "@/lib/seo"
 import "./globals.css"
 
 const montserrat = Montserrat({
@@ -11,15 +12,38 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800", "900"],
 })
 
-const inter = Inter({
-  variable: "--font-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 })
 
 export const metadata: Metadata = {
-  title: "GŌKAI – Associação Esportiva e Ambiental",
-  description: "Plataforma de gestão da Associação Esportiva e Ambiental GŌKAI",
+  metadataBase: new URL(SITE_URL),
+  title: siteConfig.fullName,
+  description: siteConfig.description,
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    title: siteConfig.fullName,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    locale: "pt_BR",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.fullName,
+      },
+    ],
+  },
+  twitter: {
+    ...twitterCard,
+    title: siteConfig.fullName,
+    description: siteConfig.description,
+    images: [DEFAULT_OG_IMAGE],
+  },
 }
 
 export default function RootLayout({
@@ -31,9 +55,12 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${inter.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${manrope.variable} ${montserrat.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        {/* Organization JSON-LD – helps search engines understand the entity.
+            React 19 supports rendering <script> with string children for SSR. */}
+        <script type="application/ld+json">{JSON.stringify(organizationJsonLd)}</script>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

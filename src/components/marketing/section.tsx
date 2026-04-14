@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { BrandContainer } from "@/components/branding/brand-container"
 import { SectionHeading } from "@/components/marketing/section-heading"
 
 interface SectionProps {
@@ -21,9 +22,9 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("py-20 px-4 sm:px-6 lg:px-8", className)}
+      className={cn("py-20", className)}
     >
-      <div className="mx-auto max-w-7xl">
+      <BrandContainer>
         {title && (
           <SectionHeading
             title={title}
@@ -33,7 +34,7 @@ export function Section({
           />
         )}
         {children}
-      </div>
+      </BrandContainer>
     </section>
   )
 }

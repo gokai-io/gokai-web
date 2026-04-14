@@ -1,5 +1,10 @@
 import type { Metadata } from "next"
+import Link from "next/link"
+import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
 import { createClient } from "@/lib/supabase/server"
+import { BrandContainer } from "@/components/branding/brand-container"
+import { InstitutionalCard } from "@/components/branding/institutional-card"
+import { GokaiButton } from "@/components/branding/gokai-button"
 import { Section } from "@/components/marketing/section"
 import { FileText, Download } from "lucide-react"
 import type { Transparencia, TransparenciaTipo } from "@/types/database"
@@ -7,6 +12,19 @@ import type { Transparencia, TransparenciaTipo } from "@/types/database"
 export const metadata: Metadata = {
   title: "Transparência | GŌKAI",
   description: "Acesso aos documentos institucionais do GŌKAI – Associação Esportiva e Ambiental.",
+  alternates: {
+    canonical: canonicalUrl("/transparencia"),
+  },
+  openGraph: pageOpenGraph({
+    title: "Transparência | GŌKAI",
+    description: "Acesso aos documentos institucionais do GŌKAI: atas, balanços, relatórios e estatuto da associação.",
+    path: "/transparencia",
+  }),
+  twitter: {
+    ...twitterCard,
+    title: "Transparência | GŌKAI",
+    description: "Acesso aos documentos institucionais do GŌKAI: atas, balanços, relatórios e estatuto da associação.",
+  },
 }
 
 const tipoLabels: Record<TransparenciaTipo, string> = {
@@ -15,6 +33,14 @@ const tipoLabels: Record<TransparenciaTipo, string> = {
   relatorio: "Relatórios",
   estatuto: "Estatuto",
   outro: "Outros",
+}
+
+const tipoAccent: Record<TransparenciaTipo, "green" | "red" | "neutral"> = {
+  estatuto: "green",
+  ata: "red",
+  balanco: "neutral",
+  relatorio: "green",
+  outro: "neutral",
 }
 
 const tipoOrder: TransparenciaTipo[] = ["estatuto", "ata", "balanco", "relatorio", "outro"]
@@ -49,72 +75,87 @@ export default async function TransparenciaPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-zinc-950 pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/30 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="text-zinc-500 text-sm font-medium tracking-widest uppercase mb-4">
-            Prestação de Contas
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-zinc-100 mb-4">Transparência</h1>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+      {/* Hero — brand-consistent dark green */}
+      <section className="gokai-hero gokai-hero-compact">
+        <BrandContainer className="relative text-center">
+          <div className="gokai-kicker text-white/68 justify-center">Prestação de Contas</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            Transparência
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
             Acesso aos documentos institucionais do GŌKAI. Comprometidos com a gestão transparente
             e responsável.
           </p>
-        </div>
+        </BrandContainer>
       </section>
 
       {/* Documents */}
-      <Section className="bg-zinc-950">
+      <Section className="bg-background">
         {sections.length > 0 ? (
-          <div className="space-y-14">
+          <div className="space-y-16">
             {sections.map((tipo) => {
               const docs = grouped[tipo] ?? []
+              const accent = tipoAccent[tipo]
               return (
                 <div key={tipo}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="h-px flex-1 bg-zinc-800" />
-                    <h2 className="text-xl font-bold text-zinc-100 whitespace-nowrap">
+                  {/* Section divider */}
+                  <div className="mb-8 flex items-center gap-4">
+                    <span className="h-px flex-1 bg-border" aria-hidden />
+                    <h2 className="font-heading text-xl font-semibold whitespace-nowrap text-foreground">
                       {tipoLabels[tipo]}
                     </h2>
-                    <span className="h-px flex-1 bg-zinc-800" />
+                    <span className="h-px flex-1 bg-border" aria-hidden />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {docs.map((doc) => (
-                      <div
+                      <InstitutionalCard
                         key={doc.id}
-                        className="bg-zinc-900 rounded-xl p-5 ring-1 ring-zinc-800 hover:ring-zinc-600 transition-all duration-200 flex items-start gap-4 group"
+                        accent={accent}
+                        className="flex items-start gap-4 hover:border-primary/20 transition-colors"
                       >
-                        <div className="w-10 h-10 rounded-lg bg-zinc-800 flex items-center justify-center shrink-0 transition-colors">
-                          <FileText className="w-5 h-5 text-zinc-400" />
+                        {/* File icon */}
+                        <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-primary/8 text-primary">
+                          <FileText className="h-5 w-5" />
                         </div>
 
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-medium text-zinc-100 leading-snug">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-sm font-semibold leading-snug text-foreground">
                             {doc.titulo}
                           </h3>
-                          <p className="text-xs text-zinc-500 mt-1 capitalize">
+                          <p className="mt-1 text-xs capitalize text-muted-foreground">
                             {formatDate(doc.data_referencia)}
                           </p>
                           {doc.descricao && (
-                            <p className="text-xs text-zinc-400 mt-1.5 leading-relaxed">
+                            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                               {doc.descricao}
                             </p>
                           )}
-                          {doc.arquivo_url && (
-                            <a
-                              href={doc.arquivo_url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 hover:text-zinc-200 transition-colors"
-                            >
-                              <Download className="w-3.5 h-3.5" />
-                              Baixar documento
-                            </a>
-                          )}
+
+                          <div className="mt-3 flex flex-wrap items-center gap-4">
+                            {doc.conteudo && (
+                              <Link
+                                href={`/transparencia/${doc.id}`}
+                                className="gokai-link-arrow text-xs"
+                              >
+                                <FileText className="h-3.5 w-3.5" />
+                                Ler documento
+                              </Link>
+                            )}
+                            {doc.arquivo_url && (
+                              <a
+                                href={doc.arquivo_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="gokai-link-arrow text-xs"
+                              >
+                                <Download className="h-3.5 w-3.5" />
+                                Baixar
+                              </a>
+                            )}
+                          </div>
                         </div>
-                      </div>
+                      </InstitutionalCard>
                     ))}
                   </div>
                 </div>
@@ -122,29 +163,30 @@ export default async function TransparenciaPage() {
             })}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <FileText className="w-12 h-12 text-zinc-700 mx-auto mb-4" />
-            <p className="text-zinc-500 text-lg">Novos documentos serão disponibilizados em breve.</p>
+          <div className="py-20 text-center">
+            <FileText className="mx-auto mb-4 h-12 w-12 text-muted-foreground/40" />
+            <p className="text-lg text-muted-foreground">
+              Novos documentos serão disponibilizados em breve.
+            </p>
           </div>
         )}
       </Section>
 
       {/* Info box */}
-      <Section className="bg-zinc-900">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-xl font-semibold text-zinc-100 mb-3">
+      <Section className="bg-[#EEE7D9]">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-heading text-xl font-semibold text-foreground">
             Solicitação de Documentos
           </h2>
-          <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
             Caso necessite de algum documento não listado aqui, entre em contato conosco.
             Atendemos às solicitações conforme previsto em nosso estatuto social.
           </p>
-          <a
-            href="/contato"
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-zinc-700 text-zinc-300 hover:border-zinc-500 hover:text-zinc-50 transition-colors text-sm font-medium"
-          >
-            Entrar em contato
-          </a>
+          <div className="mt-6">
+            <GokaiButton href="/contato" tone="primary">
+              Entrar em contato
+            </GokaiButton>
+          </div>
         </div>
       </Section>
     </>

@@ -1,172 +1,157 @@
 import type { Metadata } from "next"
-import Link from "next/link"
-import { Shield, Heart, TrendingUp, Award, UsersRound, Scale, Sprout } from "lucide-react"
+import { Shield, Heart, TrendingUp, Award, Eye } from "lucide-react"
+
+import { BrandContainer } from "@/components/branding/brand-container"
+import { GokaiButton } from "@/components/branding/gokai-button"
+import { InstitutionalCard } from "@/components/branding/institutional-card"
 import { Section } from "@/components/marketing/section"
 import { SectionHeading } from "@/components/marketing/section-heading"
+import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Sobre a GŌKAI | GŌKAI",
-  description: "Conheça a história, missão e valores do GŌKAI – Associação Esportiva e Ambiental.",
+  description: "Conheça a missão, visão, valores e a base institucional da GŌKAI.",
+  alternates: {
+    canonical: canonicalUrl("/sobre"),
+  },
+  openGraph: pageOpenGraph({
+    title: "Sobre a GŌKAI",
+    description: "Conheça a missão, visão, valores e a base institucional da GŌKAI.",
+    path: "/sobre",
+  }),
+  twitter: {
+    ...twitterCard,
+    title: "Sobre a GŌKAI | GŌKAI",
+    description: "Conheça a missão, visão, valores e a base institucional da GŌKAI.",
+  },
 }
 
 const values = [
   {
     icon: Shield,
     title: "Disciplina",
-    description:
-      "A base de toda evolução. Cultivada a cada treino, levada do tatame para a vida.",
+    description: "A base do treino, da constância e do desenvolvimento técnico.",
   },
   {
     icon: Heart,
     title: "Respeito",
-    description:
-      "Ao mestre, ao adversário, ao caminho e a si mesmo.",
+    description: "Respeito mútuo dentro e fora do treino, como princípio de convivência.",
   },
   {
     icon: TrendingUp,
     title: "Evolução Contínua",
-    description:
-      "Sempre buscar a próxima versão de si — técnica, mental e pessoal.",
-    accent: "green" as const,
-  },
-  {
-    icon: UsersRound,
-    title: "Inclusão Social",
-    description:
-      "O esporte como ferramenta de transformação e acesso para todos.",
-  },
-  {
-    icon: Scale,
-    title: "Cidadania",
-    description:
-      "Formar atletas conscientes de seus direitos e deveres na comunidade.",
+    description: "Melhoria constante física, mental e técnica ao longo da jornada.",
   },
   {
     icon: Award,
-    title: "Mérito",
-    description:
-      "Cada conquista é resultado de esforço real. Nada é dado, tudo é conquistado.",
+    title: "Honra",
+    description: "Conduta correta, responsabilidade pessoal e compromisso com o caminho marcial.",
   },
   {
-    icon: Sprout,
-    title: "Desenvolvimento Humano",
-    description:
-      "Formar pessoas completas — corpo, mente e caráter — para a vida.",
+    icon: Eye,
+    title: "Transparência",
+    description: "Clareza nas decisões, responsabilidade institucional e prestação de contas.",
   },
 ]
 
 export default function SobrePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-zinc-950 pt-32 pb-24 sm:pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/30 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <section className="gokai-hero gokai-hero-compact">
+        <BrandContainer>
           <div className="max-w-3xl">
-            <p className="text-zinc-500 text-sm font-medium tracking-widest uppercase mb-4">
-              Conheça o GŌKAI
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-100 leading-tight mb-6">
-              Sobre o GŌKAI
+            <div className="gokai-kicker text-white/72">Conheça a GŌKAI</div>
+            <h1 className="mt-5 font-heading text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Sobre a GŌKAI
             </h1>
-            <p className="text-xl text-zinc-400 leading-relaxed">
-              Mais do que uma associação esportiva de artes marciais — somos um espaço de transformação,
-              crescimento e excelência.
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/78 sm:text-xl">
+              Uma associação dedicada ao desenvolvimento das artes marciais — com disciplina,
+              respeito, tradição e formação humana como pilares de tudo que fazemos.
             </p>
           </div>
-        </div>
+        </BrandContainer>
       </section>
 
-      {/* History & Mission */}
-      <Section className="bg-zinc-900">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <SectionHeading title="Nossa História" align="left" className="mb-6" />
-            <div className="space-y-4 text-zinc-400 leading-relaxed">
+      <Section className="bg-background">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <InstitutionalCard accent="green" className="lg:col-span-1">
+            <SectionHeading title="Quem Somos" align="left" className="mb-6" />
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                O GŌKAI nasceu da paixão pelas artes marciais e do desejo de formar atletas de
-                excelência. Fundado por praticantes dedicados que compartilhavam o sonho de criar
-                um espaço onde técnica, valores e comunidade se encontrassem.
+                A GŌKAI é uma associação dedicada ao desenvolvimento das artes marciais, com foco
+                em disciplina, respeito e evolução pessoal.
               </p>
               <p>
-                Ao longo dos anos, construímos uma trajetória marcada por conquistas dentro e
-                fora dos tatames. Nossos atletas representam a associação em competições regionais,
-                nacionais e internacionais, sempre carregando os valores que nos definem.
-              </p>
-              <p>
-                Hoje, o GŌKAI é reconhecido como referência em artes marciais, oferecendo um
-                ambiente acolhedor para iniciantes e desafiador para atletas de alto desempenho.
+                Nosso propósito é formar atletas, cidadãos e indivíduos mais fortes, tanto física
+                quanto mentalmente.
               </p>
             </div>
-          </div>
-          <div>
-            <SectionHeading title="Nossa Missão" align="left" className="mb-6" />
-            <div className="space-y-4 text-zinc-400 leading-relaxed">
-              <p>
-                Formar atletas e cidadãos através das artes marciais, promovendo disciplina,
-                respeito, evolução pessoal e responsabilidade social.
-              </p>
-              <blockquote className="border-l-4 border-zinc-600 pl-4 italic text-zinc-300">
-                &ldquo;A disciplina constrói o caminho. A evolução é o destino.&rdquo;
-              </blockquote>
-            </div>
+          </InstitutionalCard>
 
-            <SectionHeading title="Nossa Visão" align="left" className="mb-6 mt-12" />
-            <div className="space-y-4 text-zinc-400 leading-relaxed">
-              <p>
-                Ser referência local e regional em formação esportiva e desenvolvimento humano.
-              </p>
-            </div>
-          </div>
+          <InstitutionalCard accent="red">
+            <SectionHeading title="Missão" align="left" className="mb-6" />
+            <p className="text-muted-foreground leading-relaxed">
+              Promover artes marciais com qualidade técnica, valores éticos e impacto social.
+            </p>
+          </InstitutionalCard>
+
+          <InstitutionalCard accent="neutral">
+            <SectionHeading title="Visão" align="left" className="mb-6" />
+            <p className="text-muted-foreground leading-relaxed">
+              Ser referência regional em artes marciais e projetos esportivos.
+            </p>
+          </InstitutionalCard>
         </div>
       </Section>
 
-      {/* Values */}
+      <Section className="bg-[#EEE7D9]">
+        <InstitutionalCard accent="green" className="max-w-3xl">
+          <SectionHeading title="Local" align="left" className="mb-6" />
+          <p className="text-muted-foreground leading-relaxed">
+            A GŌKAI realiza suas atividades em sede localizada no bairro São Mateus, em Juiz de
+            Fora/MG, em espaço estruturado para prática de artes marciais.
+          </p>
+        </InstitutionalCard>
+      </Section>
+
       <Section
-        className="bg-zinc-950"
+        className="bg-background"
         title="Nossos Valores"
         subtitle="Os pilares que sustentam tudo que fazemos e que guiam cada praticante em sua jornada dentro e fora do tatame."
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {values.map((value) => {
             const Icon = value.icon
-            const isGreen = "accent" in value && value.accent === "green"
             return (
-              <div
-                key={value.title}
-                className="bg-zinc-900 rounded-xl p-6 ring-1 ring-zinc-800 hover:ring-zinc-600 transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-zinc-800 transition-colors">
-                  <Icon className={`w-6 h-6 ${isGreen ? "text-green-500" : "text-zinc-400"}`} />
+              <InstitutionalCard key={value.title} accent="green">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/8">
+                  <Icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold text-zinc-100 mb-2">{value.title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{value.description}</p>
-              </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">{value.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{value.description}</p>
+              </InstitutionalCard>
             )
           })}
         </div>
       </Section>
 
-      {/* CTA */}
-      <Section className="bg-zinc-900">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-zinc-100 mb-4">Faça parte do GŌKAI</h2>
-          <p className="text-zinc-400 mb-8">
-            Comece sua jornada nas artes marciais. Venha conhecer nossas modalidades e professores.
+      <Section className="bg-[#0C2418] text-white">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-semibold text-white">Conheça a GŌKAI de perto</h2>
+          <p className="mt-4 text-white/72">
+            Entre em contato, conheça nossas modalidades e acompanhe o trabalho da associação.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/inscricao"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-red-600 text-zinc-950 font-semibold hover:bg-red-500 transition-colors"
-            >
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            <GokaiButton href="/inscricao" tone="secondary">
               Iniciar minha jornada
-            </Link>
-            <Link
+            </GokaiButton>
+            <GokaiButton
               href="/contato"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-zinc-700 text-zinc-300 hover:border-zinc-500 hover:text-zinc-50 transition-colors"
+              tone="outline"
+              className="border-white/18 text-white hover:bg-white/10 hover:text-white"
             >
               Entre em contato
-            </Link>
+            </GokaiButton>
           </div>
         </div>
       </Section>

@@ -1,0 +1,74 @@
+<svg viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Marca GŌKAI">
+  <defs>
+    <clipPath id="gk-clip"><circle cx="96" cy="96" r="91"/></clipPath>
+    <radialGradient id="gk-bg" cx="48%" cy="34%" r="70%">
+      <stop offset="0%" stop-color="#1A6838"/>
+      <stop offset="55%" stop-color="#0D5028"/>
+      <stop offset="100%" stop-color="#07361A"/>
+    </radialGradient>
+    <radialGradient id="gk-sun" cx="34%" cy="28%" r="62%">
+      <stop offset="0%" stop-color="#E83C3C"/>
+      <stop offset="60%" stop-color="#CF2E24"/>
+      <stop offset="100%" stop-color="#A82218"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer border -->
+  <circle cx="96" cy="96" r="96" fill="#0A4822"/>
+  <!-- Background -->
+  <circle cx="96" cy="96" r="92" fill="url(#gk-bg)"/>
+  <!-- Rings -->
+  <circle cx="96" cy="96" r="89" fill="none" stroke="rgba(247,246,242,0.18)" stroke-width="1.5"/>
+  <circle cx="96" cy="96" r="80" fill="none" stroke="rgba(247,246,242,0.06)" stroke-width="1"/>
+
+  <g clip-path="url(#gk-clip)">
+    <!-- Sun rays from (96,54) -->
+    <g transform="translate(96,54)" opacity="0.28">
+      <line x1="0" y1="-28" x2="0" y2="-64" stroke="rgba(247,246,242,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="0" y1="-28" x2="0" y2="-64" stroke="rgba(247,246,242,0.9)" stroke-width="1" stroke-linecap="round" transform="rotate(45)"/>
+      <line x1="0" y1="-28" x2="0" y2="-64" stroke="rgba(247,246,242,0.9)" stroke-width="1.5" stroke-linecap="round" transform="rotate(90)"/>
+      <line x1="0" y1="-28" x2="0" y2="-64" stroke="rgba(247,246,242,0.9)" stroke-width="1" stroke-linecap="round" transform="rotate(135)"/>
+      <line x1="0" y1="-28" x2="0" y2="-64" stroke="rgba(247,246,242,0.9)" stroke-width="1.5" stroke-linecap="round" transform="rotate(180)"/>
+      <line x1="0" y1="-28" x2="0" y2="-64" stroke="rgba(247,246,242,0.9)" stroke-width="1" stroke-linecap="round" transform="rotate(225)"/>
+      <line x1="0" y1="-28" x2="0" y2="-64" stroke="rgba(247,246,242,0.9)" stroke-width="1.5" stroke-linecap="round" transform="rotate(270)"/>
+      <line x1="0" y1="-28" x2="0" y2="-64" stroke="rgba(247,246,242,0.9)" stroke-width="1" stroke-linecap="round" transform="rotate(315)"/>
+    </g>
+
+    <!-- Rising sun -->
+    <circle cx="96" cy="54" r="26" fill="url(#gk-sun)"/>
+    <ellipse cx="87" cy="45" rx="9" ry="8" fill="rgba(255,255,255,0.16)"/>
+    <!-- Horizon -->
+    <line x1="20" y1="96" x2="172" y2="96" stroke="rgba(247,246,242,0.09)" stroke-width="1"/>
+
+    <!-- Katana blade -->
+    <path d="M 101,99 C 112,85 132,64 152,38" stroke="#F7F6F2" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <line x1="152" y1="38" x2="157" y2="32" stroke="rgba(247,246,242,0.52)" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Tsuba guard -->
+    <line x1="114" y1="74" x2="123" y2="83" stroke="#F7F6F2" stroke-width="5.5" stroke-linecap="round"/>
+    <!-- Handle -->
+    <line x1="101" y1="99" x2="97" y2="106" stroke="#F7F6F2" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Head -->
+    <circle cx="87" cy="101" r="8" fill="#F7F6F2"/>
+    <!-- Topknot -->
+    <ellipse cx="87" cy="92" rx="2.5" ry="5" fill="#F7F6F2"/>
+    <!-- Right arm -->
+    <path d="M 93,105 C 96,103 99,101 101,99" stroke="#F7F6F2" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <!-- Torso -->
+    <path d="M 74,110 C 74,106 80,104 87,104 C 94,104 100,106 100,110 L 104,134 C 104,136 70,136 70,134 Z" fill="#F7F6F2"/>
+    <!-- Left arm -->
+    <path d="M 76,115 L 67,130" stroke="#F7F6F2" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Obi belt -->
+    <line x1="72" y1="124" x2="102" y2="124" stroke="#CF2E24" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Kneeling legs -->
+    <path d="M 62,136 L 108,136 L 112,157 C 111,163 63,163 61,157 Z" fill="#F7F6F2" opacity="0.92"/>
+    <!-- Ground shadow -->
+    <ellipse cx="86" cy="163" rx="24" ry="4.5" fill="rgba(4,18,10,0.3)"/>
+
+    <!-- Leaf accent lower left -->
+    <ellipse cx="47" cy="143" rx="13" ry="5" fill="#8ED94E" transform="rotate(-38 47 143)"/>
+    <ellipse cx="37" cy="153" rx="12" ry="4.5" fill="#6DC234" transform="rotate(-58 37 153)"/>
+    <ellipse cx="55" cy="155" rx="11" ry="4" fill="#7AC943" transform="rotate(-18 55 155)"/>
+    <path d="M 43,159 C 46,150 51,143 47,140" stroke="#0B5A2B" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

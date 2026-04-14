@@ -2,8 +2,12 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { MenuIcon } from "lucide-react"
+import { usePathname } from "next/navigation"
+import { MenuIcon, ArrowRight } from "lucide-react"
 
+import { BrandContainer } from "@/components/branding/brand-container"
+import { BrandMark, BrandWordmark } from "@/components/branding/brand-logo"
+import { GokaiButton } from "@/components/branding/gokai-button"
 import { cn } from "@/lib/utils"
 import {
   Sheet,
@@ -20,6 +24,7 @@ const navLinks = [
   { href: "/modalidades", label: "Modalidades" },
   { href: "/professores", label: "Professores" },
   { href: "/eventos", label: "Eventos" },
+  { href: "/conteudos", label: "Conteúdos" },
   { href: "/transparencia", label: "Transparência" },
   { href: "/apresentacao", label: "Apresentação" },
   { href: "/contato", label: "Contato" },
@@ -30,6 +35,7 @@ const navLinks = [
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     function handleScroll() {
@@ -46,49 +52,110 @@ export function SiteHeader() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-zinc-950/90 py-3 shadow-2xl shadow-black/40 backdrop-blur-md border-b border-zinc-800/50"
-          : "bg-transparent py-6"
+          ? "border-b border-primary/12 bg-[rgba(247,246,242,0.9)] py-3 shadow-[0_18px_48px_rgba(18,48,32,0.12)] backdrop-blur-xl"
+          : "bg-transparent py-5"
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
+      <BrandContainer className="flex items-center justify-between gap-4">
         {/* Logo */}
         <Link
           href="/"
           className="group flex items-center gap-3"
           aria-label="GŌKAI — Página inicial"
         >
-          <span className="font-heading text-2xl font-bold tracking-tight text-zinc-50 transition-colors group-hover:text-zinc-300">
-            GŌKAI
-          </span>
+          <div
+            className={cn(
+              "rounded-2xl border p-1.5 shadow-[0_14px_28px_rgba(18,48,32,0.14)] transition-colors",
+              scrolled
+                ? "border-primary/12 bg-card"
+                : "border-white/15 bg-white/10 backdrop-blur"
+            )}
+          >
+            <BrandMark className="h-10 w-10 rounded-xl" priority sizes="40px" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <BrandWordmark
+              className={cn(
+                "h-7 w-auto transition-colors",
+                scrolled ? "text-foreground" : "text-white"
+              )}
+              priority
+              sizes="160px"
+            />
+            <span className={cn("text-[10px] font-semibold uppercase tracking-[0.24em]", scrolled ? "text-primary/60" : "text-white/58")}>
+              Associação Esportiva e Ambiental
+            </span>
+          </div>
         </Link>
 
         {/* Desktop navigation */}
         <nav className="hidden items-center gap-2 lg:flex" aria-label="Navegação principal">
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className="rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-zinc-400 transition-all hover:bg-zinc-800 hover:text-zinc-100"
-            >
-              {label}
-            </Link>
-          ))}
+          {navLinks.map(({ href, label }) => {
+            const isActive = pathname === href || pathname.startsWith(`${href}/`)
+            return (
+              <Link
+                key={href}
+                href={href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "relative rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all",
+                  scrolled
+                    ? isActive
+                      ? "bg-primary/10 text-primary"
+                      : "text-primary/72 hover:bg-primary/6 hover:text-primary"
+                    : isActive
+                      ? "bg-white/14 text-white"
+                      : "text-white/72 hover:bg-white/8 hover:text-white"
+                )}
+              >
+                {label}
+                {/* Active dot indicator */}
+                {isActive && (
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full",
+                      scrolled ? "bg-secondary" : "bg-accent"
+                    )}
+                  />
+                )}
+              </Link>
+            )
+          })}
         </nav>
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex">
-          <Link
-            href="/login"
-            className="group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-full border border-zinc-700 bg-transparent px-6 text-[11px] font-semibold uppercase tracking-wider text-zinc-300 transition-all hover:border-zinc-400 hover:text-zinc-50"
-          >
-            <span className="relative z-10">Área Restrita</span>
-          </Link>
+          <div className="flex items-center gap-3">
+            <GokaiButton
+              href="/inscricao"
+              tone={scrolled ? "primary" : "secondary"}
+              className="h-10 px-5 text-[11px] uppercase tracking-[0.18em]"
+            >
+              Associe-se
+            </GokaiButton>
+            <GokaiButton
+              href="/login"
+              tone="outline"
+              className={cn(
+                "h-10 px-5 text-[11px] uppercase tracking-[0.18em]",
+                !scrolled && "border-white/20 text-white hover:bg-white/10 hover:text-white"
+              )}
+            >
+              Área Restrita
+            </GokaiButton>
+          </div>
         </div>
 
         {/* Mobile hamburger */}
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger
-            className="inline-flex size-9 items-center justify-center rounded-lg text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-zinc-50 lg:hidden"
+            className={cn(
+              "inline-flex size-10 items-center justify-center rounded-2xl transition-colors lg:hidden",
+              scrolled
+                ? "bg-card text-primary shadow-[0_10px_24px_rgba(18,48,32,0.12)] hover:bg-primary/6"
+                : "bg-white/10 text-white backdrop-blur hover:bg-white/18"
+            )}
             aria-label="Abrir menu"
           >
             <MenuIcon className="size-5" />
@@ -96,39 +163,57 @@ export function SiteHeader() {
 
           <SheetContent
             side="right"
-            className="w-72 border-zinc-800 bg-zinc-950 text-zinc-100"
+            className="w-80 border-primary/12 bg-background text-foreground"
           >
-            <SheetHeader>
-              <SheetTitle className="text-left text-xl font-bold tracking-wide text-zinc-100">
-                GŌKAI
+            <SheetHeader className="px-4 pt-2">
+              <SheetTitle className="text-left">
+                <div className="flex items-center gap-3">
+                  <BrandMark className="h-11 w-11 rounded-2xl" sizes="44px" />
+                  <div className="flex flex-col gap-1">
+                    <BrandWordmark className="h-7 w-auto text-foreground" sizes="150px" />
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary/58">
+                      Associação Esportiva e Ambiental
+                    </span>
+                  </div>
+                </div>
               </SheetTitle>
             </SheetHeader>
 
-            <nav className="mt-8 flex flex-col gap-1 px-4" aria-label="Navegação mobile">
+            <nav className="mt-8 flex flex-col gap-2 px-4" aria-label="Navegação mobile">
               {navLinks.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-md px-3 py-3 text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-zinc-50"
+                  className="flex items-center justify-between rounded-2xl border border-border/80 bg-card px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary/18 hover:bg-primary/6"
                 >
                   {label}
+                  <ArrowRight className="size-4 text-primary/48" />
                 </Link>
               ))}
 
-              <div className="mt-4 border-t border-zinc-800 pt-4">
-                <Link
-                  href="/login"
+              <div className="mt-4 grid grid-cols-1 gap-3 border-t border-border/80 pt-5">
+                <GokaiButton
+                  href="/inscricao"
+                  tone="primary"
+                  className="w-full justify-center"
                   onClick={() => setMobileOpen(false)}
-                  className="flex w-full items-center justify-center rounded-md border border-zinc-700 px-4 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-400 hover:text-zinc-50"
+                >
+                  Associe-se
+                </GokaiButton>
+                <GokaiButton
+                  href="/login"
+                  tone="outline"
+                  className="w-full justify-center"
+                  onClick={() => setMobileOpen(false)}
                 >
                   Área Restrita
-                </Link>
+                </GokaiButton>
               </div>
             </nav>
           </SheetContent>
         </Sheet>
-      </div>
+      </BrandContainer>
     </header>
   )
 }

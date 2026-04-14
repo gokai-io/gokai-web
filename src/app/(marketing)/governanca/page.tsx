@@ -1,5 +1,8 @@
 import type { Metadata } from "next"
+import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
 import { createClient } from "@/lib/supabase/server"
+import { BrandContainer } from "@/components/branding/brand-container"
+import { InstitutionalCard } from "@/components/branding/institutional-card"
 import { Section } from "@/components/marketing/section"
 import type { CargoDiretoria, DiretorWithAssociado } from "@/types/database"
 
@@ -19,6 +22,19 @@ interface ConselheiroFiscalWithAssociado {
 export const metadata: Metadata = {
   title: "Governança | GŌKAI",
   description: "Estrutura diretiva e conselho fiscal do GŌKAI – Associação Esportiva e Ambiental.",
+  alternates: {
+    canonical: canonicalUrl("/governanca"),
+  },
+  openGraph: pageOpenGraph({
+    title: "Governança | GŌKAI",
+    description: "Conheça a estrutura diretiva e o conselho fiscal do GŌKAI – Associação Esportiva e Ambiental.",
+    path: "/governanca",
+  }),
+  twitter: {
+    ...twitterCard,
+    title: "Governança | GŌKAI",
+    description: "Conheça a estrutura diretiva e o conselho fiscal do GŌKAI – Associação Esportiva e Ambiental.",
+  },
 }
 
 const cargoLabels: Record<CargoDiretoria, string> = {
@@ -66,28 +82,68 @@ export default async function GovernancaPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-zinc-950 pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/30 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="text-zinc-500 text-sm font-medium tracking-widest uppercase mb-4">
-            Institucional
+      {/* Hero — brand-consistent dark green */}
+      <section className="gokai-hero gokai-hero-compact">
+        <BrandContainer className="relative text-center">
+          <div className="gokai-kicker text-white/68 justify-center">Institucional</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            Governança
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
+            Estrutura diretiva do GŌKAI – Associação Esportiva e Ambiental
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-zinc-100 mb-4">Governança</h1>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            Estrutura diretiva do GŌKAI
-          </p>
-        </div>
+        </BrandContainer>
       </section>
+
+      {/* Estrutura organizacional */}
+      <Section
+        className="bg-background"
+        title="Estrutura Organizacional"
+        subtitle="Visão geral da organização institucional da GŌKAI."
+      >
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <InstitutionalCard accent="green">
+            <h3 className="mb-3 text-lg font-semibold text-foreground">Assembleia Geral</h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Órgão máximo de decisão.
+            </p>
+          </InstitutionalCard>
+
+          <InstitutionalCard accent="red">
+            <h3 className="mb-3 text-lg font-semibold text-foreground">Diretoria Executiva</h3>
+            <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
+              <li>Presidente</li>
+              <li>Vice-Presidente</li>
+              <li>Diretor Administrativo</li>
+              <li>Diretor Financeiro</li>
+              <li>Diretor Técnico</li>
+            </ul>
+          </InstitutionalCard>
+
+          <InstitutionalCard accent="neutral">
+            <h3 className="mb-3 text-lg font-semibold text-foreground">Conselho Fiscal</h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Responsável pela fiscalização financeira.
+            </p>
+          </InstitutionalCard>
+
+          <InstitutionalCard accent="green">
+            <h3 className="mb-3 text-lg font-semibold text-foreground">Equipe Técnica</h3>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              Professores e instrutores responsáveis pelos treinos.
+            </p>
+          </InstitutionalCard>
+        </div>
+      </Section>
 
       {/* Diretoria */}
       <Section
-        className="bg-zinc-950"
+        className="bg-[#EEE7D9]"
         title="Diretoria"
         subtitle="Os membros eleitos responsáveis pela gestão e direção da associação."
       >
         {diretores.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {diretores.map((diretor) => {
               const pessoa = (diretor.associado as { pessoa?: { nome_completo?: string } } | null)?.pessoa
               const nome = pessoa?.nome_completo ?? "Nome não informado"
@@ -95,74 +151,80 @@ export default async function GovernancaPage() {
               const mandato = formatDateRange(diretor.data_inicio, diretor.data_fim)
 
               return (
-                <div
+                <InstitutionalCard
                   key={diretor.id}
-                  className="bg-zinc-900 rounded-xl p-6 ring-1 ring-zinc-800 flex flex-col items-center text-center gap-4"
+                  accent="green"
+                  className="flex flex-col items-center gap-4 text-center"
                 >
-                  {/* Avatar */}
-                  <div className="w-20 h-20 rounded-full bg-zinc-800 border-2 border-zinc-700 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-zinc-400">
+                  {/* Avatar initials */}
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-primary/20 bg-primary/10">
+                    <span className="text-2xl font-bold text-primary">
                       {getInitials(nome)}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-zinc-100">{nome}</h3>
-                    <p className="text-zinc-400 text-sm font-medium mt-1">
+                    <h3 className="text-lg font-semibold text-foreground">{nome}</h3>
+                    <p className="mt-1 text-sm font-medium text-primary/80">
                       {cargoLabels[cargo] ?? cargo}
                     </p>
-                    <p className="text-zinc-500 text-xs mt-2">Mandato: {mandato}</p>
+                    <p className="mt-2 text-xs text-muted-foreground">Mandato: {mandato}</p>
                   </div>
-                </div>
+                </InstitutionalCard>
               )
             })}
           </div>
         ) : (
-          <p className="text-center text-zinc-500">
-            Em estruturação. Novas informações serão disponibilizadas em breve.
-          </p>
+          <InstitutionalCard accent="neutral">
+            <p className="text-center text-muted-foreground">
+              Em estruturação. Novas informações serão disponibilizadas em breve.
+            </p>
+          </InstitutionalCard>
         )}
       </Section>
 
       {/* Conselho Fiscal */}
       <Section
-        className="bg-zinc-900"
+        className="bg-background"
         title="Conselho Fiscal"
         subtitle="Os conselheiros responsáveis pela fiscalização das contas e atos da diretoria."
       >
         {conselheiros.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {conselheiros.map((conselheiro) => {
               const pessoa = (conselheiro.associado as { pessoa?: { nome_completo?: string } } | null)?.pessoa
               const nome = pessoa?.nome_completo ?? "Nome não informado"
               const mandato = formatDateRange(conselheiro.data_inicio, conselheiro.data_fim)
 
               return (
-                <div
+                <InstitutionalCard
                   key={conselheiro.id}
-                  className="bg-zinc-800 rounded-xl p-6 ring-1 ring-zinc-700 flex flex-col items-center text-center gap-4"
+                  accent="red"
+                  className="flex flex-col items-center gap-4 text-center"
                 >
-                  <div className="w-16 h-16 rounded-full bg-zinc-800 border-2 border-zinc-700 flex items-center justify-center">
-                    <span className="text-xl font-bold text-zinc-400">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-secondary/20 bg-secondary/10">
+                    <span className="text-xl font-bold text-secondary">
                       {getInitials(nome)}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-base font-semibold text-zinc-100">{nome}</h3>
-                    <p className="text-zinc-400 text-sm font-medium mt-1">
+                    <h3 className="text-base font-semibold text-foreground">{nome}</h3>
+                    <p className="mt-1 text-sm font-medium text-secondary/80">
                       {conselheiro.cargo ?? "Conselheiro Fiscal"}
                     </p>
-                    <p className="text-zinc-500 text-xs mt-2">Mandato: {mandato}</p>
+                    <p className="mt-2 text-xs text-muted-foreground">Mandato: {mandato}</p>
                   </div>
-                </div>
+                </InstitutionalCard>
               )
             })}
           </div>
         ) : (
-          <p className="text-center text-zinc-500">
-            Em estruturação. Novas informações serão disponibilizadas em breve.
-          </p>
+          <InstitutionalCard accent="neutral">
+            <p className="text-center text-muted-foreground">
+              Em estruturação. Novas informações serão disponibilizadas em breve.
+            </p>
+          </InstitutionalCard>
         )}
       </Section>
     </>

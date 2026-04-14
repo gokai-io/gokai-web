@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
 import Link from "next/link"
 import Image from "next/image"
 import {
@@ -24,6 +25,21 @@ export const metadata: Metadata = {
   title: "Apresentação Institucional | GŌKAI",
   description:
     "Conheça o GŌKAI – Associação Esportiva e Ambiental. Nossa missão, estrutura, impacto e oportunidades de parceria.",
+  alternates: {
+    canonical: canonicalUrl("/apresentacao"),
+  },
+  openGraph: pageOpenGraph({
+    title: "Apresentação Institucional | GŌKAI",
+    description:
+      "Conheça o GŌKAI – Associação Esportiva e Ambiental. Nossa missão, estrutura, impacto e oportunidades de parceria.",
+    path: "/apresentacao",
+  }),
+  twitter: {
+    ...twitterCard,
+    title: "Apresentação Institucional | GŌKAI",
+    description:
+      "Conheça o GŌKAI – Associação Esportiva e Ambiental. Nossa missão, estrutura, impacto e oportunidades de parceria.",
+  },
 }
 
 // ─── Page ────────────────────────────────────────────────────────────────────
@@ -36,7 +52,7 @@ export default async function ApresentacaoPage() {
       {/* ════════════════════════════════════════════════════════════════════════
           PITCH DECK HUB
       ════════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-zinc-950 py-24">
+      <section className="relative overflow-hidden bg-[#0C2418] py-24">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -48,13 +64,13 @@ export default async function ApresentacaoPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
               Apresentações
             </p>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Conheça o GŌKAI a fundo
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-zinc-400">
+            <p className="mx-auto mt-4 max-w-2xl text-base text-white/62">
               Explore nossas apresentações imersivas — cada uma pensada para um público diferente.
             </p>
           </div>
@@ -73,27 +89,27 @@ export default async function ApresentacaoPage() {
                 title: "Seja Patrocinador",
                 desc: "Por que apoiar, níveis de parceria e como funciona. Para empresas e parceiros.",
                 href: "/apresentacao/patrocinador",
-                color: "text-zinc-300",
+                color: "text-white/72",
               },
               {
                 icon: UserPlus,
                 title: "Participe do Projeto",
                 desc: "Caminhos para atletas, voluntários e apoiadores individuais.",
                 href: "/apresentacao/participe",
-                color: "text-zinc-300",
+                color: "text-white/72",
               },
             ].map((card) => (
               <Link
                 key={card.title}
                 href={card.href}
-                className="group relative flex flex-col gap-5 rounded-xl border border-zinc-800 bg-zinc-900/50 p-8 transition-all hover:border-zinc-600 hover:bg-zinc-900"
+                className="group relative flex flex-col gap-5 rounded-xl border border-white/12 bg-white/5 p-8 transition-all hover:border-white/28 hover:bg-[#123020]"
               >
                 <card.icon className={`size-8 ${card.color} transition-colors group-hover:text-red-500`} />
                 <div>
-                  <h3 className="text-lg font-semibold text-zinc-100">{card.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-500">{card.desc}</p>
+                  <h3 className="text-lg font-semibold text-white">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/45">{card.desc}</p>
                 </div>
-                <div className="mt-auto flex items-center gap-2 text-sm font-medium text-zinc-400 transition-colors group-hover:text-zinc-200">
+                <div className="mt-auto flex items-center gap-2 text-sm font-medium text-white/62 transition-colors group-hover:text-white/85">
                   Abrir apresentação
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </div>
@@ -128,26 +144,26 @@ export default async function ApresentacaoPage() {
         />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
-          <p className="mb-8 text-xs font-semibold uppercase tracking-[0.35em] text-zinc-500">
+          <p className="mb-8 text-xs font-semibold uppercase tracking-[0.35em] text-white/45">
             Apresentação Institucional
           </p>
-          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-zinc-50 sm:text-7xl lg:text-8xl">
+          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-7xl lg:text-8xl">
             GŌKAI
           </h1>
-          <p className="mt-2 text-lg font-medium tracking-widest text-zinc-400 sm:text-xl">
+          <p className="mt-2 text-lg font-medium tracking-widest text-white/62 sm:text-xl">
             ASSOCIAÇÃO ESPORTIVA E AMBIENTAL
           </p>
 
           <div className="mx-auto my-10 flex items-center justify-center gap-3">
-            <span className="h-px w-16 bg-zinc-700" aria-hidden />
-            <span className="h-1 w-8 rounded-full bg-zinc-600" aria-hidden />
-            <span className="h-px w-16 bg-zinc-700" aria-hidden />
+            <span className="h-px w-16 bg-white/18" aria-hidden />
+            <span className="h-1 w-8 rounded-full bg-white/28" aria-hidden />
+            <span className="h-px w-16 bg-white/18" aria-hidden />
           </div>
 
-          <p className="mx-auto max-w-xl text-base font-medium italic leading-relaxed text-zinc-500">
+          <p className="mx-auto max-w-xl text-base font-medium italic leading-relaxed text-white/45">
             &ldquo;A disciplina constrói o caminho. A evolução é o destino.&rdquo;
           </p>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-zinc-400">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/62">
             Formar atletas e cidadãos através das artes marciais.
             <br className="hidden sm:block" />
             Conheça nossa estrutura, impacto e oportunidades de parceria.
@@ -156,7 +172,7 @@ export default async function ApresentacaoPage() {
           <div className="mt-12">
             <a
               href="#quem-somos"
-              className="inline-flex items-center gap-2 text-sm font-medium text-zinc-400 transition-colors hover:text-zinc-200"
+              className="inline-flex items-center gap-2 text-sm font-medium text-white/62 transition-colors hover:text-white/85"
             >
               Explorar apresentação
               <ArrowRight className="size-4 animate-bounce" />
@@ -170,24 +186,24 @@ export default async function ApresentacaoPage() {
       ════════════════════════════════════════════════════════════════════════ */}
       <section
         id="quem-somos"
-        className="relative overflow-hidden bg-zinc-900 py-28"
+        className="relative overflow-hidden bg-[#123020] py-28"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
             {/* Texto */}
             <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
                 Quem Somos
               </p>
-              <h2 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Mais do que uma associação.
                 <br />
                 Uma filosofia de vida.
               </h2>
 
-              <div className="mt-8 space-y-4 text-base leading-relaxed text-zinc-400">
+              <div className="mt-8 space-y-4 text-base leading-relaxed text-white/62">
                 <p>
-                  O <strong className="text-zinc-200">GŌKAI</strong> é uma associação dedicada à
+                  O <strong className="text-white/85">GŌKAI</strong> é uma associação dedicada à
                   prática e ao ensino das artes marciais, com foco na formação integral de seus
                   atletas — técnica, disciplina, caráter e saúde.
                 </p>
@@ -199,7 +215,7 @@ export default async function ApresentacaoPage() {
                   Operamos como associação sem fins lucrativos, com governança transparente,
                   conselho fiscal atuante e prestação de contas pública.
                 </p>
-                <p className="text-zinc-300 font-medium">
+                <p className="text-white/72 font-medium">
                   <strong>Nossa visão:</strong> Ser referência local e regional em formação
                   esportiva e desenvolvimento humano.
                 </p>
@@ -247,11 +263,11 @@ export default async function ApresentacaoPage() {
               ].map((v) => (
                 <div
                   key={v.title}
-                  className="flex flex-col gap-3 rounded-xl border border-zinc-800 bg-zinc-950/50 p-5 transition-colors hover:border-zinc-600"
+                  className="flex flex-col gap-3 rounded-xl border border-white/12 bg-[#0C2418]/50 p-5 transition-colors hover:border-white/28"
                 >
-                  <v.icon className="size-6 text-zinc-400" />
-                  <h3 className="text-sm font-semibold text-zinc-100">{v.title}</h3>
-                  <p className="text-xs leading-relaxed text-zinc-500">{v.desc}</p>
+                  <v.icon className="size-6 text-white/62" />
+                  <h3 className="text-sm font-semibold text-white">{v.title}</h3>
+                  <p className="text-xs leading-relaxed text-white/45">{v.desc}</p>
                 </div>
               ))}
             </div>
@@ -262,7 +278,7 @@ export default async function ApresentacaoPage() {
       {/* ════════════════════════════════════════════════════════════════════════
           SLIDE 3 — NÚMEROS
       ════════════════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-zinc-950 py-28 overflow-hidden">
+      <section className="relative bg-[#0C2418] py-28 overflow-hidden">
         {/* Brilho dourado sutil */}
         <div
           className="pointer-events-none absolute inset-0"
@@ -275,10 +291,10 @@ export default async function ApresentacaoPage() {
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
               O GŌKAI em números
             </p>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Impacto real, resultados concretos
             </h2>
           </div>
@@ -294,13 +310,13 @@ export default async function ApresentacaoPage() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="flex flex-col items-center gap-3 rounded-xl border border-zinc-800/60 bg-zinc-900/40 p-6 text-center"
+                className="flex flex-col items-center gap-3 rounded-xl border border-white/12/60 bg-[#123020]/40 p-6 text-center"
               >
-                <stat.icon className="size-5 text-zinc-500" />
-                <span className="text-3xl font-bold text-zinc-50 sm:text-4xl">
+                <stat.icon className="size-5 text-white/45" />
+                <span className="text-3xl font-bold text-white sm:text-4xl">
                   {stat.value}
                 </span>
-                <span className="text-xs font-medium text-zinc-500">{stat.label}</span>
+                <span className="text-xs font-medium text-white/45">{stat.label}</span>
               </div>
             ))}
           </div>
@@ -310,16 +326,16 @@ export default async function ApresentacaoPage() {
       {/* ════════════════════════════════════════════════════════════════════════
           SLIDE 4 — ESTRUTURA E GOVERNANÇA
       ════════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-zinc-900 py-28">
+      <section className="bg-[#123020] py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
               Estrutura
             </p>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Governança sólida e transparente
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-zinc-400">
+            <p className="mx-auto mt-4 max-w-2xl text-base text-white/62">
               O GŌKAI é uma associação sem fins lucrativos, com estrutura diretiva formal,
               conselho fiscal atuante e publicação regular de documentos institucionais.
             </p>
@@ -360,14 +376,14 @@ export default async function ApresentacaoPage() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-950/50 p-6"
+                className="flex gap-4 rounded-xl border border-white/12 bg-[#0C2418]/50 p-6"
               >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-zinc-800">
-                  <item.icon className="size-5 text-zinc-400" />
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-white/8">
+                  <item.icon className="size-5 text-white/62" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-zinc-100">{item.title}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-zinc-500">{item.desc}</p>
+                  <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-white/45">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -378,7 +394,7 @@ export default async function ApresentacaoPage() {
       {/* ════════════════════════════════════════════════════════════════════════
           SLIDE 5 — POR QUE APOIAR
       ════════════════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-zinc-950 py-28 overflow-hidden">
+      <section className="relative bg-[#0C2418] py-28 overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -392,10 +408,10 @@ export default async function ApresentacaoPage() {
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
             {/* Razões */}
             <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
                 Oportunidade
               </p>
-              <h2 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Por que apoiar o GŌKAI?
               </h2>
 
@@ -419,12 +435,12 @@ export default async function ApresentacaoPage() {
                   },
                 ].map((item, i) => (
                   <div key={item.title} className="flex gap-4">
-                    <div className="flex size-8 shrink-0 items-center justify-center rounded-full border border-zinc-700 bg-zinc-800 text-xs font-bold text-zinc-400">
+                    <div className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/18 bg-white/8 text-xs font-bold text-white/62">
                       {i + 1}
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-zinc-100">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-zinc-500">{item.desc}</p>
+                      <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-white/45">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -433,20 +449,20 @@ export default async function ApresentacaoPage() {
 
             {/* Depoimento / Quote */}
             <div className="flex flex-col items-center justify-center">
-              <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-8 lg:p-10">
-                <Quote className="mb-4 size-8 text-zinc-600" />
-                <blockquote className="text-lg font-medium leading-relaxed text-zinc-300 italic">
+              <div className="rounded-2xl border border-white/12 bg-[#123020] p-8 lg:p-10">
+                <Quote className="mb-4 size-8 text-white/30" />
+                <blockquote className="text-lg font-medium leading-relaxed text-white/72 italic">
                   &ldquo;Apoiar o GŌKAI é investir em uma comunidade que transforma vidas pelo
                   esporte. A seriedade e a transparência da associação nos deram total confiança para
                   firmar essa parceria.&rdquo;
                 </blockquote>
                 <div className="mt-6 flex items-center gap-3">
-                  <div className="flex size-10 items-center justify-center rounded-full bg-zinc-800 text-sm font-bold text-zinc-400">
+                  <div className="flex size-10 items-center justify-center rounded-full bg-white/8 text-sm font-bold text-white/62">
                     P
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-zinc-200">Parceiro GŌKAI</p>
-                    <p className="text-xs text-zinc-500">Apoiador desde 2024</p>
+                    <p className="text-sm font-medium text-white/85">Parceiro GŌKAI</p>
+                    <p className="text-xs text-white/45">Apoiador desde 2024</p>
                   </div>
                 </div>
               </div>
@@ -458,16 +474,16 @@ export default async function ApresentacaoPage() {
       {/* ════════════════════════════════════════════════════════════════════════
           SLIDE 6 — PLANOS DE PARCERIA
       ════════════════════════════════════════════════════════════════════════ */}
-      <section className="bg-zinc-900 py-28">
+      <section className="bg-[#123020] py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
               Planos
             </p>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Níveis de Parceria
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-zinc-400">
+            <p className="mx-auto mt-4 max-w-2xl text-base text-white/62">
               Escolha o nível que melhor se encaixa com o perfil da sua empresa ou contribuição pessoal.
             </p>
           </div>
@@ -476,7 +492,7 @@ export default async function ApresentacaoPage() {
             {/* Ouro */}
             <TierCard
               nivel="Ouro"
-              badgeClass="bg-red-600 text-zinc-950"
+              badgeClass="bg-red-600 text-[#0C2418]"
               ringClass="ring-2 ring-red-600/40"
               featured
               benefits={[
@@ -492,8 +508,8 @@ export default async function ApresentacaoPage() {
             {/* Prata */}
             <TierCard
               nivel="Prata"
-              badgeClass="bg-zinc-300 text-zinc-900"
-              ringClass="ring-1 ring-zinc-600/40"
+              badgeClass="bg-white/80 text-[#0C2418]"
+              ringClass="ring-1 ring-white/28/40"
               benefits={[
                 "Logo na página de patrocinadores",
                 "Logo nos materiais dos eventos",
@@ -518,8 +534,8 @@ export default async function ApresentacaoPage() {
             {/* Apoiador */}
             <TierCard
               nivel="Apoiador"
-              badgeClass="bg-zinc-700 text-zinc-300"
-              ringClass="ring-1 ring-zinc-700/40"
+              badgeClass="bg-white/12 text-white/72"
+              ringClass="ring-1 ring-white/12"
               benefits={[
                 "Nome na página de apoiadores",
                 "Menção nas redes sociais",
@@ -534,13 +550,13 @@ export default async function ApresentacaoPage() {
           SLIDE 7 — PARCEIROS ATUAIS
       ════════════════════════════════════════════════════════════════════════ */}
       {patrocinadores.length > 0 && (
-        <section className="bg-zinc-950 py-28">
+        <section className="bg-[#0C2418] py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
                 Quem já apoia
               </p>
-              <h2 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Nossos Parceiros
               </h2>
             </div>
@@ -549,7 +565,7 @@ export default async function ApresentacaoPage() {
               {patrocinadores.map((p) => (
                 <div
                   key={p.id}
-                  className="group flex h-20 w-40 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/60 p-4 transition-all hover:border-zinc-600"
+                  className="group flex h-20 w-40 items-center justify-center rounded-xl border border-white/12 bg-[#123020]/60 p-4 transition-all hover:border-white/28"
                   title={p.nome}
                 >
                   {p.logo_url ? (
@@ -562,7 +578,7 @@ export default async function ApresentacaoPage() {
                       />
                     </div>
                   ) : (
-                    <span className="text-center text-xs font-medium text-zinc-500 transition-colors group-hover:text-zinc-300">
+                    <span className="text-center text-xs font-medium text-white/45 transition-colors group-hover:text-white/72">
                       {p.nome}
                     </span>
                   )}
@@ -576,7 +592,7 @@ export default async function ApresentacaoPage() {
       {/* ════════════════════════════════════════════════════════════════════════
           SLIDE 8 — CTA FINAL
       ════════════════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-zinc-900 py-32">
+      <section className="relative overflow-hidden bg-[#123020] py-32">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -596,13 +612,13 @@ export default async function ApresentacaoPage() {
         />
 
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
             Próximo passo
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-50 sm:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">
             Vamos conversar?
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/62">
             Entre em contato com nossa diretoria para discutir a melhor forma de parceria
             para sua empresa ou contribuição pessoal.
           </p>
@@ -610,20 +626,20 @@ export default async function ApresentacaoPage() {
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/contato"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-red-600 px-8 text-sm font-semibold text-zinc-950 shadow-lg shadow-red-600/20 transition-all hover:bg-red-500 hover:shadow-red-500/30 active:scale-[0.98]"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-red-600 px-8 text-sm font-semibold text-[#0C2418] shadow-lg shadow-red-600/20 transition-all hover:bg-red-500 hover:shadow-red-500/30 active:scale-[0.98]"
             >
               Falar com a diretoria
               <ArrowRight className="size-4" />
             </Link>
             <Link
               href="/seja-um-apoiador"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-zinc-700 px-8 text-sm font-medium text-zinc-300 transition-all hover:border-zinc-500 hover:text-zinc-50 active:scale-[0.98]"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-white/18 px-8 text-sm font-medium text-white/72 transition-all hover:border-white/35 hover:text-white active:scale-[0.98]"
             >
               Ver planos detalhados
             </Link>
           </div>
 
-          <p className="mt-10 text-xs text-zinc-600">
+          <p className="mt-10 text-xs text-white/30">
             GŌKAI – Associação Esportiva e Ambiental • Associação sem fins lucrativos
           </p>
         </div>
@@ -649,13 +665,13 @@ function TierCard({
 }) {
   return (
     <div
-      className={`relative flex flex-col rounded-xl bg-zinc-950/50 p-6 ${ringClass} ${
+      className={`relative flex flex-col rounded-xl bg-[#0C2418]/50 p-6 ${ringClass} ${
         featured ? "lg:-mt-4 lg:mb-4 lg:shadow-lg lg:shadow-red-600/5" : ""
       }`}
     >
       {featured && (
         <div className="absolute -top-3 left-6">
-          <span className="rounded-full bg-red-600 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-zinc-950">
+          <span className="rounded-full bg-red-600 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#0C2418]">
             Recomendado
           </span>
         </div>
@@ -669,8 +685,8 @@ function TierCard({
 
       <ul className="flex-1 space-y-2.5">
         {benefits.map((b) => (
-          <li key={b} className="flex items-start gap-2 text-sm text-zinc-400">
-            <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-zinc-500" />
+          <li key={b} className="flex items-start gap-2 text-sm text-white/62">
+            <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-white/45" />
             <span>{b}</span>
           </li>
         ))}
@@ -680,8 +696,8 @@ function TierCard({
         href="/contato"
         className={`mt-6 inline-flex w-full items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors ${
           featured
-            ? "bg-red-600 text-zinc-950 hover:bg-red-500"
-            : "border border-zinc-700 text-zinc-300 hover:border-zinc-500 hover:text-zinc-50"
+            ? "bg-red-600 text-[#0C2418] hover:bg-red-500"
+            : "border border-white/18 text-white/72 hover:border-white/35 hover:text-white"
         }`}
       >
         Tenho interesse

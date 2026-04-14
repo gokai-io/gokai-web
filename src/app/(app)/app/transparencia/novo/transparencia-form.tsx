@@ -30,6 +30,7 @@ const transparenciaFormSchema = z.object({
   titulo: z.string().min(3, "Título é obrigatório"),
   descricao: z.string().optional().or(z.literal("")),
   tipo: z.enum(["ata", "balanco", "relatorio", "estatuto", "outro"]),
+  conteudo: z.string().optional().or(z.literal("")),
   data_referencia: z.string().min(1, "Data de referência é obrigatória"),
   publicado: z.boolean(),
 })
@@ -51,6 +52,7 @@ export function TransparenciaForm() {
     defaultValues: {
       titulo: "",
       descricao: "",
+      conteudo: "",
       tipo: "outro",
       data_referencia: "",
       publicado: false,
@@ -65,6 +67,17 @@ export function TransparenciaForm() {
     const supabase = createClient()
 
     try {
+      const conteudo = values.conteudo?.trim() || null
+
+      if (!arquivoFile && !conteudo) {
+        form.setError("conteudo", {
+          type: "manual",
+          message: "Informe o conteúdo do documento ou envie um arquivo.",
+        })
+        setSaving(false)
+        return
+      }
+
       let arquivoUrl: string | null = null
 
       // 1. Upload file if selected
@@ -99,6 +112,7 @@ export function TransparenciaForm() {
         titulo: values.titulo,
         descricao: values.descricao || null,
         tipo: values.tipo,
+        conteudo,
         data_referencia: values.data_referencia,
         publicado: values.publicado,
         arquivo_url: arquivoUrl,
@@ -212,6 +226,24 @@ export function TransparenciaForm() {
             />
           </div>
 
+          <div className="col-span-full flex flex-col gap-1.5">
+            <Label htmlFor="conteudo">Conteúdo do Documento</Label>
+            <Textarea
+              id="conteudo"
+              placeholder="Cole aqui o texto do documento. Você pode usar títulos com #/##, listas com * e separadores com ---."
+              className="min-h-56"
+              {...form.register("conteudo")}
+            />
+            {form.formState.errors.conteudo && (
+              <p className="text-xs text-destructive">
+                {form.formState.errors.conteudo.message}
+              </p>
+            )}
+            <p className="text-xs text-muted-foreground">
+              Use este campo quando o documento ainda não tiver um arquivo final.
+            </p>
+          </div>
+
           {/* Arquivo */}
           <div className="col-span-full flex flex-col gap-1.5">
             <Label>Arquivo</Label>
@@ -228,7 +260,7 @@ export function TransparenciaForm() {
               </Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              PDF, DOC ou DOCX. Máximo 20 MB.
+              PDF, DOC ou DOCX. Máximo 20 MB. Opcional quando o conteúdo textual estiver preenchido.
             </p>
             <input
               ref={arquivoInputRef}
@@ -237,7 +269,10 @@ export function TransparenciaForm() {
               className="hidden"
               onChange={(e) => {
                 const file = e.target.files?.[0]
-                if (file) setArquivoFile(file)
+                if (file) {
+                  setArquivoFile(file)
+                  form.clearErrors("conteudo")
+                }
               }}
             />
           </div>

@@ -77,6 +77,7 @@ export interface Pessoa {
   telefone: string | null
   data_nascimento: string | null
   endereco: Endereco | null
+  foto_url: string | null
   created_at?: string
   updated_at?: string
 }
@@ -287,6 +288,7 @@ export interface Transparencia {
   descricao: string | null
   tipo: TransparenciaTipo
   arquivo_url: string | null
+  conteudo: string | null
   data_referencia: string
   publicado: boolean
   created_at?: string

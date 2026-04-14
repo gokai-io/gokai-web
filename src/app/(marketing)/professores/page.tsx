@@ -1,12 +1,30 @@
 import type { Metadata } from "next"
-import { createClient } from "@/lib/supabase/server"
-import { Section } from "@/components/marketing/section"
+import Link from "next/link"
+
+import { BrandContainer } from "@/components/branding/brand-container"
+import { GokaiButton } from "@/components/branding/gokai-button"
+import { InstitutionalCard } from "@/components/branding/institutional-card"
 import { Badge } from "@/components/ui/badge"
+import { Section } from "@/components/marketing/section"
+import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
+import { createClient } from "@/lib/supabase/server"
+import { professorSlug } from "@/lib/slug"
 import type { ProfessorWithPessoa } from "@/types/database"
 
 export const metadata: Metadata = {
   title: "Professores | GŌKAI",
   description: "Conheça os professores do GŌKAI – Associação Esportiva e Ambiental.",
+  alternates: { canonical: canonicalUrl("/professores") },
+  openGraph: pageOpenGraph({
+    title: "Professores | GŌKAI",
+    description: "Profissionais experientes dedicados ao desenvolvimento de cada aluno no GŌKAI – Associação Esportiva e Ambiental.",
+    path: "/professores",
+  }),
+  twitter: {
+    ...twitterCard,
+    title: "Professores | GŌKAI",
+    description: "Profissionais experientes dedicados ao desenvolvimento de cada aluno no GŌKAI – Associação Esportiva e Ambiental.",
+  },
 }
 
 function getInitials(nome: string): string {
@@ -39,98 +57,121 @@ export default async function ProfessoresPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-zinc-950 pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/30 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="text-zinc-500 text-sm font-medium tracking-widest uppercase mb-4">
-            Corpo Docente
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-zinc-100 mb-4">
+      <section className="gokai-hero gokai-hero-compact">
+        <BrandContainer className="text-center">
+          <div className="gokai-kicker justify-center text-white/68">Corpo Docente</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             Nossos Professores
           </h1>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            Profissionais experientes e apaixonados pelas artes marciais, dedicados ao
-            desenvolvimento de cada aluno.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
+            Profissionais experientes e comprometidos com o desenvolvimento técnico
+            e humano de cada praticante.
           </p>
-        </div>
+        </BrandContainer>
       </section>
 
       {/* Professors grid */}
-      <Section className="bg-zinc-950">
+      <Section className="bg-background">
         {list.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {list.map((prof) => {
               const nome = prof.pessoa?.nome_completo ?? "Professor"
+              const href = `/professores/${professorSlug(nome)}`
 
               return (
-                <div
-                  key={prof.id}
-                  className="bg-zinc-900 rounded-xl ring-1 ring-zinc-800 hover:ring-zinc-600 transition-all duration-300 overflow-hidden flex flex-col"
-                >
-                  {/* Avatar area */}
-                  <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 p-8 flex justify-center">
-                    <div className="w-24 h-24 rounded-full bg-zinc-800 border-2 border-zinc-700 flex items-center justify-center">
-                      <span className="text-3xl font-bold text-zinc-400">
-                        {getInitials(nome)}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Info */}
-                  <div className="p-6 flex flex-col gap-3 flex-1">
-                    <div>
-                      <h3 className="text-lg font-semibold text-zinc-100">{nome}</h3>
-                      {prof.graduacao && (
-                        <p className="text-zinc-400 text-sm font-medium mt-0.5">
-                          {prof.graduacao}
-                        </p>
+                <Link key={prof.id} href={href} className="group block">
+                  <InstitutionalCard
+                    accent="green"
+                    className="flex h-full flex-col gap-0 !p-0"
+                  >
+                    {/* Avatar area */}
+                    <div className="flex justify-center bg-primary/6 py-8">
+                      {prof.pessoa?.foto_url ? (
+                        <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/20">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={prof.pessoa.foto_url}
+                            alt={nome}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-primary/20 bg-primary/10">
+                          <span className="font-heading text-3xl font-bold text-primary">
+                            {getInitials(nome)}
+                          </span>
+                        </div>
                       )}
                     </div>
 
-                    {prof.especialidades && prof.especialidades.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {prof.especialidades.map((esp) => (
-                          <Badge key={esp} variant="outline" className="border-zinc-700 text-zinc-400 text-xs">
-                            {esp}
-                          </Badge>
-                        ))}
+                    {/* Info */}
+                    <div className="flex flex-1 flex-col gap-3 p-6">
+                      <div>
+                        <h3 className="font-heading text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                          {nome}
+                        </h3>
+                        {prof.graduacao && (
+                          <p className="mt-0.5 text-sm font-medium text-secondary">
+                            {prof.graduacao}
+                          </p>
+                        )}
                       </div>
-                    )}
 
-                    {prof.bio && (
-                      <p className="text-sm text-zinc-400 leading-relaxed mt-1">
-                        {truncate(prof.bio, 160)}
-                      </p>
-                    )}
-                  </div>
-                </div>
+                      {prof.especialidades && prof.especialidades.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {prof.especialidades.map((esp) => (
+                            <Badge
+                              key={esp}
+                              variant="outline"
+                              className="border-primary/20 text-primary/70 text-xs"
+                            >
+                              {esp}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
+
+                      {prof.bio && (
+                        <p className="mt-1 flex-1 text-sm leading-relaxed text-muted-foreground">
+                          {truncate(prof.bio, 160)}
+                        </p>
+                      )}
+
+                      <span className="mt-auto pt-2 text-xs font-semibold text-primary/60 transition-colors group-hover:text-primary">
+                        Ver perfil →
+                      </span>
+                    </div>
+                  </InstitutionalCard>
+                </Link>
               )
             })}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <p className="text-zinc-500 text-lg">Em breve você conhecerá nossa equipe técnica.</p>
-          </div>
+          <InstitutionalCard accent="neutral">
+            <p className="text-center text-muted-foreground">
+              Em breve você conhecerá nossa equipe técnica.
+            </p>
+          </InstitutionalCard>
         )}
       </Section>
 
       {/* CTA */}
-      <section className="bg-zinc-900 py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-3">
+      <Section className="bg-[#0C2418] text-white">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-heading text-3xl font-semibold text-white">
             Quer treinar com nossos professores?
           </h2>
-          <p className="text-zinc-400 mb-6">
-            Faça sua inscrição e comece sua jornada nas artes marciais.
+          <p className="mx-auto mt-4 max-w-xl text-white/70">
+            Faça sua inscrição e comece sua jornada nas artes marciais com
+            acompanhamento técnico de qualidade.
           </p>
-          <a
-            href="/inscricao"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-red-600 text-zinc-950 font-semibold hover:bg-red-500 transition-colors"
-          >
-            Iniciar minha jornada
-          </a>
+          <div className="mt-8">
+            <GokaiButton href="/inscricao" tone="secondary">
+              Iniciar minha jornada
+            </GokaiButton>
+          </div>
         </div>
-      </section>
+      </Section>
     </>
   )
 }

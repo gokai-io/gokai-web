@@ -34,6 +34,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { BrandMark } from "@/components/branding/brand-logo"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { getNavItemsForRole } from "@/lib/auth/permissions"
@@ -94,12 +95,10 @@ export function AppSidebar({ user }: AppSidebarProps) {
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-1">
-          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-sm select-none">
-            G
-          </div>
+          <BrandMark className="size-9 rounded-[14px]" sizes="36px" />
           <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
-            <span className="truncate font-semibold tracking-wide">GŌKAI</span>
-            <span className="truncate text-xs text-muted-foreground">Assoc. Esportiva</span>
+            <span className="truncate font-semibold tracking-wide text-sidebar-foreground">GŌKAI</span>
+            <span className="truncate text-xs text-sidebar-foreground/60">Assoc. Esportiva</span>
           </div>
         </div>
       </SidebarHeader>

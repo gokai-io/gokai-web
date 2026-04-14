@@ -1,13 +1,29 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { createClient } from "@/lib/supabase/server"
+import { ArrowRight, Users } from "lucide-react"
+
+import { BrandContainer } from "@/components/branding/brand-container"
+import { GokaiButton } from "@/components/branding/gokai-button"
+import { InstitutionalCard } from "@/components/branding/institutional-card"
 import { Section } from "@/components/marketing/section"
-import { Users } from "lucide-react"
+import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
+import { createClient } from "@/lib/supabase/server"
 import type { Modalidade, Turma } from "@/types/database"
 
 export const metadata: Metadata = {
   title: "Modalidades | GŌKAI",
   description: "Conheça as modalidades de artes marciais oferecidas pelo GŌKAI.",
+  alternates: { canonical: canonicalUrl("/modalidades") },
+  openGraph: pageOpenGraph({
+    title: "Modalidades | GŌKAI",
+    description: "Conheça as modalidades de artes marciais oferecidas pelo GŌKAI. Aulas para todas as idades e níveis de experiência.",
+    path: "/modalidades",
+  }),
+  twitter: {
+    ...twitterCard,
+    title: "Modalidades | GŌKAI",
+    description: "Conheça as modalidades de artes marciais oferecidas pelo GŌKAI. Aulas para todas as idades e níveis de experiência.",
+  },
 }
 
 export default async function ModalidadesPage() {
@@ -21,7 +37,6 @@ export default async function ModalidadesPage() {
 
   const modalidades = (modalidadesRaw ?? []) as Modalidade[]
 
-  // For each modalidade, count active turmas
   const turmasCounts: Record<string, number> = {}
   if (modalidades.length > 0) {
     const { data: turmasRaw } = await supabase
@@ -38,105 +53,161 @@ export default async function ModalidadesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-zinc-950 pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/30 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="text-zinc-500 text-sm font-medium tracking-widest uppercase mb-4">
-            O que praticamos
+      <section className="gokai-hero gokai-hero-compact">
+        <BrandContainer className="text-center">
+          <div className="gokai-kicker justify-center text-white/68">O que praticamos</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            Modalidades
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
+            Diferentes modalidades de artes marciais para todas as idades e níveis de experiência,
+            com acompanhamento técnico sério.
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-zinc-100 mb-4">Modalidades</h1>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            Oferecemos diferentes modalidades de artes marciais para todas as idades e níveis de
-            experiência.
-          </p>
-        </div>
+        </BrandContainer>
       </section>
 
       {/* Modalidades grid */}
-      <Section className="bg-zinc-950">
+      <Section className="bg-background">
         {modalidades.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {modalidades.map((modalidade) => {
               const turmaCount = turmasCounts[modalidade.id] ?? 0
+              const detailHref = modalidade.slug
+                ? `/modalidades/${modalidade.slug}`
+                : "/modalidades"
 
               return (
-                <div
+                <InstitutionalCard
                   key={modalidade.id}
-                  className="bg-zinc-900 rounded-xl ring-1 ring-zinc-800 hover:ring-zinc-600 transition-all duration-300 overflow-hidden flex flex-col group"
+                  accent="green"
+                  className="group flex flex-col gap-4 overflow-hidden !p-0"
                 >
-                  {/* Image or placeholder */}
-                  {modalidade.imagem_url ? (
-                    <div className="relative h-48 overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={modalidade.imagem_url}
-                        alt={modalidade.nome}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  ) : (
-                    <div className="h-48 bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
-                      <span className="text-4xl font-bold text-zinc-600 tracking-widest">
-                        {modalidade.nome.slice(0, 2).toUpperCase()}
-                      </span>
-                    </div>
-                  )}
+                  {/* Image or brand placeholder */}
+                  <Link href={detailHref} className="block overflow-hidden">
+                    {modalidade.imagem_url ? (
+                      <div className="relative h-48 overflow-hidden">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={modalidade.imagem_url}
+                          alt={modalidade.nome}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : (
+                      <div className="flex h-48 items-center justify-center bg-primary/8">
+                        <span className="font-heading text-5xl font-black tracking-widest text-primary/25">
+                          {modalidade.nome.slice(0, 2).toUpperCase()}
+                        </span>
+                      </div>
+                    )}
+                  </Link>
 
                   {/* Content */}
-                  <div className="p-6 flex flex-col gap-3 flex-1">
+                  <div className="flex flex-1 flex-col gap-3 px-6 pb-6">
                     <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-xl font-bold text-zinc-100">{modalidade.nome}</h3>
+                      <Link href={detailHref}>
+                        <h3 className="font-heading text-xl font-semibold text-foreground transition-colors group-hover:text-primary">
+                          {modalidade.nome}
+                        </h3>
+                      </Link>
                       {turmaCount > 0 && (
-                        <div className="flex items-center gap-1.5 text-xs text-zinc-400 shrink-0 mt-1">
-                          <Users className="w-3.5 h-3.5" />
-                          <span>
-                            {turmaCount} {turmaCount === 1 ? "turma" : "turmas"}
-                          </span>
+                        <div className="mt-1 flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground">
+                          <Users className="h-3.5 w-3.5" />
+                          <span>{turmaCount} {turmaCount === 1 ? "turma" : "turmas"}</span>
                         </div>
                       )}
                     </div>
 
                     {modalidade.descricao && (
-                      <p className="text-sm text-zinc-400 leading-relaxed flex-1">
+                      <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
                         {modalidade.descricao}
                       </p>
                     )}
 
-                    <Link
-                      href="/inscricao"
-                      className="mt-2 inline-flex items-center text-sm font-medium text-zinc-400 hover:text-zinc-200 transition-colors"
-                    >
-                      Ver turmas e horários →
-                    </Link>
+                    <div className="mt-2 flex items-center gap-5">
+                      <Link
+                        href={detailHref}
+                        className="gokai-link-arrow text-sm"
+                      >
+                        Saiba mais
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                      <Link
+                        href="/inscricao"
+                        className="text-sm font-semibold text-secondary transition-colors hover:text-secondary/80"
+                      >
+                        Inscrever-se →
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                </InstitutionalCard>
               )
             })}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <p className="text-zinc-500 text-lg">Novas modalidades serão disponibilizadas em breve.</p>
-          </div>
+          <InstitutionalCard accent="neutral">
+            <p className="text-center text-muted-foreground">
+              Novas modalidades serão disponibilizadas em breve.
+            </p>
+          </InstitutionalCard>
         )}
       </Section>
 
       {/* CTA */}
-      <section className="bg-zinc-900 py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-3">
+      <Section className="bg-[#0C2418] text-white">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-heading text-3xl font-semibold text-white">
             Pronto para começar?
           </h2>
-          <p className="text-zinc-400 mb-6">
+          <p className="mx-auto mt-4 max-w-xl text-white/70">
             Escolha sua modalidade e faça sua inscrição. Nossa equipe entrará em contato.
           </p>
-          <Link
-            href="/inscricao"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-red-600 text-zinc-950 font-semibold hover:bg-red-500 transition-colors"
-          >
-            Iniciar minha jornada
-          </Link>
+          <div className="mt-8">
+            <GokaiButton href="/inscricao" tone="secondary">
+              Iniciar minha jornada
+            </GokaiButton>
+          </div>
         </div>
-      </section>
+      </Section>
+
+      {/* Editorial cross-link */}
+      <Section className="bg-[#EEE7D9]">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-12">
+          <div className="min-w-0 flex-1">
+            <div className="gokai-kicker text-primary/62">Biblioteca GŌKAI</div>
+            <h3 className="mt-3 font-heading text-xl font-semibold text-foreground">
+              Ainda em dúvida sobre qual modalidade escolher?
+            </h3>
+            <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+              Nosso guia editorial cobre desde os primeiros passos até a filosofia por trás das
+              artes marciais.
+            </p>
+          </div>
+
+          <div className="flex shrink-0 flex-col gap-3">
+            {[
+              { href: "/conteudos/como-escolher-a-modalidade-ideal", label: "Como escolher a modalidade ideal", accent: "bg-secondary" },
+              { href: "/conteudos/o-que-esperar-da-primeira-aula", label: "O que esperar da primeira aula", accent: "bg-primary/40" },
+            ].map(({ href, label, accent }) => (
+              <Link
+                key={href}
+                href={href}
+                className="group inline-flex items-center gap-3 rounded-2xl border border-border/80 bg-card px-5 py-3.5 text-sm font-medium text-foreground transition-all hover:border-primary/25 hover:bg-primary/4"
+              >
+                <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${accent}`} />
+                {label}
+                <ArrowRight className="ml-auto h-3.5 w-3.5 text-muted-foreground/50 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            ))}
+            <Link
+              href="/conteudos"
+              className="pt-1 text-right text-xs text-muted-foreground transition-colors hover:text-primary"
+            >
+              Ver toda a biblioteca →
+            </Link>
+          </div>
+        </div>
+      </Section>
     </>
   )
 }

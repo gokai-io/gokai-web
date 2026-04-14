@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { Section } from "@/components/marketing/section"
@@ -7,6 +8,19 @@ import type { Patrocinador, PatrocinadorNivel } from "@/types/database"
 export const metadata: Metadata = {
   title: "Patrocinadores | GŌKAI",
   description: "Conheça os patrocinadores e apoiadores do GŌKAI – Associação Esportiva e Ambiental.",
+  alternates: {
+    canonical: canonicalUrl("/patrocinadores"),
+  },
+  openGraph: pageOpenGraph({
+    title: "Patrocinadores | GŌKAI",
+    description: "Marcas e parceiros que impulsionam o GŌKAI e apoiam o desenvolvimento esportivo de nossos atletas.",
+    path: "/patrocinadores",
+  }),
+  twitter: {
+    ...twitterCard,
+    title: "Patrocinadores | GŌKAI",
+    description: "Marcas e parceiros que impulsionam o GŌKAI e apoiam o desenvolvimento esportivo de nossos atletas.",
+  },
 }
 
 const nivelLabels: Record<PatrocinadorNivel, string> = {
@@ -23,26 +37,26 @@ const nivelStyles: Record<
   { badge: string; card: string; logoSize: string; titleSize: string }
 > = {
   ouro: {
-    badge: "bg-red-600 text-zinc-950",
-    card: "bg-zinc-900 ring-red-600/40 hover:ring-red-600/70",
+    badge: "bg-red-600 text-[#0C2418]",
+    card: "bg-[#123020] ring-red-600/40 hover:ring-red-600/70",
     logoSize: "h-24",
     titleSize: "text-xl",
   },
   prata: {
-    badge: "bg-zinc-300 text-zinc-900",
-    card: "bg-zinc-900 ring-zinc-600/40 hover:ring-zinc-400/60",
+    badge: "bg-white/80 text-[#0C2418]",
+    card: "bg-[#123020] ring-white/18 hover:ring-white/35",
     logoSize: "h-16",
     titleSize: "text-lg",
   },
   bronze: {
     badge: "bg-orange-700 text-orange-100",
-    card: "bg-zinc-900 ring-orange-700/30 hover:ring-orange-600/50",
+    card: "bg-[#123020] ring-orange-700/30 hover:ring-orange-600/50",
     logoSize: "h-14",
     titleSize: "text-base",
   },
   apoiador: {
-    badge: "bg-zinc-700 text-zinc-300",
-    card: "bg-zinc-900 ring-zinc-700/40 hover:ring-zinc-600/60",
+    badge: "bg-white/12 text-white/72",
+    card: "bg-[#123020] ring-white/12 hover:ring-white/28/60",
     logoSize: "h-12",
     titleSize: "text-sm",
   },
@@ -74,16 +88,16 @@ export default async function PatrocinadoresPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-zinc-950 pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/30 via-transparent to-transparent pointer-events-none" />
+      <section className="relative bg-[#0C2418] pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/6 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="text-zinc-500 text-sm font-medium tracking-widest uppercase mb-4">
+          <p className="text-white/45 text-sm font-medium tracking-widest uppercase mb-4">
             Parceiros
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-zinc-100 mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Patrocinadores e Apoiadores
           </h1>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-lg text-white/62 max-w-2xl mx-auto">
             Agradecemos a todos que tornam possível a missão do GŌKAI. Nossos parceiros são parte
             fundamental do nosso sucesso.
           </p>
@@ -91,7 +105,7 @@ export default async function PatrocinadoresPage() {
       </section>
 
       {/* Sponsors by tier */}
-      <Section className="bg-zinc-950">
+      <Section className="bg-[#0C2418]">
         {sections.length > 0 ? (
           <div className="space-y-16">
             {sections.map((nivel) => {
@@ -102,11 +116,11 @@ export default async function PatrocinadoresPage() {
                 <div key={nivel}>
                   {/* Tier header */}
                   <div className="flex items-center justify-center gap-4 mb-8">
-                    <span className="h-px flex-1 max-w-24 bg-zinc-800" />
+                    <span className="h-px flex-1 max-w-24 bg-white/8" />
                     <span className={`px-4 py-1 rounded-full text-sm font-semibold ${styles.badge}`}>
                       {nivelLabels[nivel]}
                     </span>
-                    <span className="h-px flex-1 max-w-24 bg-zinc-800" />
+                    <span className="h-px flex-1 max-w-24 bg-white/8" />
                   </div>
 
                   <div
@@ -134,16 +148,16 @@ export default async function PatrocinadoresPage() {
                           </div>
                         ) : (
                           <div
-                            className={`${styles.logoSize} flex items-center justify-center w-full bg-zinc-800 rounded-lg`}
+                            className={`${styles.logoSize} flex items-center justify-center w-full bg-white/8 rounded-lg`}
                           >
-                            <span className={`font-bold text-zinc-400 ${styles.titleSize} text-center px-2`}>
+                            <span className={`font-bold text-white/62 ${styles.titleSize} text-center px-2`}>
                               {pat.nome}
                             </span>
                           </div>
                         )}
 
                         {pat.logo_url && (
-                          <p className={`font-medium text-zinc-300 text-center ${styles.titleSize}`}>
+                          <p className={`font-medium text-white/72 text-center ${styles.titleSize}`}>
                             {pat.nome}
                           </p>
                         )}
@@ -153,7 +167,7 @@ export default async function PatrocinadoresPage() {
                             href={pat.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-zinc-500 hover:text-zinc-200 transition-colors"
+                            className="text-xs text-white/45 hover:text-white/85 transition-colors"
                           >
                             {pat.website.replace(/^https?:\/\//, "")}
                           </a>
@@ -167,24 +181,24 @@ export default async function PatrocinadoresPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-zinc-500 text-lg">Novas parcerias serão anunciadas em breve.</p>
+            <p className="text-white/45 text-lg">Novas parcerias serão anunciadas em breve.</p>
           </div>
         )}
       </Section>
 
       {/* Become a sponsor CTA */}
-      <Section className="bg-zinc-900">
+      <Section className="bg-[#123020]">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-zinc-100 mb-3">
+          <h2 className="text-2xl font-bold text-white mb-3">
             Seja um parceiro do GŌKAI
           </h2>
-          <p className="text-zinc-400 mb-6">
+          <p className="text-white/62 mb-6">
             Junte-se a nós e apoie o desenvolvimento das artes marciais. Temos planos para todos os
             perfis de parceria.
           </p>
           <Link
             href="/seja-um-apoiador"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-red-600 text-zinc-950 font-semibold hover:bg-red-500 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-red-600 text-[#0C2418] font-semibold hover:bg-red-500 transition-colors"
           >
             Conhecer planos de apoio
           </Link>
