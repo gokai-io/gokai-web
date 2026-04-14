@@ -81,22 +81,22 @@ function ConteudosTeaser() {
   if (articles.length === 0) return null
   return (
     <Section
-      className="bg-[var(--surface-paper)]"
+      className="bg-[var(--surface-midnight)]"
       title="Conteúdos e Formação"
       subtitle="A GŌKAI também se expressa fora do tatame: visão institucional, formação humana e cultura marcial."
     >
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {articles.map((article) => (
           <InstitutionalCard key={article.slug} accent="neutral" className="flex h-full flex-col gap-5">
-            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-ivory-muted)]">
               <span>{categoriaLabels[article.categoria as ArticleCategoria]}</span>
               <span>{article.leitura_min} min</span>
             </div>
-            <h3 className="font-heading text-lg font-bold text-foreground">{article.titulo}</h3>
-            <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{article.resumo}</p>
+            <h3 className="font-heading text-lg font-extrabold text-[var(--text-ivory)]">{article.titulo}</h3>
+            <p className="flex-1 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">{article.resumo}</p>
             <Link
               href={`/conteudos/${article.slug}`}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-secondary"
+              className="inline-flex items-center gap-2 text-sm font-bold text-[var(--text-ivory)] hover:text-[var(--accent-gold)]"
             >
               Ler conteúdo <ArrowRightIcon className="size-4" />
             </Link>
@@ -195,9 +195,9 @@ export default async function HomePage() {
             {/* Section intro */}
             <div className="mb-16 max-w-2xl">
               <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-8 bg-secondary" aria-hidden />
+                <span className="h-px w-8 bg-[var(--accent-gold)]" aria-hidden />
                 <span
-                  className="text-muted-foreground"
+                  className="text-[var(--accent-gold)]"
                   style={{
                     fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                     fontSize: "0.75rem",
@@ -209,55 +209,55 @@ export default async function HomePage() {
                   Sobre a Associação
                 </span>
               </div>
-              <h2 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl">
+              <h2 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-[var(--text-ivory)] sm:text-5xl">
                 Uma associação, não apenas um dojo.
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-[var(--text-ivory-dim)]">
                 A GŌKAI representa disciplina marcial com responsabilidade pública, documentos
                 institucionais claros e formação séria.
               </p>
             </div>
 
             {/* Connected triptych panels */}
-            <div className="grid grid-cols-1 border border-border md:grid-cols-3">
+            <div className="grid grid-cols-1 border border-[var(--accent-gold)]/15 md:grid-cols-3">
               {[
                 {
                   num:    "01",
-                  accentClass: "bg-secondary",
+                  accentClass: "bg-[var(--accent-gold)]",
                   title:  "Identidade Institucional",
                   text:   "Estatuto, regimento, atas e memorandos organizados como parte visível e pública da associação.",
                   href:   "/transparencia",
                   cta:    "Ver documentos",
-                  ctaClass: "text-secondary",
+                  ctaClass: "text-[var(--accent-gold)]",
                 },
                 {
                   num:    "02",
-                  accentClass: "bg-primary",
+                  accentClass: "bg-[var(--accent-carmine)]",
                   title:  "Formação Humana",
                   text:   "O treino está conectado a valores permanentes: respeito, honra, disciplina e evolução contínua.",
                   href:   "/sobre",
                   cta:    "Sobre a GŌKAI",
-                  ctaClass: "text-primary",
+                  ctaClass: "text-[var(--accent-carmine)]",
                 },
                 {
                   num:    "03",
-                  accentClass: "bg-foreground",
+                  accentClass: "bg-[var(--text-ivory)]",
                   title:  "Estrutura Organizada",
                   text:   "Diretoria, conselho fiscal e equipe técnica com processos e linguagem pública coerente.",
                   href:   "/governanca",
                   cta:    "Ver governança",
-                  ctaClass: "text-foreground",
+                  ctaClass: "text-[var(--text-ivory)]",
                 },
               ].map((panel) => (
                 <div
                   key={panel.num}
-                  className="group relative flex flex-col gap-6 bg-white p-8 md:p-10 border-b border-border md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-muted/40"
+                  className="group relative flex flex-col gap-6 bg-[var(--surface-obsidian)] p-8 md:p-10 border-b border-[var(--accent-gold)]/15 md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-white/5"
                 >
                   {/* Accent top bar */}
                   <div className={`absolute inset-x-0 top-0 h-1 ${panel.accentClass}`} />
 
                   <span
-                    className="block text-foreground/70"
+                    className="block text-[var(--text-ivory-muted)]"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                       fontSize: "0.62rem",
@@ -270,10 +270,10 @@ export default async function HomePage() {
                   </span>
 
                   <div className="flex-1">
-                    <h3 className="font-heading text-lg font-bold leading-snug text-foreground">
+                    <h3 className="font-heading text-lg font-extrabold leading-snug text-[var(--text-ivory)]">
                       {panel.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    <p className="mt-3 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
                       {panel.text}
                     </p>
                   </div>
@@ -298,9 +298,9 @@ export default async function HomePage() {
           <BrandContainer>
             <div className="mb-14 max-w-2xl">
               <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-8 bg-secondary" aria-hidden />
+                <span className="h-px w-8 bg-[var(--accent-gold)]" aria-hidden />
                 <span
-                  className="text-[var(--text-on-dark-muted)]"
+                  className="text-[var(--text-ivory-muted)]"
                   style={{
                     fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                     fontSize: "0.75rem",
@@ -312,10 +312,10 @@ export default async function HomePage() {
                   O que praticamos
                 </span>
               </div>
-              <h2 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
+              <h2 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-[var(--text-ivory)] sm:text-5xl">
                 Modalidades
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-[var(--text-on-dark-secondary)]">
+              <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-[var(--text-ivory-dim)]">
                 Artes marciais com seriedade técnica, progressão clara e acompanhamento constante
                 para crianças, jovens e adultos.
               </p>
@@ -330,17 +330,17 @@ export default async function HomePage() {
                     dark
                     className="flex flex-col gap-4"
                   >
-                    <h3 className="font-heading text-xl font-bold text-[var(--text-on-dark)]">
+                    <h3 className="font-heading text-xl font-extrabold text-[var(--text-ivory)]">
                       {modalidade.nome}
                     </h3>
                     {modalidade.descricao && (
-                      <p className="flex-1 text-sm leading-relaxed text-[var(--text-on-dark-secondary)]">
+                      <p className="flex-1 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
                         {modalidade.descricao}
                       </p>
                     )}
                     <Link
                       href={`/modalidades/${modalidade.slug}`}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-secondary"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[var(--accent-gold)]"
                     >
                       Conhecer modalidade
                       <ArrowRightIcon className="size-4" />
@@ -356,8 +356,8 @@ export default async function HomePage() {
                   { title: "Formação completa", desc: "Técnica marcial aliada a valores éticos e crescimento pessoal." },
                 ].map((item) => (
                   <InstitutionalCard key={item.title} accent="green" dark className="flex flex-col gap-3">
-                    <h3 className="font-heading text-lg font-bold text-[var(--text-on-dark)]">{item.title}</h3>
-                    <p className="text-sm leading-relaxed text-[var(--text-on-dark-secondary)]">{item.desc}</p>
+                    <h3 className="font-heading text-lg font-extrabold text-[var(--text-ivory)]">{item.title}</h3>
+                    <p className="text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">{item.desc}</p>
                   </InstitutionalCard>
                 ))}
               </div>
@@ -381,12 +381,12 @@ export default async function HomePage() {
         >
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <InstitutionalCard accent="red" className="flex flex-col gap-5">
-              <div className="inline-flex size-11 items-center justify-center rounded-lg bg-secondary/10 text-secondary">
+              <div className="inline-flex size-11 items-center justify-center rounded-lg bg-[var(--accent-gold)]/10 text-[var(--accent-gold)]">
                 <FileTextIcon className="size-5" />
               </div>
               <div>
-                <h3 className="font-heading text-xl font-bold text-foreground">Documentos institucionais</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <h3 className="font-heading text-xl font-extrabold text-[var(--text-ivory)]">Documentos institucionais</h3>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
                   Estatuto social, regimento interno, ata de fundação e documentos públicos organizados.
                 </p>
               </div>
@@ -396,12 +396,12 @@ export default async function HomePage() {
             </InstitutionalCard>
 
             <InstitutionalCard accent="green" className="flex flex-col gap-5">
-              <div className="inline-flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <div className="inline-flex size-11 items-center justify-center rounded-lg bg-[var(--accent-carmine)]/10 text-[var(--accent-carmine)]">
                 <MapPinIcon className="size-5" />
               </div>
               <div>
-                <h3 className="font-heading text-xl font-bold text-foreground">Base física e comunidade</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <h3 className="font-heading text-xl font-extrabold text-[var(--text-ivory)]">Base física e comunidade</h3>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
                   Atividades em São Mateus, Juiz de Fora/MG, em espaço estruturado para prática de artes marciais.
                 </p>
               </div>
@@ -424,16 +424,16 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
               {eventos.map((evento) => (
                 <InstitutionalCard key={evento.id} accent="red" className="flex h-full flex-col gap-4">
-                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                  <div className="flex items-center justify-between text-xs font-bold uppercase tracking-[0.18em] text-[var(--text-ivory-muted)]">
                     <span>{eventoTipoLabel[evento.tipo]}</span>
                     <span>{formatDate(evento.data_inicio)}</span>
                   </div>
-                  <h3 className="font-heading text-lg font-bold text-foreground">{evento.titulo}</h3>
+                  <h3 className="font-heading text-lg font-extrabold text-[var(--text-ivory)]">{evento.titulo}</h3>
                   {evento.descricao && (
-                    <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{evento.descricao}</p>
+                    <p className="flex-1 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">{evento.descricao}</p>
                   )}
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <CalendarDaysIcon className="size-4 text-secondary" />
+                  <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-ivory-dim)]">
+                    <CalendarDaysIcon className="size-4 text-[var(--accent-gold)]" />
                     <span>{formatDate(evento.data_inicio)}</span>
                   </div>
                 </InstitutionalCard>
@@ -459,15 +459,15 @@ export default async function HomePage() {
                     <img
                       src={patrocinador.logo_url}
                       alt={`Logo ${patrocinador.nome}`}
-                      className="mx-auto h-16 max-w-full object-contain"
+                      className="mx-auto h-16 max-w-full object-contain brightness-0 invert opacity-70 transition-all hover:opacity-100 hover:brightness-100 hover:invert-0"
                     />
                   ) : (
-                    <div className="mx-auto flex h-16 w-full items-center justify-center bg-muted text-sm font-semibold text-primary">
+                    <div className="mx-auto flex h-16 w-full items-center justify-center bg-white/5 text-sm font-bold text-[var(--accent-carmine)]">
                       {patrocinador.nome}
                     </div>
                   )}
                   {patrocinador.logo_url && (
-                    <p className="mt-3 text-sm font-semibold text-foreground">{patrocinador.nome}</p>
+                    <p className="mt-3 text-sm font-bold text-[var(--text-ivory)]">{patrocinador.nome}</p>
                   )}
                 </InstitutionalCard>
               ))}
@@ -485,7 +485,7 @@ export default async function HomePage() {
           {/* Gradient divider at top — brand signature */}
           <div
             className="absolute inset-x-0 top-0 h-[2px]"
-            style={{ background: "linear-gradient(90deg, var(--secondary), transparent)" }}
+            style={{ background: "linear-gradient(90deg, var(--accent-gold), transparent)" }}
             aria-hidden
           />
 
@@ -493,9 +493,9 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="max-w-2xl">
                 <div className="mb-5 flex items-center gap-4">
-                  <span className="h-px w-8 bg-secondary" aria-hidden />
+                  <span className="h-px w-8 bg-[var(--accent-gold)]" aria-hidden />
                   <span
-                    className="text-[var(--text-on-dark-muted)]"
+                    className="text-[var(--text-ivory-muted)]"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                       fontSize: "0.75rem",
@@ -507,10 +507,10 @@ export default async function HomePage() {
                     GŌKAI
                   </span>
                 </div>
-                <h2 className="font-heading text-4xl font-extrabold leading-tight text-[var(--text-on-dark)] sm:text-5xl">
+                <h2 className="font-heading text-4xl font-extrabold leading-tight text-[var(--text-ivory)] sm:text-5xl">
                   Comece a sua jornada com disciplina e propósito.
                 </h2>
-                <p className="mt-5 max-w-lg text-base leading-relaxed text-[var(--text-on-dark-secondary)]">
+                <p className="mt-5 max-w-lg text-base font-medium leading-relaxed text-[var(--text-ivory-dim)]">
                   Artes marciais sérias, formação humana e compromisso institucional.
                   Crianças, jovens e adultos bem-vindos.
                 </p>
@@ -527,7 +527,7 @@ export default async function HomePage() {
                 <GokaiButton
                   href="/contato"
                   tone="outline"
-                  className="h-12 px-8 text-sm border-white/50 text-white hover:bg-white/10 hover:border-white/50"
+                  className="h-12 px-8 text-sm border-white/30 text-white hover:bg-white/10 hover:border-white/50"
                 >
                   Entrar em contato
                 </GokaiButton>

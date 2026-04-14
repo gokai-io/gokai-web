@@ -42,12 +42,12 @@ export function SectionHeader({
         )}
 
         <div className="flex flex-col gap-2">
-          <span className={cn("gokai-kicker", dark ? "text-[var(--text-on-dark-muted)]" : "text-muted-foreground")}>{eyebrow}</span>
-          {/* Gradient rule — thematic red-to-gold feel */}
+          <span className="gokai-kicker text-[var(--accent-gold)]">{eyebrow}</span>
+          {/* Gradient rule — thematic crimson-to-gold feel */}
           <span
             className="block h-[2px] w-16 rounded-full"
             style={{
-              background: "linear-gradient(90deg, var(--accent-red) 0%, var(--accent-bronze) 100%)",
+              background: "linear-gradient(90deg, var(--accent-carmine) 0%, var(--accent-gold) 100%)",
             }}
             aria-hidden
           />
@@ -63,8 +63,8 @@ export function SectionHeader({
       >
         <h2
           className={cn(
-            "max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]",
-            dark ? "text-[var(--text-on-dark)]" : "text-foreground",
+            "max-w-3xl font-heading text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]",
+            dark ? "text-[var(--text-ivory)]" : "text-foreground",
             isCenter && "text-balance"
           )}
         >
@@ -74,7 +74,7 @@ export function SectionHeader({
           <p
             className={cn(
               "max-w-2xl text-base leading-relaxed sm:text-lg",
-              dark ? "text-[var(--text-on-dark-secondary)]" : "text-muted-foreground",
+              dark ? "text-[var(--text-ivory-dim)]" : "text-muted-foreground",
               isCenter && "text-pretty"
             )}
           >

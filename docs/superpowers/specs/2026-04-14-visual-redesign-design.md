@@ -1,125 +1,124 @@
-# GŌKAI Web — Redesign Visual "Tradição e Disciplina"
+# GŌKAI Web — Redesign Visual "Midnight Sanctuary"
 
 **Data:** 2026-04-14
-**Escopo:** Rebranding visual completo (Cores, Tipografia, Ritmo e Componentes)
-**Abordagem:** Pergaminho e Nanquim (Foco em Tradição e Autoridade)
+**Escopo:** Rebranding visual premium completo (Cores, Tipografia, Luz e Sombras)
+**Abordagem:** Midnight Sanctuary (Foco em Autoridade, Imersão e Luxo Cinematográfico)
 
 ---
 
 ## 1. Contexto e Objetivos
 
-O site atual da GŌKAI sofre de falta de contraste (texto ilegível em fundos escuros) e uma paleta de cores que parece "moderna demais" ou "amadora", sem transmitir a seriedade de uma associação de artes marciais.
+O redesenho anterior ("Pergaminho e Nanquim") resultou em um visual pesado e pouco moderno. O objetivo agora é elevar a GŌKAI para o patamar de uma **Academia de Elite**, utilizando uma estética de "Santuário das Sombras" que equilibra a tradição das artes marciais com o refino do design premium de 2026.
 
 **Objetivos principais:**
-1. **Contraste Absoluto:** Eliminar textos de baixa opacidade. Todo texto deve ser legível (WCAG AA).
-2. **Identidade de Autoridade:** Transmitir disciplina através de cores sóbrias e tipografia pesada.
-3. **Ritmo Institucional:** Alternar seções escuras de impacto com seções claras de leitura confortável.
+1. **Atmosfera Cinematográfica:** Uso de fundos profundos, sombras tridimensionais e luz centralizada (spotlight).
+2. **Tipografia Editorial:** Pesos equilibrados (ExtraBold 800) e hierarquia clara com detalhes em ouro.
+3. **Refino Técnico (Polish):** Bordas de 1px, Glassmorphism de alta qualidade e micro-interações fluidas.
 
 ---
 
-## 2. Sistema de Cores (Paleta de Herança)
+## 2. Sistema de Cores (Paleta "Midnight Sanctuary")
 
 ### 2.1 Variáveis Semânticas (`globals.css`)
 
-Substituiremos o preto digital (#000) e os verdes vibrantes por tons orgânicos e tradicionais.
+Substituiremos os tons amarelados e o preto chapado por cores com profundidade e brilho sutil.
 
 ```css
 :root {
-  /* ── Superfícies ── */
-  --surface-paper:      #F2EFE9;   /* Papel Osso - Fundo principal */
-  --surface-ink:        #1A1A1B;   /* Nanquim Profundo - Títulos e Rodapé */
-  --surface-forest:     #142D1F;   /* Musgo Floresta - Hero e CTAs de peso */
-  --surface-white:      #FFFFFF;   /* Branco puro para documentos específicos */
+  /* ── Superfícies — Profundidade de Camadas ── */
+  --surface-midnight:   #08100D;   /* Midnight Emerald - Fundo Imersivo */
+  --surface-obsidian:   #050807;   /* Deep Obsidian - Cards e seções de destaque */
+  --surface-glass:      rgba(255, 255, 255, 0.03); /* Vidro para componentes */
 
-  /* ── Acentos ── */
-  --accent-red:         #A6261F;   /* Vermelho Imperial - Selos e detalhes */
-  --accent-bronze:      #B08D57;   /* Bronze Envelhecido - Bordas e ícones */
+  /* ── Acentos — Ouro e Carmim ── */
+  --accent-gold:        #C5A059;   /* Champagne Gold - Detalhes e bordas */
+  --accent-carmine:     #8E1610;   /* Crimson Seal - CTAs e Logo */
 
-  /* ── Texto ── */
-  --text-primary:       #1A1A1B;   /* Nanquim sobre Papel */
-  --text-secondary:     rgba(26, 26, 27, 0.82);
-  --text-on-dark:       #F7F6F2;   /* Branco Marfim sobre Musgo/Nanquim */
-  --text-on-dark-secondary: rgba(247, 246, 242, 0.92);
-  --text-on-dark-muted:     rgba(247, 246, 242, 0.68);
+  /* ── Texto — Máxima Legibilidade e Nobreza ── */
+  --text-ivory:         #F8F7F3;   /* Ivory Silk - Títulos e Corpo */
+  --text-ivory-dim:     rgba(248, 247, 243, 0.78);
+  --text-ivory-muted:   rgba(248, 247, 243, 0.58);
+
+  /* ── Shadcn / Base Overrides ── */
+  --background: var(--surface-midnight);
+  --foreground: var(--text-ivory);
+  --primary: var(--accent-carmine);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--surface-obsidian);
+  --secondary-foreground: var(--text-ivory);
+  --border: rgba(197, 160, 89, 0.15); /* Borda Ouro Sutil */
+  --radius: 0.25rem; /* Radius rígido (4px) para disciplina */
 }
 
 .dark {
-  /* No modo escuro, mantemos a sobriedade mas invertemos as superfícies claras */
-  --surface-paper:      #121213;   /* Nanquim suave */
-  --text-primary:       #F7F6F2;
-  --text-secondary:     rgba(247, 246, 242, 0.78);
-  /* Musgo Forest e Accent Red permanecem idênticos para manter a marca */
+  /* No Midnight Sanctuary, o dark mode é a experiência padrão */
+  --background: var(--surface-midnight);
+  --foreground: var(--text-ivory);
 }
 ```
 
-### 2.2 Regras de Contraste
-- **Proibido:** `text-white/30`, `text-white/45`.
-- **Mínimo:** 68% de opacidade para textos "muted" sobre fundo escuro (`text-on-dark-muted`).
-- **Padrão:** 92% a 100% de opacidade para corpo e títulos.
+---
+
+## 3. Tipografia (A Elegância da Força)
+
+- **H1 e H2:** Peso **ExtraBold (800)**. Menos agressivo que o 900, permitindo mais refino na forma.
+- **Tracking:** `-0.03em` para títulos, garantindo um visual de "bloco de autoridade".
+- **Kickers (Chapéus):** Texto pequeno (11px), Uppercase, Tracking largo (`0.32em`), Cor `--accent-gold`.
+- **Corpo:** Manrope Medium (500), `leading-relaxed` (1.75) para máximo respiro.
 
 ---
 
-## 3. Tipografia (A Voz do Dojo)
+## 4. Componentes "Santuário"
 
-- **Famílias:** Montserrat/Outfit (Heading), Manrope (Body).
-- **H1 de Hero:** Peso **Black (900)**, tamanho `clamp(3.5rem, 8vw, 6.5rem)`. Tracking `-0.02em`.
-- **H2 de Seção:** Peso **ExtraBold (800)**.
-- **Kickers (Eyebrows):** Uppercase, Tracking `0.22em`, fonte Sans-serif.
-- **Corpo:** Manrope, peso Medium (500) para melhor legibilidade em fundos de "papel".
+### 4.1 Hero "O Spotlight"
+- **Design:** Centralizado, minimalista e focado no selo da GŌKAI.
+- **Iluminação:** `radial-gradient(circle at center, #142D23 0%, var(--surface-midnight) 70%)` — simula um foco de luz suave atrás do logo.
+- **Selo do Logo:** Centralizado, com sombra externa profunda (`shadow-[0_48px_100px_rgba(0,0,0,0.8)]`).
+- **Título H1:** Abaixo do logo, centrado, peso 800, cor Ivory Silk.
 
----
+### 4.2 Header "A Lâmina Invisível"
+- **Transparente (Hero):** Sem fundo, apenas Ivory Silk flutuando.
+- **Scrolled:** `bg-[rgba(8,16,13,0.72)]` com `backdrop-blur-xl`. Borda inferior de 1px em Ouro Champagne (12% opacity).
+- **Links:** Hover com brilho Ouro Champagne e linha inferior expansiva.
 
-## 4. Componentes e Estrutura
-
-### 4.1 Hero (A Primeira Impressão)
-- **Fundo:** `bg-surface-forest` (#142D1F).
-- **Efeito:** Gradiente radial sutil em `--accent-red` (8% opacidade) no canto inferior esquerdo.
-- **H1:** "Disciplina. Honra." (Branco Marfim) e "**GŌKAI.**" (Vermelho Imperial).
-- **Selo do Logo:** Círculo em `bg-surface-paper` com borda fina em Vermelho Imperial (30%).
-
-### 4.2 Header (Navegação Scrolled)
-- **Transparente:** Texto em `text-on-dark`.
-- **Scrolled:** Fundo `bg-surface-paper`, borda inferior de 2px em `bg-surface-ink`.
-- **Botão "Associe-se":** Sempre `bg-accent-red text-white`.
-
-### 4.3 GokaiButton (Disciplina em Cliques)
-- **Radius:** Reduzir de pílula total para `rounded-lg` (aprox. 0.5rem - 0.75rem). Passa mais rigidez.
+### 4.3 GokaiButton (O Selo de Autoridade)
+- **Radius:** Rígido (`0.25rem` / 4px).
 - **Tones:**
-  - `primary`: `bg-accent-red` (Vermelho Imperial).
-  - `secondary`: `bg-surface-forest` (Musgo Floresta).
-  - `outline`: Borda de 2px `border-surface-ink`.
+  - `primary`: `bg-accent-carmine` (Vermelho Carmim Profundo).
+  - `outline`: Borda 1px `accent-gold`, texto `accent-gold`.
+  - `ghost`: Apenas texto Ivory Silk, sem fundo.
 
-### 4.4 InstitutionalCard (O Papel de Parede)
-- **Variante Clara:** Fundo `bg-white`, borda fina em `accent-bronze/20`, sem sombras pesadas.
-- **Variante Escura:** Fundo `bg-surface-ink`, borda `white/8`.
+### 4.4 InstitutionalCard (A Camada Obsidian)
+- **Design:** Fundo em `surface-obsidian`, borda de 1px em `accent-gold/15`.
+- **Hover:** Glow sutil na borda e leve translação vertical (-2px).
+- **Glassmorphism:** Em seções especiais, usar `surface-glass` com blur.
 
 ---
 
-## 5. Ritmo da Landing Page
+## 5. Ritmo da Experiência
 
-1. **Hero:** Forest (Impacto/Escuro)
-2. **Sobre:** Paper (Leitura/Claro)
-3. **Modalidades:** Ink (Atmosfera/Escuro)
-4. **Governança:** Paper (Claro)
-5. **Eventos/Conteúdos:** Paper ou White (Claro)
-6. **CTA Final:** Forest (Fechamento/Escuro)
+1. **Hero:** Midnight Emerald com Spotlight (Foco na Marca).
+2. **Sobre:** Deep Obsidian (Imersão e Texto).
+3. **Modalidades:** Midnight Emerald (Grid em Glassmorphism).
+4. **Governança:** Deep Obsidian (Autoridade Institucional).
+5. **CTA Final:** Midnight Emerald com Botão Carmine.
 
 ---
 
 ## 6. Verificação e Acessibilidade
 
-- [ ] Lighthouse Accessibility Score > 95.
-- [ ] Testar legibilidade em dispositivos móveis (o fundo "Papel Osso" ajuda no reflexo do sol).
-- [ ] Garantir que o modo dark não quebre o "feeling" de documento tradicional.
+- [ ] Contraste Ivory Silk / Midnight Emerald: 14.5:1 (Supera WCAG AAA).
+- [ ] Tempo de transição de 400ms para todos os estados de hover (suavidade premium).
+- [ ] Eliminar qualquer sombra preta pura; usar sombras em tons de verde profundo ou ouro escuro.
 
 ---
 
 ## Arquivos Afetados
 
-- `src/app/globals.css` (Update variables e classes)
-- `src/app/page.tsx` (Update hero, section colors e typography)
-- `src/components/marketing/site-header.tsx`
-- `src/components/marketing/site-footer.tsx`
-- `src/components/branding/gokai-button.tsx` (Radius e cores)
-- `src/components/branding/institutional-card.tsx`
-- `src/components/branding/section-header.tsx`
+- `src/app/globals.css` (Update total das variáveis e estilos de animação)
+- `src/app/page.tsx` (Update layout centralizado, ritmos e tipografia)
+- `src/components/marketing/site-header.tsx` (Glassmorphism e transição)
+- `src/components/marketing/site-footer.tsx` (Deep Obsidian e Ouro)
+- `src/components/branding/gokai-button.tsx` (Radius e tons)
+- `src/components/branding/institutional-card.tsx` (Border focus e Glassmorphism)
+- `src/components/branding/section-header.tsx` (Cores de ouro e hierarquia centrada)

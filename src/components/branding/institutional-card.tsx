@@ -7,17 +7,17 @@ interface InstitutionalCardProps extends React.ComponentProps<"div"> {
 
 // Top accent bar color per variant
 const ACCENT_BAR: Record<NonNullable<InstitutionalCardProps["accent"]>, string> = {
-  green:   "before:bg-[var(--surface-forest)]",
-  red:     "before:bg-[var(--accent-red)]",
-  neutral: "before:bg-[var(--accent-bronze)]",
+  green:   "before:bg-[var(--accent-gold)]",
+  red:     "before:bg-[var(--accent-carmine)]",
+  neutral: "before:bg-[var(--accent-gold)]",
   none:    "",
 }
 
 // Border glow on hover per variant
 const ACCENT_HOVER: Record<NonNullable<InstitutionalCardProps["accent"]>, string> = {
-  green:   "hover:border-[var(--surface-forest)]/40",
-  red:     "hover:border-[var(--accent-red)]/40",
-  neutral: "hover:border-[var(--accent-bronze)]/50",
+  green:   "hover:border-[var(--accent-gold)]/40",
+  red:     "hover:border-[var(--accent-carmine)]/40",
+  neutral: "hover:border-[var(--accent-gold)]/50",
   none:    "hover:border-foreground/20",
 }
 
@@ -40,10 +40,8 @@ export function InstitutionalCard({
     <div
       className={cn(
         "relative overflow-hidden rounded-lg p-6",
-        // Surface — white for light sections, surface-ink for dark sections
-        dark
-          ? "bg-[var(--surface-ink)] border border-white/8"
-          : "bg-white border border-[var(--accent-bronze)]/20 shadow-sm",
+        // Surface — Obsidian for all states to maintain immersion
+        "bg-[var(--surface-obsidian)] border border-[var(--accent-gold)]/15",
         "transition-all duration-300",
         "hover:-translate-y-0.5",
         accent !== "none" ? ACCENT_HOVER[accent] : ACCENT_HOVER.none,

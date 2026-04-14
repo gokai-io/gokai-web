@@ -13,7 +13,7 @@ const VARIANT_CLASS: Record<GokaiButtonVariant, string> = {
   outline:
     "border border-[var(--accent-gold)] bg-transparent text-[var(--accent-gold)] hover:bg-[var(--accent-gold)]/5 active:scale-[0.98]",
   ghost: "bg-transparent text-[var(--text-ivory)] hover:bg-white/5",
-  accent: "bg-[var(--accent-carmine)] text-[var(--text-ivory)] font-bold hover:brightness-110 active:scale-[0.98]",
+  accent: "bg-[var(--accent-carmine)] text-[var(--text-ivory)] font-extrabold hover:brightness-110 active:scale-[0.98]",
 }
 
 interface GokaiButtonProps extends Omit<ComponentProps<typeof Button>, "variant"> {
@@ -29,7 +29,7 @@ export function GokaiButton({
   ...props
 }: GokaiButtonProps) {
   const classes = cn(
-    "rounded-[0.25rem] px-6 py-2.5 font-bold uppercase tracking-[0.1em] text-[11px] transition-all duration-300",
+    "rounded-[0.25rem] px-6 py-2.5 font-extrabold uppercase tracking-[0.2em] text-[11px] transition-all duration-300",
     VARIANT_CLASS[tone],
     className
   )
