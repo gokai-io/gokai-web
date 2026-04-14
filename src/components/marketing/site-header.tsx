@@ -97,16 +97,11 @@ export function SiteHeader() {
             })}
           </nav>
 
-          {/* ── Desktop CTAs ── */}
           <div className="hidden items-center gap-2.5 lg:flex">
             <GokaiButton
               href="/inscricao"
               tone="primary"
-              className={cn(
-                "h-9 px-5 text-[13px]",
-                // On dark hero: off-white button = max contrast
-                !scrolled && "bg-surface-light text-primary hover:bg-white border-0"
-              )}
+              className="h-9 px-5 text-[13px]"
             >
               Associe-se
             </GokaiButton>
@@ -173,7 +168,7 @@ export function SiteHeader() {
             })}
           </nav>
           <div className="mt-8 flex flex-col gap-3">
-            <GokaiButton href="/inscricao" tone="secondary" className="w-full justify-center">
+            <GokaiButton href="/inscricao" tone="primary" className="w-full justify-center">
               Associe-se
             </GokaiButton>
             <GokaiButton href="/login" tone="outline" className="w-full justify-center border-white/40 text-white">
