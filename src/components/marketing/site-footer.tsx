@@ -23,11 +23,11 @@ const legalLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-surface-dark text-[var(--text-on-dark)]">
+    <footer className="bg-[var(--surface-ink)] text-[var(--text-on-dark)]">
       {/* Gradient divider — brand signature */}
       <div
         className="h-[2px] w-full"
-        style={{ background: "linear-gradient(90deg, var(--secondary), transparent)" }}
+        style={{ background: "linear-gradient(90deg, var(--accent-red), transparent)" }}
         aria-hidden
       />
 
