@@ -47,7 +47,7 @@ export function SectionHeader({
           <span
             className="block h-[2px] w-16 rounded-full"
             style={{
-              background: "linear-gradient(90deg, #CF2E24 0%, #7AC943 100%)",
+              background: "linear-gradient(90deg, var(--accent-red) 0%, var(--accent-bronze) 100%)",
             }}
             aria-hidden
           />
