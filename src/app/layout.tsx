@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Manrope, Montserrat } from "next/font/google"
+import { Manrope, Montserrat, Outfit } from "next/font/google"
 import { ThemeProvider } from "next-themes"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
@@ -16,6 +16,13 @@ const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+})
+
+// Brand wordmark font — specified in the official GŌKAI brand guide
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
 })
 
 export const metadata: Metadata = {
@@ -55,7 +62,7 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${manrope.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${manrope.variable} ${montserrat.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {/* Organization JSON-LD – helps search engines understand the entity.
