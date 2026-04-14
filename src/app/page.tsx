@@ -124,169 +124,64 @@ export default async function HomePage() {
       <main>
 
         {/* ═══════════════════════════════════════════════════════
-            HERO — Editorial / Institutional / Martial
-            Deep dark green. Strength from type + composition.
+            HERO — Cinematic Spotlight
+            Centralized layout, deep emerald depth, premium seal.
         ═══════════════════════════════════════════════════════ */}
-        <section className="relative min-h-[100svh] bg-[var(--surface-forest)]">
-          {/* Subtle red gradient */}
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{ background: "radial-gradient(circle at 15% 85%, var(--accent-red), transparent 50%)" }}
-          />
+        <section className="relative flex min-h-[100svh] items-center justify-center gokai-hero-spotlight">
+          <BrandContainer className="relative flex flex-col items-center justify-center py-28 text-center lg:py-32">
+            
+            {/* Logo Seal — Larger, centered with deep shadow */}
+            <div
+              className="gokai-hero-enter-scale relative mb-12 flex h-[340px] w-[340px] items-center justify-center rounded-full bg-white shadow-[0_48px_100px_rgba(0,0,0,0.8)]"
+              style={{ animationDelay: "0ms" }}
+            >
+              <BrandLogo
+                className="h-[220px] w-auto"
+                priority
+              />
+            </div>
 
-          {/* Subtle vertical rule — disciplined structure */}
-          <div className="pointer-events-none absolute right-[38%] top-0 bottom-0 w-px bg-white/[0.06] hidden lg:block" />
+            {/* H1 — extrabold, centered, Ivory Silk */}
+            <h1
+              className="gokai-hero-enter font-extrabold tracking-[-0.03em] text-[var(--text-ivory)]"
+              style={{
+                animationDelay: "150ms",
+                fontSize: "clamp(3rem, 8vw, 6rem)",
+                lineHeight: "1.1",
+              }}
+            >
+              Disciplina.<br className="sm:hidden" /> Honra. GŌKAI.
+            </h1>
 
-          <BrandContainer className="relative flex min-h-[100svh] flex-col justify-center py-28 lg:py-32">
-            <div className="grid items-center gap-16 lg:grid-cols-[1fr_400px]">
+            {/* Subtitle — maximum legibility */}
+            <p
+              className="gokai-hero-enter mt-8 max-w-2xl text-lg leading-[1.75] text-[var(--text-ivory-dim)]"
+              style={{ animationDelay: "300ms" }}
+            >
+              Uma associação séria de artes marciais com formação técnica,
+              valores éticos e estrutura institucional transparente para
+              crianças, jovens e adultos.
+            </p>
 
-              {/* ── Left column: editorial content ── */}
-              <div>
-
-                {/* Kicker */}
-                <div
-                  className="gokai-hero-enter mb-10 flex items-center gap-4"
-                  style={{ animationDelay: "0ms" }}
-                >
-                  <span className="h-px w-8 flex-none bg-secondary" aria-hidden />
-                  <span
-                    className="text-[var(--text-on-dark-secondary)]"
-                    style={{
-                      fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.18em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Associação Esportiva e Ambiental · Juiz de Fora / MG
-                  </span>
-                </div>
-
-                {/* H1 — extrabold, larger, "GŌKAI" in red for impact */}
-                <h1
-                  className="gokai-hero-enter font-black tracking-tight text-[var(--text-on-dark)]"
-                  style={{
-                    animationDelay: "120ms",
-                    fontSize: "clamp(3.5rem, 8vw, 6.5rem)",
-                    lineHeight: "0.9",
-                  }}
-                >
-                  Disciplina.<br />
-                  Honra.<br />
-                  <span className="text-[var(--accent-red)]">GŌKAI.</span>
-                </h1>
-
-                {/* Subtitle */}
-                <p
-                  className="gokai-hero-enter mt-8 max-w-md text-base leading-[1.75] text-[var(--text-on-dark-secondary)] sm:text-lg"
-                  style={{ animationDelay: "240ms" }}
-                >
-                  Uma associação séria de artes marciais com formação técnica,
-                  valores éticos e estrutura institucional transparente para
-                  crianças, jovens e adultos.
-                </p>
-
-                {/* CTAs */}
-                <div
-                  className="gokai-hero-enter mt-10 flex flex-wrap gap-3"
-                  style={{ animationDelay: "360ms" }}
-                >
-                  <GokaiButton
-                    href="/inscricao"
-                    tone="primary"
-                    className="h-12 px-8 text-sm"
-                  >
-                    Quero me associar
-                  </GokaiButton>
-                  <GokaiButton
-                    href="/sobre"
-                    tone="outline"
-                    className="h-12 px-8 text-sm border-white/50 text-white hover:bg-white/10 hover:border-white/50"
-                  >
-                    Conhecer a GŌKAI
-                  </GokaiButton>
-                </div>
-
-                {/* Stat row — larger values, extreme weight */}
-                <div
-                  className="gokai-hero-enter mt-14 flex flex-wrap gap-10 border-t border-white/10 pt-10"
-                  style={{ animationDelay: "480ms" }}
-                >
-                  {[
-                    { v: "São Mateus",     l: "Sede · JF/MG"    },
-                    { v: "2024",           l: "Fundação"         },
-                    { v: "Todas as idades", l: "Público atendido" },
-                  ].map(({ v, l }) => (
-                    <div key={l}>
-                      <p className="font-heading text-2xl font-black text-[var(--text-on-dark)]">{v}</p>
-                      <p
-                        className="mt-1 text-[var(--text-on-dark-muted)]"
-                        style={{
-                          fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                          fontSize: "0.75rem",
-                          fontWeight: 700,
-                          letterSpacing: "0.18em",
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {l}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* ── Right column: geometric seal ── */}
-              <div
-                className="gokai-hero-enter-scale relative hidden h-[440px] items-center justify-center lg:flex"
-                style={{ animationDelay: "160ms" }}
+            {/* CTAs — Centralized with correct tones */}
+            <div
+              className="gokai-hero-enter mt-12 flex flex-wrap justify-center gap-4"
+              style={{ animationDelay: "450ms" }}
+            >
+              <GokaiButton
+                href="/inscricao"
+                tone="primary"
+                className="h-14 px-10 text-sm"
               >
-                {/* Outer ring — red on black */}
-                <div
-                  className="absolute rounded-full"
-                  style={{
-                    width: "390px", height: "390px",
-                    border: "1px solid rgba(207,46,36,0.30)",
-                  }}
-                />
-
-                {/* Inner ring */}
-                <div
-                  className="absolute rounded-full"
-                  style={{
-                    width: "300px", height: "300px",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    background: "rgba(207,46,36,0.04)",
-                  }}
-                />
-
-                {/* Horizontal rules — katana reference */}
-                <div
-                  className="absolute left-[-32px] right-[-32px] h-px bg-white/[0.08]"
-                  style={{ top: "calc(50% - 62px)" }}
-                />
-                <div
-                  className="absolute left-[-32px] right-[-32px] h-px bg-white/[0.08]"
-                  style={{ top: "calc(50% + 62px)" }}
-                />
-
-                {/* White seal with logo */}
-                <div
-                  className="relative z-10 flex items-center justify-center rounded-full bg-white"
-                  style={{
-                    width: "264px",
-                    height: "264px",
-                    boxShadow: "0 0 0 1px rgba(207,46,36,0.15), 0 32px 72px rgba(4,16,8,0.35)",
-                  }}
-                >
-                  <BrandLogo
-                    className="h-[168px] w-auto"
-                    priority
-                  />
-                </div>
-              </div>
-
+                Quero me associar
+              </GokaiButton>
+              <GokaiButton
+                href="/sobre"
+                tone="outline"
+                className="h-14 px-10 text-sm"
+              >
+                Conhecer a GŌKAI
+              </GokaiButton>
             </div>
           </BrandContainer>
         </section>
@@ -294,7 +189,7 @@ export default async function HomePage() {
         {/* ═══════════════════════════════════════════════════════
             INSTITUTIONAL PANELS — light section
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[var(--surface-paper)] py-24">
+        <section className="bg-[var(--surface-obsidian)] py-24">
           <BrandContainer>
 
             {/* Section intro */}
@@ -399,7 +294,7 @@ export default async function HomePage() {
         {/* ═══════════════════════════════════════════════════════
             MODALIDADES — DARK section for dramatic rhythm
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[var(--surface-ink)] py-20">
+        <section className="bg-[var(--surface-midnight)] py-20">
           <BrandContainer>
             <div className="mb-14 max-w-2xl">
               <div className="mb-5 flex items-center gap-4">
@@ -480,7 +375,7 @@ export default async function HomePage() {
             GOVERNANÇA E TRANSPARÊNCIA — warm section
         ═══════════════════════════════════════════════════════ */}
         <Section
-          className="bg-[var(--surface-paper)]"
+          className="bg-[var(--surface-obsidian)]"
           title="Governança e Transparência"
           subtitle="Documentos, atas e estrutura organizacional disponíveis para consulta pública."
         >
@@ -522,7 +417,7 @@ export default async function HomePage() {
         ═══════════════════════════════════════════════════════ */}
         {eventos.length > 0 && (
           <Section
-            className="bg-[var(--surface-paper)]"
+            className="bg-[var(--surface-midnight)]"
             title="Próximos eventos"
             subtitle="Campeonatos, seminários e atividades na agenda da GŌKAI."
           >
@@ -552,7 +447,7 @@ export default async function HomePage() {
         ═══════════════════════════════════════════════════════ */}
         {sortedPatrocinadores.length > 0 && (
           <Section
-            className="bg-[var(--surface-paper)]"
+            className="bg-[var(--surface-midnight)]"
             title="Parceiros e apoiadores"
             subtitle="Quem caminha com a GŌKAI fortalece o projeto esportivo e a presença institucional da associação."
           >
@@ -586,7 +481,7 @@ export default async function HomePage() {
         {/* ═══════════════════════════════════════════════════════
             FINAL CTA — dark with gradient divider
         ═══════════════════════════════════════════════════════ */}
-        <section className="relative bg-[var(--surface-forest)] py-24">
+        <section className="relative bg-[var(--surface-midnight)] py-24">
           {/* Gradient divider at top — brand signature */}
           <div
             className="absolute inset-x-0 top-0 h-[2px]"
