@@ -7,21 +7,12 @@ import { cn } from "@/lib/utils"
 type GokaiButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "accent"
 
 const VARIANT_CLASS: Record<GokaiButtonVariant, string> = {
-  primary:
-    "bg-primary text-primary-foreground hover:brightness-110 active:scale-[0.98]",
-
-  secondary:
-    "bg-secondary text-secondary-foreground hover:brightness-110 active:scale-[0.98]",
-
+  primary: "bg-[var(--accent-red)] text-white hover:brightness-110 active:scale-[0.98]",
+  secondary: "bg-[var(--surface-forest)] text-white hover:brightness-110 active:scale-[0.98]",
   outline:
-    "border-2 border-foreground/25 bg-transparent text-foreground hover:border-foreground hover:bg-foreground/6 active:scale-[0.98]",
-
-  ghost:
-    "bg-transparent text-foreground hover:bg-primary/8 hover:text-primary",
-
-  // Red — for CTAs on dark sections
-  accent:
-    "bg-secondary text-white font-bold hover:brightness-110 active:scale-[0.98]",
+    "border-2 border-[var(--surface-ink)] bg-transparent text-[var(--text-primary)] hover:bg-[var(--surface-ink)] hover:text-white active:scale-[0.98]",
+  ghost: "bg-transparent text-[var(--text-primary)] hover:bg-[var(--surface-ink)]/5",
+  accent: "bg-[var(--accent-red)] text-white font-bold hover:brightness-110 active:scale-[0.98]",
 }
 
 interface GokaiButtonProps extends Omit<ComponentProps<typeof Button>, "variant"> {
@@ -37,7 +28,7 @@ export function GokaiButton({
   ...props
 }: GokaiButtonProps) {
   const classes = cn(
-    "rounded-full px-5 font-semibold transition-all duration-200",
+    "rounded-md px-6 py-2.5 font-bold uppercase tracking-wider text-xs transition-all duration-200",
     VARIANT_CLASS[tone],
     className
   )
