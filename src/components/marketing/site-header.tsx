@@ -78,13 +78,13 @@ export function SiteHeader() {
                   href={href}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "group relative text-[13px] font-medium transition-colors duration-200",
+                    "group relative text-[13px] font-medium transition-colors duration-400",
                     // Underline via pseudo — grows on hover
                     "after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full",
-                    "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
+                    "after:origin-left after:scale-x-0 after:transition-transform after:duration-400",
                     isActive
                       ? "text-[var(--text-ivory)] after:bg-[var(--accent-gold)] after:scale-x-100"
-                      : "text-[var(--text-ivory)]/70 hover:text-[var(--accent-gold)] after:bg-[var(--accent-gold)]"
+                      : "text-[var(--text-ivory)]/70 hover:text-[var(--accent-gold)] hover:after:scale-x-100 after:bg-[var(--accent-gold)]"
                   )}
                 >
                   {label}
@@ -129,7 +129,7 @@ export function SiteHeader() {
       {/* ── Mobile menu — full-width dropdown ── */}
       <div
         className={cn(
-          "fixed inset-x-0 top-0 z-40 bg-[var(--surface-midnight)] pt-20 pb-8 transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-0 z-40 bg-[var(--surface-midnight)] pt-20 pb-8 transition-all duration-400 lg:hidden",
           mobileOpen
             ? "translate-y-0 opacity-100"
             : "-translate-y-4 opacity-0 pointer-events-none"
@@ -146,7 +146,7 @@ export function SiteHeader() {
                   href={href}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "py-3 text-lg font-medium border-b border-[var(--accent-gold)]/12 transition-colors",
+                    "py-3 text-lg font-medium border-b border-[var(--accent-gold)]/12 transition-colors duration-400",
                     isActive ? "text-[var(--text-ivory)]" : "text-[var(--text-ivory)]/70 hover:text-[var(--accent-gold)]"
                   )}
                 >
