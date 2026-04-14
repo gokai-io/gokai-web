@@ -23,6 +23,7 @@
   /* ── Midnight Sanctuary ── */
   --color-surface-midnight: var(--surface-midnight);
   --color-surface-obsidian: var(--surface-obsidian);
+  --color-surface-glass: var(--surface-glass);
   --color-accent-gold: var(--accent-gold);
   --color-accent-carmine: var(--accent-carmine);
   --color-text-ivory: var(--text-ivory);
@@ -71,11 +72,10 @@
     scroll-behavior: smooth;
   }
   body {
-    /* Clean off-white — no gradient noise on non-hero pages */
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-medium;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-extrabold;
+    @apply font-heading font-extrabold tracking-[-0.03em];
   }
   ::selection {
     background-color: rgba(11, 90, 43, 0.18);
@@ -166,7 +166,7 @@
     align-items: center;
     gap: 0.6rem;
     font-family: var(--font-outfit, var(--font-montserrat, system-ui));
-    font-size: 0.75rem;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.32em;
     text-transform: uppercase;
