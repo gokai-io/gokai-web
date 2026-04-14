@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ArrowRightIcon, CalendarDaysIcon, FileTextIcon, MapPinIcon } from "lucide-react"
 
 import { BrandContainer } from "@/components/branding/brand-container"
-import { GokaiMarkSvg, GokaiWordmarkSvg } from "@/components/branding/brand-svg"
+import { BrandLogo } from "@/components/branding/brand-logo"
 import { GokaiButton } from "@/components/branding/gokai-button"
 import { InstitutionalCard } from "@/components/branding/institutional-card"
 import { SiteFooter } from "@/components/marketing/site-footer"
@@ -233,59 +233,59 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              {/* ── Right column: geometric mark composition ── */}
+              {/* ── Right column: geometric composition com logo real ── */}
               {/*
-                The GŌKAI mark is placed within a set of concentric circles
-                (the macro-scale "sol nascente" / rising sun motif from the logo).
-                No cards, no glow, no glass — pure geometric architecture.
+                Composição inspirada no brand guide: logo PNG oficial dentro de
+                um "selo" circular branco, rodeado por anéis do motivo sol nascente.
+                Sem glass, sem glow — arquitectura pura.
               */}
               <div
                 className="gokai-hero-enter-scale relative hidden h-[440px] items-center justify-center lg:flex"
                 style={{ animationDelay: "160ms" }}
               >
-                {/* Outer ring — large sun halo */}
+                {/* Outer ring — halo do sol (anel exterior) */}
                 <div
                   className="absolute rounded-full"
                   style={{
-                    width: "380px", height: "380px",
-                    border: "1px solid rgba(207,46,36,0.28)",
+                    width: "390px", height: "390px",
+                    border: "1px solid rgba(207,46,36,0.25)",
                   }}
                 />
 
-                {/* Second ring */}
+                {/* Inner ring — segundo anel */}
                 <div
                   className="absolute rounded-full"
                   style={{
-                    width: "296px", height: "296px",
-                    border: "1px solid rgba(207,46,36,0.15)",
-                    background: "rgba(207,46,36,0.06)",
+                    width: "300px", height: "300px",
+                    border: "1px solid rgba(207,46,36,0.12)",
+                    background: "rgba(207,46,36,0.05)",
                   }}
                 />
 
-                {/* Horizontal structural rules — katana references */}
-                <div className="absolute left-[-28px] right-[-28px] h-px bg-white/[0.08]"
-                  style={{ top: "calc(50% - 60px)" }} />
-                <div className="absolute left-[-28px] right-[-28px] h-px bg-white/[0.08]"
-                  style={{ top: "calc(50% + 60px)" }} />
+                {/* Réguas horizontais — referência à katana */}
+                <div
+                  className="absolute left-[-32px] right-[-32px] h-px bg-white/[0.08]"
+                  style={{ top: "calc(50% - 62px)" }}
+                />
+                <div
+                  className="absolute left-[-32px] right-[-32px] h-px bg-white/[0.08]"
+                  style={{ top: "calc(50% + 62px)" }}
+                />
 
-                {/* Mark + wordmark — the composition centrepiece */}
-                <div className="relative z-10 flex flex-col items-center gap-5">
-                  <GokaiMarkSvg className="h-[188px] w-[188px]" />
-                  <div className="text-center">
-                    <GokaiWordmarkSvg className="h-7 w-auto text-white/72" />
-                    <p
-                      className="mt-2.5 text-white/30"
-                      style={{
-                        fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                        fontSize: "0.6rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.38em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Associação Esportiva e Ambiental
-                    </p>
-                  </div>
+                {/* Círculo branco — "selo" institucional com a logo real */}
+                {/* Espelha o fundo branco do primary logo do brand guide */}
+                <div
+                  className="relative z-10 flex items-center justify-center rounded-full bg-white"
+                  style={{
+                    width: "240px",
+                    height: "240px",
+                    boxShadow: "0 0 0 1px rgba(207,46,36,0.15), 0 24px 60px rgba(4,16,8,0.30)",
+                  }}
+                >
+                  <BrandLogo
+                    className="h-[196px] w-auto"
+                    priority
+                  />
                 </div>
               </div>
 

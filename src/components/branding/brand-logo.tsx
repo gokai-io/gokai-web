@@ -1,77 +1,93 @@
 /**
- * GŌKAI Brand Logo — unified export
+ * GŌKAI Brand Logo — usa a imagem PNG oficial com fundo transparente.
  *
- * Renders the brand identity using inline SVG components (no external images,
- * no broken references). All sizing is controlled via Tailwind classes.
+ * gokai_logo_transparent.png (588×508) — logo completa (marca + wordmark).
  *
  * Exports:
- *   BrandLogo       — flexible: "full"/"mark" = emblem, "wordmark" = text
- *   BrandMark       — circular emblem only
- *   BrandWordmark   — "GŌKAI" text wordmark (currentColor → set via text-* class)
+ *   BrandLogo       — logo completa (PNG oficial), adaptável para fundo claro e escuro
+ *   BrandMark       — apenas o emblema circular (SVG, para ícones pequenos)
+ *   BrandWordmark   — apenas o texto wordmark (SVG, adaptável por cor)
  */
 
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { GokaiMarkSvg, GokaiWordmarkSvg } from "./brand-svg"
 
-// ─── Types ─────────────────────────────────────────────────────────────────────
-
-type LogoVariant = "full" | "full-light" | "mark" | "wordmark"
+// ─── Logo completa (PNG oficial) ───────────────────────────────────────────────
 
 interface BrandLogoProps {
-  /** Which asset variant to display */
-  variant?: LogoVariant
   className?: string
-  /** No-op — kept for call-site compatibility. Inline SVGs need no preloading. */
+  /**
+   * dark=true → aplica filter brightness(0) invert(1), tornando tudo branco.
+   * Use em fundos escuros (hero verde, footer, mobile menu).
+   */
+  dark?: boolean
   priority?: boolean
-  /** No-op — kept for call-site compatibility. Inline SVGs have no sizes hint. */
+  /** No-op legacy — kept for call-site compat */
+  variant?: string
+  /** No-op legacy */
   sizes?: string
 }
 
-// ─── BrandLogo ─────────────────────────────────────────────────────────────────
-
 /**
- * Unified brand logo component.
+ * BrandLogo — logo completa GŌKAI (samurai + sol + folha + "GŌKAI").
  *
- * - "full" / "full-light" / "mark"  → circular emblem SVG
- * - "wordmark"                       → "GŌKAI" text (inherits parent CSS color)
+ * Usa a imagem PNG oficial com fundo transparente.
+ * Em fundos escuros, use dark={true} para versão branca.
+ *
+ * @example
+ *   // Fundo claro (header scrollado, seções off-white)
+ *   <BrandLogo className="h-12 w-auto" />
+ *
+ *   // Fundo escuro (hero verde, footer)
+ *   <BrandLogo className="h-14 w-auto" dark />
  */
 export function BrandLogo({
-  variant = "full",
   className,
-  priority: _priority,
+  dark = false,
+  priority = false,
+  variant: _variant,
   sizes: _sizes,
 }: BrandLogoProps) {
-  if (variant === "wordmark") {
-    return <GokaiWordmarkSvg className={className} />
-  }
-
-  // "full", "full-light", "mark" → all render the circular emblem
-  return <GokaiMarkSvg className={cn("block", className)} />
+  return (
+    <Image
+      src="/assets/branding/gokai_logo_transparent.png"
+      alt="GŌKAI — Associação Esportiva e Ambiental"
+      // Dimensões originais 588×508 — Next.js calcula o aspect ratio
+      width={588}
+      height={508}
+      priority={priority}
+      className={cn("h-auto w-auto object-contain", className)}
+      style={dark ? { filter: "brightness(0) invert(1)" } : undefined}
+    />
+  )
 }
 
-// ─── Convenience exports ────────────────────────────────────────────────────────
+// ─── Marca circular (SVG — escala perfeita em ícones pequenos) ─────────────────
 
-/** Circular emblem — use for square icon contexts (headers, cards, favicons) */
+/**
+ * BrandMark — apenas o emblema circular (samurai + sol + folha).
+ * Usa SVG para perfeita nitidez em contextos de ícone (section headers, etc.).
+ * Dimensione via className: h-9 w-9, h-10 w-10, etc.
+ */
 export function BrandMark({
   className,
   priority: _p,
   sizes: _s,
-}: Omit<BrandLogoProps, "variant">) {
+}: Omit<BrandLogoProps, "variant" | "dark">) {
   return <GokaiMarkSvg className={cn("block", className)} />
 }
 
+// ─── Wordmark de texto (SVG — cor via currentColor) ────────────────────────────
+
 /**
- * Text wordmark — "GŌKAI" rendered via inline SVG.
- * Color follows the CSS `color` / Tailwind `text-*` set on this element or a parent.
- *
- * Common usage:
- *   Light bg:  <BrandWordmark className="h-7 w-auto text-foreground" />
- *   Dark bg:   <BrandWordmark className="h-7 w-auto text-white" />
+ * BrandWordmark — "GŌKAI" em Outfit 700.
+ * Cor via CSS `color` / Tailwind `text-*` no elemento ou no pai.
  */
 export function BrandWordmark({
   className,
   priority: _p,
   sizes: _s,
-}: Omit<BrandLogoProps, "variant">) {
+}: Omit<BrandLogoProps, "variant" | "dark">) {
   return <GokaiWordmarkSvg className={className} />
 }

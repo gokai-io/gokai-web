@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import { MenuIcon, X } from "lucide-react"
 
 import { BrandContainer } from "@/components/branding/brand-container"
-import { GokaiMarkSvg, GokaiWordmarkSvg } from "@/components/branding/brand-svg"
+import { BrandLogo } from "@/components/branding/brand-logo"
 import { GokaiButton } from "@/components/branding/gokai-button"
 import { cn } from "@/lib/utils"
 
@@ -51,21 +51,16 @@ export function SiteHeader() {
       >
         <BrandContainer className="flex items-center justify-between gap-8">
 
-          {/* ── Logo ── */}
+          {/* ── Logo — PNG oficial, com/sem filtro conforme fundo ── */}
           <Link
             href="/"
-            className="flex flex-none items-center gap-3"
+            className="flex flex-none items-center"
             aria-label="GŌKAI — página inicial"
           >
-            {/* Mark — clean, no box */}
-            <GokaiMarkSvg className="h-9 w-9 flex-none rounded-xl" />
-
-            {/* Wordmark — color adapts to context */}
-            <GokaiWordmarkSvg
-              className={cn(
-                "h-[22px] w-auto transition-colors duration-300",
-                scrolled ? "text-foreground" : "text-white"
-              )}
+            <BrandLogo
+              className="h-[52px] w-auto transition-all duration-300"
+              dark={!scrolled}
+              priority
             />
           </Link>
 
