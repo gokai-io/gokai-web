@@ -20,63 +20,45 @@
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --font-heading: var(--font-montserrat);
 
-  /* ── Pergaminho e Nanquim ── */
-  --color-surface-paper: var(--surface-paper);
-  --color-surface-ink: var(--surface-ink);
-  --color-surface-forest: var(--surface-forest);
-  --color-accent-red: var(--accent-red);
-  --color-accent-bronze: var(--accent-bronze);
-
-  /* ── Text Variables ── */
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-on-dark: var(--text-on-dark);
-  --color-text-on-dark-secondary: var(--text-on-dark-secondary);
-  --color-text-on-dark-muted: var(--text-on-dark-muted);
-
-  /* ── Legacy Mappings ── */
-  --color-surface-dark: var(--surface-ink);
-  --color-surface-warm: var(--surface-paper);
-  --color-surface-light: var(--surface-paper);
+  /* ── Midnight Sanctuary ── */
+  --color-surface-midnight: var(--surface-midnight);
+  --color-surface-obsidian: var(--surface-obsidian);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-carmine: var(--accent-carmine);
+  --color-text-ivory: var(--text-ivory);
 }
 
 :root {
   --font-sans: var(--font-manrope);
 
-  /* ── Superfícies ── */
-  --surface-paper:      #F2EFE9;   /* Papel Osso */
-  --surface-ink:        #1A1A1B;   /* Nanquim Profundo */
-  --surface-forest:     #142D1F;   /* Musgo Floresta */
-  --surface-white:      #FFFFFF;
+  /* ── Superfícies — Profundidade de Camadas ── */
+  --surface-midnight:   #08100D;   /* Midnight Emerald */
+  --surface-obsidian:   #050807;   /* Deep Obsidian */
+  --surface-glass:      rgba(255, 255, 255, 0.03);
 
-  /* ── Acentos ── */
-  --accent-red:         #A6261F;   /* Vermelho Imperial */
-  --accent-bronze:      #B08D57;   /* Bronze Envelhecido */
+  /* ── Acentos — Ouro e Carmim ── */
+  --accent-gold:        #C5A059;   /* Champagne Gold */
+  --accent-carmine:     #8E1610;   /* Crimson Seal */
 
-  /* ── Texto ── */
-  --text-primary:       #1A1A1B;
-  --text-secondary:     rgba(26, 26, 27, 0.82);
-  --text-on-dark:       #F7F6F2;
-  --text-on-dark-secondary: rgba(247, 246, 242, 0.92);
-  --text-on-dark-muted:     rgba(247, 246, 242, 0.68);
+  /* ── Texto — Máxima Legibilidade ── */
+  --text-ivory:         #F8F7F3;   /* Ivory Silk */
+  --text-ivory-dim:     rgba(248, 247, 243, 0.78);
+  --text-ivory-muted:   rgba(248, 247, 243, 0.58);
 
   /* ── Shadcn / Base Overrides ── */
-  --background: var(--surface-paper);
-  --foreground: var(--text-primary);
-  --primary: var(--accent-red);
+  --background: var(--surface-midnight);
+  --foreground: var(--text-ivory);
+  --primary: var(--accent-carmine);
   --primary-foreground: #FFFFFF;
-  --secondary: var(--surface-forest);
-  --secondary-foreground: #FFFFFF;
-  --border: color-mix(in srgb, var(--surface-ink) 12%, transparent);
-  --radius: 0.5rem;
+  --secondary: var(--surface-obsidian);
+  --secondary-foreground: var(--text-ivory);
+  --border: rgba(197, 160, 89, 0.15);
+  --radius: 0.25rem;
 }
 
 .dark {
-  --surface-paper:      #121213;
-  --text-primary:       #F7F6F2;
-  --text-secondary:     rgba(247, 246, 242, 0.78);
-  --background: var(--surface-paper);
-  --foreground: #F0F0F0;
+  --background: var(--surface-midnight);
+  --foreground: var(--text-ivory);
 }
 
 @layer base {
@@ -93,7 +75,7 @@
     @apply bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
+    @apply font-heading font-extrabold;
   }
   ::selection {
     background-color: rgba(11, 90, 43, 0.18);
@@ -120,6 +102,14 @@
 }
 
 @layer components {
+  .gokai-hero-spotlight {
+    background: radial-gradient(
+      circle at center,
+      #142D23 0%,
+      var(--surface-midnight) 70%
+    );
+  }
+
   /* Legacy — kept for pages still using it */
   .gokai-page-shell {
     background: var(--background);
@@ -178,8 +168,9 @@
     font-family: var(--font-outfit, var(--font-montserrat, system-ui));
     font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
+    color: var(--accent-gold);
   }
 
   .gokai-divider {
