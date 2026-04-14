@@ -73,23 +73,30 @@
 
 :root {
   --font-sans: var(--font-manrope);
-  --background: #F5F4F0;
-  --foreground: #112A1A;
+
+  /* ── Cores base ── */
+  --background: #F5F4F0;    /* off-white institucional */
+  --foreground: #0E2219;    /* verde floresta quase preto — leitura máxima */
   --card: #FFFFFF;
-  --card-foreground: #112A1A;
+  --card-foreground: #0E2219;
   --popover: #FFFFFF;
-  --popover-foreground: #112A1A;
+  --popover-foreground: #0E2219;
+
+  /* ── Paleta brand ── */
   --primary: #0B5A2B;
   --primary-foreground: #F5F4F0;
   --secondary: #CF2E24;
   --secondary-foreground: #F5F4F0;
-  --muted: #E8E2D6;
-  --muted-foreground: #4E6152;
   --accent: #7AC943;
-  --accent-foreground: #112A1A;
+  --accent-foreground: #0E2219;
   --destructive: #991f17;
-  --border: #C8CEC3;
-  --input: #D2D8CD;
+
+  /* ── Neutros ── */
+  /* muted-foreground mais escuro = contraste WCAG AA em todos os fundos */
+  --muted: #EAE5DC;
+  --muted-foreground: #324A3C;   /* era #4E6152 — 11.7:1 no branco, 10:1 no off-white */
+  --border: #C4CAC0;
+  --input: #D0D6CB;
   --ring: #0B5A2B;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);

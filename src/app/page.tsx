@@ -81,14 +81,14 @@ function ConteudosTeaser() {
   if (articles.length === 0) return null
   return (
     <Section
-      className="bg-[#F0EBE1]"
+      className="bg-background"
       title="Conteúdos e Formação"
       subtitle="A GŌKAI também se expressa fora do tatame: visão institucional, formação humana e cultura marcial."
     >
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {articles.map((article) => (
           <InstitutionalCard key={article.slug} accent="neutral" className="flex h-full flex-col gap-5">
-            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-primary/58">
+            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-primary/75">
               <span>{categoriaLabels[article.categoria as ArticleCategoria]}</span>
               <span>{article.leitura_min} min</span>
             </div>
@@ -151,7 +151,7 @@ export default async function HomePage() {
                       fontWeight: 700,
                       letterSpacing: "0.38em",
                       textTransform: "uppercase",
-                      color: "rgba(247,246,242,0.50)",
+                      color: "rgba(247,246,242,0.72)",
                     }}
                   >
                     Associação Esportiva e Ambiental · Juiz de Fora / MG
@@ -170,12 +170,12 @@ export default async function HomePage() {
                 >
                   Disciplina.<br />
                   Honra.<br />
-                  <span style={{ color: "rgba(247,246,242,0.50)" }}>GŌKAI.</span>
+                  <span style={{ color: "rgba(247,246,242,0.60)" }}>GŌKAI.</span>
                 </h1>
 
                 {/* Sub — institutional, not product copy */}
                 <p
-                  className="gokai-hero-enter mt-8 max-w-md text-base leading-[1.75] text-white/58 sm:text-lg"
+                  className="gokai-hero-enter mt-8 max-w-md text-base leading-[1.75] text-white/78 sm:text-lg"
                   style={{ animationDelay: "240ms" }}
                 >
                   Uma associação séria de artes marciais com formação técnica,
@@ -198,7 +198,7 @@ export default async function HomePage() {
                   <GokaiButton
                     href="/sobre"
                     tone="outline"
-                    className="h-11 px-7 text-sm border-white/20 text-white/80 hover:bg-white/8 hover:text-white hover:border-white/35"
+                    className="h-11 px-7 text-sm border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50"
                   >
                     Conhecer a GŌKAI
                   </GokaiButton>
@@ -217,7 +217,7 @@ export default async function HomePage() {
                     <div key={l}>
                       <p className="font-heading text-sm font-bold text-white">{v}</p>
                       <p
-                        className="mt-1 text-white/38"
+                        className="mt-1 text-white/62"
                         style={{
                           fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                           fontSize: "0.62rem",
@@ -357,11 +357,11 @@ export default async function HomePage() {
               ].map((panel) => (
                 <div
                   key={panel.num}
-                  className="group flex flex-col gap-6 bg-white p-8 md:p-10 border-b border-border md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-[#F9F9F8]"
+                  className="group flex flex-col gap-6 bg-white p-8 md:p-10 border-b border-border md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-muted/40"
                   style={{ borderTop: `4px solid ${panel.accent}` }}
                 >
                   <span
-                    className="block text-muted-foreground/55"
+                    className="block text-muted-foreground"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                       fontSize: "0.62rem",
@@ -400,7 +400,7 @@ export default async function HomePage() {
             MODALIDADES — fundo claro, texto legível
             (seção verde escura causava texto invisível — bug corrigido)
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[#EDE5D5] py-20">
+        <section className="bg-white py-20">
           <BrandContainer>
             {/* Section intro manual — controla a cor do texto */}
             <div className="mb-14 max-w-2xl">
@@ -524,7 +524,7 @@ export default async function HomePage() {
         ═══════════════════════════════════════════════════════ */}
         {eventos.length > 0 && (
           <Section
-            className="bg-[#F0EBE1]"
+            className="bg-background"
             title="Próximos eventos"
             subtitle="Campeonatos, seminários e atividades na agenda da GŌKAI."
           >
@@ -588,14 +588,14 @@ export default async function HomePage() {
         {/* ═══════════════════════════════════════════════════════
             FINAL CTA — verde mais escuro que o hero, tom de encerramento
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[#112A1A] py-24">
+        <section className="bg-[#0B5A2B] py-24">
           <BrandContainer>
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="max-w-2xl">
                 <div className="mb-5 flex items-center gap-4">
                   <span className="h-px w-8 bg-[#CF2E24]" aria-hidden />
                   <span
-                    className="text-white/40"
+                    className="text-white/68"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                       fontSize: "0.65rem",
@@ -610,7 +610,7 @@ export default async function HomePage() {
                 <h2 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl">
                   Comece a sua jornada com disciplina e propósito.
                 </h2>
-                <p className="mt-5 max-w-lg text-base leading-relaxed text-white/55">
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-white/78">
                   Artes marciais sérias, formação humana e compromisso institucional.
                   Crianças, jovens e adultos bem-vindos.
                 </p>
@@ -627,7 +627,7 @@ export default async function HomePage() {
                 <GokaiButton
                   href="/contato"
                   tone="outline"
-                  className="h-12 px-8 text-sm border-white/20 text-white/75 hover:bg-white/8 hover:text-white hover:border-white/35"
+                  className="h-12 px-8 text-sm border-white/30 text-white hover:bg-white/10 hover:border-white/50"
                 >
                   Entrar em contato
                 </GokaiButton>
