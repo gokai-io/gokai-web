@@ -105,7 +105,7 @@ export function SiteHeader() {
               className={cn(
                 "h-9 px-5 text-[13px]",
                 // On dark hero: off-white button = max contrast
-                !scrolled && "bg-[#F5F4F0] text-[#0B5A2B] hover:bg-white border-0"
+                !scrolled && "bg-surface-light text-primary hover:bg-white border-0"
               )}
             >
               Associe-se
@@ -146,7 +146,7 @@ export function SiteHeader() {
       {/* ── Mobile menu — full-width dropdown ── */}
       <div
         className={cn(
-          "fixed inset-x-0 top-0 z-40 bg-[#0B5A2B] pt-20 pb-8 transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-0 z-40 bg-primary pt-20 pb-8 transition-all duration-300 lg:hidden",
           mobileOpen
             ? "translate-y-0 opacity-100"
             : "-translate-y-4 opacity-0 pointer-events-none"
@@ -173,7 +173,7 @@ export function SiteHeader() {
             })}
           </nav>
           <div className="mt-8 flex flex-col gap-3">
-            <GokaiButton href="/inscricao" tone="primary" className="w-full justify-center bg-[#F5F4F0] text-[#0B5A2B] hover:bg-white border-0">
+            <GokaiButton href="/inscricao" tone="primary" className="w-full justify-center bg-surface-light text-primary hover:bg-white border-0">
               Associe-se
             </GokaiButton>
             <GokaiButton href="/login" tone="outline" className="w-full justify-center border-white/25 text-white/80">

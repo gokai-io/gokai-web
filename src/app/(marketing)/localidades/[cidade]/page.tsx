@@ -107,7 +107,7 @@ export default async function LocalidadePage({ params }: Props) {
   ])
 
   return (
-    <div className="min-h-screen bg-[#0C2418]">
+    <div className="min-h-screen bg-surface-dark">
       {/* ── Structured data ─────────────────────────────────────────────────── */}
       <script type="application/ld+json">{JSON.stringify(localBusinessJsonLd)}</script>
       <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
@@ -115,7 +115,7 @@ export default async function LocalidadePage({ params }: Props) {
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative min-h-[52vh] flex items-end overflow-hidden">
         {/* Background — abstract topographic/location feel */}
-        <div className="absolute inset-0 bg-[#123020]">
+        <div className="absolute inset-0 bg-surface-dark-alt">
           {/* Atmospheric radial gradient — city glow */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(220,38,38,0.09),transparent_65%)]" />
           {/* Subtle noise texture */}
@@ -142,7 +142,7 @@ export default async function LocalidadePage({ params }: Props) {
             {/* Breadcrumb */}
             <Link
               href="/localidades"
-              className="mb-10 inline-flex items-center gap-2 text-[11px] font-semibold text-white/45 hover:text-white/72 transition-colors uppercase tracking-widest"
+              className="mb-10 inline-flex items-center gap-2 text-[11px] font-semibold text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark-secondary)] transition-colors uppercase tracking-widest"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               Localidades
@@ -159,15 +159,15 @@ export default async function LocalidadePage({ params }: Props) {
               </div>
 
               {/* Main heading */}
-              <h1 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black tracking-tight text-white leading-[0.9] mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black tracking-tight text-[var(--text-on-dark)] leading-[0.9] mb-6">
                 Artes Marciais
                 <br />
-                <span className="text-white/62">em {cityLabel}</span>
+                <span className="text-[var(--text-on-dark-secondary)]">em {cityLabel}</span>
               </h1>
 
               {/* Description */}
               {loc.descricao && (
-                <p className="text-lg text-white/72 leading-relaxed max-w-2xl font-light">
+                <p className="text-lg text-[var(--text-on-dark-secondary)] leading-relaxed max-w-2xl font-light">
                   {loc.descricao}
                 </p>
               )}
@@ -179,10 +179,10 @@ export default async function LocalidadePage({ params }: Props) {
                     <Link
                       key={mod.slug}
                       href={`/modalidades/${mod.slug}`}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-white/18 bg-white/6 px-3.5 py-1.5 text-[11px] font-semibold text-white/72 hover:border-red-600/50 hover:text-white transition-all duration-200"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-white/18 bg-white/6 px-3.5 py-1.5 text-[11px] font-semibold text-[var(--text-on-dark-secondary)] hover:border-red-600/50 hover:text-[var(--text-on-dark)] transition-all duration-200"
                     >
                       {mod.nome}
-                      <ArrowRight className="w-2.5 h-2.5 text-white/45" />
+                      <ArrowRight className="w-2.5 h-2.5 text-[var(--text-on-dark-muted)]" />
                     </Link>
                   ))}
                 </div>
@@ -212,19 +212,19 @@ export default async function LocalidadePage({ params }: Props) {
                     <Link
                       key={mod.slug}
                       href={`/modalidades/${mod.slug}`}
-                      className="group relative rounded-xl border border-white/12 bg-[#123020]/40 p-6 hover:border-white/28 hover:bg-[#123020]/70 transition-all duration-300 overflow-hidden"
+                      className="group relative rounded-xl border border-white/12 bg-surface-dark-alt/40 p-6 hover:border-white/28 hover:bg-surface-dark-alt/70 transition-all duration-300 overflow-hidden"
                     >
                       {/* Hover accent */}
                       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-red-600/0 via-red-600/40 to-red-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <h3 className="font-bold text-white group-hover:text-white transition-colors mb-2">
+                      <h3 className="font-bold text-[var(--text-on-dark)] group-hover:text-[var(--text-on-dark)] transition-colors mb-2">
                         {mod.nome}
                       </h3>
                       {mod.tagline && (
-                        <p className="text-sm text-white/45 leading-relaxed mb-4">
+                        <p className="text-sm text-[var(--text-on-dark-muted)] leading-relaxed mb-4">
                           {mod.tagline}
                         </p>
                       )}
-                      <span className="text-[11px] font-semibold text-white/30 group-hover:text-red-500 transition-colors">
+                      <span className="text-[11px] font-semibold text-[var(--text-on-dark-muted)] group-hover:text-red-500 transition-colors">
                         Ver modalidade →
                       </span>
                     </Link>
@@ -261,15 +261,15 @@ export default async function LocalidadePage({ params }: Props) {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-xl border border-white/12 bg-[#123020]/30 p-6 hover:border-white/18 transition-colors duration-300"
+                    className="rounded-xl border border-white/12 bg-surface-dark-alt/30 p-6 hover:border-white/18 transition-colors duration-300"
                   >
                     <div className="flex items-start gap-3 mb-3">
                       <div className="mt-0.5 flex-none size-5 rounded-full border border-red-600/30 bg-red-600/10 flex items-center justify-center">
                         <ChevronRight className="size-3 text-red-500" />
                       </div>
-                      <h3 className="text-sm font-bold text-white/85">{item.label}</h3>
+                      <h3 className="text-sm font-bold text-[var(--text-on-dark)]">{item.label}</h3>
                     </div>
-                    <p className="text-sm text-white/45 leading-relaxed pl-8">{item.desc}</p>
+                    <p className="text-sm text-[var(--text-on-dark-muted)] leading-relaxed pl-8">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -312,10 +312,10 @@ export default async function LocalidadePage({ params }: Props) {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="rounded-xl border border-white/12 bg-[#123020]/20 p-6 hover:border-white/18 transition-colors"
+                    className="rounded-xl border border-white/12 bg-surface-dark-alt/20 p-6 hover:border-white/18 transition-colors"
                   >
-                    <h3 className="text-sm font-bold text-white/85 mb-3">{item.q}</h3>
-                    <p className="text-sm text-white/45 leading-relaxed">{item.a}</p>
+                    <h3 className="text-sm font-bold text-[var(--text-on-dark)] mb-3">{item.q}</h3>
+                    <p className="text-sm text-[var(--text-on-dark-muted)] leading-relaxed">{item.a}</p>
                   </div>
                 ))}
               </div>
@@ -327,23 +327,23 @@ export default async function LocalidadePage({ params }: Props) {
           <div className="space-y-5">
 
             {/* Primary CTA card */}
-            <div className="rounded-2xl border border-white/18/80 bg-[#123020] p-7 lg:sticky lg:top-8">
+            <div className="rounded-2xl border border-white/18/80 bg-surface-dark-alt p-7 lg:sticky lg:top-8">
               <div className="flex items-center gap-2 mb-4">
                 <Users className="w-4 h-4 text-red-500" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/45">
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--text-on-dark-muted)]">
                   {cityLabel}
                 </span>
               </div>
-              <h2 className="text-lg font-bold text-white mb-1.5">
+              <h2 className="text-lg font-bold text-[var(--text-on-dark)] mb-1.5">
                 Comece em {loc.cidade}
               </h2>
-              <p className="text-sm text-white/62 leading-relaxed mb-6">
+              <p className="text-sm text-[var(--text-on-dark-secondary)] leading-relaxed mb-6">
                 Inscreva-se e dê o primeiro passo. Nossa equipe orienta você em cada etapa.
               </p>
 
               <Link
                 href="/inscricao"
-                className="group relative block w-full overflow-hidden rounded-xl bg-red-600 px-5 py-3.5 text-center text-sm font-bold text-[#0C2418] hover:bg-red-500 transition-colors"
+                className="group relative block w-full overflow-hidden rounded-xl bg-red-600 px-5 py-3.5 text-center text-sm font-bold text-surface-dark hover:bg-red-500 transition-colors"
               >
                 <span className="relative z-10">Iniciar inscrição</span>
                 <div className="absolute inset-0 -z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -351,39 +351,39 @@ export default async function LocalidadePage({ params }: Props) {
 
               <Link
                 href="/contato"
-                className="mt-2.5 block w-full rounded-xl border border-white/18 px-5 py-3 text-center text-sm font-medium text-white/62 hover:border-white/35 hover:text-white/85 transition-colors"
+                className="mt-2.5 block w-full rounded-xl border border-white/18 px-5 py-3 text-center text-sm font-medium text-[var(--text-on-dark-secondary)] hover:border-white/35 hover:text-[var(--text-on-dark)] transition-colors"
               >
                 Falar com a equipe
               </Link>
 
-              <p className="mt-5 text-center text-xs text-white/30">
+              <p className="mt-5 text-center text-xs text-[var(--text-on-dark-muted)]">
                 Iniciantes e todos os níveis são bem-vindos
               </p>
             </div>
 
             {/* Location info card */}
             {(loc.endereco || loc.mapaUrl || CONTACT_PHONE_DISPLAY || CONTACT_EMAIL) && (
-              <div className="rounded-2xl border border-white/12 bg-[#123020]/40 p-6 space-y-4">
-                <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-white/62 flex items-center gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-white/45" />
+              <div className="rounded-2xl border border-white/12 bg-surface-dark-alt/40 p-6 space-y-4">
+                <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--text-on-dark-secondary)] flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-[var(--text-on-dark-muted)]" />
                   Informações de contato
                 </h2>
 
                 {loc.localNome && (
                   <div>
-                    <p className="text-[10px] text-white/30 uppercase tracking-wide font-medium mb-1">
+                    <p className="text-[10px] text-[var(--text-on-dark-muted)] uppercase tracking-wide font-medium mb-1">
                       Local de treino
                     </p>
-                    <p className="text-sm text-white/72 font-medium">{loc.localNome}</p>
+                    <p className="text-sm text-[var(--text-on-dark-secondary)] font-medium">{loc.localNome}</p>
                   </div>
                 )}
 
                 {loc.endereco && (
                   <div>
-                    <p className="text-[10px] text-white/30 uppercase tracking-wide font-medium mb-1">
+                    <p className="text-[10px] text-[var(--text-on-dark-muted)] uppercase tracking-wide font-medium mb-1">
                       Endereço
                     </p>
-                    <p className="text-sm text-white/62 leading-relaxed">{loc.endereco}</p>
+                    <p className="text-sm text-[var(--text-on-dark-secondary)] leading-relaxed">{loc.endereco}</p>
                   </div>
                 )}
 
@@ -400,11 +400,11 @@ export default async function LocalidadePage({ params }: Props) {
                 )}
 
                 {CONTACT_PHONE_DISPLAY && (
-                  <div className="flex items-center gap-2 text-sm text-white/62">
-                    <Phone className="w-3.5 h-3.5 text-white/30 shrink-0" />
+                  <div className="flex items-center gap-2 text-sm text-[var(--text-on-dark-secondary)]">
+                    <Phone className="w-3.5 h-3.5 text-[var(--text-on-dark-muted)] shrink-0" />
                     <a
                       href={`tel:${CONTACT_PHONE_HREF}`}
-                      className="hover:text-white/85 transition-colors"
+                      className="hover:text-[var(--text-on-dark)] transition-colors"
                     >
                       {CONTACT_PHONE_DISPLAY}
                     </a>
@@ -412,11 +412,11 @@ export default async function LocalidadePage({ params }: Props) {
                 )}
 
                 {CONTACT_EMAIL && (
-                  <div className="flex items-center gap-2 text-sm text-white/62">
-                    <Mail className="w-3.5 h-3.5 text-white/30 shrink-0" />
+                  <div className="flex items-center gap-2 text-sm text-[var(--text-on-dark-secondary)]">
+                    <Mail className="w-3.5 h-3.5 text-[var(--text-on-dark-muted)] shrink-0" />
                     <a
                       href={`mailto:${CONTACT_EMAIL}`}
-                      className="hover:text-white/85 transition-colors"
+                      className="hover:text-[var(--text-on-dark)] transition-colors"
                     >
                       {CONTACT_EMAIL}
                     </a>
@@ -426,19 +426,19 @@ export default async function LocalidadePage({ params }: Props) {
             )}
 
             {/* Schedule teaser */}
-            <div className="rounded-2xl border border-white/12 bg-[#123020]/40 p-6">
+            <div className="rounded-2xl border border-white/12 bg-surface-dark-alt/40 p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Clock className="w-3.5 h-3.5 text-white/45" />
-                <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-white/62">
+                <Clock className="w-3.5 h-3.5 text-[var(--text-on-dark-muted)]" />
+                <h2 className="text-xs font-bold uppercase tracking-[0.25em] text-[var(--text-on-dark-secondary)]">
                   Horários
                 </h2>
               </div>
-              <p className="text-sm text-white/45 leading-relaxed mb-4">
+              <p className="text-sm text-[var(--text-on-dark-muted)] leading-relaxed mb-4">
                 Consulte os horários disponíveis para cada modalidade em {loc.cidade}.
               </p>
               <Link
                 href="/modalidades"
-                className="text-xs font-semibold text-white/45 hover:text-white/85 transition-colors"
+                className="text-xs font-semibold text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark)] transition-colors"
               >
                 Ver todas as modalidades →
               </Link>
@@ -447,7 +447,7 @@ export default async function LocalidadePage({ params }: Props) {
             {/* Back link */}
             <Link
               href="/localidades"
-              className="flex items-center gap-2 text-sm text-white/30 hover:text-white/62 transition-colors"
+              className="flex items-center gap-2 text-sm text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark-secondary)] transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               Ver todas as localidades
@@ -461,19 +461,19 @@ export default async function LocalidadePage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 mb-2">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--text-on-dark-muted)] mb-2">
                 {siteConfig.name} — {cityLabel}
               </p>
-              <h2 className="text-2xl font-bold text-white">
+              <h2 className="text-2xl font-bold text-[var(--text-on-dark)]">
                 Artes marciais em {loc.cidade}. Comece hoje.
               </h2>
-              <p className="mt-2 text-sm text-white/45">
+              <p className="mt-2 text-sm text-[var(--text-on-dark-muted)]">
                 A disciplina forma o caminho. A evolução é o destino.
               </p>
             </div>
             <Link
               href="/inscricao"
-              className="shrink-0 group relative inline-flex h-11 items-center justify-center overflow-hidden rounded-full bg-red-600 px-8 text-sm font-bold text-[#0C2418] hover:bg-red-500 transition-colors"
+              className="shrink-0 group relative inline-flex h-11 items-center justify-center overflow-hidden rounded-full bg-red-600 px-8 text-sm font-bold text-surface-dark hover:bg-red-500 transition-colors"
             >
               <span className="relative z-10">Iniciar inscrição</span>
               <div className="absolute inset-0 -z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -501,7 +501,7 @@ function SectionLabel({
       <span className="text-[10px] font-black uppercase tracking-[0.4em] text-red-500 tabular-nums select-none">
         {num}
       </span>
-      <h2 id={id} className="text-xl sm:text-2xl font-bold text-white">
+      <h2 id={id} className="text-xl sm:text-2xl font-bold text-[var(--text-on-dark)]">
         {label}
       </h2>
       <div className="flex-1 h-px bg-white/8" />

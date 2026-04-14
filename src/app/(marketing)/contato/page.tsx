@@ -91,9 +91,9 @@ export default function ContatoPage() {
     <div className="min-h-screen">
       <section className="gokai-hero gokai-hero-compact">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="gokai-kicker justify-center text-white/68">Fale Conosco</p>
-          <h1 className="mt-5 text-4xl font-semibold text-white sm:text-5xl">Contato</h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-white/76">
+          <p className="gokai-kicker justify-center text-[var(--text-on-dark-secondary)]">Fale Conosco</p>
+          <h1 className="mt-5 text-4xl font-semibold text-[var(--text-on-dark)] sm:text-5xl">Contato</h1>
+          <p className="mx-auto mt-4 max-w-xl text-lg text-[var(--text-on-dark-secondary)]">
             Tem alguma dúvida ou quer saber mais sobre o GŌKAI? Envie uma mensagem e responderemos
             em breve.
           </p>

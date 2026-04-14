@@ -37,26 +37,26 @@ const nivelStyles: Record<
   { badge: string; card: string; logoSize: string; titleSize: string }
 > = {
   ouro: {
-    badge: "bg-red-600 text-[#0C2418]",
-    card: "bg-[#123020] ring-red-600/40 hover:ring-red-600/70",
+    badge: "bg-secondary text-foreground",
+    card: "bg-surface-dark-alt ring-secondary/40 hover:ring-secondary/70",
     logoSize: "h-24",
     titleSize: "text-xl",
   },
   prata: {
-    badge: "bg-white/80 text-[#0C2418]",
-    card: "bg-[#123020] ring-white/18 hover:ring-white/35",
+    badge: "bg-white/80 text-foreground",
+    card: "bg-surface-dark-alt ring-white/18 hover:ring-white/35",
     logoSize: "h-16",
     titleSize: "text-lg",
   },
   bronze: {
     badge: "bg-orange-700 text-orange-100",
-    card: "bg-[#123020] ring-orange-700/30 hover:ring-orange-600/50",
+    card: "bg-surface-dark-alt ring-orange-700/30 hover:ring-orange-600/50",
     logoSize: "h-14",
     titleSize: "text-base",
   },
   apoiador: {
-    badge: "bg-white/12 text-white/72",
-    card: "bg-[#123020] ring-white/12 hover:ring-white/28/60",
+    badge: "bg-white/12 text-[var(--text-on-dark-secondary)]",
+    card: "bg-surface-dark-alt ring-white/12 hover:ring-white/28",
     logoSize: "h-12",
     titleSize: "text-sm",
   },
@@ -88,16 +88,16 @@ export default async function PatrocinadoresPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#0C2418] pt-32 pb-20 overflow-hidden">
+      <section className="relative bg-surface-dark pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white/6 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
-          <p className="text-white/45 text-sm font-medium tracking-widest uppercase mb-4">
+          <p className="text-[var(--text-on-dark-muted)] text-sm font-medium tracking-widest uppercase mb-4">
             Parceiros
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-[var(--text-on-dark)] mb-4">
             Patrocinadores e Apoiadores
           </h1>
-          <p className="text-lg text-white/62 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-on-dark-secondary)] max-w-2xl mx-auto">
             Agradecemos a todos que tornam possível a missão do GŌKAI. Nossos parceiros são parte
             fundamental do nosso sucesso.
           </p>
@@ -105,7 +105,7 @@ export default async function PatrocinadoresPage() {
       </section>
 
       {/* Sponsors by tier */}
-      <Section className="bg-[#0C2418]">
+      <Section className="bg-surface-dark">
         {sections.length > 0 ? (
           <div className="space-y-16">
             {sections.map((nivel) => {
@@ -150,14 +150,14 @@ export default async function PatrocinadoresPage() {
                           <div
                             className={`${styles.logoSize} flex items-center justify-center w-full bg-white/8 rounded-lg`}
                           >
-                            <span className={`font-bold text-white/62 ${styles.titleSize} text-center px-2`}>
+                            <span className={`font-bold text-[var(--text-on-dark-secondary)] ${styles.titleSize} text-center px-2`}>
                               {pat.nome}
                             </span>
                           </div>
                         )}
 
                         {pat.logo_url && (
-                          <p className={`font-medium text-white/72 text-center ${styles.titleSize}`}>
+                          <p className={`font-medium text-[var(--text-on-dark-secondary)] text-center ${styles.titleSize}`}>
                             {pat.nome}
                           </p>
                         )}
@@ -167,7 +167,7 @@ export default async function PatrocinadoresPage() {
                             href={pat.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xs text-white/45 hover:text-white/85 transition-colors"
+                            className="text-xs text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark)] transition-colors"
                           >
                             {pat.website.replace(/^https?:\/\//, "")}
                           </a>
@@ -181,24 +181,24 @@ export default async function PatrocinadoresPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-white/45 text-lg">Novas parcerias serão anunciadas em breve.</p>
+            <p className="text-[var(--text-on-dark-muted)] text-lg">Novas parcerias serão anunciadas em breve.</p>
           </div>
         )}
       </Section>
 
       {/* Become a sponsor CTA */}
-      <Section className="bg-[#123020]">
+      <Section className="bg-surface-dark-alt">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-white mb-3">
+          <h2 className="text-2xl font-bold text-[var(--text-on-dark)] mb-3">
             Seja um parceiro do GŌKAI
           </h2>
-          <p className="text-white/62 mb-6">
+          <p className="text-[var(--text-on-dark-secondary)] mb-6">
             Junte-se a nós e apoie o desenvolvimento das artes marciais. Temos planos para todos os
             perfis de parceria.
           </p>
           <Link
             href="/seja-um-apoiador"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-red-600 text-[#0C2418] font-semibold hover:bg-red-500 transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-secondary text-foreground font-semibold hover:bg-secondary/85 transition-colors"
           >
             Conhecer planos de apoio
           </Link>

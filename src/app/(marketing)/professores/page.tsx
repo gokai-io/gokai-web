@@ -59,11 +59,11 @@ export default async function ProfessoresPage() {
       {/* Hero */}
       <section className="gokai-hero gokai-hero-compact">
         <BrandContainer className="text-center">
-          <div className="gokai-kicker justify-center text-white/68">Corpo Docente</div>
-          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <div className="gokai-kicker justify-center text-[var(--text-on-dark-secondary)]">Corpo Docente</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
             Nossos Professores
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-on-dark-secondary)]">
             Profissionais experientes e comprometidos com o desenvolvimento técnico
             e humano de cada praticante.
           </p>
@@ -156,12 +156,12 @@ export default async function ProfessoresPage() {
       </Section>
 
       {/* CTA */}
-      <Section className="bg-[#0C2418] text-white">
+      <Section className="bg-surface-dark text-white">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-3xl font-semibold text-white">
+          <h2 className="font-heading text-3xl font-semibold text-[var(--text-on-dark)]">
             Quer treinar com nossos professores?
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">
+          <p className="mx-auto mt-4 max-w-xl text-[var(--text-on-dark-secondary)]">
             Faça sua inscrição e comece sua jornada nas artes marciais com
             acompanhamento técnico de qualidade.
           </p>

@@ -221,11 +221,11 @@ export default function ConteudosPage() {
       <section className="gokai-hero gokai-hero-compact">
         <BrandContainer>
           <div className="max-w-3xl">
-            <div className="gokai-kicker text-white/68">Biblioteca GŌKAI</div>
-            <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            <div className="gokai-kicker text-[var(--text-on-dark-secondary)]">Biblioteca GŌKAI</div>
+            <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
               Conteúdos
             </h1>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--text-on-dark-secondary)]">
               Guias práticos, reflexões e reportagens sobre artes marciais,
               disciplina e desenvolvimento humano.
             </p>
@@ -233,19 +233,19 @@ export default function ConteudosPage() {
             {allArticles.length > 0 && (
               <div className="mt-10 flex items-center gap-8">
                 <div>
-                  <p className="font-heading text-2xl font-bold text-white tabular-nums">
+                  <p className="font-heading text-2xl font-bold text-[var(--text-on-dark)] tabular-nums">
                     {allArticles.length}
                   </p>
-                  <p className="mt-0.5 text-[10px] uppercase tracking-widest text-white/48">
+                  <p className="mt-0.5 text-[10px] uppercase tracking-widest text-[var(--text-on-dark-muted)]">
                     {allArticles.length === 1 ? "Artigo" : "Artigos"}
                   </p>
                 </div>
                 <div className="h-8 w-px bg-white/15" />
                 <div>
-                  <p className="font-heading text-2xl font-bold text-white tabular-nums">
+                  <p className="font-heading text-2xl font-bold text-[var(--text-on-dark)] tabular-nums">
                     {new Set(allArticles.map((a) => a.categoria)).size}
                   </p>
-                  <p className="mt-0.5 text-[10px] uppercase tracking-widest text-white/48">
+                  <p className="mt-0.5 text-[10px] uppercase tracking-widest text-[var(--text-on-dark-muted)]">
                     Categorias
                   </p>
                 </div>
@@ -292,7 +292,7 @@ export default function ConteudosPage() {
       </Section>
 
       {/* Cross-links */}
-      <Section className="bg-[#EEE7D9]">
+      <Section className="bg-surface-warm">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           {[
             {

@@ -48,7 +48,7 @@ const tipoLabels: Record<EventoTipo, string> = {
 const tipoBadgeClass: Record<EventoTipo, string> = {
   campeonato:      "bg-secondary/15 text-secondary border-secondary/28",
   treino_especial: "bg-primary/12 text-primary border-primary/22",
-  seminario:       "bg-accent/20 text-[#3a7a1a] border-accent/30",
+  seminario:       "bg-accent/20 text-primary border-accent/30",
   social:          "bg-primary/8 text-primary/75 border-primary/18",
   outro:           "bg-muted text-muted-foreground border-border",
 }
@@ -213,11 +213,11 @@ export default async function EventosPage() {
       {/* Hero */}
       <section className="gokai-hero gokai-hero-compact">
         <BrandContainer className="text-center">
-          <div className="gokai-kicker justify-center text-white/68">Agenda</div>
-          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <div className="gokai-kicker justify-center text-[var(--text-on-dark-secondary)]">Agenda</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
             Eventos
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-on-dark-secondary)]">
             Campeonatos, seminários, treinos especiais e atividades sociais do GŌKAI.
           </p>
 
@@ -226,10 +226,10 @@ export default async function EventosPage() {
             <div className="mt-10 flex items-center justify-center gap-10">
               {upcomingEvents.length > 0 && (
                 <div className="text-center">
-                  <p className="font-heading text-3xl font-bold text-white">
+                  <p className="font-heading text-3xl font-bold text-[var(--text-on-dark)]">
                     {upcomingEvents.length}
                   </p>
-                  <p className="mt-1 text-[10px] uppercase tracking-widest text-white/48">
+                  <p className="mt-1 text-[10px] uppercase tracking-widest text-[var(--text-on-dark-muted)]">
                     {upcomingEvents.length === 1 ? "Próximo" : "Próximos"}
                   </p>
                 </div>
@@ -238,8 +238,8 @@ export default async function EventosPage() {
                 <div className="h-8 w-px bg-white/15" />
               )}
               <div className="text-center">
-                <p className="font-heading text-3xl font-bold text-white">{allEvents.length}</p>
-                <p className="mt-1 text-[10px] uppercase tracking-widest text-white/48">
+                <p className="font-heading text-3xl font-bold text-[var(--text-on-dark)]">{allEvents.length}</p>
+                <p className="mt-1 text-[10px] uppercase tracking-widest text-[var(--text-on-dark-muted)]">
                   No total
                 </p>
               </div>
@@ -286,7 +286,7 @@ export default async function EventosPage() {
       </Section>
 
       {/* Cross-links */}
-      <Section className="bg-[#EEE7D9]">
+      <Section className="bg-surface-warm">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           {[
             {

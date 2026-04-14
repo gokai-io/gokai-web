@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils"
 
 interface InstitutionalCardProps extends React.ComponentProps<"div"> {
   accent?: "green" | "red" | "neutral" | "none"
+  dark?: boolean
 }
 
 // Top accent bar color per variant
@@ -32,24 +33,21 @@ const ACCENT_HOVER: Record<NonNullable<InstitutionalCardProps["accent"]>, string
 export function InstitutionalCard({
   className,
   accent = "green",
+  dark = false,
   children,
   ...props
 }: InstitutionalCardProps) {
   return (
     <div
       className={cn(
-        // Shape — rounded-xl (14px): mais institucional que rounded-2xl (18px)
         "relative overflow-hidden rounded-xl p-6",
-        // Surface — pure white so it reads cleanly on the off-white bg
-        "bg-white border border-border",
-        // Depth — layered shadows: fine near-shadow + ambient far-shadow
-        "shadow-[0_1px_4px_rgba(18,48,32,0.06),0_8px_28px_rgba(18,48,32,0.07)]",
-        // Transitions
+        // Surface — white for light sections, dark-alt for dark sections
+        dark
+          ? "bg-surface-dark-alt border border-white/8 shadow-[0_1px_4px_rgba(0,0,0,0.12),0_8px_28px_rgba(0,0,0,0.16)]"
+          : "bg-white border border-border shadow-[0_1px_4px_rgba(18,48,32,0.06),0_8px_28px_rgba(18,48,32,0.07)]",
         "transition-all duration-300",
-        // Lift + per-accent glow on hover
         "hover:-translate-y-0.5",
         accent !== "none" ? ACCENT_HOVER[accent] : ACCENT_HOVER.none,
-        // Accent bar — 4px wide, runs from left-6, clips at top-0
         accent !== "none" && [
           "before:absolute before:left-6 before:top-0",
           "before:h-[4px] before:w-20 before:rounded-b-full",

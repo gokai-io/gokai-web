@@ -8,6 +8,7 @@ interface SectionHeaderProps {
   align?: "left" | "center"
   eyebrow?: string
   hideMark?: boolean
+  dark?: boolean
 }
 
 export function SectionHeader({
@@ -17,6 +18,7 @@ export function SectionHeader({
   align = "center",
   eyebrow = "GŌKAI",
   hideMark = false,
+  dark = false,
 }: SectionHeaderProps) {
   const isCenter = align === "center"
 
@@ -40,7 +42,7 @@ export function SectionHeader({
         )}
 
         <div className="flex flex-col gap-2">
-          <span className="gokai-kicker text-primary/68">{eyebrow}</span>
+          <span className={cn("gokai-kicker", dark ? "text-[var(--text-on-dark-muted)]" : "text-primary/70")}>{eyebrow}</span>
           {/* Gradient rule — red → lime, echoes the logo's energy */}
           <span
             className="block h-[2px] w-16 rounded-full"
@@ -61,7 +63,8 @@ export function SectionHeader({
       >
         <h2
           className={cn(
-            "max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]",
+            "max-w-3xl font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]",
+            dark ? "text-[var(--text-on-dark)]" : "text-foreground",
             isCenter && "text-balance"
           )}
         >
@@ -70,7 +73,8 @@ export function SectionHeader({
         {subtitle && (
           <p
             className={cn(
-              "max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg",
+              "max-w-2xl text-base leading-relaxed sm:text-lg",
+              dark ? "text-[var(--text-on-dark-secondary)]" : "text-muted-foreground",
               isCenter && "text-pretty"
             )}
           >

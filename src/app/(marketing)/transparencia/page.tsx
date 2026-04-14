@@ -78,11 +78,11 @@ export default async function TransparenciaPage() {
       {/* Hero — brand-consistent dark green */}
       <section className="gokai-hero gokai-hero-compact">
         <BrandContainer className="relative text-center">
-          <div className="gokai-kicker text-white/68 justify-center">Prestação de Contas</div>
-          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <div className="gokai-kicker text-[var(--text-on-dark-secondary)] justify-center">Prestação de Contas</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
             Transparência
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-on-dark-secondary)]">
             Acesso aos documentos institucionais do GŌKAI. Comprometidos com a gestão transparente
             e responsável.
           </p>
@@ -173,7 +173,7 @@ export default async function TransparenciaPage() {
       </Section>
 
       {/* Info box */}
-      <Section className="bg-[#EEE7D9]">
+      <Section className="bg-surface-warm">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-xl font-semibold text-foreground">
             Solicitação de Documentos

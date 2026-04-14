@@ -156,7 +156,7 @@ export default async function ProfessorDetailPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0C2418]">
+    <div className="min-h-screen bg-surface-dark">
       {/* JSON-LD structured data */}
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 
@@ -172,10 +172,10 @@ export default async function ProfessorDetailPage({ params }: Props) {
               className="object-cover object-top"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0C2418] via-[#0C2418]/70 to-[#0C2418]/20" />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/70 to-surface-dark/20" />
           </div>
         ) : (
-          <div className="absolute inset-0 bg-[#123020]">
+          <div className="absolute inset-0 bg-surface-dark-alt">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_35%,rgba(220,38,38,0.06),transparent_55%)]" />
             {/* Noise texture */}
             <div
@@ -199,7 +199,7 @@ export default async function ProfessorDetailPage({ params }: Props) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 pt-36">
             <Link
               href="/professores"
-              className="mb-10 inline-flex items-center gap-2 text-[11px] font-semibold text-white/62 hover:text-white/85 transition-colors uppercase tracking-widest"
+              className="mb-10 inline-flex items-center gap-2 text-[11px] font-semibold text-[var(--text-on-dark-secondary)] hover:text-[var(--text-on-dark)] transition-colors uppercase tracking-widest"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               Professores
@@ -213,12 +213,12 @@ export default async function ProfessorDetailPage({ params }: Props) {
                 </span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-black tracking-tight text-white leading-[0.88] mb-5">
+              <h1 className="text-5xl sm:text-6xl lg:text-[5rem] font-black tracking-tight text-[var(--text-on-dark)] leading-[0.88] mb-5">
                 {nome}
               </h1>
 
               {prof.graduacao && (
-                <p className="text-lg sm:text-xl text-white/72 font-medium">
+                <p className="text-lg sm:text-xl text-[var(--text-on-dark-secondary)] font-medium">
                   {prof.graduacao}
                 </p>
               )}
@@ -226,7 +226,7 @@ export default async function ProfessorDetailPage({ params }: Props) {
 
             {/* Quick stats */}
             {hasModalidades && (
-              <div className="mt-10 flex flex-wrap items-center gap-5 text-sm text-white/45">
+              <div className="mt-10 flex flex-wrap items-center gap-5 text-sm text-[var(--text-on-dark-muted)]">
                 <div className="flex items-center gap-2">
                   <BookOpen className="w-3.5 h-3.5" />
                   <span>
@@ -251,7 +251,7 @@ export default async function ProfessorDetailPage({ params }: Props) {
             {hasBio && (
               <section aria-labelledby="sobre-heading">
                 <SectionLabel num={nextNum()} label="Sobre o instrutor" id="sobre-heading" />
-                <p className="text-white/62 leading-relaxed text-base sm:text-lg whitespace-pre-wrap">
+                <p className="text-[var(--text-on-dark-secondary)] leading-relaxed text-base sm:text-lg whitespace-pre-wrap">
                   {prof.bio}
                 </p>
               </section>
@@ -269,12 +269,12 @@ export default async function ProfessorDetailPage({ params }: Props) {
                   {prof.especialidades!.map((esp) => (
                     <div
                       key={esp}
-                      className="flex items-center gap-3 rounded-xl border border-white/12 bg-[#123020]/30 px-5 py-3 hover:border-white/18 transition-colors"
+                      className="flex items-center gap-3 rounded-xl border border-white/12 bg-surface-dark-alt/30 px-5 py-3 hover:border-white/18 transition-colors"
                     >
                       <div className="flex-none size-4 rounded-full border border-red-600/30 bg-red-600/10 flex items-center justify-center">
                         <ChevronRight className="size-2.5 text-red-500" />
                       </div>
-                      <span className="text-sm font-medium text-white/72">{esp}</span>
+                      <span className="text-sm font-medium text-[var(--text-on-dark-secondary)]">{esp}</span>
                     </div>
                   ))}
                 </div>
@@ -294,16 +294,16 @@ export default async function ProfessorDetailPage({ params }: Props) {
                     <Link
                       key={mod.id}
                       href={`/modalidades/${mod.slug}`}
-                      className="group flex flex-col gap-2 rounded-xl border border-white/12 bg-[#123020]/30 p-6 hover:border-white/28 transition-all duration-300"
+                      className="group flex flex-col gap-2 rounded-xl border border-white/12 bg-surface-dark-alt/30 p-6 hover:border-white/28 transition-all duration-300"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <h3 className="text-base font-bold text-white group-hover:text-white transition-colors">
+                        <h3 className="text-base font-bold text-[var(--text-on-dark)] group-hover:text-[var(--text-on-dark)] transition-colors">
                           {mod.nome}
                         </h3>
-                        <ChevronRight className="size-4 text-white/30 group-hover:text-white/62 transition-colors shrink-0 mt-0.5" />
+                        <ChevronRight className="size-4 text-[var(--text-on-dark-muted)] group-hover:text-[var(--text-on-dark-secondary)] transition-colors shrink-0 mt-0.5" />
                       </div>
                       {mod.descricao && (
-                        <p className="text-sm text-white/45 leading-relaxed line-clamp-2">
+                        <p className="text-sm text-[var(--text-on-dark-muted)] leading-relaxed line-clamp-2">
                           {mod.descricao}
                         </p>
                       )}
@@ -315,8 +315,8 @@ export default async function ProfessorDetailPage({ params }: Props) {
 
             {/* Empty state — shown only when all sections are absent */}
             {!hasBio && !hasEspecialidades && !hasModalidades && (
-              <div className="rounded-xl border border-white/12 bg-[#123020]/20 p-12 text-center">
-                <p className="text-sm text-white/30">
+              <div className="rounded-xl border border-white/12 bg-surface-dark-alt/20 p-12 text-center">
+                <p className="text-sm text-[var(--text-on-dark-muted)]">
                   Informações completas em breve.
                 </p>
               </div>
@@ -326,41 +326,41 @@ export default async function ProfessorDetailPage({ params }: Props) {
           {/* ── Sidebar ─────────────────────────────────────────────────────── */}
           <div className="space-y-5">
             {/* Identity card */}
-            <div className="rounded-2xl border border-white/12 bg-[#123020]/40 p-6 flex items-center gap-5">
+            <div className="rounded-2xl border border-white/12 bg-surface-dark-alt/40 p-6 flex items-center gap-5">
               {fotoUrl ? (
                 <div className="relative size-16 rounded-full overflow-hidden border-2 border-white/18 shrink-0">
                   <Image src={fotoUrl} alt={nome} fill className="object-cover" />
                 </div>
               ) : (
                 <div className="size-16 rounded-full bg-white/8 border-2 border-white/18 flex items-center justify-center shrink-0">
-                  <span className="text-xl font-bold text-white/62">
+                  <span className="text-xl font-bold text-[var(--text-on-dark-secondary)]">
                     {getInitials(nome)}
                   </span>
                 </div>
               )}
               <div className="min-w-0">
-                <p className="font-bold text-white truncate">{nome}</p>
+                <p className="font-bold text-[var(--text-on-dark)] truncate">{nome}</p>
                 {prof.graduacao && (
                   <p className="text-xs text-red-500 font-medium mt-0.5 truncate">
                     {prof.graduacao}
                   </p>
                 )}
-                <p className="text-xs text-white/30 mt-1">Instrutor · GŌKAI</p>
+                <p className="text-xs text-[var(--text-on-dark-muted)] mt-1">Instrutor · GŌKAI</p>
               </div>
             </div>
 
             {/* CTA card — sticky on large screens */}
-            <div className="rounded-2xl border border-white/18/80 bg-[#123020] p-7 lg:sticky lg:top-8">
-              <h2 className="text-lg font-bold text-white mb-1.5">
+            <div className="rounded-2xl border border-white/18/80 bg-surface-dark-alt p-7 lg:sticky lg:top-8">
+              <h2 className="text-lg font-bold text-[var(--text-on-dark)] mb-1.5">
                 Treinar com {firstName}?
               </h2>
-              <p className="text-sm text-white/62 leading-relaxed mb-6">
+              <p className="text-sm text-[var(--text-on-dark-secondary)] leading-relaxed mb-6">
                 Faça sua inscrição e dê o primeiro passo. Nossa equipe orienta você.
               </p>
 
               <Link
                 href="/inscricao"
-                className="group relative block w-full overflow-hidden rounded-xl bg-red-600 px-5 py-3.5 text-center text-sm font-bold text-[#0C2418] hover:bg-red-500 transition-colors"
+                className="group relative block w-full overflow-hidden rounded-xl bg-red-600 px-5 py-3.5 text-center text-sm font-bold text-surface-dark hover:bg-red-500 transition-colors"
               >
                 <span className="relative z-10">Iniciar inscrição</span>
                 <div className="absolute inset-0 -z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -368,12 +368,12 @@ export default async function ProfessorDetailPage({ params }: Props) {
 
               <Link
                 href="/contato"
-                className="mt-2.5 block w-full rounded-xl border border-white/18 px-5 py-3 text-center text-sm font-medium text-white/62 hover:border-white/28 hover:text-white/85 transition-colors"
+                className="mt-2.5 block w-full rounded-xl border border-white/18 px-5 py-3 text-center text-sm font-medium text-[var(--text-on-dark-secondary)] hover:border-white/28 hover:text-[var(--text-on-dark)] transition-colors"
               >
                 Falar com a equipe
               </Link>
 
-              <p className="mt-5 text-center text-xs text-white/30">
+              <p className="mt-5 text-center text-xs text-[var(--text-on-dark-muted)]">
                 Iniciantes e todos os níveis são bem-vindos
               </p>
             </div>
@@ -381,7 +381,7 @@ export default async function ProfessorDetailPage({ params }: Props) {
             {/* Back to listing */}
             <Link
               href="/professores"
-              className="flex items-center gap-2 text-sm text-white/30 hover:text-white/62 transition-colors"
+              className="flex items-center gap-2 text-sm text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark-secondary)] transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               Ver todos os professores
@@ -395,19 +395,19 @@ export default async function ProfessorDetailPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 mb-2">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--text-on-dark-muted)] mb-2">
                 GŌKAI — Corpo Docente
               </p>
-              <h2 className="text-2xl font-bold text-white">
+              <h2 className="text-2xl font-bold text-[var(--text-on-dark)]">
                 Formação técnica e humana.
               </h2>
-              <p className="mt-2 text-sm text-white/45">
+              <p className="mt-2 text-sm text-[var(--text-on-dark-muted)]">
                 Artes marciais para todas as idades e níveis de experiência.
               </p>
             </div>
             <Link
               href="/inscricao"
-              className="shrink-0 group relative inline-flex h-11 items-center justify-center overflow-hidden rounded-full bg-red-600 px-8 text-sm font-bold text-[#0C2418] hover:bg-red-500 transition-colors"
+              className="shrink-0 group relative inline-flex h-11 items-center justify-center overflow-hidden rounded-full bg-red-600 px-8 text-sm font-bold text-surface-dark hover:bg-red-500 transition-colors"
             >
               <span className="relative z-10">Iniciar inscrição</span>
               <div className="absolute inset-0 -z-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -435,7 +435,7 @@ function SectionLabel({
       <span className="text-[10px] font-black uppercase tracking-[0.4em] text-red-500 tabular-nums select-none">
         {num}
       </span>
-      <h2 id={id} className="text-xl sm:text-2xl font-bold text-white">
+      <h2 id={id} className="text-xl sm:text-2xl font-bold text-[var(--text-on-dark)]">
         {label}
       </h2>
       <div className="flex-1 h-px bg-white/8" />

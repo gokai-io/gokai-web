@@ -60,11 +60,11 @@ export default function SobrePage() {
       <section className="gokai-hero gokai-hero-compact">
         <BrandContainer>
           <div className="max-w-3xl">
-            <div className="gokai-kicker text-white/72">Conheça a GŌKAI</div>
-            <h1 className="mt-5 font-heading text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <div className="gokai-kicker text-[var(--text-on-dark-secondary)]">Conheça a GŌKAI</div>
+            <h1 className="mt-5 font-heading text-4xl font-semibold leading-tight tracking-tight text-[var(--text-on-dark)] sm:text-5xl lg:text-6xl">
               Sobre a GŌKAI
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/78 sm:text-xl">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-on-dark-secondary)] sm:text-xl">
               Uma associação dedicada ao desenvolvimento das artes marciais — com disciplina,
               respeito, tradição e formação humana como pilares de tudo que fazemos.
             </p>
@@ -104,7 +104,7 @@ export default function SobrePage() {
         </div>
       </Section>
 
-      <Section className="bg-[#EEE7D9]">
+      <Section className="bg-surface-warm">
         <InstitutionalCard accent="green" className="max-w-3xl">
           <SectionHeading title="Local" align="left" className="mb-6" />
           <p className="text-muted-foreground leading-relaxed">
@@ -135,10 +135,10 @@ export default function SobrePage() {
         </div>
       </Section>
 
-      <Section className="bg-[#0C2418] text-white">
+      <Section className="bg-surface-dark text-[var(--text-on-dark)]">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold text-white">Conheça a GŌKAI de perto</h2>
-          <p className="mt-4 text-white/72">
+          <h2 className="text-3xl font-semibold text-[var(--text-on-dark)]">Conheça a GŌKAI de perto</h2>
+          <p className="mt-4 text-[var(--text-on-dark-secondary)]">
             Entre em contato, conheça nossas modalidades e acompanhe o trabalho da associação.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">

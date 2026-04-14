@@ -41,14 +41,14 @@ export default function TermosPage() {
       <section className="gokai-hero gokai-hero-compact">
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="gokai-kicker text-white/68">
+          <p className="gokai-kicker text-[var(--text-on-dark-secondary)]">
             Institucional
           </p>
-          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">Termos de Uso</h1>
-          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/55">
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-[var(--text-on-dark)] sm:text-5xl">Termos de Uso</h1>
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[var(--text-on-dark-muted)]">
             <span>
               Última atualização:{" "}
-              <time dateTime="2026-04-12" className="text-white/72">
+              <time dateTime="2026-04-12" className="text-[var(--text-on-dark-secondary)]">
                 abril de 2026
               </time>
             </span>

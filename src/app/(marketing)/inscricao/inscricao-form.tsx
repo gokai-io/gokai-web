@@ -257,7 +257,7 @@ export function InscricaoForm({ modalidades }: InscricaoFormProps) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full rounded-full bg-primary py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-[#124c29] disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-full rounded-full bg-primary py-3 text-sm font-semibold text-primary-foreground transition-colors hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isSubmitting ? "Enviando..." : "Enviar inscrição"}
       </button>

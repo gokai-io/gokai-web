@@ -81,7 +81,7 @@ function ConteudosTeaser() {
   if (articles.length === 0) return null
   return (
     <Section
-      className="bg-background"
+      className="bg-surface-warm"
       title="Conteúdos e Formação"
       subtitle="A GŌKAI também se expressa fora do tatame: visão institucional, formação humana e cultura marcial."
     >
@@ -125,11 +125,16 @@ export default async function HomePage() {
 
         {/* ═══════════════════════════════════════════════════════
             HERO — Editorial / Institutional / Martial
-            Full dark green. Strength from type + composition.
+            Deep dark green. Strength from type + composition.
         ═══════════════════════════════════════════════════════ */}
-        <section className="relative min-h-[100svh] bg-[#0B5A2B]">
+        <section
+          className="relative min-h-[100svh] bg-surface-dark"
+          style={{
+            backgroundImage: "radial-gradient(ellipse at 15% 85%, rgba(207,46,36,0.08), transparent 60%)",
+          }}
+        >
 
-          {/* Single disciplined vertical rule on the right — subtle structure */}
+          {/* Subtle vertical rule — disciplined structure */}
           <div className="pointer-events-none absolute right-[38%] top-0 bottom-0 w-px bg-white/[0.06] hidden lg:block" />
 
           <BrandContainer className="flex min-h-[100svh] flex-col justify-center py-28 lg:py-32">
@@ -138,44 +143,45 @@ export default async function HomePage() {
               {/* ── Left column: editorial content ── */}
               <div>
 
-                {/* Kicker — small, precise, red accent bar */}
+                {/* Kicker */}
                 <div
                   className="gokai-hero-enter mb-10 flex items-center gap-4"
                   style={{ animationDelay: "0ms" }}
                 >
-                  <span className="h-px w-8 flex-none bg-[#CF2E24]" aria-hidden />
+                  <span className="h-px w-8 flex-none bg-secondary" aria-hidden />
                   <span
+                    className="text-[var(--text-on-dark-secondary)]"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                       fontSize: "0.68rem",
                       fontWeight: 700,
                       letterSpacing: "0.38em",
                       textTransform: "uppercase",
-                      color: "rgba(247,246,242,0.72)",
                     }}
                   >
                     Associação Esportiva e Ambiental · Juiz de Fora / MG
                   </span>
                 </div>
 
-                {/* H1 — each phrase is a line break, editorial weight */}
+                {/* H1 — extrabold, larger, "GŌKAI" in red for impact */}
                 <h1
-                  className="gokai-hero-enter font-heading font-bold text-white"
+                  className="gokai-hero-enter font-heading text-[var(--text-on-dark)]"
                   style={{
                     animationDelay: "120ms",
-                    fontSize: "clamp(2.8rem, 6.5vw, 5.25rem)",
+                    fontSize: "clamp(3.2rem, 7vw, 6rem)",
+                    fontWeight: 900,
                     lineHeight: 0.88,
                     letterSpacing: "-0.02em",
                   }}
                 >
                   Disciplina.<br />
                   Honra.<br />
-                  <span style={{ color: "rgba(247,246,242,0.60)" }}>GŌKAI.</span>
+                  <span className="text-secondary">GŌKAI.</span>
                 </h1>
 
-                {/* Sub — institutional, not product copy */}
+                {/* Subtitle */}
                 <p
-                  className="gokai-hero-enter mt-8 max-w-md text-base leading-[1.75] text-white/78 sm:text-lg"
+                  className="gokai-hero-enter mt-8 max-w-md text-base leading-[1.75] text-[var(--text-on-dark-secondary)] sm:text-lg"
                   style={{ animationDelay: "240ms" }}
                 >
                   Uma associação séria de artes marciais com formação técnica,
@@ -183,7 +189,7 @@ export default async function HomePage() {
                   crianças, jovens e adultos.
                 </p>
 
-                {/* CTAs — off-white primary (max contrast on green), outline secondary */}
+                {/* CTAs */}
                 <div
                   className="gokai-hero-enter mt-10 flex flex-wrap gap-3"
                   style={{ animationDelay: "360ms" }}
@@ -191,33 +197,33 @@ export default async function HomePage() {
                   <GokaiButton
                     href="/inscricao"
                     tone="primary"
-                    className="h-11 px-7 text-sm bg-[#F5F4F0] text-[#0B5A2B] hover:bg-white border-0 shadow-none"
+                    className="h-11 px-7 text-sm bg-surface-light text-primary hover:bg-white border-0 shadow-none"
                   >
                     Quero me associar
                   </GokaiButton>
                   <GokaiButton
                     href="/sobre"
                     tone="outline"
-                    className="h-11 px-7 text-sm border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50"
+                    className="h-11 px-7 text-sm border-white/35 text-white hover:bg-white/10 hover:text-white hover:border-white/50"
                   >
                     Conhecer a GŌKAI
                   </GokaiButton>
                 </div>
 
-                {/* Stat row — disciplined, horizontal */}
+                {/* Stat row — larger values, extreme weight */}
                 <div
                   className="gokai-hero-enter mt-14 flex flex-wrap gap-10 border-t border-white/10 pt-10"
                   style={{ animationDelay: "480ms" }}
                 >
                   {[
-                    { v: "São Mateus",      l: "Sede · JF/MG"       },
-                    { v: "2024",             l: "Fundação"            },
-                    { v: "Todas as idades", l: "Público atendido"    },
+                    { v: "São Mateus",     l: "Sede · JF/MG"    },
+                    { v: "2024",           l: "Fundação"         },
+                    { v: "Todas as idades", l: "Público atendido" },
                   ].map(({ v, l }) => (
                     <div key={l}>
-                      <p className="font-heading text-sm font-bold text-white">{v}</p>
+                      <p className="font-heading text-2xl font-black text-[var(--text-on-dark)]">{v}</p>
                       <p
-                        className="mt-1 text-white/62"
+                        className="mt-1 text-[var(--text-on-dark-muted)]"
                         style={{
                           fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                           fontSize: "0.62rem",
@@ -233,26 +239,21 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              {/* ── Right column: geometric composition com logo real ── */}
-              {/*
-                Composição inspirada no brand guide: logo PNG oficial dentro de
-                um "selo" circular branco, rodeado por anéis do motivo sol nascente.
-                Sem glass, sem glow — arquitectura pura.
-              */}
+              {/* ── Right column: geometric seal ── */}
               <div
                 className="gokai-hero-enter-scale relative hidden h-[440px] items-center justify-center lg:flex"
                 style={{ animationDelay: "160ms" }}
               >
-                {/* Outer ring — halo do sol (anel exterior) */}
+                {/* Outer ring — stronger red */}
                 <div
                   className="absolute rounded-full"
                   style={{
                     width: "390px", height: "390px",
-                    border: "1px solid rgba(207,46,36,0.25)",
+                    border: "1px solid rgba(207,46,36,0.35)",
                   }}
                 />
 
-                {/* Inner ring — segundo anel */}
+                {/* Inner ring */}
                 <div
                   className="absolute rounded-full"
                   style={{
@@ -262,7 +263,7 @@ export default async function HomePage() {
                   }}
                 />
 
-                {/* Réguas horizontais — referência à katana */}
+                {/* Horizontal rules — katana reference */}
                 <div
                   className="absolute left-[-32px] right-[-32px] h-px bg-white/[0.08]"
                   style={{ top: "calc(50% - 62px)" }}
@@ -272,8 +273,7 @@ export default async function HomePage() {
                   style={{ top: "calc(50% + 62px)" }}
                 />
 
-                {/* Círculo branco — "selo" institucional com a logo real */}
-                {/* Primary logo on white — exatamente como no brand guide */}
+                {/* White seal with logo */}
                 <div
                   className="relative z-10 flex items-center justify-center rounded-full bg-white"
                   style={{
@@ -294,19 +294,17 @@ export default async function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            INSTITUTIONAL PANELS
-            Three connected panels — no cards, no shadows, no float.
-            Architecture over decoration.
+            INSTITUTIONAL PANELS — light section
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[#F5F4F0] py-24">
+        <section className="bg-surface-light py-24">
           <BrandContainer>
 
             {/* Section intro */}
             <div className="mb-16 max-w-2xl">
               <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-8 bg-[#CF2E24]" aria-hidden />
+                <span className="h-px w-8 bg-secondary" aria-hidden />
                 <span
-                  className="text-[#0B5A2B]/55"
+                  className="text-primary/70"
                   style={{
                     fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                     fontSize: "0.65rem",
@@ -318,7 +316,7 @@ export default async function HomePage() {
                   Sobre a Associação
                 </span>
               </div>
-              <h2 className="font-heading text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
+              <h2 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-5xl">
                 Uma associação, não apenas um dojo.
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -327,39 +325,44 @@ export default async function HomePage() {
               </p>
             </div>
 
-            {/* Connected triptych panels — institutional, no floating */}
+            {/* Connected triptych panels */}
             <div className="grid grid-cols-1 border border-border md:grid-cols-3">
               {[
                 {
                   num:    "01",
-                  accent: "#0B5A2B",
+                  accentClass: "bg-primary",
                   title:  "Identidade Institucional",
                   text:   "Estatuto, regimento, atas e memorandos organizados como parte visível e pública da associação.",
                   href:   "/transparencia",
                   cta:    "Ver documentos",
+                  ctaClass: "text-primary",
                 },
                 {
                   num:    "02",
-                  accent: "#CF2E24",
+                  accentClass: "bg-secondary",
                   title:  "Formação Humana",
                   text:   "O treino está conectado a valores permanentes: respeito, honra, disciplina e evolução contínua.",
                   href:   "/sobre",
                   cta:    "Sobre a GŌKAI",
+                  ctaClass: "text-secondary",
                 },
                 {
                   num:    "03",
-                  accent: "#7AC943",
+                  accentClass: "bg-accent",
                   title:  "Estrutura Organizada",
                   text:   "Diretoria, conselho fiscal e equipe técnica com processos e linguagem pública coerente.",
                   href:   "/governanca",
                   cta:    "Ver governança",
+                  ctaClass: "text-accent",
                 },
               ].map((panel) => (
                 <div
                   key={panel.num}
-                  className="group flex flex-col gap-6 bg-white p-8 md:p-10 border-b border-border md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-muted/40"
-                  style={{ borderTop: `4px solid ${panel.accent}` }}
+                  className="group relative flex flex-col gap-6 bg-white p-8 md:p-10 border-b border-border md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-muted/40"
                 >
+                  {/* Accent top bar */}
+                  <div className={`absolute inset-x-0 top-0 h-1 ${panel.accentClass}`} />
+
                   <span
                     className="block text-muted-foreground"
                     style={{
@@ -384,8 +387,7 @@ export default async function HomePage() {
 
                   <Link
                     href={panel.href}
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] transition-colors"
-                    style={{ color: panel.accent }}
+                    className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] transition-colors ${panel.ctaClass}`}
                   >
                     {panel.cta}
                     <ArrowRightIcon className="size-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -397,17 +399,15 @@ export default async function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            MODALIDADES — fundo claro, texto legível
-            (seção verde escura causava texto invisível — bug corrigido)
+            MODALIDADES — DARK section for dramatic rhythm
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-white py-20">
+        <section className="bg-surface-dark py-20">
           <BrandContainer>
-            {/* Section intro manual — controla a cor do texto */}
             <div className="mb-14 max-w-2xl">
               <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-8 bg-[#CF2E24]" aria-hidden />
+                <span className="h-px w-8 bg-secondary" aria-hidden />
                 <span
-                  className="text-[#0B5A2B]/60"
+                  className="text-[var(--text-on-dark-muted)]"
                   style={{
                     fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                     fontSize: "0.65rem",
@@ -419,10 +419,10 @@ export default async function HomePage() {
                   O que praticamos
                 </span>
               </div>
-              <h2 className="font-heading text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
+              <h2 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
                 Modalidades
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-[var(--text-on-dark-secondary)]">
                 Artes marciais com seriedade técnica, progressão clara e acompanhamento constante
                 para crianças, jovens e adultos.
               </p>
@@ -434,19 +434,20 @@ export default async function HomePage() {
                   <InstitutionalCard
                     key={modalidade.id}
                     accent="green"
+                    dark
                     className="flex flex-col gap-4"
                   >
-                    <h3 className="font-heading text-xl font-bold text-foreground">
+                    <h3 className="font-heading text-xl font-bold text-[var(--text-on-dark)]">
                       {modalidade.nome}
                     </h3>
                     {modalidade.descricao && (
-                      <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
+                      <p className="flex-1 text-sm leading-relaxed text-[var(--text-on-dark-secondary)]">
                         {modalidade.descricao}
                       </p>
                     )}
                     <Link
                       href={`/modalidades/${modalidade.slug}`}
-                      className="gokai-link-arrow text-sm"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent/80"
                     >
                       Conhecer modalidade
                       <ArrowRightIcon className="size-4" />
@@ -455,23 +456,22 @@ export default async function HomePage() {
                 ))}
               </div>
             ) : (
-              /* Estado vazio elegante */
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 {[
                   { title: "Artes Marciais", desc: "Modalidades com técnica progressiva e acompanhamento qualificado." },
                   { title: "Todas as idades", desc: "Turmas para crianças, jovens e adultos em todos os níveis." },
                   { title: "Formação completa", desc: "Técnica marcial aliada a valores éticos e crescimento pessoal." },
                 ].map((item) => (
-                  <InstitutionalCard key={item.title} accent="green" className="flex flex-col gap-3">
-                    <h3 className="font-heading text-lg font-bold text-foreground">{item.title}</h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+                  <InstitutionalCard key={item.title} accent="green" dark className="flex flex-col gap-3">
+                    <h3 className="font-heading text-lg font-bold text-[var(--text-on-dark)]">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-[var(--text-on-dark-secondary)]">{item.desc}</p>
                   </InstitutionalCard>
                 ))}
               </div>
             )}
 
             <div className="mt-10 flex justify-center">
-              <GokaiButton href="/modalidades" tone="primary" className="h-11 px-7 text-sm">
+              <GokaiButton href="/modalidades" tone="accent" className="h-11 px-7 text-sm">
                 Ver todas as modalidades
               </GokaiButton>
             </div>
@@ -479,10 +479,10 @@ export default async function HomePage() {
         </section>
 
         {/* ═══════════════════════════════════════════════════════
-            GOVERNANÇA E TRANSPARÊNCIA
+            GOVERNANÇA E TRANSPARÊNCIA — warm section
         ═══════════════════════════════════════════════════════ */}
         <Section
-          className="bg-[#F5F4F0]"
+          className="bg-surface-warm"
           title="Governança e Transparência"
           subtitle="Documentos, atas e estrutura organizacional disponíveis para consulta pública."
         >
@@ -520,11 +520,11 @@ export default async function HomePage() {
         </Section>
 
         {/* ═══════════════════════════════════════════════════════
-            PRÓXIMOS EVENTOS
+            PRÓXIMOS EVENTOS — white section
         ═══════════════════════════════════════════════════════ */}
         {eventos.length > 0 && (
           <Section
-            className="bg-background"
+            className="bg-surface-white"
             title="Próximos eventos"
             subtitle="Campeonatos, seminários e atividades na agenda da GŌKAI."
           >
@@ -550,11 +550,11 @@ export default async function HomePage() {
         )}
 
         {/* ═══════════════════════════════════════════════════════
-            PARCEIROS
+            PARCEIROS — light section
         ═══════════════════════════════════════════════════════ */}
         {sortedPatrocinadores.length > 0 && (
           <Section
-            className="bg-[#F5F4F0]"
+            className="bg-surface-light"
             title="Parceiros e apoiadores"
             subtitle="Quem caminha com a GŌKAI fortalece o projeto esportivo e a presença institucional da associação."
           >
@@ -582,20 +582,27 @@ export default async function HomePage() {
           </Section>
         )}
 
-        {/* Conteúdos */}
+        {/* Conteúdos — warm section */}
         <ConteudosTeaser />
 
         {/* ═══════════════════════════════════════════════════════
-            FINAL CTA — verde mais escuro que o hero, tom de encerramento
+            FINAL CTA — dark with gradient divider
         ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[#0B5A2B] py-24">
+        <section className="relative bg-surface-dark py-24">
+          {/* Gradient divider at top — brand signature */}
+          <div
+            className="absolute inset-x-0 top-0 h-[2px]"
+            style={{ background: "linear-gradient(90deg, var(--secondary), var(--accent))" }}
+            aria-hidden
+          />
+
           <BrandContainer>
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="max-w-2xl">
                 <div className="mb-5 flex items-center gap-4">
-                  <span className="h-px w-8 bg-[#CF2E24]" aria-hidden />
+                  <span className="h-px w-8 bg-secondary" aria-hidden />
                   <span
-                    className="text-white/68"
+                    className="text-[var(--text-on-dark-muted)]"
                     style={{
                       fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
                       fontSize: "0.65rem",
@@ -607,10 +614,10 @@ export default async function HomePage() {
                     GŌKAI
                   </span>
                 </div>
-                <h2 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl">
+                <h2 className="font-heading text-4xl font-extrabold leading-tight text-[var(--text-on-dark)] sm:text-5xl">
                   Comece a sua jornada com disciplina e propósito.
                 </h2>
-                <p className="mt-5 max-w-lg text-base leading-relaxed text-white/78">
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-[var(--text-on-dark-secondary)]">
                   Artes marciais sérias, formação humana e compromisso institucional.
                   Crianças, jovens e adultos bem-vindos.
                 </p>
@@ -620,14 +627,14 @@ export default async function HomePage() {
                 <GokaiButton
                   href="/inscricao"
                   tone="primary"
-                  className="h-12 px-8 text-sm bg-[#F5F4F0] text-[#0B5A2B] hover:bg-white border-0 shadow-none"
+                  className="h-12 px-8 text-sm bg-surface-light text-primary hover:bg-white border-0 shadow-none"
                 >
                   Fazer inscrição
                 </GokaiButton>
                 <GokaiButton
                   href="/contato"
                   tone="outline"
-                  className="h-12 px-8 text-sm border-white/30 text-white hover:bg-white/10 hover:border-white/50"
+                  className="h-12 px-8 text-sm border-white/35 text-white hover:bg-white/10 hover:border-white/50"
                 >
                   Entrar em contato
                 </GokaiButton>

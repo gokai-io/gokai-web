@@ -27,15 +27,15 @@ export default function MarketingError({ error, reset }: ErrorProps) {
         </div>
 
         <div className="flex flex-col gap-3">
-          <h1 className="font-heading text-2xl font-semibold text-white">
+          <h1 className="font-heading text-2xl font-semibold text-[var(--text-on-dark)]">
             Algo deu errado
           </h1>
-          <p className="text-sm leading-relaxed text-white/65">
+          <p className="text-sm leading-relaxed text-[var(--text-on-dark-secondary)]">
             Ocorreu um erro inesperado ao carregar esta página. Por favor, tente
             novamente ou volte para a página inicial.
           </p>
           {error.digest && (
-            <p className="font-mono text-xs text-white/30">
+            <p className="font-mono text-xs text-[var(--text-on-dark-muted)]">
               Código: {error.digest}
             </p>
           )}

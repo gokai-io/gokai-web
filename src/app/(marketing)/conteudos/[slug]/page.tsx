@@ -98,14 +98,14 @@ function ArticleBody({ conteudo }: { conteudo: string }) {
         const rendered = parts.map((part, i) => {
           if (part.startsWith("**") && part.endsWith("**")) {
             return (
-              <strong key={i} className="font-semibold text-white/85">
+              <strong key={i} className="font-semibold text-[var(--text-on-dark)]">
                 {part.slice(2, -2)}
               </strong>
             )
           }
           if (part.startsWith("_") && part.endsWith("_")) {
             return (
-              <em key={i} className="italic text-white/72">
+              <em key={i} className="italic text-[var(--text-on-dark-secondary)]">
                 {part.slice(1, -1)}
               </em>
             )
@@ -118,7 +118,7 @@ function ArticleBody({ conteudo }: { conteudo: string }) {
           return (
             <p
               key={index}
-              className="text-white/72 leading-[1.85] text-base sm:text-[17px] pl-4 border-l-2 border-red-600/40"
+              className="text-[var(--text-on-dark-secondary)] leading-[1.85] text-base sm:text-[17px] pl-4 border-l-2 border-red-600/40"
             >
               {rendered}
             </p>
@@ -126,7 +126,7 @@ function ArticleBody({ conteudo }: { conteudo: string }) {
         }
 
         return (
-          <p key={index} className="text-white/62 leading-[1.85] text-base sm:text-[17px]">
+          <p key={index} className="text-[var(--text-on-dark-secondary)] leading-[1.85] text-base sm:text-[17px]">
             {rendered}
           </p>
         )
@@ -145,17 +145,17 @@ function RelatedArticleCard({
   return (
     <Link
       href={`/conteudos/${article.slug}`}
-      className="group block rounded-xl ring-1 ring-white/12 bg-[#123020] hover:ring-white/28 transition-all duration-300 p-5 flex flex-col gap-3"
+      className="group block rounded-xl ring-1 ring-white/12 bg-surface-dark-alt hover:ring-white/28 transition-all duration-300 p-5 flex flex-col gap-3"
     >
       <span
         className={`inline-flex self-start items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${categoriaBadgeClass[article.categoria]}`}
       >
         {categoriaLabels[article.categoria]}
       </span>
-      <h3 className="text-sm font-semibold text-white/72 leading-snug group-hover:text-white transition-colors">
+      <h3 className="text-sm font-semibold text-[var(--text-on-dark-secondary)] leading-snug group-hover:text-[var(--text-on-dark)] transition-colors">
         {article.titulo}
       </h3>
-      <div className="flex items-center gap-2 text-xs text-white/30 mt-auto">
+      <div className="flex items-center gap-2 text-xs text-[var(--text-on-dark-muted)] mt-auto">
         <Clock className="w-3 h-3" />
         <span>{article.leitura_min} min</span>
         <span>·</span>
@@ -193,7 +193,7 @@ export default async function ArticleDetailPage({ params }: Props) {
   ])
 
   return (
-    <div className="min-h-screen bg-[#0C2418]">
+    <div className="min-h-screen bg-surface-dark">
       {/* Structured data */}
       <script type="application/ld+json">
         {JSON.stringify(articleJsonLd)}
@@ -206,7 +206,7 @@ export default async function ArticleDetailPage({ params }: Props) {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-6">
         <Link
           href="/conteudos"
-          className="inline-flex items-center gap-2 text-sm text-white/62 hover:text-white/85 transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-[var(--text-on-dark-secondary)] hover:text-[var(--text-on-dark)] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar para Conteúdos
@@ -222,23 +222,23 @@ export default async function ArticleDetailPage({ params }: Props) {
           >
             {categoriaLabels[article.categoria as ArticleCategoria]}
           </span>
-          <span className="flex items-center gap-1.5 text-xs text-white/30">
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-on-dark-muted)]">
             <Clock className="w-3.5 h-3.5" />
             {article.leitura_min} min de leitura
           </span>
-          <span className="flex items-center gap-1.5 text-xs text-white/30">
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-on-dark-muted)]">
             <Calendar className="w-3.5 h-3.5" />
             {formatDateFull(article.publicado_em)}
           </span>
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-6">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-on-dark)] leading-tight mb-6">
           {article.titulo}
         </h1>
 
         {/* Lead / resumo */}
-        <p className="text-lg text-white/62 leading-relaxed mb-8">
+        <p className="text-lg text-[var(--text-on-dark-secondary)] leading-relaxed mb-8">
           {article.resumo}
         </p>
 
@@ -250,10 +250,10 @@ export default async function ArticleDetailPage({ params }: Props) {
             </span>
           </div>
           <div>
-            <p className="text-sm font-medium text-white/72">
+            <p className="text-sm font-medium text-[var(--text-on-dark-secondary)]">
               {article.autor ?? "Equipe GŌKAI"}
             </p>
-            <p className="text-xs text-white/30">
+            <p className="text-xs text-[var(--text-on-dark-muted)]">
               Publicado em {formatDateFull(article.publicado_em)}
               {article.atualizado_em !== article.publicado_em &&
                 ` · Atualizado em ${formatDateFull(article.atualizado_em)}`}
@@ -269,11 +269,11 @@ export default async function ArticleDetailPage({ params }: Props) {
         {/* Tags */}
         {article.tags.length > 0 && (
           <div className="flex items-center gap-2 flex-wrap mt-12 pt-8 border-t border-white/12">
-            <Tag className="w-3.5 h-3.5 text-white/30 shrink-0" />
+            <Tag className="w-3.5 h-3.5 text-[var(--text-on-dark-muted)] shrink-0" />
             {article.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-full bg-white/6 border border-white/18/40 px-2.5 py-0.5 text-xs text-white/45"
+                className="inline-flex items-center rounded-full bg-white/6 border border-white/18/40 px-2.5 py-0.5 text-xs text-[var(--text-on-dark-muted)]"
               >
                 {tag}
               </span>
@@ -284,13 +284,13 @@ export default async function ArticleDetailPage({ params }: Props) {
 
       {/* ── CTA block ────────────────────────────────────────────────────── */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="rounded-xl ring-1 ring-white/12 bg-[#123020] p-6 sm:p-8">
+        <div className="rounded-xl ring-1 ring-white/12 bg-surface-dark-alt p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-center gap-6">
             <div className="flex-1">
-              <h2 className="text-lg font-bold text-white mb-1">
+              <h2 className="text-lg font-bold text-[var(--text-on-dark)] mb-1">
                 Pronto para começar?
               </h2>
-              <p className="text-sm text-white/62 leading-relaxed">
+              <p className="text-sm text-[var(--text-on-dark-secondary)] leading-relaxed">
                 Conheça nossas modalidades e faça sua inscrição. Nossa equipe
                 entrará em contato para orientar o seu início.
               </p>
@@ -298,13 +298,13 @@ export default async function ArticleDetailPage({ params }: Props) {
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
               <Link
                 href="/inscricao"
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-red-600 text-[#0C2418] font-semibold text-sm hover:bg-red-500 transition-colors"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-red-600 text-surface-dark font-semibold text-sm hover:bg-red-500 transition-colors"
               >
                 Inscrever-se
               </Link>
               <Link
                 href="/modalidades"
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white/8 text-white/85 font-medium text-sm hover:bg-white/14 transition-colors"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white/8 text-[var(--text-on-dark)] font-medium text-sm hover:bg-white/14 transition-colors"
               >
                 Ver modalidades
               </Link>
@@ -317,7 +317,7 @@ export default async function ArticleDetailPage({ params }: Props) {
       {related.length > 0 && (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
           <div className="flex items-center gap-4 mb-6">
-            <h2 className="text-xs font-semibold tracking-widest uppercase shrink-0 text-white/45">
+            <h2 className="text-xs font-semibold tracking-widest uppercase shrink-0 text-[var(--text-on-dark-muted)]">
               Leia também
             </h2>
             <div className="h-px flex-1 bg-white/8" />
@@ -335,13 +335,13 @@ export default async function ArticleDetailPage({ params }: Props) {
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-8 border-t border-white/12">
           <Link
             href="/conteudos"
-            className="text-sm text-white/45 hover:text-white/72 transition-colors"
+            className="text-sm text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark-secondary)] transition-colors"
           >
             ← Todos os conteúdos
           </Link>
           <Link
             href="/modalidades"
-            className="text-sm text-white/45 hover:text-white/72 transition-colors"
+            className="text-sm text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark-secondary)] transition-colors"
           >
             Ver modalidades →
           </Link>

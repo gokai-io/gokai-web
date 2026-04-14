@@ -55,11 +55,11 @@ export default async function ModalidadesPage() {
       {/* Hero */}
       <section className="gokai-hero gokai-hero-compact">
         <BrandContainer className="text-center">
-          <div className="gokai-kicker justify-center text-white/68">O que praticamos</div>
-          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <div className="gokai-kicker justify-center text-[var(--text-on-dark-secondary)]">O que praticamos</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
             Modalidades
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-on-dark-secondary)]">
             Diferentes modalidades de artes marciais para todas as idades e níveis de experiência,
             com acompanhamento técnico sério.
           </p>
@@ -154,12 +154,12 @@ export default async function ModalidadesPage() {
       </Section>
 
       {/* CTA */}
-      <Section className="bg-[#0C2418] text-white">
+      <Section className="bg-surface-dark text-white">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-heading text-3xl font-semibold text-white">
+          <h2 className="font-heading text-3xl font-semibold text-[var(--text-on-dark)]">
             Pronto para começar?
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/70">
+          <p className="mx-auto mt-4 max-w-xl text-[var(--text-on-dark-secondary)]">
             Escolha sua modalidade e faça sua inscrição. Nossa equipe entrará em contato.
           </p>
           <div className="mt-8">
@@ -171,7 +171,7 @@ export default async function ModalidadesPage() {
       </Section>
 
       {/* Editorial cross-link */}
-      <Section className="bg-[#EEE7D9]">
+      <Section className="bg-surface-warm">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-12">
           <div className="min-w-0 flex-1">
             <div className="gokai-kicker text-primary/62">Biblioteca GŌKAI</div>

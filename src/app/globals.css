@@ -17,6 +17,13 @@
   --color-brand-paper: #F7F6F2;
   --color-brand-ink: #123020;
 
+  /* ── Semantic surface colors (usable as bg-surface-dark, etc.) ── */
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-dark-alt: var(--surface-dark-alt);
+  --color-surface-light: var(--surface-light);
+  --color-surface-warm: var(--surface-warm);
+  --color-surface-white: var(--surface-white);
+
   --color-red-300: #ee867f;
   --color-red-400: #df574e;
   --color-red-500: #CF2E24;
@@ -74,6 +81,22 @@
 :root {
   --font-sans: var(--font-manrope);
 
+  /* ── Superfícies semânticas ── */
+  --surface-dark:       #0A1E14;
+  --surface-dark-alt:   #123020;
+  --surface-dark-muted: rgba(247, 246, 242, 0.06);
+  --surface-light:      #F5F4F0;
+  --surface-warm:       #EDE6D8;
+  --surface-white:      #FFFFFF;
+
+  /* ── Texto sobre fundo escuro ── */
+  --text-on-dark:            #F7F6F2;
+  --text-on-dark-secondary:  rgba(247, 246, 242, 0.78);
+  --text-on-dark-muted:      rgba(247, 246, 242, 0.58);
+
+  /* ── Texto sobre fundo claro (complementa foreground/muted-foreground) ── */
+  --text-on-light-muted:     #5A7266;
+
   /* ── Cores base ── */
   --background: #F5F4F0;    /* off-white institucional */
   --foreground: #0E2219;    /* verde floresta quase preto — leitura máxima */
@@ -116,6 +139,22 @@
 }
 
 .dark {
+  /* ── Superfícies semânticas (dark mode) ── */
+  --surface-dark:       #0A1E14;
+  --surface-dark-alt:   #123020;
+  --surface-dark-muted: rgba(247, 246, 242, 0.06);
+  --surface-light:      #0E2A1C;
+  --surface-warm:       #142E20;
+  --surface-white:      #123020;
+
+  /* ── Texto sobre fundo escuro (mantém) ── */
+  --text-on-dark:            #F7F6F2;
+  --text-on-dark-secondary:  rgba(247, 246, 242, 0.78);
+  --text-on-dark-muted:      rgba(247, 246, 242, 0.58);
+
+  /* ── Texto sobre fundo claro (inverted in dark mode) ── */
+  --text-on-light-muted:     rgba(247, 246, 242, 0.50);
+
   --background: #0C2418;
   --foreground: #F7F6F2;
   --card: #123020;
@@ -333,14 +372,14 @@
 
   /* ── Dark section bg — institutional dark green ── */
   .gokai-section-dark {
-    background: #0C2418;
-    color: #F7F6F2;
+    background: var(--surface-dark);
+    color: var(--text-on-dark);
   }
 
   /* ── Warm section bg — parchment tones ── */
   .gokai-section-warm {
-    background: #EEE7D9;
-    color: #123020;
+    background: var(--surface-warm);
+    color: var(--foreground);
   }
 
   /* ── Card with prominent accent top border ── */

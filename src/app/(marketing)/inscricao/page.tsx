@@ -39,9 +39,9 @@ export default async function InscricaoPage() {
     <div className="min-h-screen">
       <section className="gokai-hero gokai-hero-compact">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="gokai-kicker justify-center text-white/68">Inicie sua formação</p>
-          <h1 className="mt-5 text-4xl font-semibold text-white sm:text-5xl">Inscreva-se</h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-white/76">
+          <p className="gokai-kicker justify-center text-[var(--text-on-dark-secondary)]">Inicie sua formação</p>
+          <h1 className="mt-5 text-4xl font-semibold text-[var(--text-on-dark)] sm:text-5xl">Inscreva-se</h1>
+          <p className="mx-auto mt-4 max-w-xl text-lg text-[var(--text-on-dark-secondary)]">
             O GŌKAI é um ambiente sério de formação marcial. Preencha o formulário e nossa equipe
             entrará em contato para dar sequência à sua matrícula.
           </p>

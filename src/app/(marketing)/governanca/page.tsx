@@ -85,11 +85,11 @@ export default async function GovernancaPage() {
       {/* Hero — brand-consistent dark green */}
       <section className="gokai-hero gokai-hero-compact">
         <BrandContainer className="relative text-center">
-          <div className="gokai-kicker text-white/68 justify-center">Institucional</div>
-          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <div className="gokai-kicker text-[var(--text-on-dark-secondary)] justify-center">Institucional</div>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
             Governança
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-on-dark-secondary)]">
             Estrutura diretiva do GŌKAI – Associação Esportiva e Ambiental
           </p>
         </BrandContainer>
@@ -138,7 +138,7 @@ export default async function GovernancaPage() {
 
       {/* Diretoria */}
       <Section
-        className="bg-[#EEE7D9]"
+        className="bg-surface-warm"
         title="Diretoria"
         subtitle="Os membros eleitos responsáveis pela gestão e direção da associação."
       >
