@@ -45,7 +45,7 @@ export function SiteHeader() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-400",
           scrolled
-            ? "border-b border-border bg-white py-3"
+            ? "border-b-2 border-[var(--surface-ink)] bg-[var(--surface-paper)] py-3"
             : "bg-transparent py-5"
         )}
       >
@@ -84,11 +84,11 @@ export function SiteHeader() {
                     "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
                     isActive
                       ? scrolled
-                        ? "text-foreground after:bg-foreground after:scale-x-100"
-                        : "text-white after:bg-white after:scale-x-100"
+                        ? "text-[var(--text-primary)] after:bg-[var(--accent-red)] after:scale-x-100"
+                        : "text-[var(--text-on-dark)] after:bg-[var(--accent-red)] after:scale-x-100"
                       : scrolled
-                        ? "text-foreground/80 hover:text-foreground after:bg-foreground hover:after:scale-x-100"
-                        : "text-white/80 hover:text-white after:bg-white hover:after:scale-x-100"
+                        ? "text-[var(--text-primary)]/80 hover:text-[var(--text-primary)] after:bg-[var(--accent-red)]"
+                        : "text-[var(--text-on-dark)]/80 hover:text-[var(--text-on-dark)] after:bg-[var(--accent-red)]"
                   )}
                 >
                   {label}
@@ -146,7 +146,7 @@ export function SiteHeader() {
       {/* ── Mobile menu — full-width dropdown ── */}
       <div
         className={cn(
-          "fixed inset-x-0 top-0 z-40 bg-surface-dark pt-20 pb-8 transition-all duration-300 lg:hidden",
+          "fixed inset-x-0 top-0 z-40 bg-[var(--surface-forest)] pt-20 pb-8 transition-all duration-300 lg:hidden",
           mobileOpen
             ? "translate-y-0 opacity-100"
             : "-translate-y-4 opacity-0 pointer-events-none"
