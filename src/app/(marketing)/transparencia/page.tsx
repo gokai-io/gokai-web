@@ -158,17 +158,17 @@ export default function TransparenciaPage() {
             {/* ── Projetos Parceiros ── */}
             <SectionTitle>Projetos Parceiros</SectionTitle>
             <P>
-              A Gōkai cede espaço e apoio institucional aos seguintes projetos, que mantêm identidade e gestão próprias:
+              A Gōkai conta com o apoio institucional dos seguintes projetos, que atuam como apoiadores não financeiros da associação:
             </P>
             <ul className="space-y-2 pl-5 my-3">
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
                 <strong className="text-[var(--surface-midnight)]">Gamonal Fighters</strong> – Jiu-Jitsu
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Samurai Boxe</strong> – Boxe
+                <strong className="text-[var(--surface-midnight)]">Academia do Boxe</strong> – Boxe
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Linus Judô</strong> – Judô
+                <strong className="text-[var(--surface-midnight)]">Guerreiro Samurai</strong> – Judô
               </li>
             </ul>
 

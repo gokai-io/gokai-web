@@ -387,8 +387,8 @@ Em caso de descumprimento:
 ## Projetos Parceiros
 
 - Gamonal Fighters — Jiu-Jitsu
-- Samurai Boxe — Boxe
-- Linus Judô — Judô
+- Academia do Boxe — Boxe
+- Guerreiro Samurai — Judô
 
 > Os professores não integram a Diretoria Executiva. Os projetos parceiros não integram juridicamente a Associação.
 
@@ -507,7 +507,7 @@ Categorias de adesão: Associado Efetivo, Associado Atleta/Aluno, Associado Cola
   {
     id: "00000000-0000-0000-0000-000000000609",
     titulo: "Memorando de Parceria",
-    descricao: "Memorando de Entendimento e Cessão de Uso entre a GŌKAI e projetos parceiros (Gamonal Fighters, Samurai Boxe, Linus Judô).",
+    descricao: "Memorando de Entendimento e Cessão de Uso entre a GŌKAI e projetos parceiros (Gamonal Fighters, Academia do Boxe, Guerreiro Samurai).",
     tipo: "outro",
     secao: "estrutura",
     arquivo_url: null,
@@ -521,8 +521,8 @@ Categorias de adesão: Associado Efetivo, Associado Atleta/Aluno, Associado Cola
 
 **CESSIONÁRIOS:**
 - Gamonal Fighters (Jiu-Jitsu)
-- Samurai Boxe (Boxe)
-- Linus Judô (Judô) — representado por Linus Pauling Ferreira Pereira
+- Academia do Boxe (Boxe)
+- Guerreiro Samurai (Judô) — representado por Linus Pauling Ferreira Pereira
 
 ---
 
