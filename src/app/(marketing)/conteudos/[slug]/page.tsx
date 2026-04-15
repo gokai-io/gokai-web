@@ -17,6 +17,7 @@ import {
   categoriaBadgeClass,
   type ArticleCategoria,
 } from "@/lib/conteudos"
+import { BrandContainer } from "@/components/branding/brand-container"
 
 // ─── Static generation ────────────────────────────────────────────────────────
 
@@ -81,8 +82,8 @@ function formatDateShort(dateStr: string): string {
 }
 
 /**
- * Renders plain-text article content into paragraphs.
- * Splits on blank lines (\n\n). Bold (**text**) and italic (_text_) are supported.
+ * Renders plain-text article content into editorial paragraphs.
+ * Splits on blank lines. **bold** and _italic_ are supported.
  */
 function ArticleBody({ conteudo }: { conteudo: string }) {
   const paragraphs = conteudo
@@ -91,34 +92,29 @@ function ArticleBody({ conteudo }: { conteudo: string }) {
     .filter(Boolean)
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-7">
       {paragraphs.map((paragraph, index) => {
-        // Process inline formatting: **bold** and _italic_
         const parts = paragraph.split(/(\*\*[^*]+\*\*|_[^_]+_)/g)
         const rendered = parts.map((part, i) => {
           if (part.startsWith("**") && part.endsWith("**")) {
             return (
-              <strong key={i} className="font-semibold text-[var(--text-on-dark)]">
+              <strong key={i} className="font-semibold text-[var(--surface-midnight)]">
                 {part.slice(2, -2)}
               </strong>
             )
           }
           if (part.startsWith("_") && part.endsWith("_")) {
-            return (
-              <em key={i} className="italic text-[var(--text-on-dark-secondary)]">
-                {part.slice(1, -1)}
-              </em>
-            )
+            return <em key={i}>{part.slice(1, -1)}</em>
           }
           return part
         })
 
-        // First paragraph gets a subtle left accent
+        // First paragraph — drop cap feeling with left accent
         if (index === 0) {
           return (
             <p
               key={index}
-              className="text-[var(--text-on-dark-secondary)] leading-[1.85] text-base sm:text-[17px] pl-4 border-l-2 border-red-600/40"
+              className="text-[var(--surface-midnight)]/80 text-lg leading-[1.9] pl-5 border-l-2 border-[var(--accent-carmine)]/40"
             >
               {rendered}
             </p>
@@ -126,7 +122,7 @@ function ArticleBody({ conteudo }: { conteudo: string }) {
         }
 
         return (
-          <p key={index} className="text-[var(--text-on-dark-secondary)] leading-[1.85] text-base sm:text-[17px]">
+          <p key={index} className="text-[var(--surface-midnight)]/80 text-[17px] leading-[1.9]">
             {rendered}
           </p>
         )
@@ -145,17 +141,17 @@ function RelatedArticleCard({
   return (
     <Link
       href={`/conteudos/${article.slug}`}
-      className="group block rounded-xl ring-1 ring-white/12 bg-surface-dark-alt hover:ring-white/28 transition-all duration-300 p-5 flex flex-col gap-3"
+      className="group flex flex-col gap-3 rounded-lg border border-[var(--accent-gold)]/12 bg-white/[0.03] p-5 transition-all duration-300 hover:bg-white/[0.06] hover:border-[var(--accent-gold)]/25"
     >
       <span
         className={`inline-flex self-start items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${categoriaBadgeClass[article.categoria]}`}
       >
         {categoriaLabels[article.categoria]}
       </span>
-      <h3 className="text-sm font-semibold text-[var(--text-on-dark-secondary)] leading-snug group-hover:text-[var(--text-on-dark)] transition-colors">
+      <h3 className="text-sm font-semibold text-[var(--text-ivory-dim)] leading-snug group-hover:text-[var(--text-ivory)] transition-colors">
         {article.titulo}
       </h3>
-      <div className="flex items-center gap-2 text-xs text-[var(--text-on-dark-muted)] mt-auto">
+      <div className="flex items-center gap-2 text-xs text-[var(--text-ivory-muted)] mt-auto">
         <Clock className="w-3 h-3" />
         <span>{article.leitura_min} min</span>
         <span>·</span>
@@ -193,7 +189,7 @@ export default async function ArticleDetailPage({ params }: Props) {
   ])
 
   return (
-    <div className="min-h-screen bg-surface-dark">
+    <>
       {/* Structured data */}
       <script type="application/ld+json">
         {JSON.stringify(articleJsonLd)}
@@ -202,157 +198,159 @@ export default async function ArticleDetailPage({ params }: Props) {
         {JSON.stringify(breadcrumbJsonLd)}
       </script>
 
-      {/* ── Back navigation ─────────────────────────────────────────────── */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-6">
-        <Link
-          href="/conteudos"
-          className="inline-flex items-center gap-2 text-sm text-[var(--text-on-dark-secondary)] hover:text-[var(--text-on-dark)] transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Voltar para Conteúdos
-        </Link>
-      </div>
-
-      {/* ── Article header ───────────────────────────────────────────────── */}
-      <header className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        {/* Category badge */}
-        <div className="flex items-center gap-3 mb-6 flex-wrap">
-          <span
-            className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${categoriaBadgeClass[article.categoria as ArticleCategoria]}`}
-          >
-            {categoriaLabels[article.categoria as ArticleCategoria]}
-          </span>
-          <span className="flex items-center gap-1.5 text-xs text-[var(--text-on-dark-muted)]">
-            <Clock className="w-3.5 h-3.5" />
-            {article.leitura_min} min de leitura
-          </span>
-          <span className="flex items-center gap-1.5 text-xs text-[var(--text-on-dark-muted)]">
-            <Calendar className="w-3.5 h-3.5" />
-            {formatDateFull(article.publicado_em)}
-          </span>
-        </div>
-
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-on-dark)] leading-tight mb-6">
-          {article.titulo}
-        </h1>
-
-        {/* Lead / resumo */}
-        <p className="text-lg text-[var(--text-on-dark-secondary)] leading-relaxed mb-8">
-          {article.resumo}
-        </p>
-
-        {/* Divider with author */}
-        <div className="flex items-center gap-4 py-5 border-t border-b border-white/10">
-          <div className="w-8 h-8 rounded-full bg-red-600/20 border border-red-600/30 flex items-center justify-center shrink-0">
-            <span className="text-xs font-bold text-red-400">
-              {(article.autor ?? "Equipe GŌKAI").charAt(0)}
-            </span>
-          </div>
-          <div>
-            <p className="text-sm font-medium text-[var(--text-on-dark-secondary)]">
-              {article.autor ?? "Equipe GŌKAI"}
-            </p>
-            <p className="text-xs text-[var(--text-on-dark-muted)]">
-              Publicado em {formatDateFull(article.publicado_em)}
-              {article.atualizado_em !== article.publicado_em &&
-                ` · Atualizado em ${formatDateFull(article.atualizado_em)}`}
-            </p>
-          </div>
-        </div>
-      </header>
-
-      {/* ── Article body ─────────────────────────────────────────────────── */}
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <ArticleBody conteudo={article.conteudo} />
-
-        {/* Tags */}
-        {article.tags.length > 0 && (
-          <div className="flex items-center gap-2 flex-wrap mt-12 pt-8 border-t border-white/12">
-            <Tag className="w-3.5 h-3.5 text-[var(--text-on-dark-muted)] shrink-0" />
-            {article.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-full bg-white/6 border border-white/18/40 px-2.5 py-0.5 text-xs text-[var(--text-on-dark-muted)]"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-      </article>
-
-      {/* ── CTA block ────────────────────────────────────────────────────── */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="rounded-xl ring-1 ring-white/12 bg-surface-dark-alt p-6 sm:p-8">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-            <div className="flex-1">
-              <h2 className="text-lg font-bold text-[var(--text-on-dark)] mb-1">
-                Pronto para começar?
-              </h2>
-              <p className="text-sm text-[var(--text-on-dark-secondary)] leading-relaxed">
-                Conheça nossas modalidades e faça sua inscrição. Nossa equipe
-                entrará em contato para orientar o seu início.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <Link
-                href="/inscricao"
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-red-600 text-surface-dark font-semibold text-sm hover:bg-red-500 transition-colors"
-              >
-                Inscrever-se
-              </Link>
-              <Link
-                href="/modalidades"
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white/8 text-[var(--text-on-dark)] font-medium text-sm hover:bg-white/14 transition-colors"
-              >
-                Ver modalidades
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Related articles ─────────────────────────────────────────────── */}
-      {related.length > 0 && (
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-          <div className="flex items-center gap-4 mb-6">
-            <h2 className="text-xs font-semibold tracking-widest uppercase shrink-0 text-[var(--text-on-dark-muted)]">
-              Leia também
-            </h2>
-            <div className="h-px flex-1 bg-white/8" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {related.map((rel) => (
-              <RelatedArticleCard key={rel.slug} article={rel} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Footer nav ───────────────────────────────────────────────────── */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-8 border-t border-white/12">
+      {/* ── Hero — dark, compact ─────────────────────────────────── */}
+      <section className="gokai-hero-spotlight pt-28 pb-16">
+        <BrandContainer>
           <Link
             href="/conteudos"
-            className="text-sm text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark-secondary)] transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-[var(--text-ivory-dim)] hover:text-[var(--text-ivory)] transition-colors mb-10"
           >
-            ← Todos os conteúdos
+            <ArrowLeft className="w-4 h-4" />
+            Voltar para Conteúdos
           </Link>
-          <Link
-            href="/modalidades"
-            className="text-sm text-[var(--text-on-dark-muted)] hover:text-[var(--text-on-dark-secondary)] transition-colors"
-          >
-            Ver modalidades →
-          </Link>
-          <Link
-            href="/inscricao"
-            className="text-sm font-medium text-red-600 hover:text-red-500 transition-colors ml-auto"
-          >
-            Fazer minha inscrição →
-          </Link>
-        </div>
-      </div>
-    </div>
+
+          {/* Category + meta */}
+          <div className="flex items-center gap-3 mb-6 flex-wrap">
+            <span
+              className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium ${categoriaBadgeClass[article.categoria as ArticleCategoria]}`}
+            >
+              {categoriaLabels[article.categoria as ArticleCategoria]}
+            </span>
+            <span className="flex items-center gap-1.5 text-xs text-[var(--text-ivory-muted)]">
+              <Clock className="w-3.5 h-3.5" />
+              {article.leitura_min} min de leitura
+            </span>
+            <span className="flex items-center gap-1.5 text-xs text-[var(--text-ivory-muted)]">
+              <Calendar className="w-3.5 h-3.5" />
+              {formatDateFull(article.publicado_em)}
+            </span>
+          </div>
+
+          <h1 className="max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-ivory)] leading-[1.1] tracking-tight">
+            {article.titulo}
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-lg text-[var(--text-ivory-dim)] leading-relaxed">
+            {article.resumo}
+          </p>
+
+          {/* Author */}
+          <div className="flex items-center gap-4 mt-10 pt-6 border-t border-white/10">
+            <div className="w-9 h-9 rounded-full bg-[var(--accent-carmine)]/20 border border-[var(--accent-carmine)]/30 flex items-center justify-center shrink-0">
+              <span className="text-xs font-bold text-[var(--accent-carmine)]">
+                {(article.autor ?? "Equipe GŌKAI").charAt(0)}
+              </span>
+            </div>
+            <div>
+              <p className="text-sm font-medium text-[var(--text-ivory)]">
+                {article.autor ?? "Equipe GŌKAI"}
+              </p>
+              <p className="text-xs text-[var(--text-ivory-muted)]">
+                {formatDateFull(article.publicado_em)}
+                {article.atualizado_em !== article.publicado_em &&
+                  ` · Atualizado em ${formatDateFull(article.atualizado_em)}`}
+              </p>
+            </div>
+          </div>
+        </BrandContainer>
+      </section>
+
+      {/* ── Article body — LIGHT paper background for readability ── */}
+      <section className="bg-[#F4F2ED] py-16">
+        <BrandContainer>
+          <article className="mx-auto max-w-3xl rounded-2xl border border-[var(--surface-midnight)]/8 bg-white px-8 py-12 sm:px-14 sm:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+            <ArticleBody conteudo={article.conteudo} />
+
+            {/* Tags */}
+            {article.tags.length > 0 && (
+              <div className="flex items-center gap-2 flex-wrap mt-14 pt-8 border-t border-[var(--surface-midnight)]/8">
+                <Tag className="w-3.5 h-3.5 text-[var(--surface-midnight)]/40 shrink-0" />
+                {article.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center rounded-full bg-[var(--surface-midnight)]/5 border border-[var(--surface-midnight)]/8 px-2.5 py-0.5 text-xs text-[var(--surface-midnight)]/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </article>
+        </BrandContainer>
+      </section>
+
+      {/* ── CTA + Related — back to dark ─────────────────────────── */}
+      <section className="bg-[var(--surface-midnight)] py-16">
+        <BrandContainer>
+          {/* CTA block */}
+          <div className="mx-auto max-w-3xl rounded-xl border border-[var(--accent-gold)]/15 bg-white/[0.03] p-6 sm:p-8 mb-16">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+              <div className="flex-1">
+                <h2 className="text-lg font-extrabold text-[var(--text-ivory)] mb-1">
+                  Pronto para começar?
+                </h2>
+                <p className="text-sm text-[var(--text-ivory-dim)] leading-relaxed">
+                  Conheça nossas modalidades e faça sua inscrição. Nossa equipe
+                  entrará em contato para orientar o seu início.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                <Link
+                  href="/inscricao"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-[var(--accent-carmine)] text-white font-bold text-sm hover:brightness-110 transition-all"
+                >
+                  Inscrever-se
+                </Link>
+                <Link
+                  href="/modalidades"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-white/[0.06] text-[var(--text-ivory)] font-medium text-sm hover:bg-white/[0.10] transition-colors"
+                >
+                  Ver modalidades
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Related articles */}
+          {related.length > 0 && (
+            <div className="mx-auto max-w-3xl mb-16">
+              <div className="flex items-center gap-4 mb-6">
+                <h2 className="text-xs font-bold tracking-widest uppercase shrink-0 text-[var(--text-ivory-muted)]">
+                  Leia também
+                </h2>
+                <div className="h-px flex-1 bg-white/8" />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {related.map((rel) => (
+                  <RelatedArticleCard key={rel.slug} article={rel} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Footer nav */}
+          <div className="mx-auto max-w-3xl flex flex-wrap items-center gap-x-6 gap-y-3 pt-8 border-t border-white/10">
+            <Link
+              href="/conteudos"
+              className="text-sm text-[var(--text-ivory-muted)] hover:text-[var(--text-ivory)] transition-colors"
+            >
+              ← Todos os conteúdos
+            </Link>
+            <Link
+              href="/modalidades"
+              className="text-sm text-[var(--text-ivory-muted)] hover:text-[var(--text-ivory)] transition-colors"
+            >
+              Ver modalidades →
+            </Link>
+            <Link
+              href="/inscricao"
+              className="text-sm font-bold text-[var(--accent-carmine)] hover:brightness-110 transition-all ml-auto"
+            >
+              Fazer minha inscrição →
+            </Link>
+          </div>
+        </BrandContainer>
+      </section>
+    </>
   )
 }
