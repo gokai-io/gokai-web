@@ -52,37 +52,37 @@ export default async function InscricaoPage() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
             <InstitutionalCard accent="green">
-              <h2 className="mb-4 text-xl font-semibold text-foreground">Seja um Associado</h2>
+              <h2 className="mb-4 text-xl font-semibold text-foreground">Comece a treinar</h2>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Faça parte da GŌKAI e evolua nas artes marciais.
+                Inscreva-se como atleta/aluno da GŌKAI e comece sua jornada nas artes marciais.
               </p>
             </InstitutionalCard>
 
             <InstitutionalCard accent="red">
-              <h2 className="mb-4 text-lg font-semibold text-foreground">Como participar</h2>
+              <h2 className="mb-4 text-lg font-semibold text-foreground">Como funciona</h2>
               <ol className="space-y-3 text-sm leading-relaxed text-muted-foreground">
-                <li>1. Preencher ficha cadastral</li>
-                <li>2. Assinar termo de adesão</li>
-                <li>3. Aprovação pela diretoria</li>
+                <li>1. Preencha o formulário abaixo</li>
+                <li>2. Nossa equipe entra em contato</li>
+                <li>3. Agende sua primeira aula</li>
               </ol>
             </InstitutionalCard>
 
             <InstitutionalCard accent="neutral">
-              <h2 className="mb-4 text-lg font-semibold text-foreground">Benefícios</h2>
+              <h2 className="mb-4 text-lg font-semibold text-foreground">O que você recebe</h2>
               <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
-                <li>Participação em treinos e eventos</li>
-                <li>Direito a voto</li>
-                <li>Acesso à comunidade</li>
+                <li>Treinos com professores qualificados</li>
+                <li>Participação em eventos e campeonatos</li>
+                <li>Acesso à comunidade GŌKAI</li>
               </ul>
             </InstitutionalCard>
           </div>
 
           <InstitutionalCard accent="green" className="mb-10">
-            <h2 className="mb-4 text-lg font-semibold text-foreground">Requisitos</h2>
+            <h2 className="mb-4 text-lg font-semibold text-foreground">Informações importantes</h2>
             <ul className="space-y-3 text-sm leading-relaxed text-muted-foreground">
-              <li>Cumprir o estatuto</li>
-              <li>Estar em dia com contribuições</li>
-              <li>Respeitar as normas</li>
+              <li>Todas as idades são bem-vindas — crianças, jovens e adultos</li>
+              <li>Não é necessário ter experiência prévia</li>
+              <li>Menores de 18 anos precisam de autorização do responsável</li>
             </ul>
           </InstitutionalCard>
 

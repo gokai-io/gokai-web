@@ -145,9 +145,9 @@ export default function TransparenciaPage() {
                 <tr><Th>Professor</Th><Th>Modalidades</Th></tr>
               </thead>
               <tbody>
-                <tr><TdBold>Alex Sobreira</TdBold><Td>Boxe</Td></tr>
-                <tr><TdBold>Linus Pauling Ferreira Pereira</TdBold><Td>Jiu-Jitsu · Judô · Boxe · Xadrez</Td></tr>
-                <tr><TdBold>Cássia dos Santos Soranço</TdBold><Td>Jiu-Jitsu · Judô · Boxe · Educação Ambiental</Td></tr>
+                <tr><TdBold>Alex Sobreira</TdBold><Td>Boxe · Kickboxing</Td></tr>
+                <tr><TdBold>Linus Pauling Ferreira Pereira</TdBold><Td>Jiu-Jitsu · Judô · Boxe · Xadrez · Educação Ambiental</Td></tr>
+                <tr><TdBold>Cássia dos Santos Soranço</TdBold><Td>Jiu-Jitsu · Judô · Boxe · Feminino · Infantil</Td></tr>
               </tbody>
             </Table>
 

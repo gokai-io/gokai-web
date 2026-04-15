@@ -380,9 +380,9 @@ Em caso de descumprimento:
 
 ## Equipe Técnica
 
-- Alex Sobreira — Boxe
-- Linus Pauling Ferreira Pereira — Jiu-Jitsu, Judô, Boxe, Xadrez
-- Cássia dos Santos Soranço — Jiu-Jitsu, Judô, Boxe, Educação Ambiental
+- Alex Sobreira — Boxe, Kickboxing
+- Linus Pauling Ferreira Pereira — Jiu-Jitsu, Judô, Boxe, Xadrez, Educação Ambiental
+- Cássia dos Santos Soranço — Jiu-Jitsu, Judô, Boxe, Feminino, Infantil
 
 ## Projetos Parceiros
 

@@ -178,15 +178,15 @@ export default function GovernancaPage() {
             <div className="my-4 space-y-4">
               <div className="py-3">
                 <h3 className="text-base font-bold text-[var(--surface-midnight)]">Alex Sobreira</h3>
-                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professor de Boxe</p>
+                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professor de Boxe e Kickboxing</p>
               </div>
               <div className="py-3 border-t border-[var(--surface-midnight)]/6">
                 <h3 className="text-base font-bold text-[var(--surface-midnight)]">Linus Pauling Ferreira Pereira</h3>
-                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professor de Jiu-Jitsu, Judô, Boxe e Xadrez</p>
+                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professor de Jiu-Jitsu, Judô, Boxe, Xadrez e Educação Ambiental</p>
               </div>
               <div className="py-3 border-t border-[var(--surface-midnight)]/6">
                 <h3 className="text-base font-bold text-[var(--surface-midnight)]">Cássia dos Santos Soranço</h3>
-                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professora de Jiu-Jitsu, Judô, Boxe e Educação Ambiental</p>
+                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professora de Jiu-Jitsu, Judô, Boxe, Feminino e Infantil</p>
               </div>
             </div>
 
