@@ -66,102 +66,74 @@ export const documentos: DocumentoTransparencia[] = [
     arquivo_url: null,
     data_referencia: "2024-01-01",
     publicado: true,
-    conteudo: `# Estatuto Social – GŌKAI
+    conteudo: `# Estatuto Social da Associação Esportiva e Ambiental GŌKAI
 
-## Disposições Preliminares
+## CAPÍTULO I — DA DENOMINAÇÃO, SEDE E FINALIDADE
 
-Art. 1 – A GŌKAI – Clube de Artes Marciais é uma associação civil sem fins lucrativos, com sede na Rua Melo Franco, nº 68, bairro São Mateus, Juiz de Fora/MG, constituída por prazo indeterminado.
+A Associação Esportiva e Ambiental GŌKAI é uma entidade sem fins lucrativos, com sede em Juiz de Fora/MG.
 
-## Finalidade
+Tem como finalidade:
 
-A associação tem como objetivo:
+- promover artes marciais
+- incentivar disciplina, ética e formação humana
+- desenvolver atividades esportivas e educativas
+- promover consciência ambiental e social
 
-- Promover e desenvolver artes marciais e esportes de combate
-- Realizar ações socioeducativas e culturais
-- Organizar eventos, cursos e competições
-- Firmar parcerias com instituições e projetos
-- Captar recursos por meio de contribuições, doações e patrocínios
+---
 
-É vedada qualquer atividade político-partidária e distribuição de lucros.
+## CAPÍTULO II — DOS ASSOCIADOS
 
-## Associados
+A associação será composta por associados que poderão ser:
 
-### Categorias
-
-- Fundadores
-- Efetivos
-- Colaboradores
+- fundadores
+- efetivos
+- contribuintes
 
 ### Direitos
 
-- Participar das atividades
-- Votar e ser votado
-- Apresentar propostas
+- participar das atividades
+- votar e ser votado
+- acessar informações da associação
 
 ### Deveres
 
-- Cumprir o estatuto
-- Contribuir financeiramente
-- Zelar pela associação
+- respeitar estatuto e regimento
+- manter conduta ética
+- contribuir com atividades
 
-### Exclusão
+---
 
-Pode ocorrer por:
+## CAPÍTULO III — DA ADMINISTRAÇÃO
 
-- Descumprimento de regras
-- Inadimplência
-- Conduta inadequada
-
-Garantido direito de defesa.
-
-## Estrutura Organizacional
-
-### Assembleia Geral
-
-- Órgão máximo da associação
-- Responsável por eleições e decisões estratégicas
-
-### Diretoria Executiva
+A administração será composta por:
 
 - Presidente
-- Vice-Presidente
-- Diretor Administrativo
-- Diretor Financeiro
-- Diretor Técnico/Esportivo
+- Vice-presidente
+- Diretoria
 
-Mandato de 3 anos.
+Compete à diretoria:
 
-### Conselho Fiscal
+- gerir atividades
+- administrar recursos
+- representar a associação
 
-- 3 membros
-- Fiscalização financeira
+---
 
-## Patrimônio
+## CAPÍTULO IV — DO PATRIMÔNIO
 
-Formado por:
+O patrimônio será composto por:
 
-- Contribuições
-- Doações
-- Eventos
-- Parcerias
+- contribuições dos associados
+- doações
+- parcerias
 
-## Relações com Dirigentes
+---
 
-A GŌKAI poderá firmar contratos com seus associados ou dirigentes, desde que tais relações sejam realizadas em condições transparentes, compatíveis com o mercado e previamente aprovadas pela Assembleia Geral.
+## CAPÍTULO V — DISPOSIÇÕES GERAIS
 
-Em especial, a utilização de imóvel pertencente a membro da Diretoria poderá ocorrer mediante cessão onerosa ou sublocação, desde que formalizada por instrumento próprio e devidamente aprovada, garantindo-se a ausência de favorecimento indevido.
+A associação não distribui lucros.
 
-## Prestação de Contas
-
-- Transparência obrigatória
-- Balanço anual
-- Avaliação pelo Conselho Fiscal
-
-## Alterações e Dissolução
-
-- Alterações: 2/3 dos votos
-- Dissolução: 3/4 dos votos
-- Patrimônio destinado a entidade similar`,
+Os recursos serão integralmente aplicados nas atividades institucionais.`,
   },
   {
     id: "00000000-0000-0000-0000-000000000602",
