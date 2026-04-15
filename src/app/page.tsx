@@ -251,7 +251,7 @@ export default async function HomePage() {
               ].map((panel) => (
                 <div
                   key={panel.num}
-                  className="group relative flex flex-col gap-6 bg-[var(--surface-obsidian)] p-8 md:p-10 border-b border-[var(--accent-gold)]/15 md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-white/5"
+                  className="group relative flex flex-col gap-6 bg-white/[0.03] p-8 md:p-10 border-b border-[var(--accent-gold)]/15 md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-white/[0.08]"
                 >
                   {/* Accent top bar */}
                   <div className={`absolute inset-x-0 top-0 h-1 ${panel.accentClass}`} />

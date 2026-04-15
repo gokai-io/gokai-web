@@ -40,8 +40,8 @@ export function InstitutionalCard({
     <div
       className={cn(
         "relative overflow-hidden rounded-lg p-6",
-        // Surface — Obsidian for all states to maintain immersion
-        "bg-[var(--surface-obsidian)] border border-[var(--accent-gold)]/15",
+        // Surface — slightly elevated from background
+        "bg-white/[0.04] border border-[var(--accent-gold)]/15",
         "transition-all duration-300",
         "hover:-translate-y-0.5",
         accent !== "none" ? ACCENT_HOVER[accent] : ACCENT_HOVER.none,
