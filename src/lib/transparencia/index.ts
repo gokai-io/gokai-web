@@ -84,11 +84,17 @@ d) defender a ética, a transparência e o respeito às diferenças, vedada qual
 
 **Parágrafo único** – É proibida a distribuição de resultados, excedentes ou patrimônio, sob qualquer forma ou pretexto, aos associados ou dirigentes.
 
-**Art. 2-A – Da Sede e Uso do Espaço Físico**
+**Art. 2-A – Da Sede e Uso dos Espaços Físicos**
 
+**§1º – Polo São Mateus (Sede)**
 O imóvel situado na Rua Melo Franco, 68, Bairro São Mateus, Juiz de Fora/MG, CEP 36.045-060, é locado por **Thiago Santos Mello**, Presidente da Associação, na qualidade de locatário, o qual subloca o referido espaço à Gōkai mediante Contrato de Sublocação celebrado em separado entre as partes.
 
-**Parágrafo único** – O Contrato de Sublocação definirá prazo, valor e condições, não gerando confusão patrimonial entre o imóvel e o patrimônio social da Gōkai. Eventuais benfeitorias não indenizáveis não integrarão a massa patrimonial em caso de dissolução da Associação.
+**§2º – Polo Linhares**
+O imóvel utilizado pela Gōkai no Polo Linhares, denominado **[nome da academia]**, situado em [endereço completo], Linhares, Juiz de Fora/MG, CEP _________, é de propriedade de **Alex Sobreira**, membro fundador e professor da Associação, o qual o loca diretamente à Gōkai mediante Contrato de Locação celebrado em separado entre as partes.
+
+**§3º** – Os Contratos de Sublocação serão celebrados em separado para cada polo, com prazo, valor e condições definidos entre cada sublocador e a Associação, não gerando confusão patrimonial entre os imóveis e o patrimônio social da Gōkai. Eventuais benfeitorias não indenizáveis não integrarão a massa patrimonial em caso de dissolução da Associação.
+
+**§4º** – Ambos os sublocadores declaram ciência do conflito de interesses decorrente de sua condição simultânea de membros da Associação e sublocadores, abstendo-se de votar nas deliberações que envolvam os respectivos contratos de sublocação.
 
 ---
 
@@ -225,7 +231,21 @@ c) supervisionar a atuação de professores e instrutores, garantindo qualidade 
 
 **Art. 24** – Os casos omissos neste Estatuto serão resolvidos pela Diretoria e referendados pela próxima Assembleia Geral.
 
-**Art. 25** – Este Estatuto entra em vigor na data de sua aprovação pelos fundadores, devendo ser registrado no Cartório de Registro Civil de Pessoas Jurídicas competente na Comarca de Juiz de Fora/MG.`,
+**Art. 25** – Este Estatuto entra em vigor na data de sua aprovação pelos fundadores, devendo ser registrado no Cartório de Registro Civil de Pessoas Jurídicas competente na Comarca de Juiz de Fora/MG.
+
+---
+
+Juiz de Fora/MG, ___ de ____________ de 2026.
+
+**Fundadores:**
+
+Thiago Santos Mello — Presidente
+Renan Winter Spatin — Vice-Presidente
+Jafar Mohammed Untar — Diretor Técnico/Esportivo
+Allan de Carvalho Moreira — Diretor Administrativo
+Linus Pauling Ferreira Pereira — Fundador
+Cássia dos Santos Soranço — Fundadora
+Alex Sobreira — Fundador`,
   },
   {
     id: "00000000-0000-0000-0000-000000000602",
@@ -257,7 +277,18 @@ Os eleitos declararam aceitar os respectivos cargos e comprometeram-se a cumprir
 
 Nada mais havendo a tratar, o presidente encerrou a assembleia, determinando que se lavrasse a presente ata, que, lida e achada conforme, é assinada por todos os fundadores presentes.
 
-Juiz de Fora/MG, ___ de ____________ de 2026.`,
+Juiz de Fora/MG, ___ de ____________ de 2026.
+
+**Secretário da sessão:** Renan Winter Spatin
+
+**Presidente da sessão:** Thiago Santos Mello
+
+**Demais fundadores presentes:**
+- Jafar Mohammed Untar
+- Allan de Carvalho Moreira
+- Linus Pauling Ferreira Pereira
+- Cássia dos Santos Soranço
+- Alex Sobreira`,
   },
   {
     id: "00000000-0000-0000-0000-000000000605",

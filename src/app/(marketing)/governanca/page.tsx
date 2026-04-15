@@ -1,232 +1,250 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
-import { createClient } from "@/lib/supabase/server"
 import { BrandContainer } from "@/components/branding/brand-container"
-import { InstitutionalCard } from "@/components/branding/institutional-card"
-import { Section } from "@/components/marketing/section"
-import type { CargoDiretoria, DiretorWithAssociado } from "@/types/database"
-
-// Local type for conselheiro_fiscal with joined associado/pessoa
-interface ConselheiroFiscalWithAssociado {
-  id: string
-  associado_id: string
-  cargo: string
-  data_inicio: string
-  data_fim: string | null
-  ativo: boolean
-  created_at?: string
-  updated_at?: string
-  associado: { pessoa?: { nome_completo?: string } } | null
-}
+import { GokaiButton } from "@/components/branding/gokai-button"
+import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Governança | GŌKAI",
-  description: "Estrutura diretiva e conselho fiscal do GŌKAI – Associação Esportiva e Ambiental.",
-  alternates: {
-    canonical: canonicalUrl("/governanca"),
-  },
+  description: "Estrutura diretiva, equipe técnica e documentos de governança da GŌKAI.",
+  alternates: { canonical: canonicalUrl("/governanca") },
   openGraph: pageOpenGraph({
     title: "Governança | GŌKAI",
-    description: "Conheça a estrutura diretiva e o conselho fiscal do GŌKAI – Associação Esportiva e Ambiental.",
+    description: "Estrutura diretiva, equipe técnica e documentos de governança da GŌKAI.",
     path: "/governanca",
   }),
   twitter: {
     ...twitterCard,
     title: "Governança | GŌKAI",
-    description: "Conheça a estrutura diretiva e o conselho fiscal do GŌKAI – Associação Esportiva e Ambiental.",
+    description: "Estrutura diretiva, equipe técnica e documentos de governança da GŌKAI.",
   },
 }
 
-const cargoLabels: Record<CargoDiretoria, string> = {
-  presidente: "Presidente",
-  vice_presidente: "Vice-Presidente",
-  diretor_administrativo: "Diretor Administrativo",
-  diretor_financeiro: "Diretor Financeiro",
-  diretor_tecnico_esportivo: "Diretor Técnico Esportivo",
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-[var(--surface-midnight)] tracking-tight mt-12 mb-4 first:mt-0">
+      {children}
+    </h2>
+  )
 }
 
-function formatDateRange(inicio: string, fim: string | null): string {
-  const start = new Date(inicio).getFullYear()
-  if (!fim) return `${start} – presente`
-  const end = new Date(fim).getFullYear()
-  return `${start} – ${end}`
+function P({ children }: { children: React.ReactNode }) {
+  return <p className="text-[15px] text-[var(--surface-midnight)]/75 leading-[1.8] my-3">{children}</p>
 }
 
-function getInitials(nome: string): string {
-  return nome
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase()
+function SectionDivider() {
+  return <hr className="border-[var(--surface-midnight)]/8 my-10" />
 }
 
-export default async function GovernancaPage() {
-  const supabase = await createClient()
+function Quote({ children }: { children: React.ReactNode }) {
+  return (
+    <blockquote className="my-4 pl-4 border-l-2 border-[var(--accent-carmine)]/30 text-sm text-[var(--surface-midnight)]/65 italic">
+      {children}
+    </blockquote>
+  )
+}
 
-  const { data: diretoresRaw } = await supabase
-    .from("diretor")
-    .select("*, associado:associado(*, pessoa:pessoa(*))")
-    .eq("ativo", true)
-    .order("cargo", { ascending: true })
+function DiretorCard({ nome, cargo, mandato, responsabilidades, pending }: {
+  nome: string
+  cargo: string
+  mandato: string
+  responsabilidades: string
+  pending?: boolean
+}) {
+  return (
+    <div className="py-6 border-b border-[var(--surface-midnight)]/6 last:border-0">
+      <div className="flex items-start gap-4">
+        <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--surface-midnight)]/5 font-heading text-sm font-bold text-[var(--surface-midnight)]/50">
+          {nome.charAt(0)}
+        </div>
+        <div>
+          <h3 className={`text-base font-bold ${pending ? "text-[var(--surface-midnight)]/50 italic" : "text-[var(--surface-midnight)]"}`}>
+            {nome}
+          </h3>
+          <p className="text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-carmine)] mt-0.5">
+            {cargo}
+          </p>
+          <p className="text-xs text-[var(--surface-midnight)]/50 mt-1">
+            Mandato: {mandato}
+          </p>
+          <p className="text-sm text-[var(--surface-midnight)]/70 mt-2 leading-relaxed">
+            {responsabilidades}
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
-  const { data: conselheirosRaw } = await supabase
-    .from("conselheiro_fiscal")
-    .select("*, associado:associado(*, pessoa:pessoa(*))")
-    .eq("ativo", true)
-    .order("data_inicio", { ascending: false })
-
-  const diretores = (diretoresRaw ?? []) as DiretorWithAssociado[]
-  const conselheiros = (conselheirosRaw ?? []) as ConselheiroFiscalWithAssociado[]
-
+export default function GovernancaPage() {
   return (
     <>
-      {/* Hero — brand-consistent dark green */}
-      <section className="gokai-hero gokai-hero-compact">
-        <BrandContainer className="relative text-center">
-          <div className="gokai-kicker text-[var(--text-on-dark-secondary)] justify-center">Institucional</div>
-          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-[var(--text-on-dark)] sm:text-5xl">
-            Governança
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-on-dark-secondary)]">
-            Estrutura diretiva do GŌKAI – Associação Esportiva e Ambiental
-          </p>
+      {/* ── Hero ─────────────────────────────────────────────── */}
+      <section className="gokai-hero-spotlight pt-28 pb-16">
+        <BrandContainer>
+          <div className="max-w-3xl">
+            <div className="gokai-kicker mb-4">Estrutura Diretiva</div>
+            <h1 className="font-heading text-4xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-ivory)]">
+              Governança
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[var(--text-ivory-dim)]">
+              Estrutura diretiva da GŌKAI – Associação Esportiva e Ambiental.
+            </p>
+          </div>
         </BrandContainer>
       </section>
 
-      {/* Estrutura organizacional */}
-      <Section
-        className="bg-background"
-        title="Estrutura Organizacional"
-        subtitle="Visão geral da organização institucional da GŌKAI."
-      >
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <InstitutionalCard accent="green">
-            <h3 className="mb-3 text-lg font-semibold text-foreground">Assembleia Geral</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Órgão máximo de decisão.
-            </p>
-          </InstitutionalCard>
+      {/* ── Content — paper background ───────────────────────── */}
+      <section className="bg-[#F4F2ED] py-16">
+        <BrandContainer>
+          <article className="mx-auto max-w-4xl rounded-2xl border border-[var(--surface-midnight)]/8 bg-white px-8 py-12 sm:px-14 sm:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
 
-          <InstitutionalCard accent="red">
-            <h3 className="mb-3 text-lg font-semibold text-foreground">Diretoria Executiva</h3>
-            <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
-              <li>Presidente</li>
-              <li>Vice-Presidente</li>
-              <li>Diretor Administrativo</li>
-              <li>Diretor Financeiro</li>
-              <li>Diretor Técnico</li>
+            {/* ── Estrutura Organizacional ── */}
+            <SectionTitle>Estrutura Organizacional</SectionTitle>
+            <P>Visão geral da organização institucional da GŌKAI.</P>
+
+            <h3 className="font-heading text-base font-bold text-[var(--surface-midnight)] mt-6 mb-2">Assembleia Geral</h3>
+            <P>
+              Órgão máximo de decisão, composto por todos os associados fundadores e efetivos
+              em pleno gozo de seus direitos.
+            </P>
+
+            <h3 className="font-heading text-base font-bold text-[var(--surface-midnight)] mt-6 mb-2">Diretoria Executiva</h3>
+            <ul className="space-y-1.5 pl-5 my-3">
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75">Presidente</li>
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75">Vice-Presidente</li>
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75">Diretor Administrativo</li>
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75">Diretor Financeiro</li>
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75">Diretor Técnico/Esportivo</li>
             </ul>
-          </InstitutionalCard>
 
-          <InstitutionalCard accent="neutral">
-            <h3 className="mb-3 text-lg font-semibold text-foreground">Conselho Fiscal</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Responsável pela fiscalização financeira.
+            <Quote>
+              O exercício de qualquer cargo na Diretoria é gratuito e voluntário.
+              A Diretoria é eleita pela Assembleia Geral para mandato de 3 anos.
+            </Quote>
+
+            <h3 className="font-heading text-base font-bold text-[var(--surface-midnight)] mt-6 mb-2">Equipe Técnica</h3>
+            <P>
+              Professores e instrutores responsáveis pela condução das atividades esportivas,
+              subordinados ao Diretor Técnico/Esportivo. Não integram a Diretoria Executiva.
+            </P>
+
+            <SectionDivider />
+
+            {/* ── Diretoria Executiva ── */}
+            <SectionTitle>Diretoria Executiva</SectionTitle>
+            <P>Os membros eleitos responsáveis pela gestão e direção da associação.</P>
+
+            <div className="mt-4">
+              <DiretorCard
+                nome="Thiago Santos Mello"
+                cargo="Presidente"
+                mandato="2026 – presente"
+                responsabilidades="Representação legal da associação, decisões estratégicas, assinatura de contratos e parcerias, coordenação geral."
+              />
+              <DiretorCard
+                nome="Renan Winter Spatin"
+                cargo="Vice-Presidente"
+                mandato="2026 – presente"
+                responsabilidades="Substituição do Presidente, apoio à gestão administrativa e decisória, cumprimento do Estatuto e Regimento Interno."
+              />
+              <DiretorCard
+                nome="Allan de Carvalho Moreira"
+                cargo="Diretor Administrativo"
+                mandato="2026 – presente"
+                responsabilidades="Secretaria institucional, registros de associados, comunicação interna e externa, organização de eventos e atividades."
+              />
+              <DiretorCard
+                nome="Jafar Mohammed Untar"
+                cargo="Diretor Técnico/Esportivo"
+                mandato="2026 – presente"
+                responsabilidades="Coordenação das modalidades esportivas, padrões técnicos e pedagógicos, supervisão dos professores, inscrições em campeonatos e filiações federativas."
+              />
+              <DiretorCard
+                nome="Em definição"
+                cargo="Diretor Financeiro"
+                mandato="2026 – presente"
+                responsabilidades="Controle de receitas e despesas, fluxo de caixa, assinatura de documentos financeiros, balancetes e prestação de contas."
+                pending
+              />
+            </div>
+
+            <SectionDivider />
+
+            {/* ── Equipe Técnica ── */}
+            <SectionTitle>Equipe Técnica</SectionTitle>
+
+            <div className="my-4 space-y-4">
+              <div className="py-3">
+                <h3 className="text-base font-bold text-[var(--surface-midnight)]">Alex Sobreira</h3>
+                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professor de Boxe</p>
+              </div>
+              <div className="py-3 border-t border-[var(--surface-midnight)]/6">
+                <h3 className="text-base font-bold text-[var(--surface-midnight)]">Linus Pauling Ferreira Pereira</h3>
+                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professor de Jiu-Jitsu, Judô, Boxe e Xadrez</p>
+              </div>
+              <div className="py-3 border-t border-[var(--surface-midnight)]/6">
+                <h3 className="text-base font-bold text-[var(--surface-midnight)]">Cássia dos Santos Soranço</h3>
+                <p className="text-sm text-[var(--surface-midnight)]/60 mt-0.5">Professora de Jiu-Jitsu, Judô, Boxe e Educação Ambiental</p>
+              </div>
+            </div>
+
+            <Quote>
+              Professores não possuem poder de representação legal da associação,
+              salvo delegação expressa por escrito da Diretoria.
+            </Quote>
+
+            <SectionDivider />
+
+            {/* ── Documentos de Governança ── */}
+            <SectionTitle>Documentos de Governança</SectionTitle>
+            <P>
+              Todos os documentos que formalizam a estrutura e o funcionamento da GŌKAI
+              estão disponíveis publicamente:
+            </P>
+
+            <ul className="space-y-2 pl-0 my-4">
+              {[
+                { label: "Estatuto Social", id: "00000000-0000-0000-0000-000000000601" },
+                { label: "Regimento Interno", id: "00000000-0000-0000-0000-000000000603" },
+                { label: "Ata de Fundação", id: "00000000-0000-0000-0000-000000000602" },
+                { label: "Termo de Posse da Diretoria", id: "00000000-0000-0000-0000-000000000605" },
+                { label: "Organograma Institucional", id: "00000000-0000-0000-0000-000000000606" },
+              ].map((doc) => (
+                <li key={doc.id}>
+                  <Link
+                    href={`/transparencia/${doc.id}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                  >
+                    {doc.label} <ArrowRight className="size-3.5" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+          </article>
+        </BrandContainer>
+      </section>
+
+      {/* ── CTA ──────────────────────────────────────────────── */}
+      <section className="bg-[var(--surface-midnight)] py-16">
+        <BrandContainer>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-heading text-xl font-extrabold text-[var(--text-ivory)]">
+              Transparência completa
+            </h2>
+            <p className="mt-3 text-sm text-[var(--text-ivory-dim)] leading-relaxed">
+              Acesse todos os documentos institucionais, receitas, despesas e prestação de contas.
             </p>
-          </InstitutionalCard>
-
-          <InstitutionalCard accent="green">
-            <h3 className="mb-3 text-lg font-semibold text-foreground">Equipe Técnica</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Professores e instrutores responsáveis pelos treinos.
-            </p>
-          </InstitutionalCard>
-        </div>
-      </Section>
-
-      {/* Diretoria */}
-      <Section
-        className="bg-surface-warm"
-        title="Diretoria"
-        subtitle="Os membros eleitos responsáveis pela gestão e direção da associação."
-      >
-        {diretores.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {diretores.map((diretor) => {
-              const pessoa = (diretor.associado as { pessoa?: { nome_completo?: string } } | null)?.pessoa
-              const nome = pessoa?.nome_completo ?? "Nome não informado"
-              const cargo = diretor.cargo as CargoDiretoria
-              const mandato = formatDateRange(diretor.data_inicio, diretor.data_fim)
-
-              return (
-                <InstitutionalCard
-                  key={diretor.id}
-                  accent="green"
-                  className="flex flex-col items-center gap-4 text-center"
-                >
-                  {/* Avatar initials */}
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-border bg-muted">
-                    <span className="text-2xl font-bold text-foreground">
-                      {getInitials(nome)}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground">{nome}</h3>
-                    <p className="mt-1 text-sm font-medium text-muted-foreground">
-                      {cargoLabels[cargo] ?? cargo}
-                    </p>
-                    <p className="mt-2 text-xs text-muted-foreground">Mandato: {mandato}</p>
-                  </div>
-                </InstitutionalCard>
-              )
-            })}
+            <div className="mt-6">
+              <GokaiButton href="/transparencia" tone="primary">
+                Ver transparência
+              </GokaiButton>
+            </div>
           </div>
-        ) : (
-          <InstitutionalCard accent="neutral">
-            <p className="text-center text-muted-foreground">
-              Em estruturação. Novas informações serão disponibilizadas em breve.
-            </p>
-          </InstitutionalCard>
-        )}
-      </Section>
-
-      {/* Conselho Fiscal */}
-      <Section
-        className="bg-background"
-        title="Conselho Fiscal"
-        subtitle="Os conselheiros responsáveis pela fiscalização das contas e atos da diretoria."
-      >
-        {conselheiros.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {conselheiros.map((conselheiro) => {
-              const pessoa = (conselheiro.associado as { pessoa?: { nome_completo?: string } } | null)?.pessoa
-              const nome = pessoa?.nome_completo ?? "Nome não informado"
-              const mandato = formatDateRange(conselheiro.data_inicio, conselheiro.data_fim)
-
-              return (
-                <InstitutionalCard
-                  key={conselheiro.id}
-                  accent="red"
-                  className="flex flex-col items-center gap-4 text-center"
-                >
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-secondary/20 bg-secondary/10">
-                    <span className="text-xl font-bold text-secondary">
-                      {getInitials(nome)}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">{nome}</h3>
-                    <p className="mt-1 text-sm font-medium text-secondary/80">
-                      {conselheiro.cargo ?? "Conselheiro Fiscal"}
-                    </p>
-                    <p className="mt-2 text-xs text-muted-foreground">Mandato: {mandato}</p>
-                  </div>
-                </InstitutionalCard>
-              )
-            })}
-          </div>
-        ) : (
-          <InstitutionalCard accent="neutral">
-            <p className="text-center text-muted-foreground">
-              Em estruturação. Novas informações serão disponibilizadas em breve.
-            </p>
-          </InstitutionalCard>
-        )}
-      </Section>
+        </BrandContainer>
+      </section>
     </>
   )
 }
