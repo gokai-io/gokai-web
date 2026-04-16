@@ -11,13 +11,6 @@ import { DataTable, type Column } from "@/components/app/data-table"
 import { ConfirmDialog } from "@/components/app/confirm-dialog"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import type { ProfessorWithPessoa } from "@/types/database"
 
 // ─── Status helpers ───────────────────────────────────────────────────────────
@@ -53,6 +46,30 @@ export function ProfessoresClient({ professores }: ProfessoresClientProps) {
   const [accessTarget, setAccessTarget] = useState<ProfessorWithPessoa | null>(null)
   const [accessRole, setAccessRole] = useState<string>("professor")
   const [creatingAccess, setCreatingAccess] = useState(false)
+
+  async function handleCreateAccess() {
+    if (!accessTarget) return
+    if (!accessTarget.pessoa.email) {
+      toast.error("Professor não tem e-mail cadastrado. Edite o professor e adicione um e-mail primeiro.")
+      setAccessTarget(null)
+      return
+    }
+    setCreatingAccess(true)
+    const result = await criarUsuarioComInvite({
+      nome_completo: accessTarget.pessoa.nome_completo,
+      email: accessTarget.pessoa.email,
+      role: accessRole as "professor",
+    })
+    if (result.error) {
+      toast.error(result.error)
+    } else {
+      toast.success("Acesso criado! Convite enviado por e-mail.")
+      router.refresh()
+    }
+    setCreatingAccess(false)
+    setAccessTarget(null)
+    setAccessRole("professor")
+  }
 
   async function handleDelete() {
     if (!deleteTarget) return
@@ -156,8 +173,32 @@ export function ProfessoresClient({ professores }: ProfessoresClientProps) {
       ),
     },
     {
+      key: "acesso",
+      header: "Acesso",
+      cell: (item) => {
+        const usuario = (item.pessoa as unknown as Record<string, unknown>).usuario_interno as Array<{ id: string; role: string; ativo: boolean }> | undefined
+        const temAcesso = usuario && usuario.length > 0
+        if (temAcesso) {
+          return <Badge variant="default">Ativo</Badge>
+        }
+        return (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={(e) => {
+              e.stopPropagation()
+              setAccessTarget(item)
+            }}
+          >
+            <KeyRoundIcon className="size-3.5" />
+            Criar acesso
+          </Button>
+        )
+      },
+    },
+    {
       key: "actions",
-      header: "Ações",
+      header: "",
       cell: (item) => (
         <Button
           variant="ghost"
@@ -192,6 +233,18 @@ export function ProfessoresClient({ professores }: ProfessoresClientProps) {
         variant="destructive"
         onConfirm={handleDelete}
       />
+
+      {/* Dialog para criar acesso */}
+      {accessTarget && (
+        <ConfirmDialog
+          open={accessTarget !== null}
+          onOpenChange={(open) => { if (!open) { setAccessTarget(null); setAccessRole("professor") } }}
+          title="Criar Acesso"
+          description={`Criar conta de acesso para "${accessTarget.pessoa.nome_completo}"${accessTarget.pessoa.email ? ` (${accessTarget.pessoa.email})` : ""}. O professor receberá um convite por e-mail com cargo "${accessRole}".`}
+          confirmLabel={creatingAccess ? "Criando..." : "Criar acesso"}
+          onConfirm={handleCreateAccess}
+        />
+      )}
     </>
   )
 }
