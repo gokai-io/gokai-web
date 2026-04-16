@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import type { Modalidade } from "@/types/database"
 
 // ─── Schema ───────────────────────────────────────────────────────────────────
 
@@ -34,7 +35,7 @@ const novoProfessorSchema = z.object({
   telefone: z.string().optional(),
   data_nascimento: z.string().optional(),
   // Professor fields
-  especialidades_texto: z.string().optional(),
+  especialidades: z.array(z.string()),
   graduacao: z.string().optional(),
   registro_federacao: z.string().optional(),
   bio: z.string().optional(),
@@ -46,7 +47,11 @@ type NovoProfessorFormValues = z.infer<typeof novoProfessorSchema>
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export function NovoProfessorForm() {
+interface NovoProfessorFormProps {
+  modalidades: Modalidade[]
+}
+
+export function NovoProfessorForm({ modalidades }: NovoProfessorFormProps) {
   const router = useRouter()
   const [saving, setSaving] = useState(false)
 
@@ -58,7 +63,7 @@ export function NovoProfessorForm() {
       email: "",
       telefone: "",
       data_nascimento: "",
-      especialidades_texto: "",
+      especialidades: [],
       graduacao: "",
       registro_federacao: "",
       bio: "",
@@ -74,12 +79,7 @@ export function NovoProfessorForm() {
     setSaving(true)
     const supabase = createClient()
 
-    const especialidades = values.especialidades_texto
-      ? values.especialidades_texto
-          .split(",")
-          .map((s) => s.trim())
-          .filter(Boolean)
-      : []
+    const especialidades = values.especialidades
 
     try {
       // 1. Insert pessoa
@@ -218,17 +218,41 @@ export function NovoProfessorForm() {
           <CardTitle>Dados do Professor</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {/* Especialidades */}
+          {/* Modalidades */}
           <div className="col-span-full flex flex-col gap-1.5">
-            <Label htmlFor="especialidades_texto">
-              Especialidades{" "}
-              <span className="text-muted-foreground">(separadas por vírgula)</span>
-            </Label>
-            <Input
-              id="especialidades_texto"
-              placeholder="Ex: Judô, Jiu-Jitsu, Defesa Pessoal"
-              {...form.register("especialidades_texto")}
-            />
+            <Label>Modalidades</Label>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {modalidades.map((mod) => {
+                const checked = form.watch("especialidades").includes(mod.nome)
+                return (
+                  <label
+                    key={mod.id}
+                    className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${
+                      checked
+                        ? "border-primary bg-primary/5 font-medium"
+                        : "border-border text-muted-foreground hover:border-foreground/20"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      className="sr-only"
+                      checked={checked}
+                      onChange={() => {
+                        const current = form.getValues("especialidades")
+                        form.setValue(
+                          "especialidades",
+                          checked ? current.filter((e: string) => e !== mod.nome) : [...current, mod.nome]
+                        )
+                      }}
+                    />
+                    <div className={`h-4 w-4 rounded border flex items-center justify-center shrink-0 ${checked ? "bg-primary border-primary" : "border-muted-foreground/30"}`}>
+                      {checked && <svg className="h-3 w-3 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>}
+                    </div>
+                    {mod.nome}
+                  </label>
+                )
+              })}
+            </div>
           </div>
 
           {/* Graduação */}

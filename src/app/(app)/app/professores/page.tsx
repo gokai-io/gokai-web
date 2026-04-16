@@ -15,7 +15,7 @@ export default async function ProfessoresPage() {
   const supabase = await createClient()
   const { data: professores } = await supabase
     .from("professor")
-    .select("*, pessoa(*)")
+    .select("*, pessoa(*, usuario_interno(id, role, ativo))")
     .order("created_at", { ascending: false })
 
   return (

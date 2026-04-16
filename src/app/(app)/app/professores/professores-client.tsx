@@ -3,13 +3,21 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
-import { Trash2Icon } from "lucide-react"
+import { KeyRoundIcon, Trash2Icon } from "lucide-react"
 
 import { createClient } from "@/lib/supabase/client"
+import { criarUsuarioComInvite } from "@/app/(app)/app/usuarios/novo/actions"
 import { DataTable, type Column } from "@/components/app/data-table"
 import { ConfirmDialog } from "@/components/app/confirm-dialog"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import type { ProfessorWithPessoa } from "@/types/database"
 
 // ─── Status helpers ───────────────────────────────────────────────────────────
@@ -42,6 +50,9 @@ export function ProfessoresClient({ professores }: ProfessoresClientProps) {
   const [deleteTarget, setDeleteTarget] = useState<ProfessorWithPessoa | null>(
     null
   )
+  const [accessTarget, setAccessTarget] = useState<ProfessorWithPessoa | null>(null)
+  const [accessRole, setAccessRole] = useState<string>("professor")
+  const [creatingAccess, setCreatingAccess] = useState(false)
 
   async function handleDelete() {
     if (!deleteTarget) return
