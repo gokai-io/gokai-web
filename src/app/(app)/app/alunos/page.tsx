@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
+import { PlusIcon } from "lucide-react"
 import { getServerUser } from "@/lib/auth/server"
 import { createClient } from "@/lib/supabase/server"
 import { PageHeader } from "@/components/app/page-header"
@@ -24,6 +25,7 @@ export default async function AlunosPage() {
         description="Gerencie os alunos matriculados na associação."
       >
         <Button render={<Link href="/app/alunos/novo" />}>
+          <PlusIcon />
           Novo Aluno
         </Button>
       </PageHeader>

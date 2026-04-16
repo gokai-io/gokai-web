@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
+import { PlusIcon } from "lucide-react"
 import { getServerUser } from "@/lib/auth/server"
 import { createClient } from "@/lib/supabase/server"
 import { PageHeader } from "@/components/app/page-header"
@@ -24,6 +25,7 @@ export default async function TurmasPage() {
         description="Gerencie as turmas e horários da associação."
       >
         <Button render={<Link href="/app/turmas/novo" />}>
+          <PlusIcon />
           Nova Turma
         </Button>
       </PageHeader>

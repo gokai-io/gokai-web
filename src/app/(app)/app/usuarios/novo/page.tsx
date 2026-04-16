@@ -28,11 +28,6 @@ export default async function NovoUsuarioPage() {
       </div>
 
       <div className="max-w-lg">
-        <div className="rounded-lg border bg-muted/40 p-4 mb-6 text-sm text-muted-foreground">
-          <strong className="text-foreground">Nota:</strong> Após criar o registro do usuário,
-          acesse o painel do Supabase para enviar o convite de acesso por e-mail, ou utilize a
-          função de convite via API. O usuário precisará definir uma senha ao aceitar o convite.
-        </div>
         <NovoUsuarioForm />
       </div>
     </div>
