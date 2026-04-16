@@ -159,8 +159,7 @@ export const organizationJsonLd = {
  *                /eventos, /eventos/[slug], /transparencia, /governanca,
  *                /patrocinadores, /apoiadores, /contato, /privacidade
  *
- *   NOINDEX    → (auth) route group — /login, /esqueci-senha, /redefinir-senha,
- *                /bootstrap
+ *   NOINDEX    → (auth) route group — /login, /esqueci-senha, /redefinir-senha
  *
  *   NOINDEX    → (app) route group — all /app/* private authenticated surfaces
  *
