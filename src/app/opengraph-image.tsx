@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og"
+import { SITE_URL } from "@/lib/seo"
 
 export const alt = "GŌKAI – Associação Esportiva e Ambiental"
 export const size = {
@@ -6,6 +7,8 @@ export const size = {
   height: 630,
 }
 export const contentType = "image/png"
+
+const siteHost = new URL(SITE_URL).host
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -96,7 +99,7 @@ export default function OpenGraphImage() {
               color: "rgba(247,246,242,0.56)",
             }}
           >
-            <div>gokai-web.vercel.app</div>
+            <div>{siteHost}</div>
             <div style={{ color: "#F7F6F2" }}>Disciplina, honra e evolucao continua.</div>
           </div>
         </div>

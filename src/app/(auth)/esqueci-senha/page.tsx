@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod/v4"
 
 import { createClient } from "@/lib/supabase/client"
-import { APP_URL } from "@/lib/constants"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -41,9 +40,11 @@ export default function EsqueceuSenhaPage() {
   async function onSubmit(data: EsqueceuSenhaInput) {
     setServerError(null)
     const supabase = createClient()
+    const redirectOrigin =
+      typeof window !== "undefined" ? window.location.origin : "http://localhost:3000"
 
     const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
-      redirectTo: `${APP_URL}/redefinir-senha`,
+      redirectTo: `${redirectOrigin}/redefinir-senha`,
     })
 
     if (error) {

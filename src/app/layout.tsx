@@ -3,7 +3,14 @@ import { Manrope, Montserrat, Outfit } from "next/font/google"
 import { ThemeProvider } from "next-themes"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
-import { SITE_URL, siteConfig, organizationJsonLd, DEFAULT_OG_IMAGE, twitterCard } from "@/lib/seo"
+import {
+  SITE_URL,
+  siteConfig,
+  organizationJsonLd,
+  DEFAULT_OG_IMAGE,
+  twitterCard,
+  siteKeywords,
+} from "@/lib/seo"
 import "./globals.css"
 
 const montserrat = Montserrat({
@@ -29,6 +36,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: siteConfig.fullName,
   description: siteConfig.description,
+  keywords: siteKeywords,
   openGraph: {
     type: "website",
     siteName: siteConfig.name,

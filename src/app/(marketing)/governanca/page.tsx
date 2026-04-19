@@ -1,23 +1,31 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
+import {
+  buildGovernancePageJsonLd,
+  canonicalUrl,
+  governanceKeywords,
+  governancePageDescription,
+  pageOpenGraph,
+  twitterCard,
+} from "@/lib/seo"
 import { BrandContainer } from "@/components/branding/brand-container"
 import { GokaiButton } from "@/components/branding/gokai-button"
 import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Governança | GŌKAI",
-  description: "Estrutura diretiva, equipe técnica e documentos de governança da GŌKAI.",
+  description: governancePageDescription,
+  keywords: governanceKeywords,
   alternates: { canonical: canonicalUrl("/governanca") },
   openGraph: pageOpenGraph({
     title: "Governança | GŌKAI",
-    description: "Estrutura diretiva, equipe técnica e documentos de governança da GŌKAI.",
+    description: governancePageDescription,
     path: "/governanca",
   }),
   twitter: {
     ...twitterCard,
     title: "Governança | GŌKAI",
-    description: "Estrutura diretiva, equipe técnica e documentos de governança da GŌKAI.",
+    description: governancePageDescription,
   },
 }
 
@@ -78,8 +86,12 @@ function DiretorCard({ nome, cargo, mandato, responsabilidades, pending }: {
 }
 
 export default function GovernancaPage() {
+  const governanceJsonLd = buildGovernancePageJsonLd()
+
   return (
     <>
+      <script type="application/ld+json">{JSON.stringify(governanceJsonLd)}</script>
+
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="gokai-hero-spotlight pt-28 pb-16">
         <BrandContainer>
