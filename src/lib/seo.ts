@@ -3,8 +3,10 @@
  *
  * ⚠️  PRODUCTION DOMAIN – ACTION REQUIRED
  * Organic search authority accumulates on the canonical domain.
- * The current fallback points to the Vercel preview URL, which is
- * suboptimal for long-term SEO.
+ * The canonical domain should always be set explicitly via
+ * NEXT_PUBLIC_APP_URL. When that variable is absent, we fall back to
+ * Vercel-provided deployment hostnames to avoid emitting broken
+ * sitemap/canonical URLs in production.
  *
  * Before launching SEO campaigns:
  *   1. Buy / assign a primary domain (e.g. https://www.gokai.com.br)
@@ -12,9 +14,30 @@
  *   3. Set the same variable in .env.local for local development
  *   4. Verify Google Search Console and Bing Webmaster Tools against that domain
  */
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_APP_URL ?? "https://gokai-web.vercel.app"
-).replace(/\/$/, "")
+function normalizeSiteUrl(value: string): string {
+  const withProtocol =
+    value.startsWith("http://") || value.startsWith("https://") ? value : `https://${value}`
+
+  return withProtocol.replace(/\/$/, "")
+}
+
+function resolveSiteUrl(): string {
+  const explicitUrl = process.env.NEXT_PUBLIC_APP_URL
+
+  if (explicitUrl) return normalizeSiteUrl(explicitUrl)
+
+  const vercelProductionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+
+  if (vercelProductionUrl) return normalizeSiteUrl(vercelProductionUrl)
+
+  const vercelDeploymentUrl = process.env.VERCEL_URL
+
+  if (vercelDeploymentUrl) return normalizeSiteUrl(vercelDeploymentUrl)
+
+  return "http://localhost:3000"
+}
+
+export const SITE_URL = resolveSiteUrl()
 
 /**
  * Returns the absolute canonical URL for a given path.
@@ -40,6 +63,57 @@ export const siteConfig = {
   url: SITE_URL,
 } as const
 
+export interface PublicParticipant {
+  name: string
+  role: string
+  path?: string
+}
+
+export const publicParticipants: readonly PublicParticipant[] = [
+  { name: "Thiago Santos Mello", role: "Presidente", path: "/governanca" },
+  { name: "Renan Winter Spatin", role: "Vice-Presidente", path: "/governanca" },
+  { name: "Allan de Carvalho Moreira", role: "Diretor Administrativo", path: "/governanca" },
+  { name: "Jafar Mohammed Untar", role: "Diretor Técnico/Esportivo", path: "/governanca" },
+  { name: "Alex Sobreira", role: "Professor de Boxe e Kickboxing", path: "/governanca" },
+  {
+    name: "Linus Pauling Ferreira Pereira",
+    role: "Professor de Jiu-Jitsu, Judô, Boxe, Xadrez e Educação Ambiental",
+    path: "/governanca",
+  },
+  {
+    name: "Cássia dos Santos Soranço",
+    role: "Professora de Jiu-Jitsu, Judô, Boxe, Feminino e Infantil",
+    path: "/governanca",
+  },
+]
+
+export const publicParticipantNames = publicParticipants.map((participant) => participant.name)
+
+export const siteKeywords = [
+  "gokai",
+  "gokai juiz de fora",
+  "associação esportiva e ambiental",
+  "artes marciais",
+  "jiu-jitsu",
+  "judô",
+  "boxe",
+  "kickboxing",
+  "xadrez",
+  "defesa pessoal",
+  "governança esportiva",
+  ...publicParticipantNames,
+]
+
+export const governancePageDescription =
+  "Estrutura diretiva, equipe técnica e documentos de governança da GŌKAI, incluindo Thiago Santos Mello, Renan Winter Spatin, Allan de Carvalho Moreira e Jafar Mohammed Untar."
+
+export const governanceKeywords = [
+  "governança gokai",
+  "diretoria gokai",
+  "equipe técnica gokai",
+  ...publicParticipantNames,
+]
+
 // ─── Default OG image ─────────────────────────────────────────────────────────
 
 /**
@@ -49,6 +123,8 @@ export const siteConfig = {
  * A custom branded image can replace this later, but this path must always exist.
  */
 export const DEFAULT_OG_IMAGE = "/opengraph-image"
+
+const ORGANIZATION_ID = `${SITE_URL}#organization`
 
 // ─── Open Graph helper ────────────────────────────────────────────────────────
 
@@ -129,6 +205,7 @@ import {
 export const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "SportsOrganization",
+  "@id": ORGANIZATION_ID,
   name: siteConfig.fullName,
   alternateName: siteConfig.name,
   url: siteConfig.url,
@@ -145,7 +222,44 @@ export const organizationJsonLd = {
         },
       }
     : {}),
+  member: publicParticipants.map((participant) => ({
+    "@type": "Person",
+    name: participant.name,
+    roleName: participant.role,
+    ...(participant.path ? { url: canonicalUrl(participant.path) } : {}),
+  })),
   sameAs: SOCIAL_PROFILES,
+}
+
+/**
+ * Structured data for the governance page.
+ * Reinforces the public leadership and technical team roster for person-name searches.
+ */
+export function buildGovernancePageJsonLd(): object {
+  const pageUrl = canonicalUrl("/governanca")
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": pageUrl,
+    name: "Governança | GŌKAI",
+    url: pageUrl,
+    description: governancePageDescription,
+    mainEntity: { "@id": ORGANIZATION_ID },
+    about: publicParticipants.map((participant) => ({
+      "@type": "Person",
+      name: participant.name,
+      roleName: participant.role,
+      worksFor: { "@id": ORGANIZATION_ID },
+      ...(participant.path ? { url: canonicalUrl(participant.path) } : {}),
+    })),
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    inLanguage: "pt-BR",
+  }
 }
 
 // ─── Crawl / index control ────────────────────────────────────────────────────
