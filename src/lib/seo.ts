@@ -9,7 +9,7 @@
  * sitemap/canonical URLs in production.
  *
  * Before launching SEO campaigns:
- *   1. Buy / assign a primary domain (e.g. https://www.gokai.com.br)
+ *   1. Buy / assign a primary domain (e.g. https://gokai.ong)
  *   2. Set NEXT_PUBLIC_APP_URL in Vercel → Project Settings → Environment Variables
  *   3. Set the same variable in .env.local for local development
  *   4. Verify Google Search Console and Bing Webmaster Tools against that domain
@@ -34,7 +34,7 @@ function resolveSiteUrl(): string {
 
   if (vercelDeploymentUrl) return normalizeSiteUrl(vercelDeploymentUrl)
 
-  return "http://localhost:3000"
+  return "https://gokai.ong"
 }
 
 export const SITE_URL = resolveSiteUrl()
@@ -45,7 +45,7 @@ export const SITE_URL = resolveSiteUrl()
  * @param path - An absolute path starting with "/", e.g. "/sobre"
  * @example
  *   canonicalUrl("/sobre")
- *   // → "https://gokai-web.vercel.app/sobre"
+ *   // → "https://gokai.ong/sobre"
  */
 export function canonicalUrl(path: string): string {
   return `${SITE_URL}${path}`
