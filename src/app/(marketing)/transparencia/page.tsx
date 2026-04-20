@@ -188,19 +188,24 @@ export default function TransparenciaPage() {
                 <MapPin className="size-4 text-[var(--accent-carmine)] mt-1 shrink-0" />
                 <span className="text-[15px] text-[var(--surface-midnight)]"><strong>Linhares</strong></span>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="size-4 text-[var(--accent-carmine)] mt-1 shrink-0" />
-                <span className="text-[15px] text-[var(--surface-midnight)]"><strong>São Pedro</strong></span>
-              </li>
             </ul>
 
             <SectionDivider />
 
             {/* ── Modalidades ── */}
-            <SectionTitle>Modalidades Oferecidas</SectionTitle>
+            <SectionTitle>Modalidades Esportivas</SectionTitle>
             <P>
-              Jiu-Jitsu · Judô · Boxe · Xadrez · Defesa Pessoal Feminina · Educação Ambiental
+              Jiu-Jitsu · Judô · Boxe · Kickboxing · Defesa Pessoal Feminina
             </P>
+
+            <SubHeading>Programas Especiais</SubHeading>
+            <P>
+              Xadrez · Educação Ambiental
+            </P>
+            <Quote>
+              Os programas especiais complementam a formação dos atletas — o xadrez desenvolve o raciocínio estratégico
+              e a educação ambiental conecta a prática esportiva com consciência ecológica e responsabilidade social.
+            </Quote>
 
             <SectionDivider />
 
@@ -406,6 +411,70 @@ export default function TransparenciaPage() {
             <P>
               Para solicitar cópia integral do Estatuto ou Regimento Interno, entre em contato pelo e-mail institucional.
             </P>
+
+            <SectionDivider />
+
+            {/* ── Modelos de Contrato ── */}
+            <SectionTitle>Modelos de Contrato</SectionTitle>
+            <P>
+              Templates com placeholders usados pela Associação como base para locações, sublocações e patrocínios.
+              Cada modelo deve ser revisado por advogado habilitado antes da assinatura.
+            </P>
+            <Table>
+              <thead>
+                <tr><Th>Documento</Th><Th>Finalidade</Th><Th className="w-40">{""}</Th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <TdBold>Contrato de Locação de Imóvel</TdBold>
+                  <Td>Locação direta de espaço físico pela Associação</Td>
+                  <Td>
+                    <Link
+                      href="/transparencia/00000000-0000-0000-0000-000000000610"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                    >
+                      <FileText className="size-3.5" /> Visualizar <ArrowRight className="size-3" />
+                    </Link>
+                  </Td>
+                </tr>
+                <tr>
+                  <TdBold>Contrato de Sublocação de Imóvel</TdBold>
+                  <Td>Sublocação por membro da Diretoria (salvaguardas de conflito de interesses)</Td>
+                  <Td>
+                    <Link
+                      href="/transparencia/00000000-0000-0000-0000-000000000611"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                    >
+                      <FileText className="size-3.5" /> Visualizar <ArrowRight className="size-3" />
+                    </Link>
+                  </Td>
+                </tr>
+                <tr>
+                  <TdBold>Contrato de Patrocínio</TdBold>
+                  <Td>Patrocínio com cotas Apoiador → Diamante e contrapartidas</Td>
+                  <Td>
+                    <Link
+                      href="/transparencia/00000000-0000-0000-0000-000000000612"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                    >
+                      <FileText className="size-3.5" /> Visualizar <ArrowRight className="size-3" />
+                    </Link>
+                  </Td>
+                </tr>
+                <tr>
+                  <TdBold>Pedido de Patrocínio</TdBold>
+                  <Td>Carta-modelo para prospecção ativa de apoiadores</Td>
+                  <Td>
+                    <Link
+                      href="/transparencia/00000000-0000-0000-0000-000000000613"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                    >
+                      <FileText className="size-3.5" /> Visualizar <ArrowRight className="size-3" />
+                    </Link>
+                  </Td>
+                </tr>
+              </tbody>
+            </Table>
 
             <SectionDivider />
 
