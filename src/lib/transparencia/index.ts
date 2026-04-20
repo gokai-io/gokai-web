@@ -689,7 +689,7 @@ Em caso de descumprimento:
 - Presidente: Thiago Santos Mello
 - Vice-Presidente: Renan Winter Spatin
 - Diretor Administrativo: Allan de Carvalho Moreira
-- Diretor Financeiro: A definir
+- Diretor Financeiro: Flávio Daniel Tuyarot Barci
 - Diretor Técnico/Esportivo: Jafar Mohammed Untar
 
 ## Equipe Técnica
@@ -725,7 +725,7 @@ Em caso de descumprimento:
 - Manter registros atualizados de associados e documentos
 - Gerir comunicação institucional interna e externa
 
-### Diretor Financeiro — A definir
+### Diretor Financeiro — Flávio Daniel Tuyarot Barci
 - Controlar receitas e despesas da Associação
 - Elaborar balancetes mensais e balanço anual
 - Apresentar prestação de contas à Diretoria e à Assembleia Geral

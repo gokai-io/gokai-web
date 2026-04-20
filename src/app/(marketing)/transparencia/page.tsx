@@ -134,7 +134,7 @@ export default function TransparenciaPage() {
                 <tr><Td>Presidente</Td><TdBold>Thiago Mello</TdBold></tr>
                 <tr><Td>Vice-Presidente</Td><TdBold>Renan Winter Spatin</TdBold></tr>
                 <tr><Td>Diretor Administrativo</Td><TdBold>Allan Henrique</TdBold></tr>
-                <tr><Td>Diretor Financeiro</Td><Td className="italic">A definir</Td></tr>
+                <tr><Td>Diretor Financeiro</Td><TdBold>Flávio Daniel Tuyarot Barci</TdBold></tr>
                 <tr><Td>Diretor Técnico/Esportivo</Td><TdBold>Jafar Mohammed Untar</TdBold></tr>
               </tbody>
             </Table>
