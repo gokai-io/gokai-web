@@ -91,9 +91,9 @@ export const documentos: DocumentoTransparencia[] = [
 
 - **Jafar Mohammed Untar**, brasileiro, solteiro, Analista de TI, inscrito no CPF sob nº 125.128.136-22, portador do RG nº MG-17.853.895, residente à Rua Morais e Castro, 841, Apt. 906, Passos, Juiz de Fora/MG, CEP 36.025-160;
 
-- **Linus Pauling Ferreira Pereira**, [NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO], inscrito no CPF sob nº [CPF], portador do RG nº [RG], residente à [ENDEREÇO], Juiz de Fora/MG, CEP [CEP];
+- **Linus Pauling Ferreira Pereira**, brasileiro, divorciado, Professor, inscrito no CPF sob nº 035.023.986-07, portador do RG nº M-6.989.326, residente à Rua Guaçuí, 10, Apt. 301, Bairro São Mateus, Juiz de Fora/MG, CEP 36.025-190;
 
-- **Cássia dos Santos Soranço**, [NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO], inscrita no CPF sob nº [CPF], portadora do RG nº [RG], residente à [ENDEREÇO], Juiz de Fora/MG, CEP [CEP];
+- **Cássia dos Santos Soranço**, brasileira, solteira, autônoma, inscrita no CPF sob nº 069.617.396-09, portadora do RG nº MG-11.972.675, residente à Rua Antônio Dias, 183, Apt. 305, Bairro Poço Rico, Juiz de Fora/MG;
 
 - **Alex Sobreira**, [NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO], inscrito no CPF sob nº [CPF], portador do RG nº [RG], residente à [ENDEREÇO], Juiz de Fora/MG, CEP [CEP].
 
@@ -489,16 +489,16 @@ Praça Jarbas de Lery Santos, 37, Apt. 302, São Mateus, JF/MG — CEP 36.016-29
 \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
 
 Linus Pauling Ferreira Pereira — Fundador
-[NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO]
-RG: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
-Endereço: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+Brasileiro, Divorciado, Professor
+RG: M-6.989.326 | CPF: 035.023.986-07
+Rua Guaçuí, 10, Apt. 301, São Mateus, JF/MG — CEP 36.025-190
 
 \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
 
 Cássia dos Santos Soranço — Fundadora
-[NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO]
-RG: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
-Endereço: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+Brasileira, Solteira, Autônoma
+RG: MG-11.972.675 | CPF: 069.617.396-09
+Rua Antônio Dias, 183, Apt. 305, Poço Rico, JF/MG
 
 \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
 
@@ -578,11 +578,11 @@ Flávio Daniel Tuyarot Barci | CPF: 125.124.716-40
 
 \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
 
-Linus Pauling Ferreira Pereira | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+Linus Pauling Ferreira Pereira | CPF: 035.023.986-07
 
 \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
 
-Cássia dos Santos Soranço | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+Cássia dos Santos Soranço | CPF: 069.617.396-09
 
 \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
 
@@ -593,8 +593,7 @@ Alex Sobreira | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\
 > **Pendências antes de levar ao cartório:**
 >
 > - [ ] RG do Flávio Daniel Tuyarot Barci
-> - [ ] Qualificação completa de Linus Pauling Ferreira Pereira (RG, CPF, estado civil, profissão, endereço)
-> - [ ] Qualificação completa de Cássia dos Santos Soranço (RG, CPF, estado civil, profissão, endereço)
+> - [ ] CEP do endereço da Cássia dos Santos Soranço (Rua Antônio Dias, 183/305, Poço Rico)
 > - [ ] Qualificação completa de Alex Sobreira (RG, CPF, estado civil, profissão, endereço)
 > - [ ] Nome da academia de boxe em Linhares e endereço completo do Polo Linhares
 > - [ ] Data da assembleia de fundação
