@@ -4,6 +4,7 @@ import { Download, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 import { BrandContainer } from "@/components/branding/brand-container"
+import { TransparenciaDocumentBody } from "@/components/transparencia/document-body"
 import { getDocumento as getDocumentoStatic } from "@/lib/transparencia"
 import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
 
@@ -11,52 +12,12 @@ type DocumentPageProps = {
   params: Promise<{ id: string }>
 }
 
-type ContentBlock =
-  | { type: "h1"; text: string }
-  | { type: "h2"; text: string }
-  | { type: "h3"; text: string }
-  | { type: "hr" }
-  | { type: "p"; text: string }
-  | { type: "ul"; items: string[] }
-
 function formatDate(dateStr: string): string {
   return new Date(`${dateStr}T00:00:00`).toLocaleDateString("pt-BR", {
     day: "2-digit",
     month: "long",
     year: "numeric",
   })
-}
-
-function parseDocumentContent(content: string): ContentBlock[] {
-  const blocks: ContentBlock[] = []
-  const paragraph: string[] = []
-  const listItems: string[] = []
-
-  const flushParagraph = () => {
-    if (paragraph.length === 0) return
-    blocks.push({ type: "p", text: paragraph.join(" ") })
-    paragraph.length = 0
-  }
-  const flushList = () => {
-    if (listItems.length === 0) return
-    blocks.push({ type: "ul", items: [...listItems] })
-    listItems.length = 0
-  }
-
-  for (const rawLine of content.split(/\r?\n/)) {
-    const line = rawLine.trim()
-    if (!line) { flushParagraph(); flushList(); continue }
-    if (line === "---") { flushParagraph(); flushList(); blocks.push({ type: "hr" }); continue }
-    if (line.startsWith("### ")) { flushParagraph(); flushList(); blocks.push({ type: "h3", text: line.slice(4) }); continue }
-    if (line.startsWith("## ")) { flushParagraph(); flushList(); blocks.push({ type: "h2", text: line.slice(3) }); continue }
-    if (line.startsWith("# ")) { flushParagraph(); flushList(); blocks.push({ type: "h1", text: line.slice(2) }); continue }
-    if (line.startsWith("* ") || line.startsWith("- ")) { flushParagraph(); listItems.push(line.slice(2)); continue }
-    flushList()
-    paragraph.push(line)
-  }
-  flushParagraph()
-  flushList()
-  return blocks
 }
 
 function getDocumento(id: string) {
@@ -91,8 +52,6 @@ export default async function DocumentoTransparenciaPage({ params }: DocumentPag
   if (!documento) notFound()
   if (!documento.conteudo && documento.arquivo_url) redirect(documento.arquivo_url)
   if (!documento.conteudo) notFound()
-
-  const blocks = parseDocumentContent(documento.conteudo)
 
   return (
     <>
@@ -145,48 +104,7 @@ export default async function DocumentoTransparenciaPage({ params }: DocumentPag
             {/* Left accent bar */}
             <div className="absolute left-0 top-0 bottom-0 w-[4px] rounded-l-2xl bg-gradient-to-b from-[var(--accent-carmine)] to-[var(--accent-gold)]" />
 
-            <div className="space-y-6">
-              {blocks.map((block, index) => {
-                switch (block.type) {
-                  case "h1":
-                    return (
-                      <h2 key={index} className="font-heading text-2xl sm:text-3xl font-extrabold text-[var(--surface-midnight)] mt-4">
-                        {block.text}
-                      </h2>
-                    )
-                  case "h2":
-                    return (
-                      <h3 key={index} className="font-heading text-xl font-extrabold text-[var(--surface-midnight)] mt-2">
-                        {block.text}
-                      </h3>
-                    )
-                  case "h3":
-                    return (
-                      <h4 key={index} className="font-heading text-lg font-bold text-[var(--surface-midnight)]/90">
-                        {block.text}
-                      </h4>
-                    )
-                  case "hr":
-                    return <hr key={index} className="border-[var(--surface-midnight)]/10 my-2" />
-                  case "ul":
-                    return (
-                      <ul key={index} className="space-y-2 pl-5">
-                        {block.items.map((item) => (
-                          <li key={item} className="list-disc text-[var(--surface-midnight)]/75 leading-[1.8] text-[15px]">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    )
-                  case "p":
-                    return (
-                      <p key={index} className="text-[var(--surface-midnight)]/75 leading-[1.8] text-[15px]">
-                        {block.text}
-                      </p>
-                    )
-                }
-              })}
-            </div>
+            <TransparenciaDocumentBody content={documento.conteudo} />
           </article>
         </BrandContainer>
       </section>

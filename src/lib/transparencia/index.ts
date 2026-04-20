@@ -60,206 +60,475 @@ export const documentos: DocumentoTransparencia[] = [
   {
     id: "00000000-0000-0000-0000-000000000601",
     titulo: "Estatuto Social",
-    descricao: "Estatuto Social completo da GŌKAI com 25 artigos distribuídos em 8 títulos — disposições preliminares, quadro social, organização administrativa, patrimônio, prestação de contas, reforma e dissolução.",
+    descricao: "Estatuto Social completo da GŌKAI com 44 artigos distribuídos em 16 capítulos — denominação, fundadores, finalidades, uso dos espaços físicos, fundo, administração (Assembleia, Diretoria, Equipe Técnica), projetos parceiros, quadro social, direitos e deveres, exclusão, regime eleitoral, prestação de contas, reforma e dissolução.",
     tipo: "estatuto",
     secao: "fundacionais",
     arquivo_url: null,
-    data_referencia: "2024-01-01",
+    data_referencia: "2026-04-01",
     publicado: true,
     conteudo: `# ESTATUTO SOCIAL
 ## GŌKAI – CLUBE DE ARTES MARCIAIS
 
 ---
 
-## Título I – Disposições Preliminares
+## Capítulo I – Da Denominação, Natureza e Sede
 
-**Art. 1** – A associação civil sem fins lucrativos denominada **GŌKAI – CLUBE DE ARTES MARCIAIS**, doravante "Gōkai", é fundada aos __ (______) dias do mês de _______ de 2026, com sede na **Rua Melo Franco, 68, Bairro São Mateus, Juiz de Fora – MG, CEP 36.045-060**, com duração por prazo indeterminado, regendo-se pelo presente Estatuto, pelo Regimento Interno e pela legislação aplicável.
+**Art. 1º** – A associação civil sem fins lucrativos denominada **GŌKAI – CLUBE DE ARTES MARCIAIS**, doravante "Gōkai", é constituída como pessoa jurídica de direito privado, com autonomia administrativa e financeira, com sede na **Rua Melo Franco, 68, Bairro São Mateus, Juiz de Fora – MG, CEP 36.045-060**, com duração por prazo indeterminado, regendo-se pelo presente Estatuto, pelo Regimento Interno e pela legislação aplicável.
 
-**Art. 2** – A Gōkai tem por finalidade promover, divulgar e desenvolver a prática e a cultura das artes marciais e esportes de combate, bem como ações socioeducativas, culturais, esportivas e ambientais correlatas, priorizando a inclusão social de jovens em situação de vulnerabilidade e utilizando o esporte como ferramenta de transformação social, cidadania e desenvolvimento humano. Para atingir seus objetivos, poderá:
+**Art. 2º** – Os sócios e dirigentes da Gōkai não respondem solidária nem subsidiariamente pelas obrigações da entidade.
 
-a) organizar cursos, workshops, seminários e competições;
-b) manter parcerias com projetos esportivos, clubes e instituições de ensino;
-c) captar recursos mediante contribuições dos associados, patrocínios, doações, convênios e eventos;
-d) defender a ética, a transparência e o respeito às diferenças, vedada qualquer manifestação de caráter político-partidário.
+---
+
+## Capítulo II – Dos Fundadores
+
+**Art. 3º** – São fundadores da Gōkai:
+
+- **Thiago Santos Mello**, brasileiro, Engenheiro de Software, inscrito no CPF sob nº 110.135.077-62, portador do RG nº 21.303.168-5 DETRAN/RJ, residente à Rua Dr. Romualdo, 140, Apt. 402, São Mateus, Juiz de Fora/MG, CEP 36.025-005;
+
+- **Renan Winter Spatin**, brasileiro, solteiro, Engenheiro de Software, inscrito no CPF sob nº 087.356.956-33, portador do RG nº 15.995.902 MG, residente à Rua Comendador Pantaleoni Arcuri, 160, Ap. 806, Torre 2, Teixeiras, Juiz de Fora/MG, CEP 36.033-090;
+
+- **Allan de Carvalho Moreira**, brasileiro, casado, Consultor Comercial, inscrito no CPF sob nº 266.113.548-09, portador do RG nº 14.896.928, residente à Av. Presidente Itamar Franco, 2400, Apt. 103, São Mateus, Juiz de Fora/MG, CEP 36.025-290;
+
+- **Jafar Mohammed Untar**, brasileiro, solteiro, Analista de TI, inscrito no CPF sob nº 125.128.136-22, portador do RG nº MG-17.853.895, residente à Rua Morais e Castro, 841, Apt. 906, Passos, Juiz de Fora/MG, CEP 36.025-160;
+
+- **Linus Pauling Ferreira Pereira**, [NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO], inscrito no CPF sob nº [CPF], portador do RG nº [RG], residente à [ENDEREÇO], Juiz de Fora/MG, CEP [CEP];
+
+- **Cássia dos Santos Soranço**, [NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO], inscrita no CPF sob nº [CPF], portadora do RG nº [RG], residente à [ENDEREÇO], Juiz de Fora/MG, CEP [CEP];
+
+- **Alex Sobreira**, [NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO], inscrito no CPF sob nº [CPF], portador do RG nº [RG], residente à [ENDEREÇO], Juiz de Fora/MG, CEP [CEP].
+
+---
+
+## Capítulo III – Das Finalidades
+
+**Art. 4º** – A Gōkai tem por finalidade promover, divulgar e desenvolver a prática e a cultura das artes marciais e esportes de combate, bem como ações socioeducativas, culturais, esportivas e ambientais correlatas, priorizando a inclusão social de jovens em situação de vulnerabilidade e utilizando o esporte como ferramenta de transformação social, cidadania e desenvolvimento humano. Para atingir seus objetivos, poderá:
+
+I – organizar cursos, workshops, seminários e competições;
+
+II – manter parcerias com projetos esportivos, clubes e instituições de ensino;
+
+III – captar recursos mediante contribuições dos associados, patrocínios, doações, convênios e eventos;
+
+IV – firmar convênios ou contratos e articular-se com órgãos ou entidades públicas ou privadas;
+
+V – defender a ética, a transparência e o respeito às diferenças, vedada qualquer manifestação de caráter político-partidário.
 
 **Parágrafo único** – É proibida a distribuição de resultados, excedentes ou patrimônio, sob qualquer forma ou pretexto, aos associados ou dirigentes.
 
-**Art. 2-A – Da Sede e Uso dos Espaços Físicos**
+---
 
-**§1º – Polo São Mateus (Sede)**
+## Capítulo IV – Do Uso dos Espaços Físicos
+
+**Art. 5º – Polo São Mateus (Sede)**
+
 O imóvel situado na Rua Melo Franco, 68, Bairro São Mateus, Juiz de Fora/MG, CEP 36.045-060, é locado por **Thiago Santos Mello**, Presidente da Associação, na qualidade de locatário, o qual subloca o referido espaço à Gōkai mediante Contrato de Sublocação celebrado em separado entre as partes.
 
-**§2º – Polo Linhares**
-O imóvel utilizado pela Gōkai no Polo Linhares, denominado **[nome da academia]**, situado em [endereço completo], Linhares, Juiz de Fora/MG, CEP _________, é de propriedade de **Alex Sobreira**, membro fundador e professor da Associação, o qual o loca diretamente à Gōkai mediante Contrato de Locação celebrado em separado entre as partes.
+**Art. 6º – Polo Linhares**
 
-**§3º** – Os Contratos de Sublocação serão celebrados em separado para cada polo, com prazo, valor e condições definidos entre cada sublocador e a Associação, não gerando confusão patrimonial entre os imóveis e o patrimônio social da Gōkai. Eventuais benfeitorias não indenizáveis não integrarão a massa patrimonial em caso de dissolução da Associação.
+O imóvel utilizado pela Gōkai no Polo Linhares, denominado **[NOME DA ACADEMIA]**, situado em [ENDEREÇO COMPLETO], Linhares, Juiz de Fora/MG, CEP \\_\\_\\_\\_\\_\\_\\_\\_\\_, é de propriedade de **Alex Sobreira**, membro fundador e professor da Associação, o qual o loca diretamente à Gōkai mediante Contrato de Locação celebrado em separado entre as partes.
 
-**§4º** – Ambos os sublocadores declaram ciência do conflito de interesses decorrente de sua condição simultânea de membros da Associação e sublocadores, abstendo-se de votar nas deliberações que envolvam os respectivos contratos de sublocação.
+**Art. 7º** – Os Contratos de Sublocação e Locação serão celebrados em separado para cada polo, não gerando confusão patrimonial entre os imóveis e o patrimônio social da Gōkai.
 
----
+**§1º** – Eventuais benfeitorias não indenizáveis não integrarão a massa patrimonial em caso de dissolução da Associação.
 
-## Título II – Do Quadro Social
-
-**Art. 3** – A associação será constituída por número ilimitado de associados, distribuídos nas seguintes categorias:
-
-- **I – Fundadores:** aqueles que subscrevem a ata de constituição.
-- **II – Efetivos:** pessoas que aderirem após a fundação e forem admitidas pela Diretoria.
-- **III – Colaboradores:** pessoas físicas ou jurídicas que contribuam material ou tecnicamente, sem direito a voto.
-- **IV – Atletas/Alunos:** participantes das atividades esportivas promovidas pela Associação.
-
-**Art. 4** – A admissão de novos associados efetivos ocorrerá mediante aprovação da Diretoria Executiva, após preenchimento de ficha cadastral e assinatura do termo de adesão. Em caso de recusa, a justificativa será apresentada e arquivada.
-
-**Art. 5** – São direitos dos associados quites com suas obrigações:
-
-a) frequentar a sede e participar das atividades e eventos;
-b) votar e ser votado nas assembleias gerais (exclusivamente fundadores e efetivos);
-c) apresentar propostas e representações por escrito à Diretoria;
-d) receber informações sobre as atividades e finanças da Associação.
-
-**Art. 6** – São deveres dos associados:
-
-a) cooperar para a realização dos objetivos sociais;
-b) cumprir o Estatuto, o Regimento Interno e as deliberações da Assembleia e da Diretoria;
-c) manter em dia as contribuições financeiras, quando houver;
-d) zelar pelo bom nome e pelo patrimônio da Associação e manter conduta ética e disciplinada.
-
-**Art. 7** – O associado que desejar se desligar deverá comunicar por escrito à Diretoria, estando quite com suas obrigações. O associado poderá ser excluído pela Diretoria, mediante justa causa, nos casos de infração às normas ou inadimplência, assegurado o direito de defesa e recurso à Assembleia Geral.
-
-**Parágrafo único** – A readmissão obedecerá às mesmas normas da admissão.
+**§2º** – Os membros que figurem simultaneamente como sublocador ou locador e como integrantes da Associação declaram ciência do conflito de interesses, abstendo-se de votar nas deliberações que envolvam os respectivos contratos.
 
 ---
 
-## Título III – Da Organização Administrativa
+## Capítulo V – Do Fundo da Associação
 
-### Capítulo I – Assembleia Geral
+**Art. 8º** – O fundo da Gōkai será composto de:
 
-**Art. 8** – A Assembleia Geral é o órgão soberano da associação, constituída pelos associados fundadores e efetivos em pleno gozo de seus direitos. Compete-lhe deliberar sobre todas as matérias de interesse da Associação e, privativamente, eleger e destituir administradores, aprovar contas e alterar o Estatuto.
+a) Contribuições de ingresso e mensalidades dos associados;
 
-**Art. 9** – A Assembleia Geral reunir-se-á ordinariamente uma vez por ano e extraordinariamente quando convocada pelo Presidente, pela Diretoria ou por, no mínimo, 1/5 (um quinto) dos associados.
+b) Doações, auxílios, patrocínios e subvenções de entidades públicas ou privadas, nacionais ou estrangeiras;
 
-**§ 1º** – As convocações serão feitas por meio de edital afixado na sede e comunicação eletrônica aos associados, com antecedência mínima de 10 (dez) dias.
+c) Dotações ou subvenções da União, Estados e Municípios;
 
-**§ 2º** – A Assembleia instalar-se-á, em primeira convocação, com a presença da maioria absoluta dos associados; em segunda convocação, decorridos 30 (trinta) minutos, com qualquer número de presentes.
+d) Produtos de aplicações, rendas de eventos e outras operações lícitas;
 
-**§ 3º** – As decisões serão tomadas pela maioria simples dos votos dos presentes, salvo hipóteses em que este Estatuto exigir quórum especial.
+e) Contrapartidas pela cessão de uso dos espaços físicos a projetos parceiros;
 
-**§ 4º** – É facultada a participação remota por meios eletrônicos, desde que garantida a autenticidade da identificação.
+f) Editais públicos e convênios institucionais.
 
-**Art. 10** – Para destituir administradores ou alterar o Estatuto será necessária Assembleia especialmente convocada para esse fim, exigindo-se o voto favorável de pelo menos 2/3 (dois terços) dos presentes.
-
-### Capítulo II – Diretoria Executiva
-
-**Art. 11** – A administração da Associação caberá à Diretoria Executiva, eleita pela Assembleia Geral para mandato de 3 (três) anos, permitida uma reeleição. A Diretoria será composta pelos seguintes cargos:
-
-- I – Presidente
-- II – Vice-Presidente
-- III – Diretor Administrativo
-- IV – Diretor Financeiro
-- V – Diretor Técnico/Esportivo
-
-**§ 1º** – Poderão ser criados outros cargos por deliberação da Assembleia Geral, conforme as necessidades da Associação.
-
-**§ 2º** – O exercício de qualquer cargo na Diretoria é gratuito, vedada a remuneração sob qualquer forma.
-
-**§ 3º** – Os professores e instrutores não integram a Diretoria Executiva, salvo nomeação formal por deliberação da Assembleia Geral ou da Diretoria.
-
-**Art. 12** – Compete ao Presidente:
-
-a) representar a Associação, ativa e passivamente, judicial e extrajudicialmente;
-b) superintender e fiscalizar as atividades, cumprindo e fazendo cumprir o Estatuto, o Regimento Interno e as deliberações da Assembleia e da Diretoria;
-c) autorizar pagamentos e assinar, juntamente com o Diretor Financeiro, cheques e documentos de responsabilidade financeira;
-d) exercer o voto de qualidade nas deliberações da Diretoria em caso de empate.
-
-**Art. 13** – Compete ao Vice-Presidente:
-
-a) auxiliar o Presidente e substituí-lo em seus impedimentos e ausências;
-b) coordenar projetos e representar a Associação por delegação;
-c) garantir o cumprimento do Estatuto e do Regimento Interno.
-
-**Art. 14** – Compete ao Diretor Administrativo:
-
-a) coordenar os serviços de secretaria, redigir e protocolar atas, convocações e correspondências;
-b) manter os registros de associados e a guarda dos documentos institucionais;
-c) supervisionar o funcionamento administrativo da sede.
-
-**Art. 15** – Compete ao Diretor Financeiro:
-
-a) superintender os serviços da tesouraria e manter sob sua guarda os bens e valores sociais;
-b) assinar, com o Presidente, cheques e documentos financeiros;
-c) promover a arrecadação das receitas e a escrituração das receitas e despesas;
-d) elaborar balancetes mensais e balanço anual, submetendo-os à apreciação da Diretoria e da Assembleia Geral.
-
-**Art. 16** – Compete ao Diretor Técnico/Esportivo:
-
-a) planejar e coordenar as atividades esportivas e projetos de artes marciais;
-b) propor cursos, competições e intercâmbios;
-c) supervisionar a atuação de professores e instrutores, garantindo qualidade técnica e segurança.
-
-**Art. 17** – A Diretoria reunir-se-á mensalmente e extraordinariamente quando convocada pelo Presidente. As decisões serão tomadas pela maioria simples dos presentes.
+**Parágrafo único** – As rendas da Associação somente poderão ser aplicadas na manutenção de seus objetivos, sendo vedada qualquer distribuição a associados ou dirigentes.
 
 ---
 
-## Título IV – Do Patrimônio e Recursos
+## Capítulo VI – Da Administração
 
-**Art. 18** – O patrimônio da Gōkai será constituído por bens móveis, imóveis, valores, direitos e receitas que venha a adquirir.
+**Art. 9º** – A Gōkai possui os seguintes órgãos deliberativos e administrativos:
 
-**Art. 19** – Constituem receitas da Associação: contribuições de ingresso e mensalidades dos associados, doações, patrocínios, convênios, contrapartidas pela cessão de uso de espaços, rendas de eventos e outros ingressos lícitos.
+I – Assembleia Geral;
 
-**Art. 20** – Em caso de dissolução, o patrimônio remanescente, após satisfeitas as obrigações, será destinado a outra entidade de finalidade semelhante, escolhida pela Assembleia Geral e registrada nos termos da lei.
+II – Diretoria Executiva;
+
+III – Equipe Técnica.
+
+### Seção I – Da Assembleia Geral
+
+**Art. 10** – A Assembleia Geral é o órgão soberano da Associação, constituída por todos os associados fundadores e efetivos em pleno gozo de seus direitos. São atribuições privativas da Assembleia Geral:
+
+I – eleger e destituir os membros da Diretoria Executiva;
+
+II – elaborar e aprovar o Regimento Interno;
+
+III – deliberar sobre orçamento anual, planejamento de atividades e relatório da Diretoria;
+
+IV – examinar e aprovar balanços e contas do exercício;
+
+V – deliberar sobre aquisição, alienação ou oneração de bens;
+
+VI – decidir sobre a reforma do presente Estatuto;
+
+VII – autorizar celebração de convênios e acordos com entidades públicas ou privadas;
+
+VIII – decidir sobre a dissolução da Associação e o destino do patrimônio.
+
+**Parágrafo único** – Para destituir administradores ou alterar o Estatuto, é exigida Assembleia especialmente convocada para esse fim.
+
+**Art. 11** – A Assembleia Geral reunir-se-á ordinariamente uma vez por ano, na primeira quinzena de janeiro, e extraordinariamente quando convocada pelo Presidente, pela Diretoria ou por no mínimo 1/3 (um terço) dos associados.
+
+**Art. 12** – A convocação será feita mediante edital afixado na sede e comunicação eletrônica aos associados, com antecedência mínima de **10 (dez) dias**, com pauta dos assuntos a tratar.
+
+**§1º** – As reuniões ordinárias instalar-se-ão em primeira convocação com a presença mínima de 2/3 (dois terços) dos associados; em segunda convocação, decorridos 30 (trinta) minutos, com qualquer número de presentes.
+
+**§2º** – As reuniões extraordinárias instalar-se-ão em primeira convocação com 2/3 (dois terços) dos associados; em segunda convocação, com maioria absoluta dos associados.
+
+**§3º** – É facultada a participação remota por meios eletrônicos, desde que garantida a autenticidade da identificação.
+
+**Art. 13** – As decisões serão tomadas pela maioria simples dos votos dos presentes, salvo hipóteses em que este Estatuto exigir quórum especial:
+
+I – destituição de administradores ou alteração do Estatuto: voto favorável de **2/3 (dois terços)** dos presentes;
+
+II – dissolução da Associação: voto favorável de **3/4 (três quartos)** dos presentes.
+
+### Seção II – Da Diretoria Executiva
+
+**Art. 14** – A Diretoria Executiva é responsável pela administração da Associação, eleita pela Assembleia Geral para mandato de **3 (três) anos**, permitida uma reeleição. É composta por:
+
+I – Presidente;
+
+II – Vice-Presidente;
+
+III – Diretor Administrativo;
+
+IV – Diretor Financeiro;
+
+V – Diretor Técnico/Esportivo.
+
+**§1º** – Poderão ser criados outros cargos por deliberação da Assembleia Geral.
+
+**§2º** – O exercício de qualquer cargo na Diretoria é **gratuito**, vedada a remuneração sob qualquer forma, gratificação, bonificação ou vantagem.
+
+**§3º** – Os professores e instrutores não integram a Diretoria Executiva, salvo nomeação formal por deliberação da Assembleia Geral ou da Diretoria.
+
+**Art. 15** – Compete ao **Presidente**:
+
+I – representar a Associação, ativa e passivamente, judicial e extrajudicialmente;
+
+II – cumprir e fazer cumprir o Estatuto, o Regimento Interno e as deliberações da Assembleia e da Diretoria;
+
+III – convocar e presidir as reuniões da Diretoria;
+
+IV – autorizar pagamentos e assinar, juntamente com o Diretor Financeiro, cheques e documentos de responsabilidade financeira;
+
+V – exercer o voto de qualidade nas deliberações da Diretoria em caso de empate.
+
+**Art. 16** – Compete ao **Vice-Presidente**:
+
+I – auxiliar o Presidente e substituí-lo em seus impedimentos e ausências;
+
+II – coordenar projetos e representar a Associação por delegação;
+
+III – garantir o cumprimento do Estatuto e do Regimento Interno.
+
+**Art. 17** – Compete ao **Diretor Administrativo**:
+
+I – coordenar os serviços de secretaria, redigir e protocolar atas, convocações e correspondências;
+
+II – organizar os controles, arquivos e registros de associados;
+
+III – supervisionar o funcionamento administrativo da sede;
+
+IV – gerir a comunicação institucional interna e externa.
+
+**Art. 18** – Compete ao **Diretor Financeiro**:
+
+I – arrecadar e contabilizar as contribuições, rendas e donativos, mantendo em dia a escrituração;
+
+II – controlar e efetuar os pagamentos de todas as obrigações da Associação;
+
+III – assinar, em conjunto com o Presidente, cheques e documentos financeiros;
+
+IV – apresentar balancetes semestrais e balanço anual à Diretoria e à Assembleia Geral;
+
+V – publicar anualmente a demonstração das receitas e despesas;
+
+VI – manter todo o numerário em estabelecimento de crédito;
+
+VII – conservar sob sua guarda todos os documentos relativos à tesouraria.
+
+**Art. 19** – Compete ao **Diretor Técnico/Esportivo**:
+
+I – planejar e coordenar as atividades esportivas e projetos de artes marciais;
+
+II – propor cursos, competições e intercâmbios;
+
+III – supervisionar a atuação de professores e instrutores, garantindo qualidade técnica e segurança;
+
+IV – acompanhar inscrições em campeonatos e filiações federativas.
+
+**Art. 20** – A Diretoria reunir-se-á mensalmente e extraordinariamente quando convocada pelo Presidente. As decisões serão tomadas pela maioria simples dos presentes.
+
+**Art. 21** – Ocorrendo vacância em qualquer cargo da Diretoria, o Presidente poderá designar substituto até a próxima Assembleia Geral.
+
+### Seção III – Da Equipe Técnica
+
+**Art. 22** – A Equipe Técnica é formada pelos professores e instrutores responsáveis pela condução das atividades esportivas, culturais e ambientais da Gōkai, subordinados ao Diretor Técnico/Esportivo.
+
+**Art. 23** – A remuneração de professores e instrutores será objeto de contrato específico de prestação de serviços, aprovado pela Diretoria, regido pela legislação trabalhista e fiscal aplicável.
+
+**Parágrafo único** – Os funcionários admitidos para prestarem serviços à Associação serão regidos pela Consolidação das Leis Trabalhistas.
 
 ---
 
-## Título V – Da Prestação de Contas
+## Capítulo VII – Dos Projetos Parceiros
 
-**Art. 21** – A prestação de contas obedecerá aos princípios da transparência e moralidade. O Diretor Financeiro elaborará as contas e balanços anuais e os encaminhará à Diretoria até o mês de fevereiro de cada ano. A Assembleia Geral apreciará e aprovará as contas em reunião ordinária anual, devendo os demonstrativos ser disponibilizados aos associados com antecedência mínima de 10 (dez) dias.
+**Art. 24** – A Gōkai reconhece como projetos parceiros as seguintes equipes esportivas:
 
----
+I – **Gamonal Fighters** – Jiu-Jitsu;
 
-## Título VI – Da Reforma do Estatuto
+II – **Samurai Boxe** – Boxe;
 
-**Art. 22** – Este Estatuto poderá ser reformado por Assembleia Geral especialmente convocada para esse fim, exigindo-se o voto favorável de 2/3 (dois terços) dos associados presentes.
+III – **Linus Judô** – Judô.
 
----
+**Art. 25** – Os projetos parceiros **não integram juridicamente a Associação**, mantendo identidade, gestão e responsabilidades próprias. Operam dentro dos espaços da Gōkai mediante autorização formal e contrapartida financeira.
 
-## Título VII – Da Dissolução
-
-**Art. 23** – A Associação só poderá ser dissolvida em Assembleia Geral especialmente convocada, com voto favorável de 3/4 (três quartos) dos associados presentes. Em caso de dissolução, o destino do patrimônio observará o disposto no Art. 20.
+**Parágrafo único** – A Gōkai atua como entidade gestora do espaço, enquanto os projetos parceiros conduzem suas atividades de forma autônoma, sob responsabilidade própria.
 
 ---
 
-## Título VIII – Disposições Gerais
+## Capítulo VIII – Do Quadro Social
 
-**Art. 24** – Os casos omissos neste Estatuto serão resolvidos pela Diretoria e referendados pela próxima Assembleia Geral.
+**Art. 26** – A Associação é constituída por número ilimitado de associados, distribuídos nas seguintes categorias:
 
-**Art. 25** – Este Estatuto entra em vigor na data de sua aprovação pelos fundadores, devendo ser registrado no Cartório de Registro Civil de Pessoas Jurídicas competente na Comarca de Juiz de Fora/MG.
+I – **Fundadores:** aqueles que subscrevem a ata de constituição;
+
+II – **Efetivos:** pessoas que aderirem após a fundação e forem admitidas pela Diretoria;
+
+III – **Colaboradores:** pessoas físicas ou jurídicas que contribuam material ou tecnicamente, sem direito a voto;
+
+IV – **Atletas/Alunos:** participantes das atividades esportivas promovidas pela Associação.
+
+**Art. 27** – A admissão de novos associados ocorrerá mediante preenchimento de ficha cadastral, aceitação do Estatuto e do Regimento Interno e aprovação pela Diretoria Executiva no prazo de **15 (quinze) dias**. Em caso de recusa, a justificativa será apresentada e arquivada.
 
 ---
 
-Juiz de Fora/MG, ___ de ____________ de 2026.
+## Capítulo IX – Dos Direitos dos Associados
+
+**Art. 28** – São direitos dos associados quites com suas obrigações:
+
+I – participar de todas as atividades promovidas pela Associação;
+
+II – votar e ser votado nas Assembleias Gerais (fundadores e efetivos);
+
+III – candidatar-se a cargos da Diretoria, desde que em pleno gozo de seus direitos;
+
+IV – utilizar a estrutura disponível conforme regras internas;
+
+V – receber informações sobre as atividades e finanças da Associação;
+
+VI – examinar na sede os documentos de contabilidade e atas nos 15 dias que precedem qualquer Assembleia;
+
+VII – apresentar propostas, estudos ou pareceres à Diretoria;
+
+VIII – requerer a convocação de Assembleia Geral nos termos deste Estatuto;
+
+IX – recorrer à Assembleia Geral das sanções aplicadas pela Diretoria.
+
+**Parágrafo único** – Nenhum associado poderá ser impedido de exercer direito ou função que lhe tenha sido legitimamente conferido, exceto nos casos previstos em lei ou neste Estatuto.
+
+---
+
+## Capítulo X – Dos Deveres dos Associados
+
+**Art. 29** – São deveres dos associados:
+
+I – cumprir e fazer cumprir o Estatuto, o Regimento Interno e as deliberações da Assembleia e da Diretoria;
+
+II – participar das atividades da Associação;
+
+III – zelar pelo patrimônio e pela imagem da Gōkai;
+
+IV – manter conduta ética, disciplinada e alinhada aos valores da Associação;
+
+V – efetuar pagamentos de contribuições, quando houver;
+
+VI – comunicar à Diretoria, no prazo de 20 dias, qualquer alteração de dados cadastrais.
+
+---
+
+## Capítulo XI – Da Exclusão e Desligamento dos Associados
+
+**Art. 30** – O associado poderá ser **suspenso** nos direitos em caso de:
+
+I – descumprimento de regras internas ou conduta inadequada;
+
+II – inadimplência por mais de **3 (três) meses** durante o período de um ano civil — após aviso escrito, os direitos serão suspensos até a regularização.
+
+**Art. 31** – O associado poderá ser **excluído**, após contraditório e ampla defesa, em caso de:
+
+I – falta grave devidamente apurada;
+
+II – reincidência disciplinar após suspensão;
+
+III – prática de atos lesivos aos interesses ou direitos dos demais associados ou da Associação;
+
+IV – inadimplência não regularizada após notificação, nos termos do Regimento Interno.
+
+**Parágrafo único** – A readmissão obedecerá às mesmas normas da admissão, após liquidação de débitos e parecer favorável da Diretoria.
+
+**Art. 32** – O **desligamento voluntário** ocorrerá mediante comunicação escrita à Diretoria, estando o associado quite com suas obrigações.
+
+---
+
+## Capítulo XII – Do Regime Eleitoral
+
+**Art. 33** – O processo eleitoral será conduzido por uma **Comissão Eleitoral**, composta por um representante de cada chapa candidata e presidida pelo Presidente da Mesa da Assembleia Geral.
+
+**Art. 34** – Compete à Comissão Eleitoral:
+
+I – verificar as condições de elegibilidade dos candidatos;
+
+II – receber reclamações relativas às chapas candidatas no prazo de 8 dias após sua posse;
+
+III – deliberar sobre reclamações no prazo de 48 horas;
+
+IV – fiscalizar o processo eleitoral;
+
+V – fazer a contagem dos votos e divulgar os resultados.
+
+**Art. 35** – A apresentação de candidaturas far-se-á mediante entrega à Comissão Eleitoral com antecedência mínima de **15 (quinze) dias** da data do ato eleitoral, acompanhada de termo de aceitação e programa de ação.
+
+**Art. 36** – A votação será **secreta** e a apuração, **imediata**. Cada associado somente poderá integrar uma chapa candidata.
+
+---
+
+## Capítulo XIII – Da Prestação de Contas
+
+**Art. 37** – A prestação de contas obedecerá aos princípios da transparência e moralidade. O Diretor Financeiro elaborará as contas e balanços anuais e os encaminhará à Diretoria até o mês de **fevereiro** de cada ano. A Assembleia Geral apreciará e aprovará as contas em reunião ordinária anual, com disponibilização dos demonstrativos aos associados com antecedência mínima de 10 dias.
+
+**Art. 38** – O exercício financeiro da Associação coincidirá com o ano civil.
+
+**Art. 39** – O orçamento da Associação será uno, anual e compreenderá todas as receitas e despesas.
+
+---
+
+## Capítulo XIV – Da Reforma do Estatuto
+
+**Art. 40** – Este Estatuto poderá ser reformado por Assembleia Geral especialmente convocada para esse fim, exigindo-se o voto favorável de **2/3 (dois terços)** dos associados presentes.
+
+---
+
+## Capítulo XV – Da Dissolução
+
+**Art. 41** – A Associação só poderá ser dissolvida em Assembleia Geral especialmente convocada, com voto favorável de **3/4 (três quartos)** dos associados presentes. Em caso de dissolução, o patrimônio remanescente, após satisfeitas as obrigações, será destinado a outra entidade de finalidade semelhante, escolhida pela Assembleia e registrada nos termos da lei.
+
+---
+
+## Capítulo XVI – Disposições Gerais
+
+**Art. 42** – Os casos omissos serão resolvidos pela Diretoria e referendados pela próxima Assembleia Geral.
+
+**Art. 43** – Este Estatuto entra em vigor na data de sua aprovação pelos fundadores, devendo ser registrado no Cartório de Registro Civil de Pessoas Jurídicas competente na Comarca de Juiz de Fora/MG.
+
+**Art. 44** – Fica eleito o foro da **Comarca de Juiz de Fora/MG** para dirimir quaisquer questões oriundas deste Estatuto.
+
+---
+
+Juiz de Fora/MG, \\_\\_\\_ de \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ de 2026.
 
 **Fundadores:**
 
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
 Thiago Santos Mello — Presidente
+Brasileiro, Engenheiro de Software
+RG: 21.303.168-5 DETRAN/RJ | CPF: 110.135.077-62
+Rua Dr. Romualdo, 140, Apt. 402, São Mateus, JF/MG — CEP 36.025-005
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
 Renan Winter Spatin — Vice-Presidente
-Jafar Mohammed Untar — Diretor Técnico/Esportivo
+Brasileiro, Solteiro, Engenheiro de Software
+RG: 15.995.902 MG | CPF: 087.356.956-33
+Rua Comendador Pantaleoni Arcuri, 160, Ap. 806, Torre 2, Teixeiras, JF/MG — CEP 36.033-090
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
 Allan de Carvalho Moreira — Diretor Administrativo
+Brasileiro, Casado, Consultor Comercial
+RG: 14.896.928 | CPF: 266.113.548-09
+Av. Presidente Itamar Franco, 2400, Apt. 103, São Mateus, JF/MG — CEP 36.025-290
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Jafar Mohammed Untar — Diretor Técnico/Esportivo
+Brasileiro, Solteiro, Analista de TI
+RG: MG-17.853.895 | CPF: 125.128.136-22
+Rua Morais e Castro, 841, Apt. 906, Passos, JF/MG — CEP 36.025-160
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Flávio Daniel Tuyarot Barci — Diretor Financeiro
+Brasileiro, Solteiro, Engenheiro de Software
+RG: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ | CPF: 125.124.716-40
+Praça Jarbas de Lery Santos, 37, Apt. 302, São Mateus, JF/MG — CEP 36.016-290
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
 Linus Pauling Ferreira Pereira — Fundador
+[NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO]
+RG: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+Endereço: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
 Cássia dos Santos Soranço — Fundadora
-Alex Sobreira — Fundador`,
+[NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO]
+RG: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+Endereço: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Alex Sobreira — Fundador
+[NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO]
+RG: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+Endereço: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+---
+
+**Advogado responsável:**
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+[NOME COMPLETO]
+OAB/MG nº \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_`,
   },
   {
     id: "00000000-0000-0000-0000-000000000602",
     titulo: "Ata de Fundação",
-    descricao: "Ata da Assembleia Geral de Fundação com eleição da primeira Diretoria Executiva.",
+    descricao: "Ata da Assembleia Geral de Fundação da GŌKAI com aprovação do Estatuto Social e eleição da primeira Diretoria Executiva. Inclui pendências pré-registro em cartório.",
     tipo: "ata",
     secao: "fundacionais",
     arquivo_url: null,
-    data_referencia: "2025-01-01",
+    data_referencia: "2026-04-01",
     publicado: true,
     conteudo: `# ATA DA ASSEMBLEIA GERAL DE FUNDAÇÃO
 ## GŌKAI – CLUBE DE ARTES MARCIAIS
 
-Aos ______ dias do mês de __________ do ano de dois mil e vinte e seis (2026), às ______ horas, reuniram-se em primeira convocação, na Rua Melo Franco, 68, Bairro São Mateus, Juiz de Fora/MG, os senhores abaixo qualificados, com o objetivo de fundar uma associação civil sem fins lucrativos dedicada à promoção das artes marciais e ações socioeducativas, a ser denominada **GŌKAI – CLUBE DE ARTES MARCIAIS**.
+Aos \\_\\_\\_\\_\\_\\_ dias do mês de \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ do ano de dois mil e vinte e seis (2026), às \\_\\_\\_\\_\\_\\_ horas, reuniram-se em primeira convocação, na Rua Melo Franco, 68, Bairro São Mateus, Juiz de Fora/MG, os senhores abaixo qualificados, com o objetivo de fundar uma associação civil sem fins lucrativos dedicada à promoção das artes marciais e ações socioeducativas, a ser denominada **GŌKAI – CLUBE DE ARTES MARCIAIS**.
 
 Assumiu a presidência da sessão o Sr. **Thiago Santos Mello**, que convidou o Sr. **Renan Winter Spatin** para secretariar os trabalhos.
 
@@ -267,28 +536,70 @@ O presidente expôs e distribuiu a proposta de Estatuto Social, que foi lida, di
 
 Em seguida, procedeu-se à eleição da primeira Diretoria Executiva, ficando assim constituída:
 
-- Presidente: Thiago Santos Mello
-- Vice-Presidente: Renan Winter Spatin
-- Diretor Administrativo: Allan de Carvalho Moreira
-- Diretor Financeiro: A definir
-- Diretor Técnico/Esportivo: Jafar Mohammed Untar
+| Cargo | Nome |
+|-------|------|
+| Presidente | Thiago Santos Mello |
+| Vice-Presidente | Renan Winter Spatin |
+| Diretor Administrativo | Allan de Carvalho Moreira |
+| Diretor Financeiro | Flávio Daniel Tuyarot Barci |
+| Diretor Técnico/Esportivo | Jafar Mohammed Untar |
 
 Os eleitos declararam aceitar os respectivos cargos e comprometeram-se a cumprir e fazer cumprir o Estatuto Social e o Regimento Interno da Associação.
 
 Nada mais havendo a tratar, o presidente encerrou a assembleia, determinando que se lavrasse a presente ata, que, lida e achada conforme, é assinada por todos os fundadores presentes.
 
-Juiz de Fora/MG, ___ de ____________ de 2026.
+Juiz de Fora/MG, \\_\\_\\_ de \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_ de 2026.
 
-**Secretário da sessão:** Renan Winter Spatin
+**Secretário da sessão:**
 
-**Presidente da sessão:** Thiago Santos Mello
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Renan Winter Spatin | CPF: 087.356.956-33
+
+**Presidente da sessão:**
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Thiago Santos Mello | CPF: 110.135.077-62
 
 **Demais fundadores presentes:**
-- Jafar Mohammed Untar
-- Allan de Carvalho Moreira
-- Linus Pauling Ferreira Pereira
-- Cássia dos Santos Soranço
-- Alex Sobreira`,
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Jafar Mohammed Untar | CPF: 125.128.136-22
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Allan de Carvalho Moreira | CPF: 266.113.548-09
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Flávio Daniel Tuyarot Barci | CPF: 125.124.716-40
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Linus Pauling Ferreira Pereira | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Cássia dos Santos Soranço | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+Alex Sobreira | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+---
+
+> **Pendências antes de levar ao cartório:**
+>
+> - [ ] RG do Flávio Daniel Tuyarot Barci
+> - [ ] Qualificação completa de Linus Pauling Ferreira Pereira (RG, CPF, estado civil, profissão, endereço)
+> - [ ] Qualificação completa de Cássia dos Santos Soranço (RG, CPF, estado civil, profissão, endereço)
+> - [ ] Qualificação completa de Alex Sobreira (RG, CPF, estado civil, profissão, endereço)
+> - [ ] Nome da academia de boxe em Linhares e endereço completo do Polo Linhares
+> - [ ] Data da assembleia de fundação
+> - [ ] Assinatura e OAB do advogado responsável
+> - [ ] Autorização de sublocação do proprietário do imóvel (São Mateus)`,
   },
   {
     id: "00000000-0000-0000-0000-000000000605",
@@ -314,10 +625,13 @@ Brasileiro, Líder Técnico
 **DIRETOR ADMINISTRATIVO** — Allan de Carvalho Moreira
 Brasileiro, Consultor Comercial
 
-**DIRETOR FINANCEIRO** — A definir
+**DIRETOR FINANCEIRO** — Flávio Daniel Tuyarot Barci
+Brasileiro, Solteiro, Engenheiro de Software
+CPF: 125.124.716-40
 
 **DIRETOR TÉCNICO/ESPORTIVO** — Jafar Mohammed Untar
-Brasileiro, Analista de TI`,
+Brasileiro, Solteiro, Analista de TI
+RG: MG-17.853.895 | CPF: 125.128.136-22`,
   },
 
   // ── Governança ────────────────────────────────────────────────
@@ -569,6 +883,701 @@ A utilização do espaço ocorrerá mediante contrato de sublocação ou cessão
 O valor, forma de pagamento e condições de reajuste serão definidos em instrumento próprio, devendo observar critérios de razoabilidade e compatibilidade com o mercado.
 
 A presente relação não configura vínculo empregatício ou distribuição de lucros, tratando-se exclusivamente de relação contratual para uso de espaço físico.`,
+  },
+  {
+    id: "00000000-0000-0000-0000-000000000610",
+    titulo: "Modelo — Contrato de Locação de Imóvel",
+    descricao: "Contrato-modelo para locação direta de imóvel pela Associação. Preencher os placeholders entre colchetes e revisar com advogado habilitado antes da assinatura.",
+    tipo: "outro",
+    secao: "estrutura",
+    arquivo_url: null,
+    data_referencia: "2026-04-01",
+    publicado: true,
+    conteudo: `# Modelo — Contrato de Locação de Imóvel
+
+> **Modelo-template.** Todos os campos entre colchetes (\`[PLACEHOLDER]\`) devem ser preenchidos antes da assinatura. Revisar com advogado habilitado antes de assinar.
+
+**LOCADOR:** [NOME COMPLETO DO LOCADOR], [NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO], portador da cédula de identidade R.G. nº [RG DO LOCADOR] e CPF nº [CPF DO LOCADOR], residente e domiciliado à [ENDEREÇO COMPLETO DO LOCADOR], Juiz de Fora/MG, CEP [CEP DO LOCADOR].
+
+**LOCATÁRIO:** GŌKAI – Clube de Artes Marciais, associação civil sem fins lucrativos, inscrita no CNPJ sob nº [CNPJ DA GŌKAI], com sede na [ENDEREÇO DA SEDE DA GŌKAI], neste ato representada pelo [CARGO DO REPRESENTANTE] **[NOME DO REPRESENTANTE]**, portador do R.G. nº [RG DO REPRESENTANTE] e CPF nº [CPF DO REPRESENTANTE].
+
+---
+
+## Cláusula Primeira – Do Objeto da Locação
+
+**1.1** O objeto deste contrato é o imóvel denominado **[NOME DO IMÓVEL/ACADEMIA]**, situado na [ENDEREÇO COMPLETO DO IMÓVEL], [BAIRRO], Juiz de Fora/MG, CEP [CEP DO IMÓVEL], de propriedade do LOCADOR, no exato estado do termo de vistoria e fotos em anexo.
+
+---
+
+## Cláusula Segunda – Da Destinação do Imóvel
+
+**2.1** O imóvel destina-se única e exclusivamente à realização de atividades esportivas, sociais e educacionais vinculadas aos objetivos institucionais da GŌKAI, sendo vedada qualquer destinação diversa sem autorização prévia e por escrito do LOCADOR.
+
+---
+
+## Cláusula Terceira – Do Prazo de Vigência
+
+**3.1** O prazo da locação é de **12 (doze) meses**, iniciando-se em [DATA DE INÍCIO] com término em [DATA DE TÉRMINO], independentemente de aviso, notificação ou interpelação judicial ou extrajudicial.
+
+**3.2** Findo o prazo ajustado, se o LOCATÁRIO continuar na posse do imóvel por mais de trinta dias sem oposição do LOCADOR, presumir-se-á prorrogada a locação por prazo indeterminado, mantidas as demais cláusulas.
+
+---
+
+## Cláusula Quarta – Da Forma de Pagamento
+
+**4.1** O aluguel mensal deverá ser pago até o dia **10 (dez)** do mês subsequente ao vencido, por meio de [FORMA DE PAGAMENTO], no valor de **R$ [VALOR] ([VALOR POR EXTENSO])**, reajustados anualmente pelo índice **IGPM/FGV**. Sendo extinto tal índice, será utilizado, sucessivamente, o IPC/FIPE ou IGP-DI.
+
+**4.2 – Regime de solidariedade institucional**
+
+Reconhecendo a natureza sem fins lucrativos e a fase inicial de estruturação do LOCATÁRIO, as partes acordam que o pagamento mensal está sujeito às seguintes condições especiais, sem que isso caracterize inadimplência ou mora:
+
+**I – Mês sem arrecadação suficiente:** o espaço será cedido sem custo naquele mês, sendo o valor compensado conforme regra bimestral.
+
+**II – Pagamento parcial:** aceito, com saldo registrado em planilha de controle assinada por ambas as partes.
+
+**III – Regra bimestral:** a soma dos valores pagos em cada período de **2 (dois) meses consecutivos** deverá atingir o mínimo de **R$ [VALOR MENSAL] ([VALOR POR EXTENSO])**, equivalente a 1 (uma) mensalidade completa:
+
+| Mês 1 | Mês 2 | Total | Situação |
+|-------|-------|-------|----------|
+| R$ 0,00 | R$ [VALOR] | R$ [VALOR] | ✅ Regular |
+| R$ [VALOR] | R$ 0,00 | R$ [VALOR] | ✅ Regular |
+| R$ [METADE] | R$ [METADE] | R$ [VALOR] | ✅ Regular |
+| R$ [PARCIAL] | R$ [PARCIAL] | R$ [ABAIXO] | ⚠️ Irregular |
+
+**IV – Apuração:** nos meses pares do calendário, a partir do início do contrato.
+
+---
+
+## Cláusula Quinta – Da Multa e Juros de Mora
+
+**5.1** Em caso de mora fora das condições previstas na Cláusula Quarta, o valor será corrigido pelo IGP-M até o efetivo pagamento e acrescido da multa moratória de **10% (dez por cento)** e dos juros de **1% (um por cento) ao mês**, ensejando sua cobrança por advogado. Honorários: 10% se amigável, 20% se judicial.
+
+**5.2** Caso o LOCATÁRIO não regularize o pagamento no prazo de 15 dias após vencimento do bimestre irregular, o LOCADOR terá o direito de rescindir o contrato nos termos do Art. 9º, inc. III da Lei nº 8.245/91.
+
+---
+
+## Cláusula Sexta – Da Conservação, Reformas e Benfeitorias
+
+**6.1** Ao LOCATÁRIO recai a responsabilidade por zelar pela conservação, limpeza e segurança do imóvel.
+
+**6.2** As benfeitorias necessárias introduzidas pelo LOCATÁRIO, ainda que não autorizadas, bem como as úteis, desde que autorizadas, serão indenizáveis e permitem o exercício do direito de retenção. As voluptuárias não serão indenizáveis.
+
+**6.3** O LOCATÁRIO está obrigado a devolver o imóvel em perfeitas condições de limpeza, conservação e pintura, conforme termo de vistoria em anexo.
+
+**6.4** O LOCATÁRIO não poderá realizar obras estruturais sem prévia autorização por escrito do LOCADOR. Havendo autorização, as obras serão incorporadas ao imóvel sem indenização.
+
+**6.5** O LOCADOR responde pelos vícios ou defeitos anteriores à locação.
+
+**Parágrafo único:** O LOCATÁRIO declara receber o imóvel em perfeito estado de conservação, conforme termo de vistoria em anexo.
+
+---
+
+## Cláusula Sétima – Das Taxas e Tributos
+
+**7.1** As despesas de consumo de água, energia elétrica e internet serão de responsabilidade do LOCATÁRIO, pagas diretamente às concessionárias. Taxas e tributos sobre o imóvel (IPTU) são de responsabilidade do LOCADOR, salvo acordo diverso em anexo.
+
+---
+
+## Cláusula Oitava – Dos Sinistros
+
+**8.1** Em caso de sinistro total, o contrato estará rescindido independentemente de aviso.
+
+**8.2** Em caso de incêndio parcial que obrigue obras, o contrato terá vigência suspensa, sendo retomado após a reconstrução, prorrogado pelo período das obras.
+
+---
+
+## Cláusula Nona – Da Sublocação
+
+**9.1** É **vedado** ao LOCATÁRIO sublocar, transferir ou ceder o imóvel sem consentimento prévio e por escrito do LOCADOR.
+
+---
+
+## Cláusula Décima – Da Desapropriação
+
+**10.1** Em caso de desapropriação total ou parcial do imóvel, ficará rescindido de pleno direito o presente contrato, sendo passíveis de indenização as perdas e danos efetivamente demonstradas.
+
+---
+
+## Cláusula Décima Primeira – Dos Casos de Falecimento
+
+**11.1** Falecendo o LOCADOR, ficam seus sucessores sub-rogados dos direitos deste contrato.
+
+**11.2** Em caso de dissolução do LOCATÁRIO, seus representantes legais decidirão, dentro de 30 dias, sobre a continuidade ou rescisão da locação.
+
+---
+
+## Cláusula Décima Segunda – Da Garantia
+
+**12.1** O presente contrato não exige garantia, tendo em vista a natureza institucional do LOCATÁRIO e a relação de confiança entre as partes.
+
+---
+
+## Cláusula Décima Terceira – Da Alienação do Imóvel
+
+**13.1** Em caso de alienação, o LOCATÁRIO terá direito de preferência. Se não utilizar essa prerrogativa formalmente, o LOCADOR poderá dispor livremente do imóvel, respeitados os prazos da Lei do Inquilinato.
+
+---
+
+## Cláusula Décima Quarta – Das Vistorias
+
+**14.1** É facultado ao LOCADOR, mediante aviso prévio de 48 horas, vistoriar o imóvel para verificação do cumprimento das obrigações contratuais.
+
+---
+
+## Cláusula Décima Quinta – Das Infrações ao Contrato
+
+**15.1** A não observância de qualquer cláusula sujeita o infrator à multa de **3 (três) vezes** o valor do aluguel, tomando-se por base o último aluguel vencido.
+
+---
+
+## Cláusula Décima Sexta – Do Conflito de Interesses
+
+**16.1** Caso o LOCADOR seja também membro da GŌKAI, as partes declaram ciência do conflito de interesses e estabelecem as seguintes salvaguardas:
+
+a) O valor da locação foi deliberado e aprovado pela Diretoria Executiva em reunião registrada em ata, com abstenção de voto do LOCADOR;
+
+b) Este contrato estará disponível no portal de transparência da Associação (gokai.ong/transparencia).
+
+---
+
+## Cláusula Décima Sétima – Da Rescisão do Contrato
+
+**17.1** A rescisão antecipada implica multa proporcional: valor mensal ÷ 12 × meses restantes.
+
+**17.2** Após o prazo de vigência, rescisão mediante aviso prévio de **30 dias**.
+
+**17.3** Rescisão imediata em caso de: uso ilícito, danos graves não reparados em 15 dias, ou inadimplência conforme Cláusula Quinta.
+
+---
+
+## Cláusula Décima Oitava – Da Observância à LGPD
+
+**18.1** O LOCATÁRIO declara expresso consentimento que o LOCADOR irá coletar e tratar os dados necessários ao cumprimento deste contrato, nos termos do Art. 7º, incs. II e V da Lei nº 13.709/2018 (LGPD).
+
+---
+
+## Cláusula Décima Nona – Dos Termos Gerais
+
+**19.1** As partes contratantes obrigam-se por si, herdeiros e/ou sucessores.
+
+**19.2** Qualquer alteração somente terá validade mediante aditamento escrito assinado pelas partes.
+
+---
+
+## Cláusula Vigésima – Do Foro
+
+**20.1** As partes elegem o foro da **Comarca de Juiz de Fora/MG** para dirimir qualquer litígio decorrente do presente contrato.
+
+---
+
+E, por assim estarem justos e contratados, mandaram extrair o presente instrumento em **2 (duas) vias** de igual teor.
+
+[CIDADE], [DATA].
+
+**LOCADOR:**
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+[NOME DO LOCADOR] | CPF: [CPF DO LOCADOR]
+
+**LOCATÁRIO – GŌKAI:**
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+[NOME DO REPRESENTANTE] — [CARGO] | CPF: [CPF DO REPRESENTANTE]
+
+**TESTEMUNHA 1:** \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+**TESTEMUNHA 2:** \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+**ANEXOS:**
+
+- Termo de vistoria do imóvel
+- Planilha de controle bimestral (Anexo I)
+
+### Anexo I – Planilha de Controle Bimestral
+
+| Bimestre | Mês 1 (R$) | Mês 2 (R$) | Total (R$) | Meta mínima (R$) | Situação |
+|----------|-----------|-----------|-----------|-----------------|----------|
+| Bim. 1 | | | | [VALOR] | |
+| Bim. 2 | | | | [VALOR] | |
+| Bim. 3 | | | | [VALOR] | |
+| Bim. 4 | | | | [VALOR] | |
+| Bim. 5 | | | | [VALOR] | |
+| Bim. 6 | | | | [VALOR] | |
+
+---
+
+*Modelo para uso exclusivo da GŌKAI — abril/2026. Revisar com advogado habilitado antes da assinatura.*`,
+  },
+  {
+    id: "00000000-0000-0000-0000-000000000611",
+    titulo: "Modelo — Contrato de Sublocação de Imóvel",
+    descricao: "Contrato-modelo para sublocação de imóvel à Associação por membro da Diretoria — inclui salvaguardas de conflito de interesses e regime solidário de pagamento. Revisar com advogado antes de assinar.",
+    tipo: "outro",
+    secao: "estrutura",
+    arquivo_url: null,
+    data_referencia: "2026-04-01",
+    publicado: true,
+    conteudo: `# Modelo — Contrato de Sublocação de Imóvel
+
+> **Modelo-template.** Todos os campos entre colchetes (\`[PLACEHOLDER]\`) devem ser preenchidos antes da assinatura. Revisar com advogado habilitado antes de assinar.
+
+**SUBLOCADOR:** [NOME COMPLETO DO SUBLOCADOR], [NACIONALIDADE], [ESTADO CIVIL], [PROFISSÃO], portador da cédula de identidade R.G. nº [RG DO SUBLOCADOR] e CPF nº [CPF DO SUBLOCADOR], residente e domiciliado à [ENDEREÇO COMPLETO DO SUBLOCADOR].
+
+**SUBLOCATÁRIO:** GŌKAI – Clube de Artes Marciais, associação civil sem fins lucrativos, inscrita no CNPJ sob nº [CNPJ DA GŌKAI], com sede na [ENDEREÇO DA SEDE DA GŌKAI], neste ato representada pelo [CARGO DO REPRESENTANTE] **[NOME DO REPRESENTANTE]**, portador do R.G. nº [RG DO REPRESENTANTE] e CPF nº [CPF DO REPRESENTANTE].
+
+> ⚠️ Quando o SUBLOCADOR for também Presidente da GŌKAI, a Associação deve ser representada pelo Vice-Presidente para evitar conflito de interesses na assinatura.
+
+---
+
+## Cláusula Primeira – Do Objeto da Sublocação
+
+**1.1** O objeto deste contrato é o imóvel situado na **[ENDEREÇO COMPLETO DO IMÓVEL]**, no exato estado do termo de vistoria e fotos em anexo, objeto do contrato de locação original conforme cópia em Anexo II.
+
+**1.2** O SUBLOCATÁRIO declara que o locador originário do referido imóvel autorizou expressamente a realização do presente contrato, conforme cópia da autorização em Anexo II.
+
+---
+
+## Cláusula Segunda – Do Prazo de Vigência
+
+**2.1** O prazo da sublocação é de **12 (doze) meses**, iniciando-se em [DATA DE INÍCIO] com término em [DATA DE TÉRMINO], independentemente de aviso, notificação ou interpelação judicial ou extrajudicial.
+
+**2.2** Findo o prazo, se o SUBLOCATÁRIO continuar na posse por mais de trinta dias sem oposição do SUBLOCADOR, presumir-se-á prorrogada a sublocação por prazo indeterminado.
+
+---
+
+## Cláusula Terceira – Da Forma de Pagamento
+
+**3.1** O aluguel mensal deverá ser pago até o dia **10 (dez)** do mês subsequente ao vencido, por meio de [FORMA DE PAGAMENTO], no valor de **R$ [VALOR] ([VALOR POR EXTENSO])**, reajustados anualmente pelo **IGPM/FGV**. Sendo extinto tal índice, será utilizado o IPC/FIPE ou IGP-DI.
+
+**3.2 – Regime de solidariedade institucional**
+
+**I – Mês sem arrecadação suficiente:** o espaço será cedido sem custo, sendo o valor compensado conforme regra bimestral.
+
+**II – Pagamento parcial:** aceito, com saldo registrado em planilha de controle.
+
+**III – Regra bimestral:** a soma de cada **2 (dois) meses consecutivos** deve atingir o mínimo de **R$ [VALOR] ([VALOR POR EXTENSO])**:
+
+| Mês 1 | Mês 2 | Total | Situação |
+|-------|-------|-------|----------|
+| R$ 0,00 | R$ [VALOR] | R$ [VALOR] | ✅ Regular |
+| R$ [VALOR] | R$ 0,00 | R$ [VALOR] | ✅ Regular |
+| R$ [METADE] | R$ [METADE] | R$ [VALOR] | ✅ Regular |
+| R$ [PARCIAL] | R$ [PARCIAL] | R$ [ABAIXO] | ⚠️ Irregular |
+
+**IV – Apuração:** nos meses pares do calendário, a partir do início do contrato.
+
+---
+
+## Cláusula Quarta – Das Taxas e Tributos
+
+**4.1** As despesas de consumo de água, energia elétrica e internet serão de responsabilidade do SUBLOCATÁRIO, pagas diretamente às concessionárias.
+
+---
+
+## Cláusula Quinta – Da Multa e Juros de Mora
+
+**5.1** Em caso de mora fora das condições da Cláusula Terceira, o valor será corrigido pelo IGP-M, acrescido da multa de **10% (dez por cento)** e juros de **1% (um por cento) ao mês**. Honorários: 10% se amigável, 20% se judicial.
+
+---
+
+## Cláusula Sexta – Da Conservação, Reformas e Benfeitorias
+
+**6.1** Ao SUBLOCATÁRIO recai a responsabilidade por zelar pela conservação, limpeza e segurança do imóvel.
+
+**6.2** O SUBLOCATÁRIO está obrigado a devolver o imóvel em perfeitas condições, conforme termo de vistoria em anexo.
+
+**6.3** Não poderá realizar obras estruturais sem autorização por escrito do SUBLOCADOR. Havendo autorização, as obras serão incorporadas ao imóvel sem indenização.
+
+**6.4** Cabe ao SUBLOCATÁRIO verificar a voltagem e capacidade elétrica do imóvel, sendo de sua responsabilidade os danos causados por inadequação.
+
+**Parágrafo único:** O SUBLOCATÁRIO declara receber o imóvel em perfeito estado, conforme termo de vistoria em anexo.
+
+---
+
+## Cláusula Sétima – Da Destinação do Imóvel
+
+**7.1** O imóvel destina-se única e exclusivamente à realização de atividades esportivas, sociais e educacionais da GŌKAI, sendo vedada qualquer destinação diversa.
+
+---
+
+## Cláusula Oitava – Dos Sinistros
+
+**8.1** Em caso de sinistro total, o contrato estará rescindido independentemente de aviso.
+
+**8.2** Em caso de incêndio parcial que obrigue obras, o contrato terá vigência suspensa, sendo retomado após a reconstrução, prorrogado pelo período das obras.
+
+---
+
+## Cláusula Nona – Da Nova Sublocação
+
+**9.1** É **vedado** ao SUBLOCATÁRIO sublocar, transferir ou ceder o imóvel sem consentimento prévio e por escrito do SUBLOCADOR.
+
+---
+
+## Cláusula Décima – Da Desapropriação
+
+**10.1** Em caso de desapropriação total ou parcial, o contrato ficará rescindido de pleno direito.
+
+---
+
+## Cláusula Décima Primeira – Da Garantia
+
+**11.1** O presente contrato não exige fiadores ou garantias adicionais, tendo em vista a relação institucional entre as partes e o regime de pagamento solidário previsto na Cláusula Terceira.
+
+---
+
+## Cláusula Décima Segunda – Da Alienação do Imóvel
+
+**12.1** Em caso de alienação do imóvel pelo locador original, o SUBLOCADOR notificará o SUBLOCATÁRIO com antecedência mínima de **60 dias**.
+
+---
+
+## Cláusula Décima Terceira – Das Vistorias
+
+**13.1** É facultado ao SUBLOCADOR, mediante aviso prévio de 48 horas, vistoriar o imóvel para verificação do cumprimento das obrigações contratuais.
+
+---
+
+## Cláusula Décima Quarta – Das Infrações ao Contrato
+
+**14.1** A não observância de qualquer cláusula sujeita o infrator à multa de **3 (três) vezes** o valor do aluguel, com base no último aluguel vencido.
+
+---
+
+## Cláusula Décima Quinta – Da Sucessão
+
+**15.1** As partes contratantes obrigam-se por si, herdeiros e/ou sucessores.
+
+---
+
+## Cláusula Décima Sexta – Da Rescisão do Contrato
+
+**16.1** Rescisão antecipada: multa proporcional (valor mensal ÷ 12 × meses restantes).
+
+**16.2** Após o prazo de vigência: rescisão mediante aviso prévio de **30 dias**.
+
+**16.3** Rescisão imediata pelo SUBLOCADOR em caso de: uso ilícito, danos graves não reparados em 15 dias, ou **3 (três) bimestres consecutivos** sem qualquer pagamento. Saldo devedor quitado em até 60 dias sem juros.
+
+---
+
+## Cláusula Décima Sétima – Do Conflito de Interesses
+
+**17.1** Caso o SUBLOCADOR seja também membro da GŌKAI, as partes declaram ciência do conflito e estabelecem:
+
+a) Valor aprovado pela Diretoria em ata, com abstenção de voto do SUBLOCADOR;
+
+b) Contrato disponível em gokai.ong/transparencia.
+
+---
+
+## Cláusula Décima Oitava – Da Observância à LGPD
+
+**18.1** As partes declaram que os dados pessoais serão tratados nos termos da Lei nº 13.709/2018 (LGPD), exclusivamente para as finalidades contratuais.
+
+---
+
+## Cláusula Décima Nona – Dos Termos Gerais
+
+**19.1** O SUBLOCATÁRIO obriga-se a respeitar os direitos de vizinhança e quaisquer regulamentos aplicáveis ao imóvel.
+
+**19.2** Qualquer alteração somente terá validade mediante aditamento escrito assinado pelas partes.
+
+---
+
+## Cláusula Vigésima – Do Foro
+
+**20.1** As partes elegem o foro da **Comarca de Juiz de Fora/MG** para dirimir qualquer litígio.
+
+---
+
+[CIDADE], [DATA].
+
+**SUBLOCADOR:**
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+[NOME DO SUBLOCADOR] | CPF: [CPF DO SUBLOCADOR]
+
+**SUBLOCATÁRIO – GŌKAI:**
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+[NOME DO REPRESENTANTE] — [CARGO] | CPF: [CPF DO REPRESENTANTE]
+
+**ANUENTE (Locador original):**
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+[NOME DO LOCADOR ORIGINAL] | CPF/CNPJ: [CPF/CNPJ]
+
+**TESTEMUNHA 1:** \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+**TESTEMUNHA 2:** \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+**ANEXOS:**
+
+- Termo de vistoria do imóvel
+- Autorização de sublocação do locador original (Anexo II)
+- Planilha de controle bimestral (Anexo I)
+
+### Anexo I – Planilha de Controle Bimestral
+
+| Bimestre | Mês 1 (R$) | Mês 2 (R$) | Total (R$) | Meta mínima (R$) | Situação |
+|----------|-----------|-----------|-----------|-----------------|----------|
+| Bim. 1 | | | | [VALOR] | |
+| Bim. 2 | | | | [VALOR] | |
+| Bim. 3 | | | | [VALOR] | |
+| Bim. 4 | | | | [VALOR] | |
+| Bim. 5 | | | | [VALOR] | |
+| Bim. 6 | | | | [VALOR] | |
+
+---
+
+*Modelo para uso exclusivo da GŌKAI — abril/2026. Revisar com advogado habilitado antes da assinatura.*`,
+  },
+  {
+    id: "00000000-0000-0000-0000-000000000612",
+    titulo: "Modelo — Contrato de Patrocínio",
+    descricao: "Contrato-modelo de patrocínio financeiro à Associação, com faixas (Apoiador, Bronze, Prata, Ouro, Diamante) e contrapartidas de divulgação. Revisar com advogado antes de assinar.",
+    tipo: "outro",
+    secao: "estrutura",
+    arquivo_url: null,
+    data_referencia: "2026-04-01",
+    publicado: true,
+    conteudo: `# Modelo — Contrato de Patrocínio
+
+> **Modelo-template.** Todos os campos entre colchetes (\`[PLACEHOLDER]\`) devem ser preenchidos antes da assinatura. Revisar com advogado habilitado antes de assinar.
+
+**PATROCINADO:** GŌKAI – Clube de Artes Marciais, associação civil sem fins lucrativos, CNPJ nº [CNPJ DA GŌKAI], com sede na [ENDEREÇO DA SEDE], representada pelo Presidente **[NOME DO PRESIDENTE]**, CPF [CPF DO PRESIDENTE], doravante denominado **PATROCINADO**.
+
+**PATROCINADOR:** [RAZÃO SOCIAL OU NOME COMPLETO], [PJ: CNPJ nº \\_\\_\\_\\_\\_\\_\\_ / PF: CPF nº \\_\\_\\_\\_\\_\\_\\_], com sede/residência em [ENDEREÇO COMPLETO], representado por [NOME DO REPRESENTANTE], [CARGO], doravante denominado **PATROCINADOR**.
+
+---
+
+## Cláusula Primeira – Do Objeto
+
+**1.1** O presente contrato tem por objeto o apoio financeiro ou material do PATROCINADOR às atividades esportivas, sociais e educacionais do PATROCINADO, em contrapartida às ações de divulgação descritas neste instrumento.
+
+---
+
+## Cláusula Segunda – Da Modalidade e Valor do Patrocínio
+
+**2.1** O PATROCINADOR enquadra-se na seguinte faixa:
+
+| Faixa | Valor mensal | Impacto direto |
+|-------|:-----------:|----------------|
+| Apoiador | R$ 500,00 | Kit de 1 atleta de judô ou jiu-jitsu |
+| Bronze | R$ 1.000,00 | Kit de 3 atletas ou 2 atletas em campeonato |
+| Prata | R$ 2.000,00 | Custeio de 1 aluguel mensal |
+| Ouro | R$ 4.000,00 | Custeio integral dos 2 aluguéis mensais |
+| Diamante | R$ [VALOR] | [A DEFINIR ENTRE AS PARTES] |
+
+Faixa contratada: **[FAIXA]** — **R$ [VALOR] ([VALOR POR EXTENSO])** mensais.
+
+---
+
+## Cláusula Terceira – Das Contrapartidas ao Patrocinador
+
+**Para todas as faixas:**
+
+a) Nome/logomarca no site gokai.ong;
+
+b) Menção nas redes sociais ao menos 1× por mês;
+
+c) Inclusão na lista de apoiadores da página de transparência.
+
+**A partir da faixa Bronze:**
+
+d) Logomarca em uniformes e materiais de competição;
+
+e) Relatório semestral de impacto com fotos e resultados esportivos.
+
+**A partir da faixa Prata:**
+
+f) Nomeação de polo ou turma em homenagem ao PATROCINADOR, se desejado;
+
+g) Prioridade em banners e materiais visuais nos eventos.
+
+**Faixa Ouro e Diamante:**
+
+h) Espaço publicitário na sede durante treinos e eventos;
+
+i) Convite para eventos e formaturas;
+
+j) Reconhecimento como patrocinador master em todas as comunicações oficiais.
+
+---
+
+## Cláusula Quarta – Da Forma de Pagamento
+
+**4.1** O valor de **R$ [VALOR]** mensais deverá ser pago até o dia [DIA] de cada mês, por meio de [FORMA DE PAGAMENTO]:
+
+- Chave PIX / Conta: [DADOS BANCÁRIOS]
+- Favorecido: GŌKAI – Clube de Artes Marciais | CNPJ: [CNPJ]
+
+**4.2** O PATROCINADO emitirá recibo para cada pagamento recebido.
+
+**4.3** Para patrocínio pontual de evento, o valor integral deverá ser depositado com antecedência mínima de **15 dias** da data do evento.
+
+---
+
+## Cláusula Quinta – Do Uso da Marca do Patrocinador
+
+**5.1** O PATROCINADO fica autorizado a usar nome e logomarca do PATROCINADOR exclusivamente para as finalidades previstas neste contrato.
+
+**5.2** O PATROCINADOR fornecerá os arquivos de logomarca em alta resolução no prazo de **5 dias úteis** após a assinatura.
+
+**5.3** Qualquer uso além do previsto dependerá de autorização prévia por escrito.
+
+---
+
+## Cláusula Sexta – Das Vedações
+
+**6.1** É vedado ao PATROCINADO associar a marca do PATROCINADOR a conteúdo político-partidário, discriminatório ou contrário aos valores da GŌKAI.
+
+**6.2** É vedado ao PATROCINADOR interferir nas atividades técnicas, pedagógicas ou administrativas da Associação.
+
+**6.3** Nenhuma das partes poderá usar a imagem da outra para fins comerciais além do previsto.
+
+---
+
+## Cláusula Sétima – Da Prestação de Contas
+
+**7.1** O PATROCINADO compromete-se a:
+
+a) Emitir recibo para cada valor recebido;
+
+b) Disponibilizar relatório de impacto semestral (faixas Bronze ou superior);
+
+c) Manter as contas da Associação disponíveis publicamente conforme Estatuto Social.
+
+---
+
+## Cláusula Oitava – Das Infrações ao Contrato
+
+**8.1** A não observância de qualquer cláusula sujeita o infrator à multa de **2 (duas) vezes** o valor da mensalidade de patrocínio.
+
+---
+
+## Cláusula Nona – Da Rescisão
+
+**9.1** Rescisão por qualquer das partes mediante notificação escrita com **30 dias** de antecedência, sem penalidades, desde que quitadas as obrigações do mês vigente.
+
+**9.2** Rescisão imediata em caso de: uso indevido de marca, inadimplência por mais de **60 dias**, ou conduta que prejudique a imagem da outra parte.
+
+---
+
+## Cláusula Décima – Da Natureza do Contrato
+
+**10.1** Este contrato não gera vínculo empregatício, societário ou de qualquer outra natureza além do patrocínio aqui descrito.
+
+**10.2** O PATROCINADOR não assume responsabilidade por dívidas ou obrigações do PATROCINADO.
+
+---
+
+## Cláusula Décima Primeira – Da Observância à LGPD
+
+**11.1** Os dados pessoais trocados para execução deste contrato serão tratados nos termos da Lei nº 13.709/2018 (LGPD), utilizados exclusivamente para as finalidades contratuais.
+
+---
+
+## Cláusula Décima Segunda – Da Sucessão
+
+**12.1** As partes contratantes obrigam-se por si, herdeiros e/ou sucessores.
+
+---
+
+## Cláusula Décima Terceira – Do Foro
+
+**13.1** As partes elegem o foro da **Comarca de Juiz de Fora/MG** para dirimir qualquer litígio.
+
+---
+
+[CIDADE], [DATA].
+
+**PATROCINADO – GŌKAI:**
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+[NOME DO PRESIDENTE] — Presidente | CPF: [CPF DO PRESIDENTE]
+
+**PATROCINADOR:**
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+[NOME DO REPRESENTANTE] | CPF/CNPJ: [CPF/CNPJ]
+
+**TESTEMUNHA 1:** \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+**TESTEMUNHA 2:** \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+---
+
+### Anexo I – Plano de Mídia e Contrapartidas
+
+| Ação | Canal | Frequência | Responsável |
+|------|-------|:----------:|-------------|
+| Menção nas redes sociais | Instagram/WhatsApp | Mensal | Dir. Adm. |
+| Logo no site | gokai.ong | Permanente | Dir. Adm. |
+| Logo em uniformes | Treinos e campeonatos | Contínuo | Dir. Técnico |
+| Relatório de impacto | E-mail | Semestral | Presidente |
+
+---
+
+*Modelo para uso exclusivo da GŌKAI — abril/2026. Revisar com advogado habilitado antes da assinatura.*`,
+  },
+  {
+    id: "00000000-0000-0000-0000-000000000613",
+    titulo: "Modelo — Pedido de Patrocínio",
+    descricao: "Carta-modelo para solicitação de patrocínio a empresas e pessoas físicas. Serve como base para prospecção ativa de apoiadores. Preencher nome da empresa, contatos e anexos antes do envio.",
+    tipo: "outro",
+    secao: "estrutura",
+    arquivo_url: null,
+    data_referencia: "2026-04-01",
+    publicado: true,
+    conteudo: `# Modelo — Pedido de Patrocínio
+
+> **Modelo-template.** Todos os campos entre colchetes (\`[PLACEHOLDER]\`) devem ser preenchidos antes do envio. Personalizar a justificativa de alinhamento com os valores do destinatário.
+
+À [NOME DA EMPRESA / PESSOA]
+
+**Referente a:** Patrocínio à GŌKAI – Clube de Artes Marciais
+
+---
+
+Pelo presente, vimos solicitar vossa contribuição para as atividades esportivas e sociais desenvolvidas pela **GŌKAI – Clube de Artes Marciais**, associação civil sem fins lucrativos sediada no Bairro São Mateus, Juiz de Fora/MG, fundada em 2026 com o propósito de promover artes marciais e transformação social por meio do esporte.
+
+A GŌKAI atua nas modalidades de **Jiu-Jitsu, Judô, Boxe e Xadrez**, além de projetos de Defesa Pessoal Feminina e Educação Ambiental, atendendo crianças, jovens e adultos de todas as faixas etárias, com prioridade a jovens em situação de vulnerabilidade social nos bairros São Mateus e Linhares.
+
+Considerando o alinhamento entre os valores da [NOME DA EMPRESA] e o trabalho que desenvolvemos — [MENCIONAR VALORES OU PROJETOS DA EMPRESA QUE SE CONECTAM COM A GŌKAI] —, julgamos que seria de vosso interesse se fazer presente como parceiro e fomentador deste projeto.
+
+**Como patrocinador, [NOME DA EMPRESA] terá:**
+
+- Visibilidade junto a [NÚMERO ESTIMADO] atletas e famílias atendidas pela Associação
+- Exposição da marca em uniformes, eventos e campeonatos regionais
+- Presença no site institucional gokai.ong e nas redes sociais da GŌKAI
+- Associação à imagem de responsabilidade social, esporte e formação humana
+- Relatório semestral de impacto com resultados esportivos e sociais
+
+**Nossas cotas de patrocínio:**
+
+| Faixa | Valor mensal | Impacto direto |
+|-------|:-----------:|----------------|
+| Apoiador | R$ 500,00 | Kit de 1 atleta |
+| Bronze | R$ 1.000,00 | 2 atletas em campeonato |
+| Prata | R$ 2.000,00 | 1 aluguel mensal |
+| Ouro | R$ 4.000,00 | Custeio dos 2 aluguéis |
+| Diamante | A combinar | Parceria estratégica |
+
+As cotas e contrapartidas podem ser adaptadas conforme acordo entre as partes.
+
+Em anexo a este convite, apresentamos [DOCUMENTOS ANEXOS: estatuto, relatório de atividades, projeto, etc.].
+
+Para resposta ou mais informações, solicitamos contato pelo e-mail **[E-MAIL DA GŌKAI]** ou pelo telefone **[TELEFONE]**.
+
+Certos de que poderemos contar com vosso importante apoio, colocamo-nos à disposição.
+
+Juiz de Fora/MG, [DATA].
+
+Atenciosamente,
+
+\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_
+
+[NOME DO PRESIDENTE]
+Presidente — GŌKAI – Clube de Artes Marciais
+CNPJ: [CNPJ] | gokai.ong
+
+---
+
+*Modelo para uso exclusivo da GŌKAI — abril/2026.*`,
   },
 ]
 
