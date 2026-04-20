@@ -64,11 +64,38 @@ export async function criarUsuarioComInvite(
       return { success: false, error: "Já existe um usuário interno vinculado a este e-mail." }
     }
 
-    // 2. Provisiona auth user — dois modos:
-    //    a) Convite por e-mail (magic link)
-    //    b) Criação direta com senha (email_confirm: true pula a verificação)
+    // 2. Provisiona auth user — com recovery para órfãos:
+    //    Se auth.users já tem esse e-mail (sem usuario_interno ligado),
+    //    reusa o auth user em vez de falhar com "email already registered".
     let authUserId: string
-    if (useManualPassword) {
+    let reusedAuthUser = false
+
+    const { data: listResult } = await admin.auth.admin.listUsers({
+      perPage: 1000,
+    })
+    const existingAuth = listResult?.users.find(
+      (u) => u.email?.toLowerCase() === email.toLowerCase()
+    )
+
+    if (existingAuth) {
+      authUserId = existingAuth.id
+      reusedAuthUser = true
+      if (useManualPassword) {
+        // Atualiza senha do auth user existente
+        const { error: updErr } = await admin.auth.admin.updateUserById(
+          existingAuth.id,
+          { password, user_metadata: { nome_completo, role } }
+        )
+        if (updErr) {
+          return {
+            success: false,
+            error: `Erro ao atualizar senha do usuário existente: ${updErr.message}`,
+          }
+        }
+      }
+      // Se for invite e o auth user já existe, pula o envio — ele já tem
+      // login. Admin pode usar "esqueci a senha" no /login se precisar.
+    } else if (useManualPassword) {
       const { data: authData, error: authError } =
         await admin.auth.admin.createUser({
           email,
@@ -122,7 +149,7 @@ export async function criarUsuarioComInvite(
 
       if (pessoaError) {
         console.error("criarUsuarioComInvite: pessoa insert failed", pessoaError)
-        await admin.auth.admin.deleteUser(authUserId)
+        if (!reusedAuthUser) await admin.auth.admin.deleteUser(authUserId)
         return { success: false, error: "Erro ao criar registro de pessoa." }
       }
       pessoaId = newPessoa.id

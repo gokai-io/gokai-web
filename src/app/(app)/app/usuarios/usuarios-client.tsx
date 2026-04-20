@@ -9,6 +9,7 @@ import { toast } from "sonner"
 import { PencilIcon, Trash2Icon } from "lucide-react"
 
 import { createClient } from "@/lib/supabase/client"
+import { excluirUsuarioCompleto } from "./actions"
 import { DataTable, type Column } from "@/components/app/data-table"
 import { ConfirmDialog } from "@/components/app/confirm-dialog"
 import { Button } from "@/components/ui/button"
@@ -129,14 +130,12 @@ export function UsuariosClient({ usuarios: initialUsuarios }: UsuariosClientProp
 
   async function handleDelete() {
     if (!deleteTarget) return
-    const supabase = createClient()
-    const { error } = await supabase
-      .from("usuario_interno")
-      .delete()
-      .eq("id", deleteTarget.id)
+    const result = await excluirUsuarioCompleto({
+      usuarioInternoId: deleteTarget.id,
+    })
 
-    if (error) {
-      toast.error(`Erro ao excluir usuário: ${error.message}`)
+    if (!result.success) {
+      toast.error(result.error ?? "Erro ao excluir usuário.")
     } else {
       setUsuarios((prev) => prev.filter((u) => u.id !== deleteTarget.id))
       toast.success("Usuário excluído com sucesso.")
