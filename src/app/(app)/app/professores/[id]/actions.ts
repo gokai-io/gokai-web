@@ -116,8 +116,11 @@ export async function desvincularAcesso(
   }
 
   if (apagarAuthUser && ui.auth_user_id) {
-    // Também remove o auth user (senão fica órfão em auth.users)
-    const { error: authErr } = await admin.auth.admin.deleteUser(ui.auth_user_id)
+    // Hard delete (shouldSoftDelete=false) para liberar o e-mail
+    const { error: authErr } = await admin.auth.admin.deleteUser(
+      ui.auth_user_id,
+      false
+    )
     if (authErr) {
       console.error("desvincularAcesso: auth delete failed", authErr)
       // Não retorna erro — o desvínculo principal funcionou

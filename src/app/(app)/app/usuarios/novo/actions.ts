@@ -64,27 +64,43 @@ export async function criarUsuarioComInvite(
       return { success: false, error: "Já existe um usuário interno vinculado a este e-mail." }
     }
 
-    // 2. Provisiona auth user — com recovery para órfãos:
+    // 2. Provisiona auth user — com recovery para órfãos.
     //    Se auth.users já tem esse e-mail (sem usuario_interno ligado),
     //    reusa o auth user em vez de falhar com "email already registered".
+    //    Pagina o listUsers (Supabase retorna 50/pag por default).
+    const findAuthUserByEmail = async () => {
+      const normalized = email.trim().toLowerCase()
+      const perPage = 1000
+      let page = 1
+      while (page < 20) {
+        const { data, error } = await admin.auth.admin.listUsers({ page, perPage })
+        if (error || !data?.users) break
+        const hit = data.users.find(
+          (u) => u.email?.trim().toLowerCase() === normalized
+        )
+        if (hit) return hit
+        if (data.users.length < perPage) break
+        page++
+      }
+      return null
+    }
+
     let authUserId: string
     let reusedAuthUser = false
 
-    const { data: listResult } = await admin.auth.admin.listUsers({
-      perPage: 1000,
-    })
-    const existingAuth = listResult?.users.find(
-      (u) => u.email?.toLowerCase() === email.toLowerCase()
-    )
+    const existingAuth = await findAuthUserByEmail()
 
     if (existingAuth) {
       authUserId = existingAuth.id
       reusedAuthUser = true
       if (useManualPassword) {
-        // Atualiza senha do auth user existente
         const { error: updErr } = await admin.auth.admin.updateUserById(
           existingAuth.id,
-          { password, user_metadata: { nome_completo, role } }
+          {
+            password,
+            email_confirm: true,
+            user_metadata: { nome_completo, role },
+          }
         )
         if (updErr) {
           return {
@@ -93,8 +109,7 @@ export async function criarUsuarioComInvite(
           }
         }
       }
-      // Se for invite e o auth user já existe, pula o envio — ele já tem
-      // login. Admin pode usar "esqueci a senha" no /login se precisar.
+      // Modo invite: auth user já existe, não reenvia convite.
     } else if (useManualPassword) {
       const { data: authData, error: authError } =
         await admin.auth.admin.createUser({
@@ -105,13 +120,36 @@ export async function criarUsuarioComInvite(
         })
 
       if (authError || !authData.user) {
+        // Fallback: às vezes o Supabase retorna "already registered"
+        // mesmo com listUsers não encontrando (soft-delete, replicação).
         console.error("criarUsuarioComInvite: createUser failed", authError)
-        return {
-          success: false,
-          error: `Erro ao criar usuário: ${authError?.message ?? "desconhecido"}`,
+        const recover = await findAuthUserByEmail()
+        if (recover) {
+          authUserId = recover.id
+          reusedAuthUser = true
+          const { error: updErr } = await admin.auth.admin.updateUserById(
+            recover.id,
+            {
+              password,
+              email_confirm: true,
+              user_metadata: { nome_completo, role },
+            }
+          )
+          if (updErr) {
+            return {
+              success: false,
+              error: `Usuário já existe mas não conseguimos atualizar a senha: ${updErr.message}`,
+            }
+          }
+        } else {
+          return {
+            success: false,
+            error: `Erro ao criar usuário: ${authError?.message ?? "desconhecido"}`,
+          }
         }
+      } else {
+        authUserId = authData.user.id
       }
-      authUserId = authData.user.id
     } else {
       const { data: authData, error: authError } =
         await admin.auth.admin.inviteUserByEmail(email, {
@@ -121,12 +159,19 @@ export async function criarUsuarioComInvite(
 
       if (authError) {
         console.error("criarUsuarioComInvite: auth invite failed", authError)
-        return {
-          success: false,
-          error: `Erro ao enviar convite: ${authError.message}`,
+        const recover = await findAuthUserByEmail()
+        if (recover) {
+          authUserId = recover.id
+          reusedAuthUser = true
+        } else {
+          return {
+            success: false,
+            error: `Erro ao enviar convite: ${authError.message}`,
+          }
         }
+      } else {
+        authUserId = authData.user.id
       }
-      authUserId = authData.user.id
     }
 
     // 3. Create or reuse pessoa

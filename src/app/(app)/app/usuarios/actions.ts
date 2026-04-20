@@ -49,11 +49,13 @@ export async function excluirUsuarioCompleto(
   }
 
   if (ui.auth_user_id) {
-    const { error: authErr } = await admin.auth.admin.deleteUser(ui.auth_user_id)
+    // shouldSoftDelete=false (hard delete) para liberar o e-mail
+    const { error: authErr } = await admin.auth.admin.deleteUser(
+      ui.auth_user_id,
+      false
+    )
     if (authErr) {
       console.error("excluirUsuarioCompleto: auth delete failed", authErr)
-      // Não retorna erro — o registro principal foi apagado. Mas o e-mail
-      // ainda pode ficar preso em auth.users. Loga para auditoria.
     }
   }
 
