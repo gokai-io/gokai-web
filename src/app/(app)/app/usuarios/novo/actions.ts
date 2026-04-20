@@ -4,6 +4,7 @@ import { z } from "zod/v4"
 import { createAdminClient } from "@/lib/supabase/admin"
 import { getServerUser } from "@/lib/auth/server"
 import { isAdmin } from "@/lib/auth/permissions"
+import { SITE_URL } from "@/lib/seo"
 
 const criarUsuarioSchema = z.object({
   nome_completo: z.string().min(3, "Nome é obrigatório"),
@@ -57,12 +58,21 @@ export async function criarUsuarioComInvite(
     }
 
     // 2. Invite user by email (sends magic link automatically)
+    //    redirectTo precisa ser uma URL whitelisted em Supabase → Authentication
+    //    → URL Configuration → Redirect URLs. Após clicar no link, o usuário
+    //    passa pelo callback (troca code por session) e é levado a /redefinir-senha.
     const { data: authData, error: authError } =
-      await admin.auth.admin.inviteUserByEmail(email)
+      await admin.auth.admin.inviteUserByEmail(email, {
+        redirectTo: `${SITE_URL}/api/auth/callback?next=/redefinir-senha`,
+        data: { nome_completo, role },
+      })
 
     if (authError) {
       console.error("criarUsuarioComInvite: auth invite failed", authError)
-      return { success: false, error: "Erro ao enviar convite." }
+      return {
+        success: false,
+        error: `Erro ao enviar convite: ${authError.message}`,
+      }
     }
 
     // 3. Create or reuse pessoa
