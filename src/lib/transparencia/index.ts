@@ -125,7 +125,7 @@ O imóvel situado na Rua Melo Franco, 68, Bairro São Mateus, Juiz de Fora/MG, C
 
 **Art. 6º – Polo Linhares**
 
-O imóvel utilizado pela Gōkai no Polo Linhares, denominado **[NOME DA ACADEMIA]**, situado em [ENDEREÇO COMPLETO], Linhares, Juiz de Fora/MG, CEP \\_\\_\\_\\_\\_\\_\\_\\_\\_, é de propriedade de **Alex Sobreira**, membro fundador e professor da Associação, o qual o loca diretamente à Gōkai mediante Contrato de Locação celebrado em separado entre as partes.
+O imóvel utilizado pela Gōkai no Polo Linhares, denominado **[NOME DA ACADEMIA]**, situado na **Rua Roberto Hargreaves, 64**, Bairro Linhares, Juiz de Fora/MG, CEP \\_\\_\\_\\_\\_\\_\\_\\_\\_, é de propriedade de **Alex Sobreira**, membro fundador e professor da Associação, o qual o loca diretamente à Gōkai mediante Contrato de Locação celebrado em separado entre as partes.
 
 **Art. 7º** – Os Contratos de Sublocação e Locação serão celebrados em separado para cada polo, não gerando confusão patrimonial entre os imóveis e o patrimônio social da Gōkai.
 
@@ -295,13 +295,21 @@ IV – acompanhar inscrições em campeonatos e filiações federativas.
 
 ## Capítulo VII – Dos Projetos Parceiros
 
-**Art. 24** – A Gōkai reconhece como projetos parceiros as seguintes equipes esportivas:
+**Art. 24** – A Gōkai reconhece como projetos parceiros as seguintes equipes e iniciativas:
 
-I – **Gamonal Fighters** – Jiu-Jitsu;
+**Equipes esportivas:**
 
-II – **Samurai Boxe** – Boxe;
+I – **Gamonal Fighters** – Jiu-Jitsu – [@gamonalfighters](https://instagram.com/gamonalfighters);
 
-III – **Linus Judô** – Judô.
+II – **Guerreiro Samurai Judô** – Judô – [@guerreirosamuraijudo](https://instagram.com/guerreirosamuraijudo);
+
+III – **Samurai Boxe** – Boxe – [@samuraiboxejf](https://instagram.com/samuraiboxejf);
+
+IV – **Academia do Boxe** – Boxe – [@academia.do.boxejf](https://instagram.com/academia.do.boxejf).
+
+**Iniciativas ambientais:**
+
+V – **Samurai Adventure** – Rapel e atividades de aventura em conexão com a natureza – [@samuraiadventurejf](https://instagram.com/samuraiadventurejf).
 
 **Art. 25** – Os projetos parceiros **não integram juridicamente a Associação**, mantendo identidade, gestão e responsabilidades próprias. Operam dentro dos espaços da Gōkai mediante autorização formal e contrapartida financeira.
 
@@ -595,7 +603,7 @@ Alex Sobreira | CPF: \\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\_\\
 > - [ ] RG do Flávio Daniel Tuyarot Barci
 > - [ ] CEP do endereço da Cássia dos Santos Soranço (Rua Antônio Dias, 183/305, Poço Rico)
 > - [ ] Qualificação completa de Alex Sobreira (RG, CPF, estado civil, profissão, endereço)
-> - [ ] Nome da academia de boxe em Linhares e endereço completo do Polo Linhares
+> - [ ] Nome oficial da academia no Polo Linhares (endereço já definido: Rua Roberto Hargreaves, 64)
 > - [ ] Data da assembleia de fundação
 > - [ ] Assinatura e OAB do advogado responsável
 > - [ ] Autorização de sublocação do proprietário do imóvel (São Mateus)`,
@@ -699,9 +707,16 @@ Em caso de descumprimento:
 
 ## Projetos Parceiros
 
-- Gamonal Fighters — Jiu-Jitsu
-- Academia do Boxe — Boxe
-- Guerreiro Samurai — Judô
+**Equipes esportivas:**
+
+- Gamonal Fighters — Jiu-Jitsu — [@gamonalfighters](https://instagram.com/gamonalfighters)
+- Guerreiro Samurai Judô — Judô — [@guerreirosamuraijudo](https://instagram.com/guerreirosamuraijudo)
+- Samurai Boxe — Boxe — [@samuraiboxejf](https://instagram.com/samuraiboxejf)
+- Academia do Boxe — Boxe — [@academia.do.boxejf](https://instagram.com/academia.do.boxejf)
+
+**Iniciativas ambientais:**
+
+- Samurai Adventure — Rapel / Meio Ambiente — [@samuraiadventurejf](https://instagram.com/samuraiadventurejf)
 
 > Os professores não integram a Diretoria Executiva. Os projetos parceiros não integram juridicamente a Associação.
 
@@ -820,7 +835,7 @@ Categorias de adesão: Associado Efetivo, Associado Atleta/Aluno, Associado Cola
   {
     id: "00000000-0000-0000-0000-000000000609",
     titulo: "Memorando de Parceria",
-    descricao: "Memorando de Entendimento e Cessão de Uso entre a GŌKAI e projetos parceiros (Gamonal Fighters, Academia do Boxe, Guerreiro Samurai).",
+    descricao: "Memorando de Entendimento e Cessão de Uso entre a GŌKAI e projetos parceiros (Gamonal Fighters, Guerreiro Samurai Judô, Samurai Boxe, Academia do Boxe e Samurai Adventure).",
     tipo: "outro",
     secao: "estrutura",
     arquivo_url: null,
@@ -833,9 +848,16 @@ Categorias de adesão: Associado Efetivo, Associado Atleta/Aluno, Associado Cola
 **CEDENTE:** GŌKAI – Clube de Artes Marciais, representada por seu Presidente Thiago Santos Mello.
 
 **CESSIONÁRIOS:**
-- Gamonal Fighters (Jiu-Jitsu)
-- Academia do Boxe (Boxe)
-- Guerreiro Samurai (Judô) — representado por Linus Pauling Ferreira Pereira
+**Equipes esportivas:**
+
+- Gamonal Fighters (Jiu-Jitsu) — [@gamonalfighters](https://instagram.com/gamonalfighters)
+- Guerreiro Samurai Judô (Judô) — [@guerreirosamuraijudo](https://instagram.com/guerreirosamuraijudo) — representado por Linus Pauling Ferreira Pereira
+- Samurai Boxe (Boxe) — [@samuraiboxejf](https://instagram.com/samuraiboxejf)
+- Academia do Boxe (Boxe) — [@academia.do.boxejf](https://instagram.com/academia.do.boxejf)
+
+**Iniciativas ambientais:**
+
+- Samurai Adventure (Rapel / Meio Ambiente) — [@samuraiadventurejf](https://instagram.com/samuraiadventurejf)
 
 ---
 

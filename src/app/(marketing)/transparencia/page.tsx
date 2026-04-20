@@ -158,17 +158,34 @@ export default function TransparenciaPage() {
             {/* ── Projetos Parceiros ── */}
             <SectionTitle>Projetos Parceiros</SectionTitle>
             <P>
-              A Gōkai conta com o apoio institucional dos seguintes projetos, que atuam como apoiadores não financeiros da associação:
+              A Gōkai conta com o apoio institucional das seguintes equipes e iniciativas, que atuam como apoiadores não financeiros da associação:
             </P>
+
+            <SubHeading>Equipes esportivas</SubHeading>
             <ul className="space-y-2 pl-5 my-3">
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Gamonal Fighters</strong> – Jiu-Jitsu
+                <strong className="text-[var(--surface-midnight)]">Gamonal Fighters</strong> – Jiu-Jitsu —{" "}
+                <a href="https://instagram.com/gamonalfighters" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@gamonalfighters</a>
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Academia do Boxe</strong> – Boxe
+                <strong className="text-[var(--surface-midnight)]">Guerreiro Samurai Judô</strong> – Judô —{" "}
+                <a href="https://instagram.com/guerreirosamuraijudo" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@guerreirosamuraijudo</a>
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Guerreiro Samurai</strong> – Judô
+                <strong className="text-[var(--surface-midnight)]">Samurai Boxe</strong> – Boxe —{" "}
+                <a href="https://instagram.com/samuraiboxejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@samuraiboxejf</a>
+              </li>
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
+                <strong className="text-[var(--surface-midnight)]">Academia do Boxe</strong> – Boxe —{" "}
+                <a href="https://instagram.com/academia.do.boxejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@academia.do.boxejf</a>
+              </li>
+            </ul>
+
+            <SubHeading>Iniciativas ambientais</SubHeading>
+            <ul className="space-y-2 pl-5 my-3">
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
+                <strong className="text-[var(--surface-midnight)]">Samurai Adventure</strong> – Rapel e atividades de aventura —{" "}
+                <a href="https://instagram.com/samuraiadventurejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@samuraiadventurejf</a>
               </li>
             </ul>
 
@@ -186,7 +203,10 @@ export default function TransparenciaPage() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="size-4 text-[var(--accent-carmine)] mt-1 shrink-0" />
-                <span className="text-[15px] text-[var(--surface-midnight)]"><strong>Linhares</strong></span>
+                <div className="text-[15px]">
+                  <strong className="text-[var(--surface-midnight)]">Linhares</strong>
+                  <span className="text-[var(--surface-midnight)]/60"> – Polo de expansão · Rua Roberto Hargreaves, 64, Bairro Linhares, Juiz de Fora/MG</span>
+                </div>
               </li>
             </ul>
 
