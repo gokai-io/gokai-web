@@ -17,11 +17,17 @@ const criarUsuarioSchema = z.object({
     "diretor_tecnico_esportivo",
     "professor",
   ]),
+  password: z
+    .string()
+    .min(8, "Senha deve ter ao menos 8 caracteres")
+    .optional()
+    .or(z.literal("")),
 })
 
 interface ActionResult {
   success: boolean
   error?: string
+  mode?: "invite" | "password"
 }
 
 export async function criarUsuarioComInvite(
@@ -42,7 +48,8 @@ export async function criarUsuarioComInvite(
     return { success: false, error: "Dados inválidos." }
   }
 
-  const { nome_completo, email, role } = parsed.data
+  const { nome_completo, email, role, password } = parsed.data
+  const useManualPassword = typeof password === "string" && password.length >= 8
   const admin = createAdminClient()
 
   try {
@@ -57,22 +64,42 @@ export async function criarUsuarioComInvite(
       return { success: false, error: "Já existe um usuário interno vinculado a este e-mail." }
     }
 
-    // 2. Invite user by email (sends magic link automatically)
-    //    redirectTo precisa ser uma URL whitelisted em Supabase → Authentication
-    //    → URL Configuration → Redirect URLs. Após clicar no link, o usuário
-    //    passa pelo callback (troca code por session) e é levado a /redefinir-senha.
-    const { data: authData, error: authError } =
-      await admin.auth.admin.inviteUserByEmail(email, {
-        redirectTo: `${SITE_URL}/api/auth/callback?next=/redefinir-senha`,
-        data: { nome_completo, role },
-      })
+    // 2. Provisiona auth user — dois modos:
+    //    a) Convite por e-mail (magic link)
+    //    b) Criação direta com senha (email_confirm: true pula a verificação)
+    let authUserId: string
+    if (useManualPassword) {
+      const { data: authData, error: authError } =
+        await admin.auth.admin.createUser({
+          email,
+          password,
+          email_confirm: true,
+          user_metadata: { nome_completo, role },
+        })
 
-    if (authError) {
-      console.error("criarUsuarioComInvite: auth invite failed", authError)
-      return {
-        success: false,
-        error: `Erro ao enviar convite: ${authError.message}`,
+      if (authError || !authData.user) {
+        console.error("criarUsuarioComInvite: createUser failed", authError)
+        return {
+          success: false,
+          error: `Erro ao criar usuário: ${authError?.message ?? "desconhecido"}`,
+        }
       }
+      authUserId = authData.user.id
+    } else {
+      const { data: authData, error: authError } =
+        await admin.auth.admin.inviteUserByEmail(email, {
+          redirectTo: `${SITE_URL}/api/auth/callback?next=/redefinir-senha`,
+          data: { nome_completo, role },
+        })
+
+      if (authError) {
+        console.error("criarUsuarioComInvite: auth invite failed", authError)
+        return {
+          success: false,
+          error: `Erro ao enviar convite: ${authError.message}`,
+        }
+      }
+      authUserId = authData.user.id
     }
 
     // 3. Create or reuse pessoa
@@ -95,7 +122,7 @@ export async function criarUsuarioComInvite(
 
       if (pessoaError) {
         console.error("criarUsuarioComInvite: pessoa insert failed", pessoaError)
-        await admin.auth.admin.deleteUser(authData.user.id)
+        await admin.auth.admin.deleteUser(authUserId)
         return { success: false, error: "Erro ao criar registro de pessoa." }
       }
       pessoaId = newPessoa.id
@@ -104,18 +131,18 @@ export async function criarUsuarioComInvite(
     // 4. Create usuario_interno
     const { error: userError } = await admin.from("usuario_interno").insert({
       pessoa_id: pessoaId,
-      auth_user_id: authData.user.id,
+      auth_user_id: authUserId,
       role,
       ativo: true,
     })
 
     if (userError) {
       console.error("criarUsuarioComInvite: usuario_interno insert failed", userError)
-      await admin.auth.admin.deleteUser(authData.user.id)
+      await admin.auth.admin.deleteUser(authUserId)
       return { success: false, error: "Erro ao criar usuário interno." }
     }
 
-    return { success: true }
+    return { success: true, mode: useManualPassword ? "password" : "invite" }
   } catch (err) {
     console.error("criarUsuarioComInvite: unexpected error", err)
     return { success: false, error: "Erro interno ao criar usuário." }
