@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod/v4"
@@ -69,17 +69,34 @@ function gerarSenha(len = 14): string {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
+const VALID_ROLES = new Set<UserRole>([
+  "presidente",
+  "vice_presidente",
+  "diretor_administrativo",
+  "diretor_financeiro",
+  "diretor_tecnico_esportivo",
+  "professor",
+])
+
 export function NovoUsuarioForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [isPending, startTransition] = useTransition()
   const [showPassword, setShowPassword] = useState(true)
+
+  const prefillEmail = searchParams.get("email") ?? ""
+  const prefillNome = searchParams.get("nome") ?? ""
+  const prefillRoleRaw = searchParams.get("role") ?? "professor"
+  const prefillRole: UserRole = VALID_ROLES.has(prefillRoleRaw as UserRole)
+    ? (prefillRoleRaw as UserRole)
+    : "professor"
 
   const form = useForm<NovoUsuarioFormValues>({
     resolver: zodResolver(novoUsuarioSchema),
     defaultValues: {
-      nome_completo: "",
-      email: "",
-      role: "professor",
+      nome_completo: prefillNome,
+      email: prefillEmail,
+      role: prefillRole,
       modo: "invite",
       password: "",
     },

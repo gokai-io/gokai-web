@@ -6,7 +6,6 @@ import { toast } from "sonner"
 import { KeyRoundIcon, Trash2Icon } from "lucide-react"
 
 import { createClient } from "@/lib/supabase/client"
-import { criarUsuarioComInvite } from "@/app/(app)/app/usuarios/novo/actions"
 import { DataTable, type Column } from "@/components/app/data-table"
 import { ConfirmDialog } from "@/components/app/confirm-dialog"
 import { Button } from "@/components/ui/button"
@@ -43,32 +42,19 @@ export function ProfessoresClient({ professores }: ProfessoresClientProps) {
   const [deleteTarget, setDeleteTarget] = useState<ProfessorWithPessoa | null>(
     null
   )
-  const [accessTarget, setAccessTarget] = useState<ProfessorWithPessoa | null>(null)
-  const [accessRole, setAccessRole] = useState<string>("professor")
-  const [creatingAccess, setCreatingAccess] = useState(false)
-
-  async function handleCreateAccess() {
-    if (!accessTarget) return
-    if (!accessTarget.pessoa.email) {
-      toast.error("Professor não tem e-mail cadastrado. Edite o professor e adicione um e-mail primeiro.")
-      setAccessTarget(null)
+  function goToCreateAccess(professor: ProfessorWithPessoa) {
+    if (!professor.pessoa.email) {
+      toast.error(
+        "Professor não tem e-mail cadastrado. Edite o professor e adicione um e-mail primeiro."
+      )
       return
     }
-    setCreatingAccess(true)
-    const result = await criarUsuarioComInvite({
-      nome_completo: accessTarget.pessoa.nome_completo,
-      email: accessTarget.pessoa.email,
-      role: accessRole as "professor",
+    const params = new URLSearchParams({
+      email: professor.pessoa.email,
+      nome: professor.pessoa.nome_completo,
+      role: "professor",
     })
-    if (result.error) {
-      toast.error(result.error)
-    } else {
-      toast.success("Acesso criado! Convite enviado por e-mail.")
-      router.refresh()
-    }
-    setCreatingAccess(false)
-    setAccessTarget(null)
-    setAccessRole("professor")
+    router.push(`/app/usuarios/novo?${params.toString()}`)
   }
 
   async function handleDelete() {
@@ -187,7 +173,7 @@ export function ProfessoresClient({ professores }: ProfessoresClientProps) {
             size="sm"
             onClick={(e) => {
               e.stopPropagation()
-              setAccessTarget(item)
+              goToCreateAccess(item)
             }}
           >
             <KeyRoundIcon className="size-3.5" />
@@ -233,18 +219,6 @@ export function ProfessoresClient({ professores }: ProfessoresClientProps) {
         variant="destructive"
         onConfirm={handleDelete}
       />
-
-      {/* Dialog para criar acesso */}
-      {accessTarget && (
-        <ConfirmDialog
-          open={accessTarget !== null}
-          onOpenChange={(open) => { if (!open) { setAccessTarget(null); setAccessRole("professor") } }}
-          title="Criar Acesso"
-          description={`Criar conta de acesso para "${accessTarget.pessoa.nome_completo}"${accessTarget.pessoa.email ? ` (${accessTarget.pessoa.email})` : ""}. O professor receberá um convite por e-mail com cargo "${accessRole}".`}
-          confirmLabel={creatingAccess ? "Criando..." : "Criar acesso"}
-          onConfirm={handleCreateAccess}
-        />
-      )}
     </>
   )
 }

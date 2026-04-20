@@ -80,26 +80,76 @@ export function NovoProfessorForm({ modalidades }: NovoProfessorFormProps) {
     const supabase = createClient()
 
     const especialidades = values.especialidades
+    const emailTrim = values.email?.trim() || null
+    const cpfTrim = values.cpf?.trim() || null
 
     try {
-      // 1. Insert pessoa
-      const { data: pessoa, error: pessoaError } = await supabase
-        .from("pessoa")
-        .insert({
-          nome_completo: values.nome_completo,
-          cpf: values.cpf || null,
-          email: values.email || null,
-          telefone: values.telefone || null,
-          data_nascimento: values.data_nascimento || null,
-        })
-        .select("id")
-        .single()
+      // 1. Dedup: procura pessoa existente por e-mail ou CPF (ex: já é
+      //    usuário interno cadastrado antes). Evita duplicar pessoa e
+      //    garante que professor compartilhe o mesmo pessoa_id do user.
+      let pessoaId: string | null = null
+      let pessoaReused = false
 
-      if (pessoaError) throw pessoaError
+      if (emailTrim || cpfTrim) {
+        const orClauses: string[] = []
+        if (emailTrim) orClauses.push(`email.eq.${emailTrim}`)
+        if (cpfTrim) orClauses.push(`cpf.eq.${cpfTrim}`)
 
-      // 2. Insert professor linked to pessoa
+        const { data: existing } = await supabase
+          .from("pessoa")
+          .select("id, professor:professor(id)")
+          .or(orClauses.join(","))
+          .maybeSingle()
+
+        if (existing) {
+          const existingProf = existing.professor as Array<{ id: string }> | { id: string } | null
+          const hasProfessor = Array.isArray(existingProf)
+            ? existingProf.length > 0
+            : existingProf !== null
+          if (hasProfessor) {
+            toast.error(
+              "Já existe um professor cadastrado com este e-mail ou CPF."
+            )
+            setSaving(false)
+            return
+          }
+          pessoaId = existing.id
+          pessoaReused = true
+        }
+      }
+
+      // 2. Se pessoa encontrada, atualiza; senão, insere nova
+      if (pessoaReused && pessoaId) {
+        const { error: updateError } = await supabase
+          .from("pessoa")
+          .update({
+            nome_completo: values.nome_completo,
+            cpf: cpfTrim,
+            email: emailTrim,
+            telefone: values.telefone?.trim() || null,
+            data_nascimento: values.data_nascimento || null,
+          })
+          .eq("id", pessoaId)
+        if (updateError) throw updateError
+      } else {
+        const { data: pessoa, error: pessoaError } = await supabase
+          .from("pessoa")
+          .insert({
+            nome_completo: values.nome_completo,
+            cpf: cpfTrim,
+            email: emailTrim,
+            telefone: values.telefone?.trim() || null,
+            data_nascimento: values.data_nascimento || null,
+          })
+          .select("id")
+          .single()
+        if (pessoaError) throw pessoaError
+        pessoaId = pessoa.id
+      }
+
+      // 3. Insert professor linked to pessoa
       const { error: profError } = await supabase.from("professor").insert({
-        pessoa_id: pessoa.id,
+        pessoa_id: pessoaId,
         especialidades,
         graduacao: values.graduacao || null,
         registro_federacao: values.registro_federacao || null,
@@ -109,12 +159,18 @@ export function NovoProfessorForm({ modalidades }: NovoProfessorFormProps) {
       })
 
       if (profError) {
-        // Rollback pessoa insert on professor failure
-        await supabase.from("pessoa").delete().eq("id", pessoa.id)
+        // Só faz rollback de pessoa se foi insert nosso (não reutilizada)
+        if (!pessoaReused && pessoaId) {
+          await supabase.from("pessoa").delete().eq("id", pessoaId)
+        }
         throw profError
       }
 
-      toast.success("Professor cadastrado com sucesso.")
+      toast.success(
+        pessoaReused
+          ? "Professor vinculado ao cadastro existente."
+          : "Professor cadastrado com sucesso."
+      )
       router.push("/app/professores")
       router.refresh()
     } catch (err) {
