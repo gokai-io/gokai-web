@@ -134,6 +134,9 @@ export default function SobrePage() {
                   <h3 className="font-heading text-base font-bold text-[var(--surface-midnight)]">
                     Polo Linhares
                   </h3>
+                  <p className="text-sm text-[var(--surface-midnight)]/60 mt-1">
+                    Rua Roberto Hargreaves, 64 — Bairro Linhares, Juiz de Fora/MG
+                  </p>
                   <p className="text-sm text-[var(--surface-midnight)]/70 mt-2 leading-relaxed">
                     Unidade de expansão da GŌKAI, com atividades de Jiu-Jitsu, Judô e Boxe
                     voltadas à comunidade local.
@@ -192,20 +195,42 @@ export default function SobrePage() {
             {/* ── Projetos Parceiros ── */}
             <SectionTitle>Projetos Parceiros</SectionTitle>
             <P>
-              A GŌKAI conta com o apoio institucional dos seguintes projetos esportivos, que atuam
+              A GŌKAI conta com o apoio institucional das seguintes equipes e iniciativas, que atuam
               como apoiadores não financeiros da associação:
             </P>
+
+            <h3 className="mt-4 mb-2 text-sm font-bold uppercase tracking-[0.12em] text-[var(--surface-midnight)]/60">
+              Equipes esportivas
+            </h3>
             <ul className="space-y-2 pl-5 my-3">
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Gamonal Fighters</strong> – Jiu-Jitsu
+                <strong className="text-[var(--surface-midnight)]">Gamonal Fighters</strong> – Jiu-Jitsu —{" "}
+                <a href="https://instagram.com/gamonalfighters" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@gamonalfighters</a>
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Academia do Boxe</strong> – Boxe
+                <strong className="text-[var(--surface-midnight)]">Guerreiro Samurai Judô</strong> – Judô —{" "}
+                <a href="https://instagram.com/guerreirosamuraijudo" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@guerreirosamuraijudo</a>
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Guerreiro Samurai</strong> – Judô
+                <strong className="text-[var(--surface-midnight)]">Samurai Boxe</strong> – Boxe —{" "}
+                <a href="https://instagram.com/samuraiboxejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@samuraiboxejf</a>
+              </li>
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
+                <strong className="text-[var(--surface-midnight)]">Academia do Boxe</strong> – Boxe —{" "}
+                <a href="https://instagram.com/academia.do.boxejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@academia.do.boxejf</a>
               </li>
             </ul>
+
+            <h3 className="mt-4 mb-2 text-sm font-bold uppercase tracking-[0.12em] text-[var(--surface-midnight)]/60">
+              Iniciativas ambientais
+            </h3>
+            <ul className="space-y-2 pl-5 my-3">
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
+                <strong className="text-[var(--surface-midnight)]">Samurai Adventure</strong> – Rapel e atividades de aventura —{" "}
+                <a href="https://instagram.com/samuraiadventurejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@samuraiadventurejf</a>
+              </li>
+            </ul>
+
             <P>
               Os projetos parceiros mantêm identidade e gestão próprias, operando de forma independente
               dentro do espaço da GŌKAI.

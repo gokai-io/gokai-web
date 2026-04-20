@@ -134,7 +134,7 @@ export default function TransparenciaPage() {
                 <tr><Td>Presidente</Td><TdBold>Thiago Mello</TdBold></tr>
                 <tr><Td>Vice-Presidente</Td><TdBold>Renan Winter Spatin</TdBold></tr>
                 <tr><Td>Diretor Administrativo</Td><TdBold>Allan Henrique</TdBold></tr>
-                <tr><Td>Diretor Financeiro</Td><Td className="italic">A definir</Td></tr>
+                <tr><Td>Diretor Financeiro</Td><TdBold>Flávio Daniel Tuyarot Barci</TdBold></tr>
                 <tr><Td>Diretor Técnico/Esportivo</Td><TdBold>Jafar Mohammed Untar</TdBold></tr>
               </tbody>
             </Table>
@@ -158,17 +158,34 @@ export default function TransparenciaPage() {
             {/* ── Projetos Parceiros ── */}
             <SectionTitle>Projetos Parceiros</SectionTitle>
             <P>
-              A Gōkai conta com o apoio institucional dos seguintes projetos, que atuam como apoiadores não financeiros da associação:
+              A Gōkai conta com o apoio institucional das seguintes equipes e iniciativas, que atuam como apoiadores não financeiros da associação:
             </P>
+
+            <SubHeading>Equipes esportivas</SubHeading>
             <ul className="space-y-2 pl-5 my-3">
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Gamonal Fighters</strong> – Jiu-Jitsu
+                <strong className="text-[var(--surface-midnight)]">Gamonal Fighters</strong> – Jiu-Jitsu —{" "}
+                <a href="https://instagram.com/gamonalfighters" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@gamonalfighters</a>
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Academia do Boxe</strong> – Boxe
+                <strong className="text-[var(--surface-midnight)]">Guerreiro Samurai Judô</strong> – Judô —{" "}
+                <a href="https://instagram.com/guerreirosamuraijudo" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@guerreirosamuraijudo</a>
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
-                <strong className="text-[var(--surface-midnight)]">Guerreiro Samurai</strong> – Judô
+                <strong className="text-[var(--surface-midnight)]">Samurai Boxe</strong> – Boxe —{" "}
+                <a href="https://instagram.com/samuraiboxejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@samuraiboxejf</a>
+              </li>
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
+                <strong className="text-[var(--surface-midnight)]">Academia do Boxe</strong> – Boxe —{" "}
+                <a href="https://instagram.com/academia.do.boxejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@academia.do.boxejf</a>
+              </li>
+            </ul>
+
+            <SubHeading>Iniciativas ambientais</SubHeading>
+            <ul className="space-y-2 pl-5 my-3">
+              <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
+                <strong className="text-[var(--surface-midnight)]">Samurai Adventure</strong> – Rapel e atividades de aventura —{" "}
+                <a href="https://instagram.com/samuraiadventurejf" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@samuraiadventurejf</a>
               </li>
             </ul>
 
@@ -186,21 +203,29 @@ export default function TransparenciaPage() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="size-4 text-[var(--accent-carmine)] mt-1 shrink-0" />
-                <span className="text-[15px] text-[var(--surface-midnight)]"><strong>Linhares</strong></span>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="size-4 text-[var(--accent-carmine)] mt-1 shrink-0" />
-                <span className="text-[15px] text-[var(--surface-midnight)]"><strong>São Pedro</strong></span>
+                <div className="text-[15px]">
+                  <strong className="text-[var(--surface-midnight)]">Linhares</strong>
+                  <span className="text-[var(--surface-midnight)]/60"> – Polo de expansão · Rua Roberto Hargreaves, 64, Bairro Linhares, Juiz de Fora/MG</span>
+                </div>
               </li>
             </ul>
 
             <SectionDivider />
 
             {/* ── Modalidades ── */}
-            <SectionTitle>Modalidades Oferecidas</SectionTitle>
+            <SectionTitle>Modalidades Esportivas</SectionTitle>
             <P>
-              Jiu-Jitsu · Judô · Boxe · Xadrez · Defesa Pessoal Feminina · Educação Ambiental
+              Jiu-Jitsu · Judô · Boxe · Kickboxing · Defesa Pessoal Feminina
             </P>
+
+            <SubHeading>Programas Especiais</SubHeading>
+            <P>
+              Xadrez · Educação Ambiental
+            </P>
+            <Quote>
+              Os programas especiais complementam a formação dos atletas — o xadrez desenvolve o raciocínio estratégico
+              e a educação ambiental conecta a prática esportiva com consciência ecológica e responsabilidade social.
+            </Quote>
 
             <SectionDivider />
 
@@ -406,6 +431,70 @@ export default function TransparenciaPage() {
             <P>
               Para solicitar cópia integral do Estatuto ou Regimento Interno, entre em contato pelo e-mail institucional.
             </P>
+
+            <SectionDivider />
+
+            {/* ── Modelos de Contrato ── */}
+            <SectionTitle>Modelos de Contrato</SectionTitle>
+            <P>
+              Templates com placeholders usados pela Associação como base para locações, sublocações e patrocínios.
+              Cada modelo deve ser revisado por advogado habilitado antes da assinatura.
+            </P>
+            <Table>
+              <thead>
+                <tr><Th>Documento</Th><Th>Finalidade</Th><Th className="w-40">{""}</Th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <TdBold>Contrato de Locação de Imóvel</TdBold>
+                  <Td>Locação direta de espaço físico pela Associação</Td>
+                  <Td>
+                    <Link
+                      href="/transparencia/00000000-0000-0000-0000-000000000610"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                    >
+                      <FileText className="size-3.5" /> Visualizar <ArrowRight className="size-3" />
+                    </Link>
+                  </Td>
+                </tr>
+                <tr>
+                  <TdBold>Contrato de Sublocação de Imóvel</TdBold>
+                  <Td>Sublocação por membro da Diretoria (salvaguardas de conflito de interesses)</Td>
+                  <Td>
+                    <Link
+                      href="/transparencia/00000000-0000-0000-0000-000000000611"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                    >
+                      <FileText className="size-3.5" /> Visualizar <ArrowRight className="size-3" />
+                    </Link>
+                  </Td>
+                </tr>
+                <tr>
+                  <TdBold>Contrato de Patrocínio</TdBold>
+                  <Td>Patrocínio com cotas Apoiador → Diamante e contrapartidas</Td>
+                  <Td>
+                    <Link
+                      href="/transparencia/00000000-0000-0000-0000-000000000612"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                    >
+                      <FileText className="size-3.5" /> Visualizar <ArrowRight className="size-3" />
+                    </Link>
+                  </Td>
+                </tr>
+                <tr>
+                  <TdBold>Pedido de Patrocínio</TdBold>
+                  <Td>Carta-modelo para prospecção ativa de apoiadores</Td>
+                  <Td>
+                    <Link
+                      href="/transparencia/00000000-0000-0000-0000-000000000613"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                    >
+                      <FileText className="size-3.5" /> Visualizar <ArrowRight className="size-3" />
+                    </Link>
+                  </Td>
+                </tr>
+              </tbody>
+            </Table>
 
             <SectionDivider />
 
