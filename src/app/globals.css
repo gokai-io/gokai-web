@@ -385,3 +385,91 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+/* ── Print styles — optimized for PDF export of transparency documents ── */
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 18mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Hide navigation, hero, footer and other UI chrome */
+  header,
+  footer,
+  nav,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Collapse hero sections (dark backgrounds) */
+  .gokai-hero-spotlight {
+    display: none !important;
+  }
+
+  /* Strip backgrounds, shadows and rounded corners from the paper article */
+  [class*="bg-[#F4F2ED]"],
+  [class*="bg-\\[\\#F4F2ED\\]"] {
+    background: #ffffff !important;
+    padding: 0 !important;
+  }
+
+  article {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Force all text to black for readability */
+  article,
+  article p,
+  article li,
+  article td,
+  article th {
+    color: #000000 !important;
+  }
+
+  article h1,
+  article h2,
+  article h3,
+  article h4,
+  article strong {
+    color: #000000 !important;
+  }
+
+  /* Avoid orphaned headings */
+  article h1,
+  article h2,
+  article h3,
+  article h4 {
+    page-break-after: avoid;
+  }
+
+  /* Keep tables intact */
+  article table {
+    page-break-inside: avoid;
+  }
+
+  /* Blockquote without heavy styling */
+  article blockquote {
+    border-left: 2px solid #333 !important;
+    color: #333 !important;
+  }
+
+  /* Remove the gradient accent bar */
+  article > div[class*="gradient"] {
+    display: none !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+}

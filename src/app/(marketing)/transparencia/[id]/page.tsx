@@ -5,6 +5,7 @@ import Link from "next/link"
 
 import { BrandContainer } from "@/components/branding/brand-container"
 import { TransparenciaDocumentBody } from "@/components/transparencia/document-body"
+import { PrintButton } from "@/components/transparencia/print-button"
 import { getDocumento as getDocumentoStatic } from "@/lib/transparencia"
 import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
 
@@ -82,17 +83,20 @@ export default async function DocumentoTransparenciaPage({ params }: DocumentPag
               )}
             </div>
 
-            {documento.arquivo_url && (
-              <a
-                href={documento.arquivo_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 self-start rounded-lg border border-[var(--accent-gold)]/25 bg-white/[0.04] px-5 py-3 text-sm font-bold text-[var(--text-ivory)] transition-all hover:bg-white/[0.08] lg:self-auto"
-              >
-                <Download className="size-4" />
-                Baixar arquivo
-              </a>
-            )}
+            <div className="flex flex-wrap items-center gap-3">
+              {documento.arquivo_url && (
+                <a
+                  href={documento.arquivo_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 self-start rounded-lg border border-[var(--accent-gold)]/25 bg-white/[0.04] px-5 py-3 text-sm font-bold text-[var(--text-ivory)] transition-all hover:bg-white/[0.08] lg:self-auto print:hidden"
+                >
+                  <Download className="size-4" />
+                  Baixar arquivo
+                </a>
+              )}
+              <PrintButton />
+            </div>
           </div>
         </BrandContainer>
       </section>
@@ -110,7 +114,7 @@ export default async function DocumentoTransparenciaPage({ params }: DocumentPag
       </section>
 
       {/* ── Footer nav — dark ──────────────────────────────────── */}
-      <section className="bg-[var(--surface-midnight)] py-12">
+      <section className="bg-[var(--surface-midnight)] py-12 print:hidden">
         <BrandContainer>
           <div className="mx-auto max-w-3xl flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
