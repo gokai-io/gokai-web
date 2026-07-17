@@ -37,6 +37,20 @@ export async function getStats(): Promise<Stats> {
   }
 }
 
+export async function getModalidadesNomes(): Promise<string[]> {
+  try {
+    const supabase = await createClient()
+    const { data } = await supabase
+      .from("modalidade")
+      .select("nome")
+      .eq("ativa", true)
+      .order("ordem", { ascending: true, nullsFirst: false })
+    return (data ?? []).map((m: { nome: string }) => m.nome)
+  } catch {
+    return []
+  }
+}
+
 export interface Parceiro {
   id: string
   nome: string

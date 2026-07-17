@@ -18,6 +18,7 @@ import {
   Quote,
   Presentation,
   UserPlus,
+  Building2,
 } from "lucide-react"
 import { getStats, getPatrocinadores } from "@/lib/queries/apresentacao"
 
@@ -75,8 +76,15 @@ export default async function ApresentacaoPage() {
             </p>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
+              {
+                icon: Building2,
+                title: "GŌKAI Institucional",
+                desc: "Pitch completo para reuniões: quem somos, números, impacto e parcerias.",
+                href: "/apresentacao/institucional",
+                color: "text-red-500",
+              },
               {
                 icon: Presentation,
                 title: "Entenda o Projeto",
