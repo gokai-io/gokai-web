@@ -6,16 +6,16 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-xl border border-transparent bg-clip-padding text-sm font-semibold whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-md border border-transparent bg-clip-padding text-sm font-semibold whitespace-nowrap transition-[color,background-color,border-color,box-shadow,transform] outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[0_16px_32px_rgba(11,90,43,0.18)] [a]:hover:bg-[#124c29]",
+          "bg-primary text-primary-foreground hover:brightness-110",
         outline:
           "border-primary/18 bg-background hover:bg-primary/6 hover:text-primary aria-expanded:bg-primary/6 aria-expanded:text-primary",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-[0_16px_32px_rgba(207,46,36,0.16)] hover:bg-[#b8271d] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+          "bg-secondary text-secondary-foreground hover:bg-muted aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost: "hover:bg-primary/6 hover:text-primary aria-expanded:bg-primary/6 aria-expanded:text-primary",
         destructive:
           "bg-destructive text-secondary-foreground hover:bg-[#741810] focus-visible:border-destructive/40 focus-visible:ring-destructive/20",

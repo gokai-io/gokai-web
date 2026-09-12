@@ -11,6 +11,15 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--foreground);
+  --color-accent: var(--muted);
+  --color-accent-foreground: var(--foreground);
+  --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-ring: var(--primary);
   --color-input: var(--border);
@@ -65,6 +74,10 @@
   --primary-foreground: #FFFFFF;
   --secondary: var(--surface-obsidian);
   --secondary-foreground: var(--text-ivory);
+  --muted: #18251f;
+  --muted-foreground: #b0bab3;
+  --card: #101b15;
+  --destructive: #f07970;
   --border: rgba(197, 160, 89, 0.15);
   --radius: 0.25rem;
 }
@@ -87,7 +100,8 @@
     @apply bg-background text-foreground font-medium;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-extrabold tracking-[-0.03em];
+    @apply font-heading font-semibold tracking-[-0.03em];
+    text-wrap: balance;
   }
   ::selection {
     background-color: rgba(11, 90, 43, 0.18);
@@ -95,6 +109,10 @@
   }
   a {
     @apply transition-colors;
+  }
+  :where(a, button, input, textarea, select):focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 4px;
   }
   /* Scrollbar — subtle brand tones */
   ::-webkit-scrollbar {
@@ -298,11 +316,11 @@
     align-items: center;
     gap: 0.4rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--accent-gold);
     transition: color 0.18s, gap 0.18s;
   }
   .gokai-link-arrow:hover {
-    color: var(--secondary);
+    color: var(--text-ivory);
     gap: 0.6rem;
   }
 
@@ -383,6 +401,17 @@
   .antialiased-dark {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

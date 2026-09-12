@@ -9,7 +9,8 @@ export default function MarketingLayout({
   return (
     <div className="gokai-page-shell min-h-screen flex flex-col text-foreground">
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <a href="#conteudo" className="sr-only fixed left-4 top-4 z-[60] rounded-md bg-white p-4 text-black focus:not-sr-only">Pular para o conteúdo</a>
+      <main id="conteudo" className="flex-1">{children}</main>
       <SiteFooter />
     </div>
   )

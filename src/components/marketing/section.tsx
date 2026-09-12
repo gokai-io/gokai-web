@@ -22,7 +22,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("py-20", className)}
+      className={cn("py-16 sm:py-24", className)}
     >
       <BrandContainer>
         {title && (

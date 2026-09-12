@@ -106,7 +106,7 @@ export default async function ModalidadesPage() {
                   <div className="flex flex-1 flex-col gap-3 px-6 pb-6">
                     <div className="flex items-start justify-between gap-3">
                       <Link href={detailHref}>
-                        <h3 className="font-heading text-xl font-semibold text-foreground transition-colors group-hover:text-secondary">
+                        <h3 className="font-heading text-xl font-semibold text-foreground transition-colors group-hover:text-[var(--accent-gold)]">
                           {modalidade.nome}
                         </h3>
                       </Link>
@@ -134,7 +134,7 @@ export default async function ModalidadesPage() {
                       </Link>
                       <Link
                         href="/inscricao"
-                        className="text-sm font-semibold text-secondary transition-colors hover:text-secondary/80"
+                        className="text-sm font-semibold text-secondary transition-colors hover:text-[var(--accent-gold)]/80"
                       >
                         Inscrever-se →
                       </Link>
@@ -201,7 +201,7 @@ export default async function ModalidadesPage() {
             ))}
             <Link
               href="/conteudos"
-              className="pt-1 text-right text-xs text-muted-foreground transition-colors hover:text-secondary"
+              className="pt-1 text-right text-xs text-muted-foreground transition-colors hover:text-[var(--accent-gold)]"
             >
               Ver toda a biblioteca →
             </Link>

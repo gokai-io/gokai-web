@@ -17,7 +17,7 @@ export function SectionHeader({
   className,
   align = "center",
   eyebrow = "GŌKAI",
-  hideMark = false,
+  hideMark = true,
   dark = false,
 }: SectionHeaderProps) {
   const isCenter = align === "center"
@@ -63,7 +63,7 @@ export function SectionHeader({
       >
         <h2
           className={cn(
-            "max-w-3xl font-heading text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]",
+            "max-w-3xl font-heading text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-[2.75rem]",
             dark ? "text-[var(--text-ivory)]" : "text-foreground",
             isCenter && "text-balance"
           )}

@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Shield, Heart, TrendingUp, Award, Eye, MapPin, ArrowRight } from "lucide-react"
+import { Shield, Heart, TrendingUp, Award, Eye, MapPin, ArrowRight, ExternalLink } from "lucide-react"
 
 import { BrandContainer } from "@/components/branding/brand-container"
 import { GokaiButton } from "@/components/branding/gokai-button"
 import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
+import { GAMONAL_FIGHTERS_SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Sobre a GŌKAI | GŌKAI",
@@ -32,7 +33,7 @@ const values = [
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-heading text-xl sm:text-2xl font-extrabold text-[var(--surface-midnight)] tracking-tight mt-12 mb-4 first:mt-0">
+    <h2 className="font-heading text-xl sm:text-2xl font-semibold text-[var(--surface-midnight)] tracking-tight mt-12 mb-4 first:mt-0">
       {children}
     </h2>
   )
@@ -54,7 +55,7 @@ export default function SobrePage() {
         <BrandContainer>
           <div className="max-w-3xl">
             <div className="gokai-kicker mb-4">Conheça a GŌKAI</div>
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-[var(--text-ivory)]">
+            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight text-[var(--text-ivory)]">
               Sobre a GŌKAI
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-ivory-dim)]">
@@ -68,7 +69,7 @@ export default function SobrePage() {
       {/* ── Content — paper background ───────────────────────── */}
       <section className="bg-[#F4F2ED] py-16">
         <BrandContainer>
-          <article className="mx-auto max-w-4xl rounded-2xl border border-[var(--surface-midnight)]/8 bg-white px-8 py-12 sm:px-14 sm:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+          <article className="mx-auto max-w-4xl rounded-2xl border border-[var(--surface-midnight)]/8 bg-white px-6 py-10 sm:px-14 sm:py-16 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
 
             {/* ── Quem Somos ── */}
             <SectionTitle>Quem Somos</SectionTitle>
@@ -184,7 +185,7 @@ export default function SobrePage() {
             <div className="mt-4">
               <Link
                 href="/transparencia"
-                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-carmine)] hover:brightness-125 transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--accent-carmine)] hover:brightness-125 transition-[color,filter]"
               >
                 Ver documentos <ArrowRight className="size-3.5" />
               </Link>
@@ -205,6 +206,17 @@ export default function SobrePage() {
             <ul className="space-y-2 pl-5 my-3">
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
                 <strong className="text-[var(--surface-midnight)]">Gamonal Fighters</strong> – Jiu-Jitsu —{" "}
+                <a
+                  href={GAMONAL_FIGHTERS_SITE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-[var(--accent-carmine)] underline underline-offset-2 transition-[color,filter] hover:brightness-125"
+                >
+                  Site oficial
+                  <span className="sr-only"> da Gamonal Fighters (abre em nova aba)</span>
+                  <ExternalLink className="size-3.5" aria-hidden="true" />
+                </a>{" "}
+                <span aria-hidden="true">·</span>{" "}
                 <a href="https://instagram.com/gamonalfighters" target="_blank" rel="noopener noreferrer" className="font-medium text-[var(--accent-carmine)] underline underline-offset-2 hover:brightness-125">@gamonalfighters</a>
               </li>
               <li className="list-disc text-[15px] text-[var(--surface-midnight)]/75 leading-relaxed">
@@ -253,7 +265,7 @@ export default function SobrePage() {
       <section className="bg-[var(--surface-midnight)] py-16">
         <BrandContainer>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-heading text-2xl font-extrabold text-[var(--text-ivory)]">
+            <h2 className="font-heading text-2xl font-semibold text-[var(--text-ivory)]">
               Conheça a GŌKAI de perto
             </h2>
             <p className="mt-3 text-sm text-[var(--text-ivory-dim)] leading-relaxed">

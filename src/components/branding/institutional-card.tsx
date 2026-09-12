@@ -41,9 +41,9 @@ export function InstitutionalCard({
       className={cn(
         "relative overflow-hidden rounded-lg p-6",
         // Surface — slightly elevated from background
-        "bg-white/[0.04] border border-[var(--accent-gold)]/15",
-        "transition-all duration-300",
-        "hover:-translate-y-0.5",
+        dark ? "bg-white/[0.03]" : "bg-white/[0.04]",
+        "border border-[var(--accent-gold)]/15",
+        "transition-[border-color,background-color] duration-200",
         accent !== "none" ? ACCENT_HOVER[accent] : ACCENT_HOVER.none,
         accent !== "none" && [
           "before:absolute before:left-6 before:top-0",

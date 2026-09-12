@@ -106,6 +106,10 @@ export const CONTACT_MAP_URL: string | null = null
  */
 export const SOCIAL_PROFILES: string[] = []
 
+// ─── Partner projects ───────────────────────────────────────────────────────────
+
+export const GAMONAL_FIGHTERS_SITE_URL = "https://gamonalfighters.com"
+
 // ─── Legal entity ─────────────────────────────────────────────────────────────
 
 /**

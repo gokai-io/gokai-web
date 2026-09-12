@@ -1,6 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRightIcon, CalendarDaysIcon, FileTextIcon, MapPinIcon } from "lucide-react"
+import {
+  ArrowRightIcon,
+  CalendarDaysIcon,
+  ExternalLinkIcon,
+  MapPinIcon,
+} from "lucide-react"
 
 import { BrandContainer } from "@/components/branding/brand-container"
 import { BrandLogo } from "@/components/branding/brand-logo"
@@ -10,21 +15,37 @@ import { SiteFooter } from "@/components/marketing/site-footer"
 import { SiteHeader } from "@/components/marketing/site-header"
 import { Section } from "@/components/marketing/section"
 import { canonicalUrl, pageOpenGraph, twitterCard } from "@/lib/seo"
+import { GAMONAL_FIGHTERS_SITE_URL } from "@/lib/site"
 import { createClient } from "@/lib/supabase/server"
-import { categoriaLabels, getAllArticles, type ArticleCategoria } from "@/lib/conteudos"
-import type { Evento, EventoTipo, Modalidade, Patrocinador, PatrocinadorNivel } from "@/types/database"
+import {
+  categoriaLabels,
+  getAllArticles,
+  type ArticleCategoria,
+} from "@/lib/conteudos"
+import type {
+  Evento,
+  EventoTipo,
+  Modalidade,
+  Patrocinador,
+  PatrocinadorNivel,
+} from "@/types/database"
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 const HOME_TITLE = "GŌKAI – Associação de Artes Marciais"
-const HOME_DESC  =
+const HOME_DESC =
   "Associação de artes marciais com disciplina, honra, formação humana e compromisso institucional."
 
 export const metadata: Metadata = {
   title: HOME_TITLE,
   description: HOME_DESC,
   alternates: { canonical: canonicalUrl("/") },
-  openGraph: pageOpenGraph({ title: HOME_TITLE, description: HOME_DESC, path: "/", type: "website" }),
+  openGraph: pageOpenGraph({
+    title: HOME_TITLE,
+    description: HOME_DESC,
+    path: "/",
+    type: "website",
+  }),
   twitter: { ...twitterCard, title: HOME_TITLE, description: HOME_DESC },
 }
 
@@ -40,7 +61,10 @@ const eventoTipoLabel: Record<EventoTipo, string> = {
 const nivelOrder: PatrocinadorNivel[] = ["ouro", "prata", "bronze", "apoiador"]
 
 function formatDate(d: string) {
-  return new Date(d).toLocaleDateString("pt-BR", { day: "2-digit", month: "long" })
+  return new Date(d).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "long",
+  })
 }
 
 // ─── Data fetchers ─────────────────────────────────────────────────────────────
@@ -49,29 +73,44 @@ async function getModalidades(): Promise<Modalidade[]> {
   try {
     const supabase = await createClient()
     const { data } = await supabase
-      .from("modalidade").select("*").eq("ativa", true)
-      .order("ordem", { ascending: true }).limit(6)
+      .from("modalidade")
+      .select("*")
+      .eq("ativa", true)
+      .order("ordem", { ascending: true })
+      .limit(6)
     return data ?? []
-  } catch { return [] }
+  } catch {
+    return []
+  }
 }
 async function getProximosEventos(): Promise<Evento[]> {
   try {
     const supabase = await createClient()
     const { data } = await supabase
-      .from("evento").select("*").eq("publicado", true)
+      .from("evento")
+      .select("*")
+      .eq("publicado", true)
       .gte("data_inicio", new Date().toISOString())
-      .order("data_inicio", { ascending: true }).limit(3)
+      .order("data_inicio", { ascending: true })
+      .limit(3)
     return data ?? []
-  } catch { return [] }
+  } catch {
+    return []
+  }
 }
 async function getPatrocinadores(): Promise<Patrocinador[]> {
   try {
     const supabase = await createClient()
     const { data } = await supabase
-      .from("patrocinador").select("*")
-      .eq("ativo", true).eq("exibir_site", true).limit(8)
+      .from("patrocinador")
+      .select("*")
+      .eq("ativo", true)
+      .eq("exibir_site", true)
+      .limit(8)
     return data ?? []
-  } catch { return [] }
+  } catch {
+    return []
+  }
 }
 
 // ─── Conteúdos teaser ─────────────────────────────────────────────────────────
@@ -87,13 +126,23 @@ function ConteudosTeaser() {
     >
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {articles.map((article) => (
-          <InstitutionalCard key={article.slug} accent="neutral" className="flex h-full flex-col gap-5">
+          <InstitutionalCard
+            key={article.slug}
+            accent="neutral"
+            className="flex h-full flex-col gap-5"
+          >
             <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-ivory-muted)]">
-              <span>{categoriaLabels[article.categoria as ArticleCategoria]}</span>
+              <span>
+                {categoriaLabels[article.categoria as ArticleCategoria]}
+              </span>
               <span>{article.leitura_min} min</span>
             </div>
-            <h3 className="font-heading text-lg font-extrabold text-[var(--text-ivory)]">{article.titulo}</h3>
-            <p className="flex-1 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">{article.resumo}</p>
+            <h3 className="font-heading text-lg font-extrabold text-[var(--text-ivory)]">
+              {article.titulo}
+            </h3>
+            <p className="flex-1 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
+              {article.resumo}
+            </p>
             <Link
               href={`/conteudos/${article.slug}`}
               className="inline-flex items-center gap-2 text-sm font-bold text-[var(--text-ivory)] hover:text-[var(--accent-gold)]"
@@ -107,437 +156,418 @@ function ConteudosTeaser() {
   )
 }
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+const practiceAreas = [
+  {
+    nome: "Jiu-Jitsu",
+    descricao: "Técnica, estratégia e evolução a cada treino.",
+    slug: "jiu-jitsu",
+  },
+  {
+    nome: "Judô",
+    descricao: "Respeito, equilíbrio e aprendizado dentro e fora do tatame.",
+    slug: "judo",
+  },
+  {
+    nome: "Boxe",
+    descricao: "Coordenação, precisão e desenvolvimento físico.",
+    slug: "boxe",
+  },
+]
 
 export default async function HomePage() {
   const [modalidades, eventos, patrocinadores] = await Promise.all([
-    getModalidades(), getProximosEventos(), getPatrocinadores(),
+    getModalidades(),
+    getProximosEventos(),
+    getPatrocinadores(),
   ])
   const sortedPatrocinadores = nivelOrder.flatMap((n) =>
-    patrocinadores.filter((p) => p.nivel === n)
+    patrocinadores.filter((p) => p.nivel === n),
   )
+  const practices = modalidades.length > 0 ? modalidades : practiceAreas
 
   return (
     <div className="min-h-screen">
       <SiteHeader />
-
-      <main>
-
-        {/* ═══════════════════════════════════════════════════════
-            HERO — Cinematic Spotlight
-            Centralized layout, deep emerald depth, premium seal.
-        ═══════════════════════════════════════════════════════ */}
-        <section className="relative flex min-h-[100svh] items-center justify-center gokai-hero-spotlight">
-          <BrandContainer className="relative flex flex-col items-center justify-center py-28 text-center lg:py-32">
-            
-            {/* Logo Seal — Larger, centered with deep shadow */}
-            <div
-              className="gokai-hero-enter-scale relative mb-12 flex h-[340px] w-[340px] items-center justify-center rounded-full bg-white shadow-[0_48px_100px_rgba(0,0,0,0.8)]"
-              style={{ animationDelay: "0ms" }}
-            >
-              <BrandLogo
-                className="h-[220px] w-auto"
-                priority
-              />
+      <a
+        href="#conteudo"
+        className="sr-only fixed left-4 top-4 z-[60] rounded-md bg-white p-4 text-black focus:not-sr-only"
+      >
+        Pular para o conteúdo
+      </a>
+      <main id="conteudo">
+        <section className="gokai-hero-spotlight overflow-hidden border-b border-white/10">
+          <BrandContainer className="pb-12 pt-32 sm:pb-16 sm:pt-40 lg:pb-20">
+            <div className="grid items-center gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:gap-20">
+              <div className="gokai-hero-enter">
+                <p className="gokai-kicker mb-6">
+                  Artes marciais · Juiz de Fora
+                </p>
+                <h1 className="max-w-3xl text-[clamp(2.5rem,5.5vw,5rem)] font-semibold leading-[1.08] text-[var(--text-ivory)]">
+                  A força do treino.
+                  <br />
+                  <span className="block text-balance text-[var(--accent-gold)]">
+                    Os valores para a vida.
+                  </span>
+                </h1>
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-[var(--text-ivory-dim)] sm:text-lg">
+                  Artes marciais, formação humana e comunidade. Na GŌKAI,
+                  crianças, jovens e adultos encontram um espaço para aprender e
+                  evoluir em Juiz de Fora.
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <GokaiButton href="/inscricao" className="h-12">
+                    Quero fazer parte{" "}
+                    <ArrowRightIcon className="size-4" aria-hidden />
+                  </GokaiButton>
+                  <GokaiButton
+                    href="#modalidades"
+                    tone="outline"
+                    className="h-12"
+                  >
+                    Explorar modalidades
+                  </GokaiButton>
+                </div>
+                <p className="mt-6 flex items-center gap-2 text-xs text-[var(--text-ivory-muted)] sm:text-sm">
+                  <MapPinIcon className="size-4 shrink-0" aria-hidden />
+                  Polos São Mateus e Linhares
+                </p>
+              </div>
+              <div className="hidden border-l border-[var(--accent-gold)]/20 pl-12 lg:block">
+                <div className="flex aspect-square items-center justify-center rounded-full border border-[var(--accent-gold)]/20 bg-[#f4f2ed] p-12">
+                  <BrandLogo className="h-auto w-full" priority />
+                </div>
+                <div className="mt-8 flex justify-between text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--text-ivory-muted)]">
+                  <span>Disciplina</span>
+                  <span>Respeito</span>
+                  <span>Comunidade</span>
+                </div>
+              </div>
             </div>
-
-            {/* H1 — extrabold, centered, Ivory Silk */}
-            <h1
-              className="gokai-hero-enter font-extrabold tracking-[-0.03em] text-[var(--text-ivory)]"
-              style={{
-                animationDelay: "150ms",
-                fontSize: "clamp(3rem, 8vw, 6rem)",
-                lineHeight: "1.1",
-              }}
-            >
-              Disciplina.<br className="sm:hidden" /> Honra. GŌKAI.
-            </h1>
-
-            {/* Subtitle — maximum legibility */}
-            <p
-              className="gokai-hero-enter mt-8 max-w-2xl text-lg leading-[1.75] text-[var(--text-ivory-dim)]"
-              style={{ animationDelay: "300ms" }}
-            >
-              Uma associação séria de artes marciais com formação técnica,
-              valores éticos e estrutura institucional transparente para
-              crianças, jovens e adultos.
-            </p>
-
-            {/* CTAs — Centralized with correct tones */}
-            <div
-              className="gokai-hero-enter mt-12 flex flex-wrap justify-center gap-4"
-              style={{ animationDelay: "450ms" }}
-            >
-              <GokaiButton
-                href="/inscricao"
-                tone="primary"
-                className="h-14 px-10 text-sm"
-              >
-                Quero me associar
-              </GokaiButton>
-              <GokaiButton
-                href="/sobre"
-                tone="outline"
-                className="h-14 px-10 text-sm"
-              >
-                Conhecer a GŌKAI
-              </GokaiButton>
+            <div className="mt-12 grid gap-5 border-t border-white/10 pt-6 text-sm text-[var(--text-ivory-dim)] sm:grid-cols-3 lg:mt-16">
+              <p>
+                <span className="mr-3 text-[var(--accent-gold)]">01</span>
+                Aprendizado em todas as idades
+              </p>
+              <p>
+                <span className="mr-3 text-[var(--accent-gold)]">02</span>
+                Formação dentro e fora do tatame
+              </p>
+              <p>
+                <span className="mr-3 text-[var(--accent-gold)]">03</span>
+                Associação sem fins lucrativos
+              </p>
             </div>
           </BrandContainer>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════
-            INSTITUTIONAL PANELS — light section
-        ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[var(--surface-obsidian)] py-24">
+        <section
+          id="modalidades"
+          className="scroll-mt-24 bg-[#f4f2ed] py-16 text-[#15251c] sm:py-24"
+        >
           <BrandContainer>
-
-            {/* Section intro */}
-            <div className="mb-16 max-w-2xl">
-              <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-8 bg-[var(--accent-gold)]" aria-hidden />
-                <span
-                  className="text-[var(--accent-gold)]"
-                  style={{
-                    fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Sobre a Associação
-                </span>
+            <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+              <div className="max-w-2xl">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-[#716044]">
+                  Encontre seu caminho
+                </p>
+                <h2 className="text-3xl leading-tight sm:text-5xl">
+                  Um primeiro passo.
+                  <br />
+                  Muitas formas de evoluir.
+                </h2>
               </div>
-              <h2 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-[var(--text-ivory)] sm:text-5xl">
-                Uma associação, não apenas um dojo.
-              </h2>
-              <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-[var(--text-ivory-dim)]">
-                A GŌKAI representa disciplina marcial com responsabilidade pública, documentos
-                institucionais claros e formação séria.
-              </p>
+              <Link
+                href="/modalidades"
+                className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold underline underline-offset-4"
+              >
+                Todas as modalidades{" "}
+                <ArrowRightIcon className="size-4" aria-hidden />
+              </Link>
             </div>
-
-            {/* Connected triptych panels */}
-            <div className="grid grid-cols-1 border border-[var(--accent-gold)]/15 md:grid-cols-3">
-              {[
-                {
-                  num:    "01",
-                  accentClass: "bg-[var(--accent-gold)]",
-                  title:  "Identidade Institucional",
-                  text:   "Estatuto, regimento, atas e memorandos organizados como parte visível e pública da associação.",
-                  href:   "/transparencia",
-                  cta:    "Ver documentos",
-                  ctaClass: "text-[var(--accent-gold)]",
-                },
-                {
-                  num:    "02",
-                  accentClass: "bg-[var(--accent-carmine)]",
-                  title:  "Formação Humana",
-                  text:   "O treino está conectado a valores permanentes: respeito, honra, disciplina e evolução contínua.",
-                  href:   "/sobre",
-                  cta:    "Sobre a GŌKAI",
-                  ctaClass: "text-[var(--accent-carmine)]",
-                },
-                {
-                  num:    "03",
-                  accentClass: "bg-[var(--text-ivory)]",
-                  title:  "Estrutura Organizada",
-                  text:   "Diretoria, conselho fiscal e equipe técnica com processos e linguagem pública coerente.",
-                  href:   "/governanca",
-                  cta:    "Ver governança",
-                  ctaClass: "text-[var(--text-ivory)]",
-                },
-              ].map((panel) => (
-                <div
-                  key={panel.num}
-                  className="group relative flex flex-col gap-6 bg-white/[0.03] p-8 md:p-10 border-b border-[var(--accent-gold)]/15 md:border-b-0 md:border-r last:border-0 transition-colors hover:bg-white/[0.08]"
+            <div className="grid gap-5 md:grid-cols-3">
+              {practices.map((practice, index) => (
+                <article
+                  key={practice.slug}
+                  className="flex flex-col border-t border-[#15251c]/25 py-7"
                 >
-                  {/* Accent top bar */}
-                  <div className={`absolute inset-x-0 top-0 h-1 ${panel.accentClass}`} />
-
-                  <span
-                    className="block text-[var(--text-ivory-muted)]"
-                    style={{
-                      fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.18em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {panel.num}
+                  <span className="mb-8 text-xs tabular-nums text-[#716044]">
+                    {String(index + 1).padStart(2, "0")} / PRÁTICA
                   </span>
+                  <h3 className="text-2xl font-semibold">{practice.nome}</h3>
+                  <p className="mt-3 max-w-sm flex-1 text-sm leading-relaxed text-[#15251c]/75">
+                    {practice.descricao}
+                  </p>
+                  <Link
+                    href={
+                      modalidades.length > 0
+                        ? `/modalidades/${practice.slug}`
+                        : "/contato"
+                    }
+                    className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold"
+                  >
+                    {modalidades.length > 0
+                      ? "Conhecer a modalidade"
+                      : "Consultar turmas"}{" "}
+                    <ArrowRightIcon className="size-4" aria-hidden />
+                  </Link>
+                </article>
+              ))}
+            </div>
+            <p className="mt-6 border-t border-[#15251c]/15 pt-6 text-sm text-[#15251c]/75">
+              Converse com a equipe para conhecer as turmas, os horários e as
+              atividades de cada polo.
+            </p>
+          </BrandContainer>
+        </section>
 
-                  <div className="flex-1">
-                    <h3 className="font-heading text-lg font-extrabold leading-snug text-[var(--text-ivory)]">
-                      {panel.title}
-                    </h3>
-                    <p className="mt-3 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
-                      {panel.text}
+        <section className="bg-[var(--surface-midnight)] py-16 sm:py-24">
+          <BrandContainer>
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-24">
+              <div>
+                <p className="gokai-kicker mb-5">O seu lugar no tatame</p>
+                <h2 className="text-3xl leading-tight sm:text-5xl">
+                  Cada pessoa tem
+                  <br />
+                  seu ponto de partida.
+                </h2>
+                <p className="mt-6 max-w-lg text-base leading-relaxed text-[var(--text-ivory-dim)]">
+                  Começar uma prática, retomar uma rotina ou apresentar o
+                  esporte aos filhos. A jornada começa ao conhecer a equipe e
+                  encontrar a atividade adequada para você.
+                </p>
+                <GokaiButton
+                  href="/professores"
+                  tone="outline"
+                  className="mt-8"
+                >
+                  Conhecer os professores
+                </GokaiButton>
+              </div>
+              <div className="divide-y divide-white/10">
+                {[
+                  [
+                    "Crianças e jovens",
+                    "Aprendizado, convivência e valores que acompanham o crescimento.",
+                  ],
+                  [
+                    "Adultos e iniciantes",
+                    "Um espaço para desenvolver técnica, construir constância e descobrir novas possibilidades.",
+                  ],
+                  [
+                    "Quem quer ir além",
+                    "Evolução contínua, troca de experiências e participação na comunidade marcial.",
+                  ],
+                ].map(([title, description]) => (
+                  <div key={title} className="py-6 first:pt-0">
+                    <h3 className="text-xl">{title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--text-ivory-muted)]">
+                      {description}
                     </p>
                   </div>
-
-                  <Link
-                    href={panel.href}
-                    className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] transition-colors ${panel.ctaClass}`}
-                  >
-                    {panel.cta}
-                    <ArrowRightIcon className="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </BrandContainer>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════
-            MODALIDADES — DARK section for dramatic rhythm
-        ═══════════════════════════════════════════════════════ */}
-        <section className="bg-[var(--surface-midnight)] py-20">
+        <section className="border-y border-white/10 bg-[var(--surface-obsidian)] py-16 sm:py-24">
           <BrandContainer>
-            <div className="mb-14 max-w-2xl">
-              <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-8 bg-[var(--accent-gold)]" aria-hidden />
-                <span
-                  className="text-[var(--text-ivory-muted)]"
-                  style={{
-                    fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                  }}
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+              <div>
+                <p className="gokai-kicker mb-5">Perto de você</p>
+                <h2 className="text-3xl sm:text-4xl">
+                  Dois polos.
+                  <br />
+                  Uma comunidade.
+                </h2>
+                <p className="mt-5 text-sm leading-relaxed text-[var(--text-ivory-dim)]">
+                  Encontre a GŌKAI em Juiz de Fora e converse com a equipe sobre
+                  como participar.
+                </p>
+                <Link
+                  href="/contato"
+                  className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--accent-gold)]"
                 >
-                  O que praticamos
-                </span>
+                  Entrar em contato{" "}
+                  <ArrowRightIcon className="size-4" aria-hidden />
+                </Link>
               </div>
-              <h2 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-[var(--text-ivory)] sm:text-5xl">
-                Modalidades
-              </h2>
-              <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-[var(--text-ivory-dim)]">
-                Artes marciais com seriedade técnica, progressão clara e acompanhamento constante
-                para crianças, jovens e adultos.
-              </p>
-            </div>
-
-            {modalidades.length > 0 ? (
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {modalidades.map((modalidade) => (
-                  <InstitutionalCard
-                    key={modalidade.id}
-                    accent="green"
-                    dark
-                    className="flex flex-col gap-4"
-                  >
-                    <h3 className="font-heading text-xl font-extrabold text-[var(--text-ivory)]">
-                      {modalidade.nome}
-                    </h3>
-                    {modalidade.descricao && (
-                      <p className="flex-1 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
-                        {modalidade.descricao}
-                      </p>
-                    )}
-                    <Link
-                      href={`/modalidades/${modalidade.slug}`}
-                      className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[var(--accent-gold)]"
-                    >
-                      Conhecer modalidade
-                      <ArrowRightIcon className="size-4" />
-                    </Link>
-                  </InstitutionalCard>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="grid gap-6 sm:grid-cols-2">
                 {[
-                  { title: "Artes Marciais", desc: "Modalidades com técnica progressiva e acompanhamento qualificado." },
-                  { title: "Todas as idades", desc: "Turmas para crianças, jovens e adultos em todos os níveis." },
-                  { title: "Formação completa", desc: "Técnica marcial aliada a valores éticos e crescimento pessoal." },
-                ].map((item) => (
-                  <InstitutionalCard key={item.title} accent="green" dark className="flex flex-col gap-3">
-                    <h3 className="font-heading text-lg font-extrabold text-[var(--text-ivory)]">{item.title}</h3>
-                    <p className="text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">{item.desc}</p>
-                  </InstitutionalCard>
+                  ["São Mateus", "Sede", "Rua Melo Franco, 68"],
+                  [
+                    "Linhares",
+                    "Polo de atividades",
+                    "Rua Roberto Hargreaves, 64",
+                  ],
+                ].map(([name, label, address]) => (
+                  <div
+                    key={name}
+                    className="border-l border-[var(--accent-gold)]/30 pl-6"
+                  >
+                    <MapPinIcon
+                      className="mb-8 size-5 text-[var(--accent-gold)]"
+                      aria-hidden
+                    />
+                    <p className="text-xs text-[var(--text-ivory-muted)]">
+                      {label}
+                    </p>
+                    <h3 className="mt-2 text-xl">{name}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--text-ivory-dim)]">
+                      {address}
+                      <br />
+                      Juiz de Fora / MG
+                    </p>
+                  </div>
                 ))}
               </div>
-            )}
-
-            <div className="mt-10 flex justify-center">
-              <GokaiButton href="/modalidades" tone="secondary" className="h-11 px-7 text-sm">
-                Ver todas as modalidades
-              </GokaiButton>
             </div>
           </BrandContainer>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════
-            GOVERNANÇA E TRANSPARÊNCIA — warm section
-        ═══════════════════════════════════════════════════════ */}
-        <Section
-          className="bg-[var(--surface-obsidian)]"
-          title="Governança e Transparência"
-          subtitle="Documentos, atas e estrutura organizacional disponíveis para consulta pública."
-        >
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <InstitutionalCard accent="red" className="flex flex-col gap-5">
-              <div className="inline-flex size-11 items-center justify-center rounded-lg bg-[var(--accent-gold)]/10 text-[var(--accent-gold)]">
-                <FileTextIcon className="size-5" />
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-extrabold text-[var(--text-ivory)]">Documentos institucionais</h3>
-                <p className="mt-2 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
-                  Estatuto social, regimento interno, ata de fundação e documentos públicos organizados.
+        <section className="bg-[#f4f2ed] py-16 text-[#15251c] sm:py-20">
+          <BrandContainer>
+            <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+              <div className="max-w-2xl">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-[#716044]">
+                  Projeto parceiro · Jiu-Jitsu
+                </p>
+                <h2 className="text-3xl sm:text-4xl">Gamonal Fighters</h2>
+                <p className="mt-4 text-base leading-relaxed text-[#15251c]/75">
+                  A Gamonal Fighters faz parte dos projetos parceiros que atuam
+                  no espaço da GŌKAI, mantendo sua identidade e gestão próprias.
+                  Conheça a equipe e seu trabalho.
                 </p>
               </div>
-              <GokaiButton href="/transparencia" tone="secondary" className="w-fit">
-                Acessar transparência
-              </GokaiButton>
-            </InstitutionalCard>
+              <a
+                href={GAMONAL_FIGHTERS_SITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 w-fit items-center gap-3 rounded-md border border-[#15251c]/30 px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#15251c] hover:text-white"
+              >
+                Conhecer a Gamonal{" "}
+                <ExternalLinkIcon className="size-4" aria-hidden />
+                <span className="sr-only">(abre em nova aba)</span>
+              </a>
+            </div>
+          </BrandContainer>
+        </section>
 
-            <InstitutionalCard accent="green" className="flex flex-col gap-5">
-              <div className="inline-flex size-11 items-center justify-center rounded-lg bg-[var(--accent-carmine)]/10 text-[var(--accent-carmine)]">
-                <MapPinIcon className="size-5" />
-              </div>
-              <div>
-                <h3 className="font-heading text-xl font-extrabold text-[var(--text-ivory)]">Base física e comunidade</h3>
-                <p className="mt-2 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">
-                  Atividades em São Mateus, Juiz de Fora/MG, em espaço estruturado para prática de artes marciais.
-                </p>
-              </div>
-              <GokaiButton href="/sobre" tone="outline" className="w-fit">
-                Ver página institucional
-              </GokaiButton>
-            </InstitutionalCard>
-          </div>
-        </Section>
-
-        {/* ═══════════════════════════════════════════════════════
-            PRÓXIMOS EVENTOS — white section
-        ═══════════════════════════════════════════════════════ */}
         {eventos.length > 0 && (
           <Section
-            className="bg-[var(--surface-midnight)]"
-            title="Próximos eventos"
-            subtitle="Campeonatos, seminários e atividades na agenda da GŌKAI."
+            title="Encontros que fazem parte da jornada"
+            subtitle="Acompanhe os próximos eventos da GŌKAI."
+            headingAlign="left"
           >
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <div className="grid gap-6 lg:grid-cols-3">
               {eventos.map((evento) => (
-                <InstitutionalCard key={evento.id} accent="red" className="flex h-full flex-col gap-4">
-                  <div className="flex items-center justify-between text-xs font-bold uppercase tracking-[0.18em] text-[var(--text-ivory-muted)]">
-                    <span>{eventoTipoLabel[evento.tipo]}</span>
-                    <span>{formatDate(evento.data_inicio)}</span>
-                  </div>
-                  <h3 className="font-heading text-lg font-extrabold text-[var(--text-ivory)]">{evento.titulo}</h3>
-                  {evento.descricao && (
-                    <p className="flex-1 text-sm font-medium leading-relaxed text-[var(--text-ivory-dim)]">{evento.descricao}</p>
-                  )}
-                  <div className="flex items-center gap-2 text-sm font-medium text-[var(--text-ivory-dim)]">
-                    <CalendarDaysIcon className="size-4 text-[var(--accent-gold)]" />
-                    <span>{formatDate(evento.data_inicio)}</span>
-                  </div>
+                <InstitutionalCard
+                  key={evento.id}
+                  accent="neutral"
+                  className="flex flex-col gap-4"
+                >
+                  <p className="text-xs text-[var(--accent-gold)]">
+                    {eventoTipoLabel[evento.tipo]}
+                  </p>
+                  <h3 className="text-xl">{evento.titulo}</h3>
+                  <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {evento.descricao}
+                  </p>
+                  <p className="flex items-center gap-2 text-sm">
+                    <CalendarDaysIcon className="size-4" aria-hidden />
+                    {formatDate(evento.data_inicio)}
+                  </p>
                 </InstitutionalCard>
               ))}
             </div>
           </Section>
         )}
-
-        {/* ═══════════════════════════════════════════════════════
-            PARCEIROS — light section
-        ═══════════════════════════════════════════════════════ */}
+        <ConteudosTeaser />
+        <section className="border-y border-white/10 bg-[var(--surface-obsidian)] py-16 sm:py-20">
+          <BrandContainer>
+            <div className="grid gap-8 lg:grid-cols-2 lg:gap-20">
+              <div>
+                <p className="gokai-kicker mb-5">Compromisso institucional</p>
+                <h2 className="text-3xl sm:text-4xl">
+                  Confiança também se constrói com transparência.
+                </h2>
+              </div>
+              <div>
+                <p className="text-base leading-relaxed text-[var(--text-ivory-dim)]">
+                  A GŌKAI é uma associação sem fins lucrativos dedicada ao
+                  esporte e à formação humana. Conheça nossa história, a
+                  estrutura de gestão e os documentos públicos.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+                  {[
+                    ["/sobre", "Sobre a GŌKAI"],
+                    ["/governanca", "Governança"],
+                    ["/transparencia", "Documentos"],
+                  ].map(([href, label]) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--accent-gold)]"
+                    >
+                      {label}
+                      <ArrowRightIcon className="size-4" aria-hidden />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </BrandContainer>
+        </section>
         {sortedPatrocinadores.length > 0 && (
           <Section
-            className="bg-[var(--surface-midnight)]"
-            title="Parceiros e apoiadores"
-            subtitle="Quem caminha com a GŌKAI fortalece o projeto esportivo e a presença institucional da associação."
+            title="Quem fortalece essa jornada"
+            subtitle="Parceiros e apoiadores da GŌKAI."
           >
             <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
-              {sortedPatrocinadores.map((patrocinador) => (
-                <InstitutionalCard key={patrocinador.id} accent="none" className="items-center p-5 text-center">
-                  {patrocinador.logo_url ? (
+              {sortedPatrocinadores.map((p) => (
+                <InstitutionalCard
+                  key={p.id}
+                  accent="none"
+                  className="text-center"
+                >
+                  {p.logo_url && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={patrocinador.logo_url}
-                      alt={`Logo ${patrocinador.nome}`}
-                      className="mx-auto h-16 max-w-full object-contain brightness-0 invert opacity-70 transition-all hover:opacity-100 hover:brightness-100 hover:invert-0"
+                      src={p.logo_url}
+                      alt=""
+                      className="mx-auto mb-4 h-16 max-w-full object-contain"
                     />
-                  ) : (
-                    <div className="mx-auto flex h-16 w-full items-center justify-center bg-white/5 text-sm font-bold text-[var(--accent-carmine)]">
-                      {patrocinador.nome}
-                    </div>
                   )}
-                  {patrocinador.logo_url && (
-                    <p className="mt-3 text-sm font-bold text-[var(--text-ivory)]">{patrocinador.nome}</p>
-                  )}
+                  <p className="text-sm font-semibold">{p.nome}</p>
                 </InstitutionalCard>
               ))}
             </div>
           </Section>
         )}
-
-        {/* Conteúdos — warm section */}
-        <ConteudosTeaser />
-
-        {/* ═══════════════════════════════════════════════════════
-            FINAL CTA — dark with gradient divider
-        ═══════════════════════════════════════════════════════ */}
-        <section className="relative bg-[var(--surface-midnight)] py-24">
-          {/* Gradient divider at top — brand signature */}
-          <div
-            className="absolute inset-x-0 top-0 h-[2px]"
-            style={{ background: "linear-gradient(90deg, var(--accent-gold), transparent)" }}
-            aria-hidden
-          />
-
+        <section className="gokai-hero-spotlight py-16 sm:py-24">
           <BrandContainer>
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div className="max-w-2xl">
-                <div className="mb-5 flex items-center gap-4">
-                  <span className="h-px w-8 bg-[var(--accent-gold)]" aria-hidden />
-                  <span
-                    className="text-[var(--text-ivory-muted)]"
-                    style={{
-                      fontFamily: "var(--font-outfit, var(--font-montserrat, system-ui))",
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.18em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    GŌKAI
-                  </span>
-                </div>
-                <h2 className="font-heading text-4xl font-extrabold leading-tight text-[var(--text-ivory)] sm:text-5xl">
-                  Comece a sua jornada com disciplina e propósito.
-                </h2>
-                <p className="mt-5 max-w-lg text-base font-medium leading-relaxed text-[var(--text-ivory-dim)]">
-                  Artes marciais sérias, formação humana e compromisso institucional.
-                  Crianças, jovens e adultos bem-vindos.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3 lg:items-end">
-                <GokaiButton
-                  href="/inscricao"
-                  tone="primary"
-                  className="h-12 px-8 text-sm"
-                >
-                  Fazer inscrição
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="gokai-kicker mb-5">Seu próximo passo</p>
+              <h2 className="text-3xl leading-tight sm:text-5xl">
+                A sua jornada começa com uma conversa.
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-[var(--text-ivory-dim)]">
+                Tire suas dúvidas ou envie sua inscrição para fazer parte da
+                GŌKAI.
+              </p>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <GokaiButton href="/inscricao" className="h-12">
+                  Quero fazer parte
+                  <ArrowRightIcon className="size-4" aria-hidden />
                 </GokaiButton>
-                <GokaiButton
-                  href="/contato"
-                  tone="outline"
-                  className="h-12 px-8 text-sm"
-                >
-                  Entrar em contato
+                <GokaiButton href="/contato" tone="outline" className="h-12">
+                  Falar com a equipe
                 </GokaiButton>
               </div>
             </div>
           </BrandContainer>
         </section>
-
       </main>
-
       <SiteFooter />
     </div>
   )

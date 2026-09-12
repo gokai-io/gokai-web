@@ -127,7 +127,7 @@ export default function ContatoPage() {
                           href={item.href}
                           target={item.href.startsWith("http") ? "_blank" : undefined}
                           rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="inline-flex items-start gap-1 whitespace-pre-line text-sm text-foreground hover:text-secondary"
+                          className="inline-flex items-start gap-1 whitespace-pre-line text-sm text-foreground hover:text-[var(--accent-gold)]"
                         >
                           {item.value}
                           {item.href.startsWith("http") && (
@@ -153,7 +153,7 @@ export default function ContatoPage() {
               </InstitutionalCard>
             )}
 
-            {SOCIAL_PROFILES.length > 0 ? (
+            {SOCIAL_PROFILES.length > 0 && (
               <InstitutionalCard accent="red" className="p-5">
                 <h3 className="mb-3 text-sm font-semibold text-foreground">Redes Sociais</h3>
                 <ul className="flex flex-col gap-2">
@@ -165,7 +165,7 @@ export default function ContatoPage() {
                           href={url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-secondary"
+                          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-[var(--accent-gold)]"
                         >
                           {display}
                           <ExternalLink className="h-3 w-3 shrink-0 text-muted-foreground/50" />
@@ -174,14 +174,6 @@ export default function ContatoPage() {
                     )
                   })}
                 </ul>
-              </InstitutionalCard>
-            ) : (
-              <InstitutionalCard accent="red" className="p-5">
-                <h3 className="mb-2 text-sm font-semibold text-foreground">Redes Sociais</h3>
-                <p className="text-sm text-muted-foreground">
-                  Siga o GŌKAI nas redes sociais para ficar por dentro de eventos, resultados e
-                  novidades da associação.
-                </p>
               </InstitutionalCard>
             )}
 

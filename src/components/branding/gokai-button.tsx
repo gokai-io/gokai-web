@@ -16,10 +16,13 @@ const VARIANT_CLASS: Record<GokaiButtonVariant, string> = {
   accent: "bg-[var(--accent-carmine)] text-[var(--text-ivory)] font-extrabold hover:brightness-110 active:scale-[0.98]",
 }
 
-interface GokaiButtonProps extends Omit<ComponentProps<typeof Button>, "variant"> {
+type GokaiButtonProps = {
   tone?: GokaiButtonVariant
-  href?: string
-}
+  className?: string
+} & (
+  | ({ href: string } & Omit<ComponentProps<typeof Link>, "href" | "className">)
+  | ({ href?: undefined } & Omit<ComponentProps<typeof Button>, "variant" | "className">)
+)
 
 export function GokaiButton({
   tone = "primary",
@@ -29,21 +32,21 @@ export function GokaiButton({
   ...props
 }: GokaiButtonProps) {
   const classes = cn(
-    "rounded-[0.25rem] px-6 py-2.5 font-extrabold uppercase tracking-[0.2em] text-[11px] transition-all duration-300",
+    "min-h-11 rounded-md px-6 py-3 text-sm font-semibold tracking-normal shadow-none transition-[color,background-color,border-color,transform,filter] duration-200",
     VARIANT_CLASS[tone],
     className
   )
 
   if (href) {
     return (
-      <Button render={<Link href={href} />} className={classes} {...props}>
+      <Link href={href} className={cn("inline-flex items-center justify-center gap-2", classes)} {...props as Omit<ComponentProps<typeof Link>, "href">}>
         {children}
-      </Button>
+      </Link>
     )
   }
 
   return (
-    <Button className={classes} {...props}>
+    <Button className={classes} {...props as ComponentProps<typeof Button>}>
       {children}
     </Button>
   )

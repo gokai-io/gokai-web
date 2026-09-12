@@ -1,8 +1,9 @@
 import Link from "next/link"
+import { ExternalLinkIcon } from "lucide-react"
 import { BrandContainer } from "@/components/branding/brand-container"
 import { BrandLogo } from "@/components/branding/brand-logo"
 import { Separator } from "@/components/ui/separator"
-import { CONTACT_ADDRESS_DISPLAY, LEGAL_ENTITY_NAME } from "@/lib/site"
+import { CONTACT_ADDRESS_DISPLAY, GAMONAL_FIGHTERS_SITE_URL, LEGAL_ENTITY_NAME } from "@/lib/site"
 
 const navLinks = [
   { href: "/sobre",         label: "Sobre" },
@@ -94,6 +95,21 @@ export function SiteFooter() {
                 {CONTACT_ADDRESS_DISPLAY}
               </p>
             )}
+            <div className="mt-2 border-t border-[var(--accent-gold)]/15 pt-5">
+              <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--text-ivory-muted)]">
+                Projeto parceiro
+              </p>
+              <a
+                href={GAMONAL_FIGHTERS_SITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[var(--text-ivory-dim)] hover:text-[var(--accent-gold)]"
+              >
+                Gamonal Fighters
+                <ExternalLinkIcon className="size-3.5" aria-hidden="true" />
+                <span className="sr-only">(abre em nova aba)</span>
+              </a>
+            </div>
           </div>
         </div>
 

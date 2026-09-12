@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { MenuIcon, X } from "lucide-react"
@@ -28,6 +28,7 @@ export function SiteHeader() {
   const [scrolled,    setScrolled]    = useState(false)
   const [mobileOpen,  setMobileOpen]  = useState(false)
   const pathname = usePathname()
+  const menuButton = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -37,16 +38,26 @@ export function SiteHeader() {
   }, [])
 
   // Close mobile menu on route change
-  useEffect(() => { setMobileOpen(false) }, [pathname])
+  useEffect(() => {
+    if (!mobileOpen) return
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileOpen(false)
+        menuButton.current?.focus()
+      }
+    }
+    document.addEventListener("keydown", onEscape)
+    return () => document.removeEventListener("keydown", onEscape)
+  }, [mobileOpen])
 
   return (
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-400",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,padding,border-color] duration-200",
           scrolled
             ? "bg-[rgba(8,16,13,0.72)] backdrop-blur-xl border-b border-[var(--accent-gold)]/12 py-3"
-            : "bg-transparent py-5"
+            : "bg-[var(--surface-midnight)]/95 py-4"
         )}
       >
         <BrandContainer className="flex items-center justify-between gap-8">
@@ -58,7 +69,7 @@ export function SiteHeader() {
             aria-label="GŌKAI — página inicial"
           >
             <BrandLogo
-              className="h-[52px] w-auto transition-all duration-300"
+              className="h-[52px] w-auto"
               dark
               priority
             />
@@ -112,10 +123,12 @@ export function SiteHeader() {
 
           {/* ── Mobile toggle ── */}
           <button
-            className="inline-flex h-9 w-9 flex-none items-center justify-center rounded-lg text-[var(--text-ivory)] transition-colors hover:bg-[var(--accent-gold)]/10 lg:hidden"
+            ref={menuButton}
+            className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-lg text-[var(--text-ivory)] transition-colors hover:bg-[var(--accent-gold)]/10 lg:hidden"
             onClick={() => setMobileOpen((o) => !o)}
             aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileOpen
               ? <X className="size-5" />
@@ -128,15 +141,17 @@ export function SiteHeader() {
 
       {/* ── Mobile menu — full-width dropdown ── */}
       <div
+        id="mobile-navigation"
+        inert={!mobileOpen}
         className={cn(
-          "fixed inset-x-0 top-0 z-40 bg-[var(--surface-midnight)] pt-20 pb-8 transition-all duration-400 lg:hidden",
+          "fixed inset-x-0 top-0 z-40 max-h-[100dvh] overflow-y-auto border-b border-white/10 bg-[var(--surface-midnight)] pt-24 pb-8 transition-[opacity,transform,visibility] duration-200 lg:hidden",
           mobileOpen
             ? "translate-y-0 opacity-100"
-            : "-translate-y-4 opacity-0 pointer-events-none"
+            : "invisible -translate-y-4 opacity-0 pointer-events-none"
         )}
       >
         <BrandContainer>
-          <nav className="flex flex-col gap-1" aria-label="Navegação mobile">
+          <nav className="flex flex-col gap-1" aria-label="Navegação mobile" onClick={() => setMobileOpen(false)}>
             {navLinks.map(({ href, label }) => {
               const isActive =
                 pathname === href || pathname.startsWith(`${href}/`)
@@ -155,7 +170,7 @@ export function SiteHeader() {
               )
             })}
           </nav>
-          <div className="mt-8 flex flex-col gap-3">
+          <div className="mt-8 flex flex-col gap-3" onClick={() => setMobileOpen(false)}>
             <GokaiButton href="/inscricao" tone="primary" className="w-full justify-center">
               Associe-se
             </GokaiButton>
